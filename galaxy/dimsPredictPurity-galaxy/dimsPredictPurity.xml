@@ -19,7 +19,7 @@
                 --maxOffset=$maxoffset
                 --ppm=$ppm
                 --iwNorm=$iw_norm
-                #if $sim is True
+                #if $sim
                     --sim
                 #end if
     ]]></command>
@@ -52,10 +52,11 @@
     <tests>
         <test>
             <param name="mzML_file" value="SIMstitch_data.mzML" type="data"  />
-            <param name="mzs" type="tabular"  help="file with list of mz values to check (--mzs)"/>
+            <param name="sim" value="TRUE" />
+            <param name="mzs" type="tabular"  value="mzs.txt" />
             <output name="anticipated_dims_purity.txt" type="tabular" file="anticipated_dims_purity.txt">
                 <assert_contents>
-                    <has_n_columns n="" />
+                    <has_n_columns n="7" />
                 </assert_contents>
             </output>
         </test>
