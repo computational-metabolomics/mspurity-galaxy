@@ -1,12 +1,12 @@
-library(XCMSwrapper)
+library(msPurity)
 library(optparse)
 
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character", default=getwd(),
               help="Output folder for resulting files [default = %default]"
   ),
-  make_option(c("-x", "--xset_path"), type="character", default=file.path(getwd(),"xset.rds"),
-              help="The path to the xcmsSet object [default = %default]"
+  make_option(c("-i", "--files"), type="character", default=file.path(getwd(),"xset.rds"),
+              help="list of files (comma separated) [default = %default]"
   ),
   make_option("--polarity", default='NA',
               help="polarity (just used for naming purpose for files being saved) [positive, negative, NA] [default %default]"
@@ -94,46 +94,30 @@ if (is.null(opt$remove_spectra)){
 }
 
 
-print(opt)
+pa <- msPurity::purityA(fileList,
+                        cores = 1,
+                        mostIntense = FALSE,
+                        nearest = TRUE,
+                        offsets = NA,
+                        plotP = FALSE,
+                        plotdir = NULL,
+                        interpol = "linear",
+                        iwNorm = FALSE,
+                        iwNormFun = NULL,
+                        ilim = 0.05,
+                        mzRback = "pwiz",
+                        isotopes = TRUE,
+                        im = NULL))
 
-loadRData <- function(rdata_path, xset_name){
-#loads an RData file, and returns the named xset object if it is there
-    load(rdata_path)
-    return(get(ls()[ls() == xset_name]))
-}
-
-xset<-loadRData(opt$xset_path, opt$xset_name)
-print(xset)
-ffrm_out <- XCMSwrapper::flag_remove(xset,
-                        pol=opt$polarity,
-                        rsd_i_blank=opt$rsd_i_blank,
-                        minfrac_blank=opt$minfrac_blank,
-                        rsd_rt_blank=opt$rsd_rt_blank,
-                        ithres_blank=opt$ithres_blank,
-                        s2b=opt$s2b,
-                        ref.class=opt$blank_class,
-                        egauss_thr=opt$egauss_thr,
-                        rsd_i_sample=opt$rsd_i_sample,
-                        minfrac_sample=opt$minfrac_sample,
-                        rsd_rt_sample=opt$rsd_rt_sample,
-                        ithres_sample=opt$ithres_sample,
-                        minfrac_xcms=opt$minfrac_xcms,
-                        mzwid=opt$mzwid,
-                        bw=opt$bw,
-                        out_dir=opt$out_dir,
-                        temp_save=temp_save,
-                        remove_spectra=remove_spectra,
-                        grp_rm_ids=unlist(strsplit(as.character(opt$grp_rm_ids), split=", "))[[1]])
-
-xset <- ffrm_out[[1]]
-grp_peaklist <- ffrm_out[[2]]
-removed_peaks <- ffrm_out[[3]]
-
-save(xset, file=file.path(opt$out_dir, 'xset_filtered.RData'))
-
-write.table(data.frame('ID'=rownames(grp_peaklist),grp_peaklist),
-        file.path(opt$out_dir, 'peaklist_filtered.txt'), row.names=FALSE, sep='\t')
-
-removed_peaks <- data.frame(removed_peaks)
-write.table(data.frame('ID'=rownames(removed_peaks),removed_peaks),
-        file.path(opt$out_dir, 'removed_peaks.txt'), row.names=FALSE, sep='\t')
+# xset <- ffrm_out[[1]]
+# grp_peaklist <- ffrm_out[[2]]
+# removed_peaks <- ffrm_out[[3]]
+#
+# save(xset, file=file.path(opt$out_dir, 'xset_filtered.RData'))
+#
+# write.table(data.frame('ID'=rownames(grp_peaklist),grp_peaklist),
+#         file.path(opt$out_dir, 'peaklist_filtered.txt'), row.names=FALSE, sep='\t')
+#
+# removed_peaks <- data.frame(removed_peaks)
+# write.table(data.frame('ID'=rownames(removed_peaks),removed_peaks),
+#         file.path(opt$out_dir, 'removed_peaks.txt'), row.names=FALSE, sep='\t')
