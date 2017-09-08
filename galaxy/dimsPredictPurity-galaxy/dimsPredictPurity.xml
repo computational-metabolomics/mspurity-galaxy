@@ -63,94 +63,36 @@
     </tests>
     <help><![CDATA[
 
-=======================================
-Flag & remove peaks from xcmsSet object
-=======================================
+=============================================================
+Calculate anticipated precursor ion purity from DI-MS dataset
+=============================================================
 -----------
 Description
 -----------
 
-Tool to flag XCMS grouped peaks based on various criteria (e.g RSD, intensity). The flagged grouped peaks can then be removed
-completely from the xcmsSet object (xset). This means removing the individual peaks associated for each file. Located
-in the **xset@peaks** socket of the xcmsSet object.
+Tool to calculate the anticipated precursor ion purity of selected precursor based on a prior DI-MS dataset. The dataset
+ can either be in the form of multiple 'full scans' or a SIM-Stitch dataset. See the Bioconductor documentation for more
+ details, function msPurity::dimsPredictPurity()
 
-Additionally a list of ids of the xcms grouped peaks can be supplied, all peaks associated with these ids can be
-be removed.
+--------------
+Output example
+--------------
+Output consists of the mz column (along with any other columns that were in the original mz file). The median and
+mean calculated purity. The standard deviation (sdPurity), coefficient of variation (relative standard deviation)
+cvPurity, the standard error of the purity (sdePurity) and the median number of peaks within the isolation window
+(medianPeakNum)
 
-**Note**: grouped peak refers to a peak that has been grouped together by xcms::group function
+============= ============= ============= ================ ================ ================ ================
+mz            medianPurity  meanPurity    sdPurity         cvPurity	        sdePurity        medianPeakNum
+============= ============= ============= ================ ================ ================ ================
+50.20428      0.39          0.39          0.0007           0.19             0.0005           3
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+56.91206      0.01          0.01          0.0002           4.53             0.0001           12
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+62.02906      0.14          0.13          0.0014           22.63            0.0009           7
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+75.07431      0.93          0.94          0.019            37.87            0.0134           3
+============= ============= ============= ================ ================ ================ ================
 
------------------
-Updated peaklist
------------------
-The calculated columns for the update peaklist dataframe include:
-
-* RSD of intensity for grouped peaks across each class
-* RSD of retention time for grouped peaks across each class
-* Coverage across all classes
-* mzmin_full & mzmax_full: the full mzrange of each grouped peak
-* rtmin_full & rtmax_full: the full rtrange of each grouped peak
-* flag for criteria for the blank class (if 1 it means the blank is valid) and this grouped peak will be removed
-* flag for criteria for the sample classes (if 1 it means that this grouped peak is valid for this class)
-* all_sample_valid: flag for all samples (if 1 it means that at least 1 sample class is valid and the blank is not valid) (we keep the grouped peak)
-
-This is in addition to the standard output from the xcmsSet peaklist
-
-**flag example**
-
-Dataset consists of 3 classes. Blank, cond1 and cond2. The classes cond1 and cond2 are biological sample classes.
-
-============= ============= ============= ================ ================
-blank_valid   cond1_valid   cond2_valid   all_sample_valid Keep peak?
-============= ============= ============= ================ ================
-0             0             1             1                Yes
-------------- ------------- ------------- ---------------- ----------------
-0             1             1             1                Yes
-------------- ------------- ------------- ---------------- ----------------
-1             0             1             0                No
-------------- ------------- ------------- ---------------- ----------------
-1             0             0             0                No
-------------- ------------- ------------- ---------------- ----------------
-0             0             0             0                No
-============= ============= ============= ================ ================
-
-
-
------------------
-Filters for flags
------------------
-
-The following filters can be used to determine if a grouped peak gets flagged to keep. If the column all_sample_valid is 0 then
-the grouped peak will be removed
-
-
-* RSD of intensity for each biological sample class
-* minfrac for each biological sample class
-* RSD of retention time for each biological sample class
-* intensity threshold for each biological sample class
-* Blank subtraction. If a blank peak is found where the intensity of any corresponding biological sample class is not greater that the he s2b threshold (sample/blank). Then this grouped peak will be flagged for removal
-
-The blank grouped peaks also have there own filters. If the blank peak passes this criteria and s2b threshold detailed above
-then the peak will be removed.
-
-* RSD of intensity
-* minfrac
-* intensity threshold
-
-Additionally there is a filter for assessing how well the peaks fit the gaussian shape. Note that this can only be performed
-when XCMS has fit_gauss option and verbose columns set to TRUE. Also, these peaks are just removed and not flagged.
-
-
-
------------
-Regrouping
------------
-The resulting xcmsSet object where all peaks have been removed needs to be regrouped otherwise the individual peaks
-associated with each file will not be correctly linked to the grouped peaks.
-
-This tool will re-group the xcmsSet object and check the newly created re-grouped xcmsSet object to see if any peaks are
-still being flagged. If so the process will be repeated untill the xcmsSet object only contains peaks that match
-the peak criteria.
-
-The output file is an xcmsSet.RData file.
     ]]></help>
 </tool>
