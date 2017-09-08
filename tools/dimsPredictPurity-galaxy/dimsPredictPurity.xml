@@ -1,4 +1,4 @@
-<tool id="dims_anticipated_purity" name="Calculate anticipated precursor ion purity (DIMS)" version="0.1.0">
+<tool id="dims_anticipated_purity" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
     <requirements>
         <requirement type="package" >R</requirement>
 	    <requirement type="package" >r-optparse</requirement>
@@ -12,22 +12,51 @@
     </stdio>
     <command interpreter="Rscript"><![CDATA[
         dimsPredictPurity.R
-                --mzML_file=$mzML_file
-                --mzs=$mzs
-                --out_dir=.
-                --minOffset=$minoffset
-                --maxOffset=$maxoffset
-                --ppm=$ppm
-                --iwNorm=$iw_norm
-                #if $sim
-                    --sim
-                #end if
+            #if $mzML_data.format == "mzML_file"
+                --mzML_file $mzML_data.source.name
+            #elif $input.format == "library"
+                --mzML_file $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
+            --mzs=$mz_file
+            --out_dir=.
+            --minOffset=$minoffset
+            --maxOffset=$maxoffset
+            --ppm=$ppm
+            --iwNorm=$iw_norm
+            #if $sim
+                --sim
+            #end if
+            #if $dimspy_usage.usage == "dimspy"
+                --dimspy
+                --dimspy_file_nm $dimspy_usage.file_nm
+            #end if
     ]]></command>
     <inputs>
-        <param type="data" name="mzML_file"
-                help="mzML file to calculate metric from (--mzML_file)"/>
-        <param type="data" name="mzs"
-                help="file with list of mz values to check (--mzs)"/>
+
+        <conditional name="mzML_data">
+            <param name="format" type="select" label="Choose the source for the dataset" >
+                <option value="mzML_file" selected="true">Zip file from your History containing *.mzML files</option>
+                <option value="library">Library directory name (to be used with dimspy workflows) or path to
+                                        to an individual .mzML file</option>
+            </param>
+            <when value="mzML_file">
+                <param name="source" type="data" format="mzml" label="Single *.mzML" argument="--mzML_file" >
+                    <validator type="empty_field" />
+                </param>
+            </when>
+            <when value="library">
+                <param name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files
+                                                                 or path to an individual *.mzML"
+                       argument="--mzML_file">
+                    <validator type="empty_field" />
+                </param>
+            </when>
+        </conditional>
+
+        <param type="data" name="mz_file" format="tsv, tabular"
+                help="tsv or tabular file with one column containing the mz values (column header should be either
+                      mz or m/z"/>
         <param name="minoffset" type="float" label="minoffset" value="0.5"
                     help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
                     100.0 then the range would be from 999.5 to 100.0 (--minoffset)"/>
@@ -36,13 +65,30 @@
                     100.0 then the range would be from 100.0 to 100.5 (--maxoffset)"/>
         <param name="ppm" type="float" label="ppm tolerance" value="4"
                     help="ppm tolerance for the precursor to be found within the mzML file (--ppm)"/>
-        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
         <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
                 <option value="gauss" >Gaussian</option>
                 <option value="rcosine" >Raised cosine</option>
                 <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
                 <option value="none" selected="true" >No normalisation</option>
         </param>
+
+        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
+
+        <conditional name="dimspy_usage">
+            <param name="usage" type="select" label="dimspy peak matrix text file usage?">
+                <option value="no_dimspy" selected="true">dimspy not used to prepare the mz text file</option>
+                <option value="dimspy">dimspy used to prepare mz file</option>
+            </param>
+            <when value="dimspy">
+                <param name="file_nm" type="integer" label="File number" value="1"
+                    help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
+                          purity metric (order based on column order). This file will then be looked for in the
+                          library folder to calculate the metric.
+                         "/>
+            </when>
+        </conditional>
+
+
 
     </inputs>
     <outputs>
@@ -71,8 +117,8 @@ Description
 -----------
 
 Tool to calculate the anticipated precursor ion purity of selected precursor based on a prior DI-MS dataset. The dataset
- can either be in the form of multiple 'full scans' or a SIM-Stitch dataset. See the Bioconductor documentation for more
- details, function msPurity::dimsPredictPurity()
+can either be in the form of multiple 'full scans' or a SIM-Stitch dataset. See the Bioconductor documentation for more
+details, function msPurity::dimsPredictPurity()
 
 --------------
 Output example
