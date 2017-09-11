@@ -6,7 +6,6 @@
     </requirements>
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
-
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -17,7 +16,7 @@
             #elif $mzML_data.format == "library"
                 --mzML_file $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
             #end if
-            --peaklist_file=$peaklist_file
+            --peaks_file=$peaks_file
             --out_dir=.
             --minOffset=$minoffset
             --maxOffset=$maxoffset
@@ -33,12 +32,22 @@
                 --dimspy
                 --dimspy_file_num $dimspy_usage.file_num
             #end if
+            #if $isotopes.isotopes == "exclude_default":
+                --exclude_isotopes
+            #elif $isotopes.isotopes == "user"
+                --exclude_isotopes
+                --isotope_matrix = $isotopes.im
+            #end if
     ]]></command>
     <inputs>
 
+        <param type="data" name="peaks_file" format="tsv, tabular"
+                help="tsv or tabular file with one column containing the mz values (column header should be either
+                      mz)"/>
+
         <conditional name="mzML_data">
             <param name="format" type="select" label="Choose the source for the dataset" >
-                <option value="mzML_file" selected="true">Zip file from your History containing *.mzML files</option>
+                <option value="mzML_file" selected="true">.mzML files to check purity from</option>
                 <option value="library">Library directory name (to be used with dimspy workflows) or path to
                                         to an individual .mzML file</option>
             </param>
@@ -56,10 +65,6 @@
                 </param>
             </when>
         </conditional>
-
-        <param type="data" name="peaklist_file" format="tsv, tabular"
-                help="tsv or tabular file with one column containing the mz values (column header should be either
-                      mz)"/>
         <param name="minoffset" type="float" label="minoffset" value="0.5"
                     help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
                     100.0 then the range would be from 999.5 to 100.0 (--minoffset)"/>
@@ -74,9 +79,32 @@
                 <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
                 <option value="none" selected="true" >No normalisation</option>
         </param>
-        <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
-        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
 
+        <conditional name="isotopes">
+            <param name="isotopes" type="select" label="Handling of isotopic peaks" >
+                <option value="keep" >Keep isotopes in precursor ion purity calculation</option>
+                <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
+                <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
+            </param>
+            <when value="user">
+                <param name="im" type="data" format="tabular" label="Isotope matrix" help="
+                 tabular file composing of columns:
+                  ['isotope_id', 'mass diff', 'abundance of isotope', 'ppm tol for mz', 'abundance buffer',
+                                  'charge', 'relative atomic mass (int)', 'xflag'].
+                The xflag indicates if the larger (mass) isotope is the most abundant or less abundant.
+                e.g. for c12 to c13, the c13 is less abundant so we flag as 1 for Li6 to Li7, the Li7 is more abundant
+                so we would flag as 0.
+                Example row: For C13 isotope (single charge) the row could be [1, 1.003355, 1.07, 4, 0.1, 1, 12, 1]"/>
+            </when>
+        </conditional>
+
+        <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
+
+
+
+
+
+        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
 
         <conditional name="dimspy_usage">
             <param name="usage" type="select" label="dimspy peak matrix text file usage?">
@@ -92,8 +120,6 @@
             </when>
         </conditional>
 
-
-
     </inputs>
     <outputs>
 	    <data name="anticipated_dims_purity.txt" format="tabular" label="anticipated_dims_purity.txt"
@@ -101,13 +127,14 @@
     </outputs>
     <tests>
         <test>
-            <param name="mzML_file" value="SIMstitch_data.mzML" type="data"  />
-            <param name="sim" value="TRUE" />
-            <param name="mzs" type="tabular"  value="mzs.txt" />
-            <output name="anticipated_dims_purity.txt" type="tabular" file="anticipated_dims_purity.txt">
-                <assert_contents>
-                    <has_n_columns n="7" />
-                </assert_contents>
+            <param name="mzML_data|format" value="mzML_file"   />
+            <param name="mzML_data|source" value="FULL_SCAN.mzML" ftype="mzml"/>
+            <param name="remove_NAs" value="TRUE" />
+            <param name="dimspy|usage" value="dimspy" />
+            <param name="iw_norm" value="QE5" />
+            <param name="peaks_file" value="dimspy_peakmatrix.tsv" ftype="tsv"/>
+
+            <output name="anticipated_dims_purity.txt" value="anticipated_dims_purity.txt" ftype="tabular">
             </output>
         </test>
     </tests>

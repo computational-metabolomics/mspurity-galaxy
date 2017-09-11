@@ -3,7 +3,7 @@ library(optparse)
 
 option_list <- list(
   make_option(c("--mzML_file"), type="character"),
-  make_option(c("--peaklist_file"), type="character"),
+  make_option(c("--peaks_file"), type="character"),
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--minOffset", default=0.5),
   make_option("--maxOffset", default=0.5),
@@ -12,15 +12,19 @@ option_list <- list(
   make_option("--sim", action="store_true"),
   make_option("--remove_nas", action="store_true"),
   make_option("--iwNorm", default="none", type="character"),
-  make_option("--dimspy_file_num", default=1)
+  make_option("--dimspy_file_num", default=1),
+  make_option("--exclude_isotopes", action="store_true"),
+  make_option("--isotope_matrix", type="character")
 )
 
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
 
+print(sessionInfo())
+print(opt)
 
 if (opt$dimspy){
-  indf <- read.table(opt$peaklist_file,
+  indf <- read.table(opt$peaks_file,
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
   filename = colnames(indf)[8:ncol(indf)][opt$dimspy_file_num]
   indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
@@ -31,15 +35,28 @@ if (opt$dimspy){
   df$mz <- as.numeric(df$mz)
 
 }else{
-  df <- read.table(opt$peaklist_file, header = TRUE, sep='\t')
+  df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
   filename = NA
 }
 
-if (opt$remove_nas){
+if (!is.null(opt$remove_nas)){
   df <- df[!is.na(df$mz),]
 }
 
+if (is.null(opt$isotope_matrix)){
+    im <- NULL
+}else{
+    im <- read.table(opt$isotope_matrix,
+                     header = TRUE, sep='\t', stringsAsFactors = FALSE)
+}
 
+if (is.null(opt$isotopes)){
+    isotopes <- FALSE
+}else{
+    isotopes <- TRUE
+}
+
+print('FIRST ROWS OF PEAK FILE')
 print(head(df))
 
 if (dir.exists(opt$mzML_file)){
@@ -48,7 +65,7 @@ if (dir.exists(opt$mzML_file)){
   if (is.na(filename)){
     print('ERROR: If a directory is provided then a filename needs to be entered
           directory or automatically obtained by using a dimspy output')
-    exit()
+    quit()
   }else{
     mzml_file <- file.path(opt$mzML_file, filename)
   }
@@ -62,12 +79,10 @@ if (is.null(opt$sim)){
     sim=TRUE
 }
 
-print(sim)
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
-print(minOffset)
-print(maxOffset)
-print(sessionInfo())
+
+
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE
@@ -91,7 +106,10 @@ predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      ppm=opt$ppm,
                                      mzML=TRUE,
                                      sim = sim,
-                                     iwNorm = iwNorm, iwNormFun = iwNormFun)
+                                     isotopes = isotopes,
+                                     im = im,
+                                     iwNorm = iwNorm,
+                                     iwNormFun = iwNormFun)
 predicted <- cbind(df, predicted)
 
 
