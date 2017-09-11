@@ -1,0 +1,63 @@
+{% set version = '1.3.6' %}
+
+package:
+  name: bioconductor-mspurity
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: 5193a03346c64d40782f0f1a0c867de47ac22a19.zip
+  url: https://github.com/Viant-Metabolomics/msPurity/archive/5193a03346c64d40782f0f1a0c867de47ac22a19.zip
+
+build:
+  number: 0
+  skip: True # [osx]
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+requirements:
+  build: 
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - 'bioconductor-mzr >=1.1.6'
+    - bioconductor-xcms
+    - r-base
+    - r-rcolorbrewer
+    - r-dosnow
+    - r-plyr
+    - r-foreach
+    - r-doparallel
+    - r-stringr
+    - r-reshape2
+    - r-fastcluster
+    - r-ggplot2
+    - r-dbi
+    - r-rsqlite
+    - r-testthat
+
+  run:
+    - bioconductor-biobase
+    - bioconductor-biocgenerics
+    - 'bioconductor-mzr >=1.1.6'
+    - bioconductor-xcms
+    - r-base
+    - r-rcolorbrewer
+    - r-dosnow
+    - r-plyr
+    - r-foreach
+    - r-doparallel
+    - r-stringr
+    - r-reshape2
+    - r-fastcluster
+    - r-ggplot2
+    - r-dbi
+    - r-rsqlite
+    - r-testthat
+
+test:
+  commands:
+    - '$R -e "library(''msPurity'')"'
+about:
+  home: http://bioconductor.org/packages/release/bioc/html/msPurity.html
+  license: 'GPL (>= 2) + file LICENSE'
+  summary: 'Assess the contribution of the targeted precursor in fragmentation acquired or anticipated isolation windows using a metric called "precursor purity". Also provides simple processing steps (averaging, filtering, blank subtraction, etc) for DI-MS data. Works for both LC-MS(/MS) and DI-MS(/MS) data. Spectral matching of fragmentation spectra can also be run against a SQLite database of library spectra.'

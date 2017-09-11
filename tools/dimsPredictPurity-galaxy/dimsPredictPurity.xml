@@ -2,7 +2,7 @@
     <requirements>
         <requirement type="package" >R</requirement>
 	    <requirement type="package" >r-optparse</requirement>
-        <requirement type="package" >msPurity</requirement>
+        <requirement type="package" version="1.3.6" >bioconductor-mspurity</requirement>
     </requirements>
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
@@ -13,11 +13,11 @@
     <command interpreter="Rscript"><![CDATA[
         dimsPredictPurity.R
             #if $mzML_data.format == "mzML_file"
-                --mzML_file $mzML_data.source.name
-            #elif $input.format == "library"
+                --mzML_file $mzML_data.source
+            #elif $mzML_data.format == "library"
                 --mzML_file $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
             #end if
-            --mzs=$mz_file
+            --peaklist_file=$peaklist_file
             --out_dir=.
             --minOffset=$minoffset
             --maxOffset=$maxoffset
@@ -26,9 +26,12 @@
             #if $sim
                 --sim
             #end if
+            #if $remove_NAs
+                --remove_nas
+            #end if
             #if $dimspy_usage.usage == "dimspy"
                 --dimspy
-                --dimspy_file_nm $dimspy_usage.file_nm
+                --dimspy_file_num $dimspy_usage.file_num
             #end if
     ]]></command>
     <inputs>
@@ -54,9 +57,9 @@
             </when>
         </conditional>
 
-        <param type="data" name="mz_file" format="tsv, tabular"
+        <param type="data" name="peaklist_file" format="tsv, tabular"
                 help="tsv or tabular file with one column containing the mz values (column header should be either
-                      mz or m/z"/>
+                      mz)"/>
         <param name="minoffset" type="float" label="minoffset" value="0.5"
                     help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
                     100.0 then the range would be from 999.5 to 100.0 (--minoffset)"/>
@@ -71,8 +74,9 @@
                 <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
                 <option value="none" selected="true" >No normalisation</option>
         </param>
-
+        <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
         <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
+
 
         <conditional name="dimspy_usage">
             <param name="usage" type="select" label="dimspy peak matrix text file usage?">
@@ -80,7 +84,7 @@
                 <option value="dimspy">dimspy used to prepare mz file</option>
             </param>
             <when value="dimspy">
-                <param name="file_nm" type="integer" label="File number" value="1"
+                <param name="file_num" type="integer" label="File number" value="1"
                     help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
                           purity metric (order based on column order). This file will then be looked for in the
                           library folder to calculate the metric.
