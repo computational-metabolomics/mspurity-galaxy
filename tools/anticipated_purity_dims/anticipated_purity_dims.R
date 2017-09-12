@@ -7,6 +7,7 @@ option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--minOffset", default=0.5),
   make_option("--maxOffset", default=0.5),
+  make_option("--ilim", default=0.05),
   make_option("--ppm", default=4),
   make_option("--dimspy", action="store_true"),
   make_option("--sim", action="store_true"),
@@ -50,7 +51,7 @@ if (is.null(opt$isotope_matrix)){
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
 }
 
-if (is.null(opt$isotopes)){
+if (is.null(opt$exclude_isotopes)){
     isotopes <- FALSE
 }else{
     isotopes <- TRUE
@@ -106,6 +107,7 @@ predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      ppm=opt$ppm,
                                      mzML=TRUE,
                                      sim = sim,
+                                     ilim = opt$ilim,
                                      isotopes = isotopes,
                                      im = im,
                                      iwNorm = iwNorm,

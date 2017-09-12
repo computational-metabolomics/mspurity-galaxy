@@ -1,0 +1,179 @@
+<tool id="anticipated_purity_dims" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
+    <requirements>
+        <requirement type="package" >R</requirement>
+	    <requirement type="package" >r-optparse</requirement>
+        <requirement type="package" version="1.3.6" >bioconductor-mspurity</requirement>
+    </requirements>
+    <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
+    </description>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        dims_anticipated_purity.R
+            #if $mzML_data.format == "mzML_file"
+                --mzML_file $mzML_data.source
+            #elif $mzML_data.format == "library"
+                --mzML_file $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
+            --peaks_file=$peaks_file
+            --out_dir=.
+            --minOffset=$minoffset
+            --maxOffset=$maxoffset
+            --ppm=$ppm
+            --iwNorm=$iw_norm
+            --ilim=$ilim
+            #if $sim
+                --sim
+            #end if
+            #if $remove_NAs
+                --remove_nas
+            #end if
+            #if $dimspy_usage.usage == "dimspy"
+                --dimspy
+                --dimspy_file_num $dimspy_usage.file_num
+            #end if
+            #if $isotopes.isotopes == "exclude_default":
+                --exclude_isotopes
+            #elif $isotopes.isotopes == "user"
+                --exclude_isotopes
+                --isotope_matrix = $isotopes.im
+            #end if
+    ]]></command>
+    <inputs>
+
+        <param type="data" name="peaks_file" format="tsv, tabular"
+                help="tsv or tabular file with one column containing the mz values (column header should be either
+                      mz)"/>
+
+        <conditional name="mzML_data">
+            <param name="format" type="select" label="Choose the source for the dataset" >
+                <option value="mzML_file" selected="true">.mzML files to check purity from</option>
+                <option value="library">Library directory name (to be used with dimspy workflows) or path to
+                                        to an individual .mzML file</option>
+            </param>
+            <when value="mzML_file">
+                <param name="source" type="data" format="mzml" label="Single *.mzML" argument="--mzML_file" >
+                    <validator type="empty_field" />
+                </param>
+            </when>
+            <when value="library">
+                <param name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files
+                                                                 or path to an individual *.mzML"
+                       argument="--mzML_file">
+                    <validator type="empty_field" />
+                </param>
+            </when>
+        </conditional>
+        <param name="minoffset" type="float" label="minoffset" value="0.5"
+                    help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
+                    100.0 then the range would be from 999.5 to 100.0"/>
+        <param name="maxoffset" type="float" label="maxoffset" value="0.5"
+                    help="Offset to the 'right' for the precursor range  e.g. if precursor of interest is
+                    100.0 then the range would be from 100.0 to 100.5"/>
+        <param name="ilim" type="float" label="ilim" value="0.05"
+                    help="All peaks less than this percentage of the target peak will be removed
+                    from the purity calculation, default is 5\% (0.05)"/>
+        <param name="ppm" type="float" label="ppm tolerance" value="4"
+                    help="ppm tolerance for the precursor to be found within the mzML file"/>
+        <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
+                <option value="gauss" >Gaussian</option>
+                <option value="rcosine" >Raised cosine</option>
+                <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
+                <option value="none" selected="true" >No normalisation</option>
+        </param>
+
+
+
+        <conditional name="isotopes">
+            <param name="isotopes" type="select" label="Handling of isotopic peaks" >
+                <option value="keep" >Keep isotopes in precursor ion purity calculation</option>
+                <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
+                <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
+            </param>
+            <when value="user">
+                <param name="im" type="data" format="tabular" label="Isotope matrix" help="
+                 tabular file composing of columns:
+                  ['isotope_id', 'mass diff', 'abundance of isotope', 'ppm tol for mz', 'abundance buffer',
+                                  'charge', 'relative atomic mass (int)', 'xflag'].
+                The xflag indicates if the larger (mass) isotope is the most abundant or less abundant.
+                e.g. for c12 to c13, the c13 is less abundant so we flag as 1 for Li6 to Li7, the Li7 is more abundant
+                so we would flag as 0.
+                Example row: For C13 isotope (single charge) the row could be [1, 1.003355, 1.07, 4, 0.1, 1, 12, 1]"/>
+            </when>
+        </conditional>
+
+        <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
+
+
+
+        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
+
+        <conditional name="dimspy_usage">
+            <param name="usage" type="select" label="dimspy peak matrix text file usage?">
+                <option value="no_dimspy" selected="true">dimspy not used to prepare the mz text file</option>
+                <option value="dimspy">dimspy used to prepare mz file</option>
+            </param>
+            <when value="dimspy">
+                <param name="file_num" type="integer" label="File number" value="1"
+                    help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
+                          purity metric (order based on column order). This file will then be looked for in the
+                          library folder to calculate the metric.
+                         "/>
+            </when>
+        </conditional>
+
+    </inputs>
+    <outputs>
+	    <data name="anticipated_dims_purity.txt" format="tabular" label="anticipated_dims_purity.txt"
+              from_work_dir="anticipated_dims_purity.txt" visible="true"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="mzML_data|format" value="mzML_file"   />
+            <param name="mzML_data|source" value="FULL_SCAN.mzML" ftype="mzml"/>
+            <param name="remove_NAs" value="TRUE" />
+            <param name="dimspy|usage" value="dimspy" />
+            <param name="iw_norm" value="QE5" />
+            <param name="peaks_file" value="dimspy_peakmatrix.tsv" ftype="tsv"/>
+
+            <output name="anticipated_dims_purity.txt" value="anticipated_dims_purity.txt" ftype="tabular">
+            </output>
+        </test>
+    </tests>
+    <help><![CDATA[
+
+=============================================================
+Calculate anticipated precursor ion purity from DI-MS dataset
+=============================================================
+-----------
+Description
+-----------
+
+Tool to calculate the anticipated precursor ion purity of selected precursor based on a prior DI-MS dataset. The dataset
+can either be in the form of multiple 'full scans' or a SIM-Stitch dataset. See the Bioconductor documentation for more
+details, function msPurity::dimsPredictPurity()
+
+--------------
+Output example
+--------------
+Output consists of the mz column (along with any other columns that were in the original mz file). The median and
+mean calculated purity. The standard deviation (sdPurity), coefficient of variation (relative standard deviation)
+cvPurity, the standard error of the purity (sdePurity) and the median number of peaks within the isolation window
+(medianPeakNum)
+
+============= ============= ============= ================ ================ ================ ================
+mz            medianPurity  meanPurity    sdPurity         cvPurity	        sdePurity        medianPeakNum
+============= ============= ============= ================ ================ ================ ================
+50.20428      0.39          0.39          0.0007           0.19             0.0005           3
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+56.91206      0.01          0.01          0.0002           4.53             0.0001           12
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+62.02906      0.14          0.13          0.0014           22.63            0.0009           7
+------------- ------------- ------------- ---------------- ---------------- ---------------- ----------------
+75.07431      0.93          0.94          0.019            37.87            0.0134           3
+============= ============= ============= ================ ================ ================ ================
+
+    ]]></help>
+</tool>

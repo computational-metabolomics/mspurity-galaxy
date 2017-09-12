@@ -1,4 +1,4 @@
-<tool id="dims_anticipated_purity" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
+<tool id="anticipated_purity_dims" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
     <requirements>
         <requirement type="package" >R</requirement>
 	    <requirement type="package" >r-optparse</requirement>
@@ -10,7 +10,7 @@
         <exit_code range="1:" />
     </stdio>
     <command interpreter="Rscript"><![CDATA[
-        dimsPredictPurity.R
+        dims_anticipated_purity.R
             #if $mzML_data.format == "mzML_file"
                 --mzML_file $mzML_data.source
             #elif $mzML_data.format == "library"
@@ -22,6 +22,7 @@
             --maxOffset=$maxoffset
             --ppm=$ppm
             --iwNorm=$iw_norm
+            --ilim=$ilim
             #if $sim
                 --sim
             #end if
@@ -67,18 +68,23 @@
         </conditional>
         <param name="minoffset" type="float" label="minoffset" value="0.5"
                     help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
-                    100.0 then the range would be from 999.5 to 100.0 (--minoffset)"/>
+                    100.0 then the range would be from 999.5 to 100.0"/>
         <param name="maxoffset" type="float" label="maxoffset" value="0.5"
                     help="Offset to the 'right' for the precursor range  e.g. if precursor of interest is
-                    100.0 then the range would be from 100.0 to 100.5 (--maxoffset)"/>
+                    100.0 then the range would be from 100.0 to 100.5"/>
+        <param name="ilim" type="float" label="ilim" value="0.05"
+                    help="All peaks less than this percentage of the target peak will be removed
+                    from the purity calculation, default is 5\% (0.05)"/>
         <param name="ppm" type="float" label="ppm tolerance" value="4"
-                    help="ppm tolerance for the precursor to be found within the mzML file (--ppm)"/>
+                    help="ppm tolerance for the precursor to be found within the mzML file"/>
         <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
                 <option value="gauss" >Gaussian</option>
                 <option value="rcosine" >Raised cosine</option>
                 <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
                 <option value="none" selected="true" >No normalisation</option>
         </param>
+
+
 
         <conditional name="isotopes">
             <param name="isotopes" type="select" label="Handling of isotopic peaks" >
@@ -99,8 +105,6 @@
         </conditional>
 
         <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
-
-
 
 
 
