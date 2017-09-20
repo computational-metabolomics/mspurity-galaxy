@@ -28,12 +28,22 @@ if (opt$dimspy){
   indf <- read.table(opt$peaks_file,
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
   filename = colnames(indf)[8:ncol(indf)][opt$dimspy_file_num]
+  # check if the data file is mzML or RAW (can only use mzML currently) so
+  # we expect an mzML file of the same name in the same folder
+  indf$i <- indf[,colnames(indf)==filename]
   indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
-  indf$intensity <- indf[,colnames(indf)==filename]
+
+  filename = sub("raw", "mzML", filename, ignore.case = TRUE)
+
   df <- indf[4:nrow(indf),]
+
   colnames(df)[colnames(df)=='m.z'] <- 'mz'
-  df[df$mz=='nan',]$mz <- NA
+
+  if ('nan' %in% df$mz){
+    df[df$mz=='nan',]$mz <- NA
+  }
   df$mz <- as.numeric(df$mz)
+
 
 }else{
   df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
