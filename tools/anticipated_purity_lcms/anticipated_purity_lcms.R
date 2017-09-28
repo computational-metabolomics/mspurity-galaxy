@@ -17,7 +17,9 @@ option_list <- list(
   make_option("--xgroups", type="character"),
   make_option("--rdata_name", default='xset'),
   make_option("--camera_xcms", default='xset'),
-  make_option("--files", type="character")
+  make_option("--files", type="character"),
+  make_option("--choose_class", type="character"),
+  make_option("--ignore_files", type="character")
 )
 
 # store options
@@ -88,7 +90,40 @@ if (opt$iwNorm=='none'){
     iwNormFun = msPurity::iwNormQE.5()
 }
 
-print(opt$files)
+
+
+
+if (!is.null(opt$files)){
+
+
+  updated_filepaths <- trimws(strsplit(opt$files, ',')[[1]])
+  updated_filepaths <- updated_filepaths[updated_filepaths != ""]
+  print(updated_filepaths)
+  updated_filenames = basename(updated_filepaths)
+  original_filenames = basename(xset@filepaths)
+  update_idx = match(updated_filenames, original_filenames)
+  xset@filepaths <- updated_filepaths[update_idx]
+}
+
+if (!is.null(opt$choose_class)){
+  classes <- trimws(strsplit(opt$choose_class, ',')[[1]])
+  filenames <- rownames(xset@phenoData)
+
+  ignore_files_class <- filenames[!as.character(xset@phenoData$class) %in% classes]
+}else{
+  ignore_files_class <- ''
+}
+
+if (!is.null(opt$ignore_files)){
+  ignore_files <- trimws(strsplit(opt$ignore_files, ',')[[1]])
+  ignore_files <- unique(c(ignore_files, ignore_files_class))
+  ignore_files <- ignore_files[ignore_files != ""]
+}else{
+  ignore_files <- NULL
+}
+
+
+
 ppLCMS <- msPurity::purityX(xset=xset,
                                 offsets=c(minOffset, maxOffset),
                                 cores=opt$cores,
@@ -99,9 +134,8 @@ ppLCMS <- msPurity::purityX(xset=xset,
                                 im = im,
                                 iwNorm = iwNorm,
                                 iwNormFun = iwNormFun,
-                                singleFile = opt$singleFile)
-
-
+                                singleFile = opt$singleFile,
+                                fileignore = ignore_files)
 
 print('saving tsv')
 print(head(ppLCMS@predictions))

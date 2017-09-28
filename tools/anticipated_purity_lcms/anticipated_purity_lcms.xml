@@ -11,7 +11,6 @@
         <exit_code range="1:" />
     </stdio>
     <command interpreter="Rscript"><![CDATA[
-        echo $file_load_conditional.file_load_select &&
         anticipated_purity_lcms.R
             --xset_path=$xset
             --out_dir=.
@@ -37,9 +36,21 @@
                 --exclude_isotopes
                 --isotope_matrix=$isotopes.im
             #end if
-            if $file_load_conditional.file_load_select == 'yes'
-                --files=$file_load_conditional.file
+            #if $file_load_conditional.file_load_select == 'yes'
+                --files='
+                #for $i in $file_load_conditional.input
+                    $i,
+                #end for
+                '
             #end if
+            #if $choose_class_cond.choose_class== 'choose'
+                --choose_class=$choose_class_cond.class
+            #end if
+            #if $ignore_files_cond.ignore_files_choice== 'choose'
+                --ignore_files=$ignore_files_cond.ignore_files
+            #end if
+
+
     ]]></command>
     <inputs>
 
@@ -49,6 +60,30 @@
         <param name="singleFile" type="integer" label="singleFile" value="0"
                     help="If just a single file for purity is to be calculated (rather than the grouped XCMS peaks).
                     Uses the index of the files in xcmsSet object. If zero this is ignored"/>
+
+        <conditional name="choose_class_cond">
+            <param name="choose_class" type="select" label="Choose class of XCMS set object to perform calculation on?" >
+                <option value="choose">Choose class</option>
+                <option value="all" selected="true">calculate average across all classes</option>
+            </param>
+            <when value="choose">
+                                <param name="class" type="text" label="Choose class"
+               help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
+                i.e. xset@phenoData). An average will across all the choosen classes." />
+            </when>
+        </conditional>
+
+        <conditional name="ignore_files_cond">
+            <param name="ignore_files_choice" type="select" label="Ignore files?" >
+                <option value="choose">Choose files to ignore from calculation</option>
+                <option value="none" selected="true" >Include all files of selected classes in calculation</option>
+            </param>
+            <when value="choose">
+                                <param name="ignore_files" type="text" label="ignore files"
+               help="Comma separated string of filenames to ignore (do not include the directory) eg. blank1.mzML,blank2.mzML,sample4.mzML"  />
+            </when>
+        </conditional>
+
 
         <conditional name="xgroups">
             <param name="xgroups" type="select" label="xgroups" >
@@ -87,9 +122,10 @@
                 <when value="no">
                 </when>
                 <when value="yes">
-                    <param name="input" type="data" format="mzxml,mzml,mzdata,netcdf,no_unzip.zip,zip"
+                    <param name="input" type="data" format="mzxml,mzml,mzdata,netcdf"
                            multiple="true" label="File(s) from your history containing your chromatograms"
-                           help="Use a dataset collection containing the files used for the XCMS processing" />
+                           help="Select the files used (or use a dataset collection containing the files) that were used
+                                 for processing" />
                 </when>
         </conditional>
 
@@ -103,14 +139,16 @@
     </outputs>
     <tests>
         <test>
-            <param name="mzML_data|format" value="mzML_file"   />
-            <param name="mzML_data|source" value="FULL_SCAN.mzML" ftype="mzml"/>
-            <param name="remove_NAs" value="TRUE" />
+
+            <param name="file_load_select" value="yes" />
+            <param name="file_load_select|input" value="LCMS_1.mzML" />
+            <param name="file_load_select|input" value="LCMS_2.mzML" />
+
             <param name="dimspy|usage" value="dimspy" />
             <param name="iw_norm" value="QE5" />
-            <param name="peaks_file" value="dimspy_peakmatrix.tsv" ftype="tsv"/>
+            <param name="xset" value="xset.RData" ftype="RData"/>
 
-            <output name="anticipated_dims_purity.txt" value="anticipated_dims_purity.txt" ftype="tabular">
+            <output name="anticipated_purity_lcms.tsv" value="anticipated_dims_purity.tsv" ftype="tabular">
             </output>
         </test>
     </tests>
@@ -132,7 +170,18 @@ Output example
 Output consists of the mz and intensity of the XCMS features (id based on the XCMS group id) and various
 metrics regarding the anticipated precursor ion purity.
 
-TODO
+============= ============= ============= ================ ================ ================ ================ ================ ================
+grpid         mean          median        sd               stde	            RSD              pknm             i                mz
+============= ============= ============= ================ ================ ================ ================ ================ ================
+1             1.00          1.00          0.0000           0.0000           0.0000           1                5404920          100.0758
+------------- ------------- ------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
+2             0.59          0.57          0.3016           0.1508           50.570           3                8793845          101.0084
+------------- ------------- ------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
+3             0.08          0.07          0.0784           0.0164           29.643           4                1526502          100.9781
+------------- ------------- ------------- ---------------- ---------------- ---------------- ---------------- ---------------- ----------------
+4             1.00          1.00          0.0000           0.0000           0.0000           1                42513139         102.0914
+============= ============= ============= ================ ================ ================ ================ ================ ================
+
 
 
     ]]></help>
