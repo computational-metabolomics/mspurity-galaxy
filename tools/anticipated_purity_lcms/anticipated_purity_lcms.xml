@@ -18,7 +18,7 @@
             --maxOffset=$maxoffset
             --singleFile=$singleFile
             --purityType=$purityType
-            --cores=1
+            --cores=\${GALAXY_SLOTS:-4}
             #if $xgroups.xgroups == "choose"
                 --xgroups=$xgroups.xgroups_value
             #end if
@@ -37,12 +37,20 @@
                 --isotope_matrix=$isotopes.im
             #end if
             #if $file_load_conditional.file_load_select == 'yes'
-                --files='
+                --galaxy_files='
                 #for $i in $file_load_conditional.input
                     $i,
                 #end for
                 '
             #end if
+            #if $file_load_conditional.file_load_select == 'yes'
+                --files='
+                #for $i in $file_load_conditional.input
+                    $i.name,
+                #end for
+                '
+            #end if
+
             #if $choose_class_cond.choose_class== 'choose'
                 --choose_class=$choose_class_cond.class
             #end if
@@ -122,9 +130,9 @@
                 <when value="no">
                 </when>
                 <when value="yes">
-                    <param name="input" type="data" format="mzxml,mzml,mzdata,netcdf"
+                    <param name="input" type="data_collection" collection_type="list"  format="mzxml,mzml,mzdata,netcdf"
                            multiple="true" label="File(s) from your history containing your chromatograms"
-                           help="Select the files used (or use a dataset collection containing the files) that were used
+                           help="Select the dataset collection containing the files that were used
                                  for processing" />
                 </when>
         </conditional>
@@ -134,21 +142,28 @@
     <outputs>
 	    <data name="anticipated_purity_lcms" format="tsv" label="${tool.name} on ${on_string}: tsv"
               from_work_dir="anticipated_purity_lcms.tsv" visible="true"/>
-        <data name="anticipated_purity_lcms_rdata" format="RData" label="${tool.name} on ${on_string}: RData"
+        <data name="anticipated_purity_lcms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
               from_work_dir="anticipated_purity_lcms.RData" visible="true"/>
     </outputs>
     <tests>
         <test>
-
-            <param name="file_load_select" value="yes" />
-            <param name="file_load_select|input" value="LCMS_1.mzML" />
-            <param name="file_load_select|input" value="LCMS_2.mzML" />
-
-            <param name="dimspy|usage" value="dimspy" />
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" value="yes"/>
+                <param name="input" >
+                    <collection type="list">
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+            <conditional name="xgroups">
+                <param name="xgroups" value="choose"/>
+                <param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>
+            </conditional>
             <param name="iw_norm" value="QE5" />
-            <param name="xset" value="xset.RData" ftype="RData"/>
+            <param name="xset" value="xset.RData"/>
 
-            <output name="anticipated_purity_lcms.tsv" value="anticipated_dims_purity.tsv" ftype="tabular">
+            <output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >
             </output>
         </test>
     </tests>

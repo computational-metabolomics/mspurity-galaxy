@@ -18,6 +18,7 @@ option_list <- list(
   make_option("--rdata_name", default='xset'),
   make_option("--camera_xcms", default='xset'),
   make_option("--files", type="character"),
+  make_option("--galaxy_files", type="character"),
   make_option("--choose_class", type="character"),
   make_option("--ignore_files", type="character")
 )
@@ -93,16 +94,22 @@ if (opt$iwNorm=='none'){
 
 
 
+
 if (!is.null(opt$files)){
-
-
   updated_filepaths <- trimws(strsplit(opt$files, ',')[[1]])
   updated_filepaths <- updated_filepaths[updated_filepaths != ""]
   print(updated_filepaths)
   updated_filenames = basename(updated_filepaths)
   original_filenames = basename(xset@filepaths)
   update_idx = match(updated_filenames, original_filenames)
-  xset@filepaths <- updated_filepaths[update_idx]
+
+    if (!is.null(opt$galaxy_files)){
+        galaxy_files <- trimws(strsplit(opt$galaxy_files, ',')[[1]])
+        galaxy_files <- galaxy_files[galaxy_files != ""]
+        xset@filepaths <- galaxy_files[update_idx]
+    }else{
+        xset@filepaths <- updated_filepaths[update_idx]
+    }
 }
 
 if (!is.null(opt$choose_class)){
