@@ -36,6 +36,9 @@ if (opt$dimspy){
   filename = sub("raw", "mzML", filename, ignore.case = TRUE)
 
   df <- indf[4:nrow(indf),]
+  if ('blank_flag' %in% colnames(df)){
+    df <- df[df$blank_flag==1,]
+  }
 
   colnames(df)[colnames(df)=='m.z'] <- 'mz'
 

@@ -13,14 +13,15 @@ option_list <- list(
   make_option("--isotope_matrix", type="character"),
   make_option("--purityType", default="purityFWHMmedian"),
   make_option("--singleFile", default=0),
-  make_option("--cores", default=1),
+  make_option("--cores", default=4),
   make_option("--xgroups", type="character"),
   make_option("--rdata_name", default='xset'),
   make_option("--camera_xcms", default='xset'),
   make_option("--files", type="character"),
   make_option("--galaxy_files", type="character"),
   make_option("--choose_class", type="character"),
-  make_option("--ignore_files", type="character")
+  make_option("--ignore_files", type="character"),
+  make_option("--rtraw_columns",  action="store_true")
 )
 
 # store options
@@ -114,21 +115,34 @@ if (!is.null(opt$files)){
 
 if (!is.null(opt$choose_class)){
   classes <- trimws(strsplit(opt$choose_class, ',')[[1]])
-  filenames <- rownames(xset@phenoData)
 
-  ignore_files_class <- filenames[!as.character(xset@phenoData$class) %in% classes]
+
+  ignore_files_class <- which(!as.character(xset@phenoData$class) %in% classes)
+
+  print('choose class')
+  print(ignore_files_class)
 }else{
-  ignore_files_class <- ''
+  ignore_files_class <- NA
 }
 
 if (!is.null(opt$ignore_files)){
-  ignore_files <- trimws(strsplit(opt$ignore_files, ',')[[1]])
+  ignore_files_string <- trimws(strsplit(opt$ignore_files, ',')[[1]])
+  filenames <- rownames(xset@phenoData)
+  ignore_files <- which(filenames %in% ignore_files_string)
+
   ignore_files <- unique(c(ignore_files, ignore_files_class))
   ignore_files <- ignore_files[ignore_files != ""]
 }else{
-  ignore_files <- NULL
+  if (anyNA(ignore_files_class)){
+    ignore_files <- NULL
+  }else{
+    ignore_files <- ignore_files_class
+  }
+
 }
 
+print('ignore_files')
+print(ignore_files)
 
 
 ppLCMS <- msPurity::purityX(xset=xset,
@@ -142,10 +156,26 @@ ppLCMS <- msPurity::purityX(xset=xset,
                                 iwNorm = iwNorm,
                                 iwNormFun = iwNormFun,
                                 singleFile = opt$singleFile,
-                                fileignore = ignore_files)
+                                fileignore = ignore_files,
+                                rtraw_columns=TRUE)
+
+
+dfp <- ppLCMS@predictions
+
+# to make compatable with deconrank
+colnames(dfp)[colnames(dfp)=='grpid'] = 'peakID'
+colnames(dfp)[colnames(dfp)=='median'] = 'medianPurity'
+colnames(dfp)[colnames(dfp)=='mean'] = 'meanPurity'
+colnames(dfp)[colnames(dfp)=='sd'] = 'sdPurity'
+colnames(dfp)[colnames(dfp)=='stde'] = 'sdePurity'
+colnames(dfp)[colnames(dfp)=='RSD'] = 'cvPurity'
+colnames(dfp)[colnames(dfp)=='pknm'] = 'pknmPurity'
+if(sum(is.na(dfp$medianPurity))>0){
+    dfp[is.na(dfp$medianPurity),]$medianPurity = 0
+}
 
 print('saving tsv')
-print(head(ppLCMS@predictions))
-write.table(ppLCMS@predictions, file.path(opt$out_dir, 'anticipated_purity_lcms.tsv'), row.names=FALSE, sep='\t')
+print(head(dfp))
+write.table(dfp, file.path(opt$out_dir, 'anticipated_purity_lcms.tsv'), row.names=FALSE, sep='\t')
 print('saving RData')
 save.image(file.path(opt$out_dir, 'anticipated_purity_lcms.RData'))

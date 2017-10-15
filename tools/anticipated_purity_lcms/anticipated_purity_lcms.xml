@@ -3,6 +3,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
+
     <expand macro="requirements" />
 
     <description>Calculate the anticipated precursor ion purity from a LC-MS XCMS dataset.
@@ -56,6 +57,10 @@
             #end if
             #if $ignore_files_cond.ignore_files_choice== 'choose'
                 --ignore_files=$ignore_files_cond.ignore_files
+            #end if
+
+            #if $raw_rt_columns
+                --rtraw_columns
             #end if
 
 
@@ -119,6 +124,12 @@
                 <option value="xcms" selected="true" >XCMS (xset)</option>
                 <option value="camera" >CAMERA (xa)</option>
         </param>
+
+        <param name="raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
+               help="Only applicable when using retention time correction with obiwarp. When obiwarp is used
+                     the retention time correction tracking is slightly different to the other correction methods. To ensure
+                     correct tracking with obiwarp an additional tool (track_rt_raw) should be performed prior to
+                     any retention time correction."/>
 
         <conditional name="file_load_conditional">
                 <param name="file_load_select" type="select" label="Resubmit your dataset"
