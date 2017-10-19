@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<macros>
+    <xml name="requirements">
+        <requirements>
+            <requirement type="package" >R</requirement>
+	        <requirement type="package" >r-optparse</requirement>
+            <requirement type="package" version="1.3.6" >bioconductor-mspurity</requirement>
+        </requirements>
+    </xml>
+
+    <xml name="offsets">
+            <param name="minoffset" type="float" label="minoffset" value="0.5"
+                    help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
+                    100.0 then the range would be from 999.5 to 100.0"/>
+        <param name="maxoffset" type="float" label="maxoffset" value="0.5"
+                    help="Offset to the 'right' for the precursor range  e.g. if precursor of interest is
+                    100.0 then the range would be from 100.0 to 100.5"/>
+    </xml>
+    <xml name="general_params">
+
+        <param name="ilim" type="float" label="ilim" value="0.05"
+                    help="All peaks less than this percentage of the target peak will be removed
+                    from the purity calculation, default is 5\% (0.05)"/>
+
+        <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
+                <option value="gauss" >Gaussian</option>
+                <option value="rcosine" >Raised cosine</option>
+                <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
+                <option value="none" selected="true" >No normalisation</option>
+        </param>
+
+
+
+        <conditional name="isotopes">
+            <param name="isotopes" type="select" label="Handling of isotopic peaks" >
+                <option value="keep" >Keep isotopes in precursor ion purity calculation</option>
+                <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
+                <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
+            </param>
+            <when value="user">
+                <param name="im" type="data" format="tabular" label="Isotope matrix" help="
+                 tabular file composing of columns:
+                  ['isotope_id', 'mass diff', 'abundance of isotope', 'ppm tol for mz', 'abundance buffer',
+                                  'charge', 'relative atomic mass (int)', 'xflag'].
+                The xflag indicates if the larger (mass) isotope is the most abundant or less abundant.
+                e.g. for c12 to c13, the c13 is less abundant so we flag as 1 for Li6 to Li7, the Li7 is more abundant
+                so we would flag as 0.
+                Example row: For C13 isotope (single charge) the row could be [1, 1.003355, 1.07, 4, 0.1, 1, 12, 1]"/>
+            </when>
+        </conditional>
+    </xml>
+
+
+</macros>

@@ -1,0 +1,134 @@
+<tool id="assess_purity_msms" name="Precursor ion purity (MS/MS, MSn)" version="0.1.0">
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements" />
+
+    <description>
+        Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
+    </description>
+ <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        assess_purity_msms.R
+            --out_dir=.
+            #if $mzML_data.format == "mzML_files"
+                --mzML_files='
+                #for $i in $mzML_data.source
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $mzML_data.source
+                    $i.name,
+                #end for
+                '
+            #elif $mzML_data.format == "library"
+                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
+
+            #if $offsets.offsets == 'user'
+                --minOffset=$minoffset
+                --maxOffset=$maxoffset
+            #end if
+
+            --iwNorm=$iw_norm
+            --ilim=$ilim
+
+            #if $nearest
+                --nearest
+            #end if
+
+            #if $mostIntense
+                --mostIntense
+            #end if
+
+            #if $isotopes.isotopes == "exclude_default"
+                --exclude_isotopes
+            #elif $isotopes.isotopes == "user"
+                --exclude_isotopes
+                --isotope_matrix=$isotopes.im
+            #end if
+    ]]></command>
+    <inputs>
+
+        <conditional name="mzML_data">
+            <param name="format" type="select" label="Choose the source for the dataset" >
+                <option value="mzML_files" selected="true">.mzML files to check purity from</option>
+                <option value="library">Library directory name (to be used with dimspy workflows) or path to
+                                        to an individual .mzML file</option>
+            </param>
+            <when value="mzML_files">
+                <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
+                    <validator type="empty_field" />
+                </param>
+            </when>
+            <when value="library">
+                <param name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files
+                                                                 or path to an individual *.mzML">
+                    <validator type="empty_field" />
+                </param>
+            </when>
+        </conditional>
+
+        <param name="mostIntense" type="boolean" checked="true" label="Use most intense peak within isolation window for precursor?"
+               help="If yes, this will ignore the recorded precursor within the mzML file and use
+               use the most intense peak within the isolation window to calculate the precursor ion purity"/>
+
+        <param name="nearest" type="boolean" checked="true" label="Use nearest full scan to determine precursor?"
+               help="If yes, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
+                     is of the precursor"/>
+
+        <conditional name="offsets">
+            <param name="offsets" type="select" label="offsets" >
+                <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
+                <option value="user">User supplied offset values</option>
+            </param>
+            <when value="user">
+                <expand macro="offsets" />
+            </when>
+
+        </conditional>
+
+
+        <expand macro="general_params" />
+
+
+
+
+    </inputs>
+    <outputs>
+	    <data name="purity_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
+              from_work_dir="purity_msms.tsv" visible="true"/>
+        <data name="purity_msms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
+              from_work_dir="purity_msms.RData" visible="true"/>
+    </outputs>
+    <tests>
+        <!--<test>-->
+            <!--<conditional name="file_load_conditional">-->
+                <!--<param name="file_load_select" value="yes"/>-->
+                <!--<param name="input" >-->
+                    <!--<collection type="list">-->
+                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
+                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
+                    <!--</collection>-->
+                <!--</param>-->
+            <!--</conditional>-->
+            <!--<conditional name="xgroups">-->
+                <!--<param name="xgroups" value="choose"/>-->
+                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
+            <!--</conditional>-->
+            <!--<param name="iw_norm" value="QE5" />-->
+            <!--<param name="xset" value="xset.RData"/>-->
+
+            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
+            <!--</output>-->
+        <!--</test>-->
+    </tests>
+    <help><![CDATA[
+
+    ]]></help>
+</tool>
