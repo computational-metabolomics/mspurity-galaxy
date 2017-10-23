@@ -1,0 +1,100 @@
+<tool id="spectral_matching" name="spectral_matching" version="0.1.0">
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements" />
+
+    <description>
+        Perform spectral matching to spectral libraries using dot product cosine on a LC-MS/MS dataset and link to XCMS features.
+    </description>
+ <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        spectral_matching.R
+            --out_dir=.
+    ]]></command>
+    <inputs>
+
+        <param type="data" name="pa" label="purityA object" format="rdata"
+               help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
+
+        <param type="data" name="xset" label="xcmsSet object" format="rdata"
+               help="xcmsSet object saved as 'xset' in an RData file"/>
+
+        <param name="polarity" type="select" label="Polarity?" >
+                <option value="positive" selected="true">Positive</option>
+                <option value="negative"  >negative</option>
+        </param>
+
+        <param name="ppm_tol_prod" type="float" value="10"
+                    help="Parts per million tolerance to match product mz values"/>
+
+        <param name="ppm_tol_prec" type="float" value="5"
+                    help="Parts per million tolerance to match precursor mz values"/>
+
+        <param name="score_thres" type="float" min="0" max="1" value="0.6"
+                    help="Dot product cosine score threshold"/>
+
+        <param name="instrument_types" type="float" min="0" max="1" value="0.6"
+                    help="Dot product cosine score threshold"/>
+
+        <section name="advanced" title="advanced" expanded="False">
+            <conditional name="topncond">
+                <param name="topnbool" type="boolean" label="Only use the top n spectral matching hits?"/>
+                <when value="false">
+                </when>
+                <when value="true">
+                     <param name="topn" type="integer" value="10" help="Only use top n matches"/>
+                </when>
+            </conditional>
+
+            <param name="ra_thres_l" type="float" value="0"
+               help="Relative abundance threshold for library spectra"/>
+
+            <param name="ra_thres_t" type="float" value="2"
+               help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
+
+            <param name="min_time" type="float" value="120" help="Min time for run (secs)"/>
+            <param name="max_cid_time" type="float" value="300" help="Max time to perform CID fragmentation (secs)" />
+            <param name="peak_time_hcd" type="float" value="10" help="Time to fragment a peak using HCD (secs)" />
+            <param name="peak_time_cid" type="float" value="12" help="Time to fragment a peak using CID (secs)" />
+            <param name="percentage_cid" type="float" value="0.333" min="0" max="1" help="Percentage of time fragmenting using
+                                                            CID (rather than HCD)"/>
+            <param name="delay_time" type="float" value="24" help="Delay time before acquisition begins (secs)"/>
+        </section>
+
+    </inputs>
+    <outputs>
+	    <data name="purity_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
+              from_work_dir="purity_msms.tsv" visible="true"/>
+        <data name="purity_msms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
+              from_work_dir="purity_msms.RData" visible="true"/>
+    </outputs>
+    <tests>
+        <!--<test>-->
+            <!--<conditional name="file_load_conditional">-->
+                <!--<param name="file_load_select" value="yes"/>-->
+                <!--<param name="input" >-->
+                    <!--<collection type="list">-->
+                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
+                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
+                    <!--</collection>-->
+                <!--</param>-->
+            <!--</conditional>-->
+            <!--<conditional name="xgroups">-->
+                <!--<param name="xgroups" value="choose"/>-->
+                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
+            <!--</conditional>-->
+            <!--<param name="iw_norm" value="QE5" />-->
+            <!--<param name="xset" value="xset.RData"/>-->
+
+            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
+            <!--</output>-->
+        <!--</test>-->
+    </tests>
+    <help><![CDATA[
+
+    ]]></help>
+</tool>

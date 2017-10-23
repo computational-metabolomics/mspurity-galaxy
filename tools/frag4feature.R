@@ -40,8 +40,13 @@ if(is.null(opt$convert2RawRT)){
 }
 
 # Makes sure the same files are being used
-if(basename(pa@fileList[i])==basename(xset@filepaths[i])){
-
+if(!all(basename(pa@fileList)==basename(xset@filepaths))){
+  if(!all(names(pa@fileList)==basename(xset@filepaths))){
+    quit(status = 1)
+  }else{
+    xset@filepaths <- unname(pa@fileList)
+  }
+}
 
 pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
                             intense=opt$mostIntense, convert2RawRT=convert2RawRT)
@@ -49,5 +54,4 @@ pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
 save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
 
 print(head(pa@puritydf))
-
 write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')

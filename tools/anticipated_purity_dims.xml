@@ -1,9 +1,8 @@
 <tool id="anticipated_purity_dims" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
-    <requirements>
-        <requirement type="package" >R</requirement>
-	    <requirement type="package" >r-optparse</requirement>
-        <requirement type="package" version="1.3.6" >bioconductor-mspurity</requirement>
-    </requirements>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
     <stdio>
@@ -106,6 +105,9 @@
             </output>
         </test>
     </tests>
+
+
+
     <help><![CDATA[
 
 =============================================================

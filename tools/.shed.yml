@@ -1,23 +1,18 @@
-categories:
-- Text Manipulation
-homepage_url: https://www.gnu.org/software/datamash/
+categories: ["Metabolomics"]
+homepage_url:  https://github.com/computational-metabolomics/mspurity-galaxy
 long_description: |
-  GNU Datamash is a command-line program which performs basic
-  numeric,textual and statistical operations on input textual data files.
-
-  It is designed to be portable and reliable, and aid researchers
-  to easily automate analysis pipelines, without writing code or even short scripts.
+  Galaxy wrappers for msPurity R packages for precursor ion purity assessments and spectral matching
 
   License: GPL Version 3 (or later).
 
-  These tool wrappers were originally writen by Assaf Gordon.
+  The msPurity package and the tool wrappers were originally writen by Thomas N Lawson
 auto_tool_repositories:
   name_template: "{{ tool_id }}"
-  description_template: "{{ tool_name }} tool from the datamash package"
+  description_template: "{{ tool_name }} tool from the mspurity_package"
 suite:
-  name: suite_datamash
-  description: datamash performs basic numeric, textual and statistical operations on input textual data files
+  name: suite_mspurity
+  description: wrapper for msPurity R package
   type: repository_suite_definition
-owner: iuc
-remote_repository_url: https://github.com/galaxyproject/tools-iuc/tree/master/tools/datamash
+owner: tomnl
+remote_repository_url: https://github.com/computational-metabolomics/mspurity-galaxy
 type: unrestricted
