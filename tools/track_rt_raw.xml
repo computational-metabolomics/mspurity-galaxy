@@ -1,4 +1,4 @@
-<tool id="track_rt_raw" name="Track raw retention time" version="0.0.1">
+<tool id="track_rt_raw" name="track_rt_raw" version="0.0.1">
 
     <requirements>
             <requirement type="package" >R</requirement>

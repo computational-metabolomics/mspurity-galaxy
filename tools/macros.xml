@@ -4,7 +4,7 @@
         <requirements>
             <requirement type="package" >R</requirement>
 	        <requirement type="package" >r-optparse</requirement>
-            <requirement type="package" version="1.3.6" >bioconductor-mspurity</requirement>
+            <requirement type="package" version="1.3.9" >bioconductor-mspurity</requirement>
         </requirements>
 
     </xml>
@@ -36,6 +36,10 @@
                 <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
                 <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
             </param>
+            <when value="keep">
+            </when>
+            <when value="exclude_default">
+            </when>
             <when value="user">
                 <param name="im" type="data" format="tabular" label="Isotope matrix" help="
                  tabular file composing of columns:
@@ -49,5 +53,11 @@
         </conditional>
     </xml>
 
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.1021/acs.analchem.6b04358</citation>
+            <yield />
+        </citations>
+    </xml>
 
 </macros>

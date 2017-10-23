@@ -1,13 +1,15 @@
-<tool id="anticipated_purity_lcms" name="Anticipated precursor ion purity (LC-MS)" version="0.1.0">
-
+<tool id="anticipated_purity_lcms" name="anticipated_purity_lcms" version="0.0.1">
+        <description>Calculate the anticipated precursor ion purity from a LC-MS XCMS dataset.
+    </description>
     <macros>
         <import>macros.xml</import>
     </macros>
 
+
+
     <expand macro="requirements" />
 
-    <description>Calculate the anticipated precursor ion purity from a LC-MS XCMS dataset.
-    </description>
+
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -67,7 +69,7 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset"
+        <param type="data" name="xset" format="rdata"
                 help="xcmsSet object saved as an RData file"/>
         <expand macro="offsets" />
         <expand macro="general_params" />
@@ -80,6 +82,8 @@
                 <option value="choose">Choose class</option>
                 <option value="all" selected="true">calculate average across all classes</option>
             </param>
+            <when value="all">
+            </when>
             <when value="choose">
                                 <param name="class" type="text" label="Choose class"
                help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
@@ -92,6 +96,8 @@
                 <option value="choose">Choose files to ignore from calculation</option>
                 <option value="none" selected="true" >Include all files of selected classes in calculation</option>
             </param>
+            <when value="none">
+            </when>
             <when value="choose">
                                 <param name="ignore_files" type="text" label="ignore files"
                help="Comma separated string of filenames to ignore (do not include the directory) eg. blank1.mzML,blank2.mzML,sample4.mzML"  />
@@ -104,6 +110,8 @@
                 <option value="choose">Choose XCMS grouped features to calculate precursor ion purity</option>
                 <option value="all" selected="true">Calculate precursor ion purity for all XCMS grouped features</option>
             </param>
+            <when value="all">
+            </when>
             <when value="choose">
                                 <param name="xgroups_value" type="text" label="xgroup ids"
                help="Comma separated string of xcms groups to perform prediction on eg. 1,2,3,4"  />
@@ -153,9 +161,9 @@
     </inputs>
     <outputs>
 	    <data name="anticipated_purity_lcms" format="tsv" label="${tool.name} on ${on_string}: tsv"
-              from_work_dir="anticipated_purity_lcms.tsv" visible="true"/>
+              from_work_dir="anticipated_purity_lcms" />
         <data name="anticipated_purity_lcms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
-              from_work_dir="anticipated_purity_lcms.RData" visible="true"/>
+              from_work_dir="anticipated_purity_lcms" />
     </outputs>
     <tests>
         <test>
@@ -175,7 +183,7 @@
             <param name="iw_norm" value="QE5" />
             <param name="xset" value="xset.RData"/>
 
-            <output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >
+            <output name="anticipated_purity_lcms" value="anticipated_purity_lcms.tsv" >
             </output>
         </test>
     </tests>
@@ -212,4 +220,5 @@ grpid         mean          median        sd               stde	            RSD 
 
 
     ]]></help>
+    <expand macro="citations" />
 </tool>

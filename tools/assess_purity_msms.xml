@@ -1,4 +1,4 @@
-<tool id="assess_purity_msms" name="Precursor ion purity (MS/MS, MSn)" version="0.1.0">
+<tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.1">
     <macros>
         <import>macros.xml</import>
     </macros>

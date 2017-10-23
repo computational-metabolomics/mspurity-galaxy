@@ -1,4 +1,4 @@
-<tool id="anticipated_purity_dims" name="Anticipated precursor ion purity (DIMS)" version="0.1.0">
+<tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.1">
     <macros>
         <import>macros.xml</import>
     </macros>

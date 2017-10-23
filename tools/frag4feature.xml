@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.1.0">
+<tool id="frag4feature" name="frag4feature" version="0.0.1">
     <macros>
         <import>macros.xml</import>
     </macros>
