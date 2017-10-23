@@ -1,13 +1,14 @@
 <tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.1">
+    <description>
+        Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
+    </description>
     <macros>
         <import>macros.xml</import>
     </macros>
 
     <expand macro="requirements" />
 
-    <description>
-        Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
-    </description>
+
  <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -90,6 +91,8 @@
             <when value="user">
                 <expand macro="offsets" />
             </when>
+	    <when value="auto">
+            </when>
 
         </conditional>
 
@@ -102,33 +105,26 @@
     </inputs>
     <outputs>
 	    <data name="purity_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
-              from_work_dir="purity_msms.tsv" visible="true"/>
+              from_work_dir="purity_msms.tsv" />
         <data name="purity_msms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
-              from_work_dir="purity_msms.RData" visible="true"/>
+              from_work_dir="purity_msms.RData" />
     </outputs>
     <tests>
-        <!--<test>-->
-            <!--<conditional name="file_load_conditional">-->
-                <!--<param name="file_load_select" value="yes"/>-->
-                <!--<param name="input" >-->
-                    <!--<collection type="list">-->
-                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
-                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
-                    <!--</collection>-->
-                <!--</param>-->
-            <!--</conditional>-->
-            <!--<conditional name="xgroups">-->
-                <!--<param name="xgroups" value="choose"/>-->
-                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
-            <!--</conditional>-->
-            <!--<param name="iw_norm" value="QE5" />-->
-            <!--<param name="xset" value="xset.RData"/>-->
+       <test>
 
-            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
-            <!--</output>-->
-        <!--</test>-->
+            <conditional name="xgroups">
+                <param name="xgroups" value="choose"/>
+                <param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>
+            </conditional>
+            <param name="iw_norm" value="QE5" />
+            <param name="xset" value="xset.RData"/>
+
+            <output name="purity_msms" value="anticipated_purity_lcms.tsv" >
+            </output>
+        </test>
     </tests>
     <help><![CDATA[
-
+	msPurity assess_purity
     ]]></help>
+    <expand macro="citations" />
 </tool>

@@ -2,22 +2,67 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f73b406-cf8f-4ebf-943d-ded9737a315d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims/DESCRIPTION" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims/build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims/meta.yaml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.R" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/macros.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/test-data/camera_annotated_map.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/test-data/peaklist_in.tsv" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/anticipated_purity_dims.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/anticipated_purity_dims.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/shed.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/test-data/FULL_SCAN.mzML" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/test-data/anticipated_dims_purity.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/test-data/dimspy_peakmatrix.tsv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/tool_test_output.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_dims/tool_test_output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/README.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/anticipated_purity_lcms.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/anticipated_purity_lcms.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/macros.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/shed.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/test-data/LCMS_1.mzML" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/test-data/LCMS_2.mzML" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/test-data/anticipated_purity_lcms.tsv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/test-data/xset.RData" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/tool_test_output.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/anticipated_purity_lcms/tool_test_output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/README.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/assess_purity_msms.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/assess_purity_msms.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/macros.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/shed.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/tool_test_output.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/assess_purity_msms/tool_test_output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/README.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/frag4feature.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/frag4feature.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/macros.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/shed.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/tool_test_output.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/frag4feature/tool_test_output.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/macro/macros.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/track_rt_raw/README.rst" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/track_rt_raw/shed.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/track_rt_raw/track_rt_raw.R" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/archive/track_rt_raw/track_rt_raw.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/deconrank/deconrank/deconrank.py" afterPath="$USER_HOME$/Dropbox/code/deconrank/deconrank/deconrank.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/deconrank/deconrank/targets.py" afterPath="$USER_HOME$/Dropbox/code/deconrank/deconrank/targets.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/deconrank/setup.py" afterPath="$USER_HOME$/Dropbox/code/deconrank/setup.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.R" afterPath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.xml" afterPath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dma-tools-galaxy/tools/.shed.yml" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/.shed.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dma-tools-galaxy/tools/lcms-interval-scheduling.xml" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/lcms-interval-scheduling.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dma-tools-galaxy/tools/topn.xml" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/topn.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/.shed.yml" afterPath="$PROJECT_DIR$/tools/.shed.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/msPurity-galaxy.iml" afterPath="$PROJECT_DIR$/.idea/msPurity-galaxy.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/assess_purity_msms.xml" afterPath="$PROJECT_DIR$/tools/assess_purity_msms.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.xml" afterPath="$PROJECT_DIR$/tools/frag4feature.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/macros.xml" afterPath="$PROJECT_DIR$/tools/macros.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.xml" afterPath="$PROJECT_DIR$/tools/spectral_matching.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/track_rt_raw.xml" afterPath="$PROJECT_DIR$/tools/track_rt_raw.xml" />
     </list>
     <ignored path="mspurity-galaxy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,51 +83,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".shed.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/.shed.yml">
+      <file leaf-file-name="anticipated_purity_dims.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            <state relative-caret-position="192">
+              <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".shed.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/.shed.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="frag4feature.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
+      <file leaf-file-name="build.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims/build.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="58" selection-start-line="0" selection-start-column="58" selection-end-line="0" selection-end-column="58" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="spectral_matching.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
+      <file leaf-file-name="camera_annotated_map.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/test-data/camera_annotated_map.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="68" selection-start-line="0" selection-start-column="68" selection-end-line="0" selection-end-column="68" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="track_rt_raw.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tools/track_rt_raw.xml">
+      <file leaf-file-name="cameradims.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.R">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cameradims.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-576">
+              <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deconrank.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-324">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="macros.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/macros.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="59" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="macros.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/macros.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flag-remove-peaks.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-413">
+              <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anticipated_purity_lcms.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3996">
+              <caret line="222" column="4" selection-start-line="222" selection-start-column="4" selection-end-line="222" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -91,7 +186,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../dma-tools-galaxy" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -110,11 +205,12 @@
         <option value="$PROJECT_DIR$/tools/track_rt_raw.xml" />
         <option value="$PROJECT_DIR$/tools/macros.xml" />
         <option value="$PROJECT_DIR$/tools/.shed.yml" />
-        <option value="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
         <option value="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" />
         <option value="$PROJECT_DIR$/tools/assess_purity_msms.xml" />
         <option value="$PROJECT_DIR$/tools/frag4feature.xml" />
         <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
+        <option value="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
+        <option value="$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.xml" />
       </list>
     </option>
   </component>
@@ -172,6 +268,24 @@
               <option name="myItemId" value="mspurity-galaxy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dma-tools-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mspurity-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dma-tools-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -206,13 +320,15 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/code/deconrank" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../cameradims-galaxy" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/../dma-tools-galaxy/tools" />
+      <recent name="$PROJECT_DIR$/../dma-tools-galaxy/tools/test-data" />
+      <recent name="$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims" />
     </key>
   </component>
   <component name="RunManager">
@@ -453,11 +569,11 @@
     <frame x="57" y="21" width="1863" height="1059" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24906066" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24852389" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32793522" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -501,42 +617,8 @@
     </entry>
     <entry file="file://$USER_HOME$/Dropbox/code/deconrank/deconrank/deconrank.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4392">
-          <caret line="244" column="30" selection-start-line="244" selection-start-column="30" selection-end-line="244" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/deconrank/deconrank/targets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2250">
-          <caret line="130" column="27" selection-start-line="130" selection-start-column="27" selection-end-line="130" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="65" column="18" selection-start-line="42" selection-start-column="8" selection-end-line="65" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/deconrank/deconrank/deconrank.py">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="93" column="51" selection-start-line="93" selection-start-column="51" selection-end-line="93" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -544,20 +626,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2124">
           <caret line="118" column="116" selection-start-line="118" selection-start-column="99" selection-end-line="118" selection-end-column="116" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/deconrank.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/deconrank.xml" />
     <entry file="file://$USER_HOME$/Dropbox/code/deconrank/deconrank/CAMERA_rules_PosFinal_PlusLi.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -569,9 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,25 +663,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/.shed.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/.shed.yml" />
     <entry file="file://$USER_HOME$/Dropbox/code/deconrank/deconrank/scoring.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -620,7 +678,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -628,7 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -636,7 +692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="201">
           <caret line="12" column="42" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -644,81 +699,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
           <caret line="113" column="58" selection-start-line="113" selection-start-column="58" selection-end-line="113" selection-end-column="58" />
-          <folding>
-            <element signature="e#0#45#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/deconrank.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank/deconrank.xml" />
     <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/deconrank/meta.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/dma-filelist-generation.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/dma-filelist-generation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks/flag-remove-peaks.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/lcms-interval-scheduling/lcms-interval-scheduling.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1437">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/.shed.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/dma-filelist-generation.xml" />
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/dma-filelist-generation.py" />
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks/flag-remove-peaks.R" />
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/lcms-interval-scheduling/lcms-interval-scheduling.R" />
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/dma-filelist-generation/.shed.yml" />
     <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/README.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -726,9 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -736,7 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,15 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="64" selection-start-line="0" selection-start-column="64" selection-end-line="0" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="64" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,23 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/macros.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -848,30 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="80" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/macros.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" column="4" selection-start-line="60" selection-start-column="4" selection-end-line="60" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="80" selection-start-line="0" selection-start-column="80" selection-end-line="0" selection-end-column="80" />
           <folding />
         </state>
       </provider>
@@ -904,6 +844,86 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3996">
+          <caret line="222" column="4" selection-start-line="222" selection-start-column="4" selection-end-line="222" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/conda_testing/r-cameradims/build.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/test-data/camera_annotated_map.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-413">
+          <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="59" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/cameradims.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-576">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-324">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

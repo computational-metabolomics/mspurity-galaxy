@@ -1,10 +1,11 @@
 <tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.1">
+    <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
+    </description>
     <macros>
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
-    </description>
+
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -78,6 +79,8 @@
                 <option value="no_dimspy" selected="true">dimspy not used to prepare the mz text file</option>
                 <option value="dimspy">dimspy used to prepare mz file</option>
             </param>
+            <when value="no_dimspy">
+            </when>
             <when value="dimspy">
                 <param name="file_num" type="integer" label="File number" value="1"
                     help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
@@ -89,19 +92,19 @@
 
     </inputs>
     <outputs>
-	    <data name="anticipated_dims_purity" type="data" format="tsv" label="${tool.name} on ${on_string}"
-              from_work_dir="anticipated_dims_purity.txt" visible="true"/>
+	    <data name="anticipated_dims_purity"  format="tsv" label="${tool.name} on ${on_string}"
+              from_work_dir="anticipated_dims_purity.txt" />
     </outputs>
     <tests>
         <test>
             <param name="mzML_data|format" value="mzML_file"   />
-            <param name="mzML_data|source" value="FULL_SCAN.mzML" ftype="mzml"/>
+            <param name="mzML_data|source" value="FULL_SCAN.mzML" />
             <param name="remove_NAs" value="TRUE" />
             <param name="dimspy|usage" value="dimspy" />
             <param name="iw_norm" value="QE5" />
-            <param name="peaks_file" value="dimspy_peakmatrix.tsv" ftype="tsv"/>
+            <param name="peaks_file" value="dimspy_peakmatrix.tsv" />
 
-            <output name="anticipated_dims_purity.txt" value="anticipated_dims_purity.txt">
+            <output name="anticipated_dims_purity" value="anticipated_dims_purity.txt">
             </output>
         </test>
     </tests>
@@ -142,4 +145,5 @@ mz            medianPurity  meanPurity    sdPurity         cvPurity	        sdeP
 ============= ============= ============= ================ ================ ================ ================
 
     ]]></help>
+    <expand macro="citations" />
 </tool>
