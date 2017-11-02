@@ -7,5 +7,7 @@
     <orderEntry type="library" name="R Skeletons" level="application" />
     <orderEntry type="library" name="R User Library" level="project" />
     <orderEntry type="module" module-name="dma-tools-galaxy" />
+    <orderEntry type="module" module-name="dma_site" />
+    <orderEntry type="module" module-name="deconrank" />
   </component>
 </module>

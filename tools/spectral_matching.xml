@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.1">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.2">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -14,6 +14,22 @@
     <command interpreter="Rscript"><![CDATA[
         spectral_matching.R
             --out_dir=.
+            --pa=$pa
+            --xset=$xset
+            --library_db_pth=$library_db_pth
+            --ra_thres_l=$ra_thres_l
+            --ra_thres_t=$ra_thres_t
+            --cores=\${GALAXY_SLOTS:-4}
+            --pol=$pol
+            --ppm_tol_prod=$ppm_tol_prod
+            --ppm_tol_prec=$ppm_tol_prec
+            --instrument_types=$instrument_types
+            --library_sources=$library_sources
+            #if $advanced.topncond.topnbool:
+                --topn=$topn
+            #end if
+            --scan_ids=$scan_ids
+
     ]]></command>
     <inputs>
 
@@ -37,8 +53,48 @@
         <param name="score_thres" type="float" min="0" max="1" value="0.6"
                     help="Dot product cosine score threshold"/>
 
-        <param name="instrument_types" type="float" min="0" max="1" value="0.6"
-                    help="Dot product cosine score threshold"/>
+        <param name="instrument_types" type="select"  multiple="true" >
+            <option value="APCI-ITFT">APCI-ITFT</option>
+            <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
+            <option value="CI-B">CI-B</option>
+            <option value="EI-B">EI-B</option>
+            <option value="EI-EBEB">EI-EBEB</option>
+            <option value="ESI-ITFT" selected="true">ESI-ITFT</option>
+            <option value="ESI-ITTOF" selected="true">ESI-ITTOF</option>
+            <option value="ESI-QTOF" selected="true">ESI-QTOF</option>
+            <option value="FAB-B">FAB-B</option>
+            <option value="FAB-BE-MS">FAB-BE-MS</option>
+            <option value="FAB-EB">FAB-EB</option>
+            <option value="FAB-EBEB">FAB-EBEB</option>
+            <option value="FI-B">FI-B</option>
+            <option value="GC-EI-Q">GC-EI-Q</option>
+            <option value="GC-EI-QQ">GC-EI-QQ</option>
+            <option value="GC-EI-TOF">GC-EI-TOF</option>
+            <option value="LC-APCI-QTOF">LC-APCI-QTOF</option>
+            <option value="LC-APPI-QQ">LC-APPI-QQ</option>
+            <option value="LC-ESI-IT" selected="true">LC-ESI-IT</option>
+            <option value="LC-ESI-ITFT" selected="true">LC-ESI-ITFT</option>
+            <option value="LC-ESI-ITTOF" selected="true">LC-ESI-ITTOF</option>
+            <option value="LC-ESI-Q">LC-ESI-Q</option>
+            <option value="LC-ESI-QFT" selected="true" >LC-ESI-QFT</option>
+            <option value="LC-ESI-QIT" selected="true">LC-ESI-QIT</option>
+            <option value="LC-ESI-QQ" selected="true">LC-ESI-QQ</option>
+            <option value="LC-ESI-QTOF" selected="true">LC-ESI-QTOF</option>
+            <option value="LC-ESI-TOF" selected="true">LC-ESI-TOF</option>
+            <option value="MALDI-QIT">MALDI-QIT</option>
+            <option value="MALDI-TOF">MALDI-TOF</option>
+            <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
+        </param>
+
+        <param name="library_sources" type="select"  multiple="true" >
+            <option value="lipidblast">LipidBlast</option>
+            <option value="massbank" selected="true">MassBank</option>
+            <option value="GNPS">GNPS</option>
+        </param>
+
+        <param type="data" name="library_db_pth" label="SQLite DB of library spectra" format="sqlite"
+               help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
+
 
         <section name="advanced" title="advanced" expanded="False">
             <conditional name="topncond">
@@ -56,13 +112,13 @@
             <param name="ra_thres_t" type="float" value="2"
                help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
 
-            <param name="min_time" type="float" value="120" help="Min time for run (secs)"/>
-            <param name="max_cid_time" type="float" value="300" help="Max time to perform CID fragmentation (secs)" />
-            <param name="peak_time_hcd" type="float" value="10" help="Time to fragment a peak using HCD (secs)" />
-            <param name="peak_time_cid" type="float" value="12" help="Time to fragment a peak using CID (secs)" />
-            <param name="percentage_cid" type="float" value="0.333" min="0" max="1" help="Percentage of time fragmenting using
-                                                            CID (rather than HCD)"/>
-            <param name="delay_time" type="float" value="24" help="Delay time before acquisition begins (secs)"/>
+            <repeat name="scanids" title="Specific scan ids">
+                <param name="table" type="data" format="tsv,tabular"
+                           multiple="false" label="Choose the file to concatenate"/>
+                <param name="columns" type="text" label="Columns to concatenate"
+               help="Comma separated string of columns to concatenate eg. mz,intensity"  />
+            </repeat>
+
         </section>
 
     </inputs>
@@ -73,26 +129,26 @@
               from_work_dir="purity_msms.RData" visible="true"/>
     </outputs>
     <tests>
-        <!--<test>-->
-            <!--<conditional name="file_load_conditional">-->
-                <!--<param name="file_load_select" value="yes"/>-->
-                <!--<param name="input" >-->
-                    <!--<collection type="list">-->
-                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
-                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
-                    <!--</collection>-->
-                <!--</param>-->
-            <!--</conditional>-->
-            <!--<conditional name="xgroups">-->
-                <!--<param name="xgroups" value="choose"/>-->
-                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
-            <!--</conditional>-->
-            <!--<param name="iw_norm" value="QE5" />-->
-            <!--<param name="xset" value="xset.RData"/>-->
+        <test>
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" value="yes"/>
+                <param name="input" >
+                    <collection type="list">
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+            <conditional name="xgroups">
+                <param name="xgroups" value="choose"/>
+                <param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>
+            </conditional>
+            <param name="iw_norm" value="QE5" />
+            <param name="xset" value="xset.RData"/>
 
-            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
-            <!--</output>-->
-        <!--</test>-->
+            <output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >
+            </output>
+        </test>
     </tests>
     <help><![CDATA[
 

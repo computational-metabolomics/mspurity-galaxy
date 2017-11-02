@@ -1,4 +1,4 @@
-<tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.1">
+<tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.5">
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
     <macros>
@@ -69,6 +69,14 @@
 
         <expand macro="offsets" />
         <expand macro="general_params" />
+
+
+        <param name="ppm" type="float" label="ppm" value="10"
+                    help="ppm tolerance to compare between mz values"/>
+
+        <param name="minoffset" type="float" label="minoffset" value="0.5"
+                    help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
+                    100.0 then the range would be from 999.5 to 100.0"/>
 
         <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
 

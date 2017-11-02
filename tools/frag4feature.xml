@@ -1,9 +1,12 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.1">
+<tool id="frag4feature" name="frag4feature" version="0.0.2">
     <macros>
         <import>macros.xml</import>
     </macros>
 
-    <expand macro="requirements" />
+    <expand macro="requirements">
+        <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
+        <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+    </expand>
 
     <description>
         Assign fragmentation spectra to XCMS features using msPurity

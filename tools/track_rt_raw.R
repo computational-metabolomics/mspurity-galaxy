@@ -1,4 +1,3 @@
-library(xcms)
 library(optparse)
 
 option_list <- list(
