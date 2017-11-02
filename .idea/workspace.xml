@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f73b406-cf8f-4ebf-943d-ded9737a315d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/tnl495.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bioblend/install_dep.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tools/test-data/LCMSMS_1.mzML" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tools/test-data/LCMSMS_2.mzML" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/lcms_workflow.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/lcms_workflow.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/update_data_libraries.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/update_data_libraries.py" />
@@ -13,20 +9,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.R" afterPath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.xml" afterPath="$PROJECT_DIR$/../cameradims-galaxy/tools/cameradims/cameradims.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml" afterPath="$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/msPurity-galaxy.iml" afterPath="$PROJECT_DIR$/.idea/msPurity-galaxy.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/.shed.yml" afterPath="$PROJECT_DIR$/tools/.shed.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/assess_purity_msms.xml" afterPath="$PROJECT_DIR$/tools/assess_purity_msms.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.xml" afterPath="$PROJECT_DIR$/tools/frag4feature.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/macros.xml" afterPath="$PROJECT_DIR$/tools/macros.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.R" afterPath="$PROJECT_DIR$/tools/spectral_matching.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bioblend/install_dep.py" afterPath="$PROJECT_DIR$/bioblend/install_dep.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.xml" afterPath="$PROJECT_DIR$/tools/spectral_matching.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/track_rt_raw.R" afterPath="$PROJECT_DIR$/tools/track_rt_raw.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/track_rt_raw.xml" afterPath="$PROJECT_DIR$/tools/track_rt_raw.xml" />
     </list>
     <ignored path="mspurity-galaxy.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +23,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/mspurity-galaxy$install_dep.coverage" NAME="install_dep Coverage Results" MODIFIED="1509637081572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bioblend" />
+    <SUITE FILE_PATH="coverage/mspurity-galaxy$install_dep.coverage" NAME="install_dep Coverage Results" MODIFIED="1509640757963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bioblend" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -53,8 +37,18 @@
       <file leaf-file-name="frag4feature.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="6" column="102" selection-start-line="6" selection-start-column="102" selection-end-line="6" selection-end-column="102" />
+            <state relative-caret-position="216">
+              <caret line="33" column="61" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="flag-remove-peaks.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2070">
+              <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -63,18 +57,28 @@
       <file leaf-file-name="assess_purity_msms.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="-594">
               <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="install_dep.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="install_dep.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bioblend/install_dep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+            <state relative-caret-position="72">
+              <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spectral_matching.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="68" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -96,20 +100,6 @@
             <state relative-caret-position="108">
               <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="80" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dma_add_data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/dma_add_data.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3186">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-                <marker date="1497623879997" expanded="true" signature="4932:5080" ph="SELECT f.id files" />
-                <marker date="1497623879997" expanded="true" signature="12612:12632" ph="insert into database... " />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -147,19 +137,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/tasks.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1569">
-              <caret line="352" column="0" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
-              <folding>
-                <marker date="1509619525371" expanded="true" signature="2599:4695" ph="SELECT c_pea... c_peak_groups" />
-                <marker date="1509619525371" expanded="true" signature="5545:7797" ph="SELECT c_pea... neutral_mass" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -190,7 +167,6 @@
         <option value="$PROJECT_DIR$/../dma-tools-galaxy/tools/deconrank.xml" />
         <option value="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
         <option value="$PROJECT_DIR$/tools/spectral_matching.R" />
-        <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/tasks.py" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/lcms_workflow.py" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/update_data_libraries.py" />
@@ -198,6 +174,7 @@
         <option value="$PROJECT_DIR$/tools/macros.xml" />
         <option value="$PROJECT_DIR$/tools/frag4feature.xml" />
         <option value="$PROJECT_DIR$/bioblend/install_dep.py" />
+        <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
       </list>
     </option>
   </component>
@@ -257,6 +234,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dma-tools-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mspurity-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dma-tools-galaxy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tools" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -347,34 +338,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bioblend" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,7 +625,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="57" y="21" width="1863" height="1059" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.5018787" order="7" side_tool="true" content_ui="tabs" />
@@ -670,7 +633,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928064" sideWeight="0.49812132" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17283951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17283951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="R Packages" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="R Graphics" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -775,13 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-413">
-          <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -937,14 +893,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-578">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/test-data/LCMSMS_1.mzML">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1031,10 +979,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../dma-tools-galaxy/tools/flag-remove-peaks.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2070">
+          <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="102" selection-start-line="6" selection-start-column="102" selection-end-line="6" selection-end-column="102" />
+        <state relative-caret-position="216">
+          <caret line="33" column="61" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bioblend/install_dep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
           <folding />
         </state>
       </provider>
@@ -1047,18 +1019,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.xml">
+    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="70" selection-start-line="0" selection-start-column="70" selection-end-line="0" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bioblend/install_dep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+          <caret line="0" column="68" selection-start-line="0" selection-start-column="0" selection-end-line="155" selection-end-column="7" />
           <folding />
         </state>
       </provider>
