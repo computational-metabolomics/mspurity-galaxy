@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.2">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.3">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -33,7 +33,7 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="pa" label="purityA object" format="rdata"
+        <param type="data" name="pa" label="purityA object" format="rdata,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
         <param type="data" name="xset" label="xcmsSet object" format="rdata"
