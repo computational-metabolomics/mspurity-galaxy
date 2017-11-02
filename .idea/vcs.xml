@@ -5,6 +5,7 @@
     <mapping directory="$USER_HOME$/Dropbox/code/deconrank" vcs="Git" />
     <mapping directory="$USER_HOME$/Dropbox/code/deconrank" vcs="Git" />
     <mapping directory="$USER_HOME$/Dropbox/code/django/dma_site" vcs="Git" />
+    <mapping directory="$USER_HOME$/Dropbox/code/django/dma_site" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../cameradims-galaxy" vcs="Git" />
   </component>
 </project>

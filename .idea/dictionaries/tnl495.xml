@@ -154,6 +154,7 @@
       <w>.__C__Hits</w>
       <w>.__C__HitsList</w>
       <w>.__C__IDate</w>
+      <w>.__C__IPos</w>
       <w>.__C__IRanges</w>
       <w>.__C__IRangesList</w>
       <w>.__C__ITime</w>
@@ -163,6 +164,7 @@
       <w>.__C__Intervals_virtual</w>
       <w>.__C__Intervals_virtual_or_numeric</w>
       <w>.__C__LAB</w>
+      <w>.__C__LLint</w>
       <w>.__C__LU</w>
       <w>.__C__LUV</w>
       <w>.__C__LargeDataObject</w>
@@ -462,6 +464,7 @@
       <w>.__C__indMatrix</w>
       <w>.__C__index</w>
       <w>.__C__integer</w>
+      <w>.__C__integer_OR_LLint</w>
       <w>.__C__integer_OR_Linteger</w>
       <w>.__C__integrate</w>
       <w>.__C__internalDispatchMethod</w>
@@ -965,6 +968,7 @@
       <w>IC.CorXW.NA</w>
       <w>IDateTime</w>
       <w>IGF</w>
+      <w>IPos</w>
       <w>IQR</w>
       <w>IRanges</w>
       <w>IRangesList</w>
@@ -995,6 +999,7 @@
       <w>LAB</w>
       <w>LDEsysMat</w>
       <w>LETTERS</w>
+      <w>LLint</w>
       <w>LUV</w>
       <w>La.svd</w>
       <w>La_library</w>
@@ -1059,6 +1064,7 @@
       <w>MultiReporter</w>
       <w>MulticoreParam</w>
       <w>Muscle</w>
+      <w>NA_LLint_</w>
       <w>NA_Linteger_</w>
       <w>NCList</w>
       <w>NCLists</w>
@@ -1099,6 +1105,7 @@
       <w>OME</w>
       <w>Oats</w>
       <w>OlsonNames</w>
+      <w>Ontology</w>
       <w>Ops</w>
       <w>Ops.Date</w>
       <w>Ops.POSIXt</w>
@@ -1614,6 +1621,7 @@
       <w>`.__T__NMFStrategy:NMF`</w>
       <w>`.__T__NROW:base`</w>
       <w>`.__T__NSBS:S4Vectors`</w>
+      <w>`.__T__Ontology:BiocGenerics`</w>
       <w>`.__T__Ops:base`</w>
       <w>`.__T__Position:BiocGenerics`</w>
       <w>`.__T__R2VX:pcaMethods`</w>
@@ -2087,6 +2095,7 @@
       <w>`.__T__icterms:NMF`</w>
       <w>`.__T__id:mzID`</w>
       <w>`.__T__idScanMap:mzID`</w>
+      <w>`.__T__ifelse2:IRanges`</w>
       <w>`.__T__ifelse:base`</w>
       <w>`.__T__image:graphics`</w>
       <w>`.__T__inEdges:graph`</w>
@@ -2286,6 +2295,7 @@
       <w>`.__T__organism&lt;-:BiocGenerics`</w>
       <w>`.__T__otherInfo:Biobase`</w>
       <w>`.__T__overlapsAny:IRanges`</w>
+      <w>`.__T__overlapsRanges:IRanges`</w>
       <w>`.__T__pData:Biobase`</w>
       <w>`.__T__pData&lt;-:Biobase`</w>
       <w>`.__T__pack:Matrix`</w>
@@ -2341,6 +2351,7 @@
       <w>`.__T__pmin:BiocGenerics`</w>
       <w>`.__T__pmindex:affy`</w>
       <w>`.__T__points:graphics`</w>
+      <w>`.__T__pos:IRanges`</w>
       <w>`.__T__poverlaps:IRanges`</w>
       <w>`.__T__precede:IRanges`</w>
       <w>`.__T__predict:stats`</w>
@@ -2443,6 +2454,7 @@
       <w>`.__T__revMz:xcms`</w>
       <w>`.__T__reverse:IRanges`</w>
       <w>`.__T__revparse_single:git2r`</w>
+      <w>`.__T__rglist:IRanges`</w>
       <w>`.__T__rm_file:git2r`</w>
       <w>`.__T__rmatrix:NMF`</w>
       <w>`.__T__rnmf:NMF`</w>
@@ -2672,6 +2684,7 @@
       <w>`.__T__write.mzQuantML:xcms`</w>
       <w>`.__T__write.mzdata:xcms`</w>
       <w>`.__T__writeMM:Matrix`</w>
+      <w>`.__T__writeMSData:ProtGenerics`</w>
       <w>`.__T__xcmsSource:xcms`</w>
       <w>`.__T__xmlAttrs&lt;-:XML`</w>
       <w>`.__T__xmlChildren&lt;-:XML`</w>
@@ -3302,6 +3315,7 @@
       <w>as.Formula</w>
       <w>as.IDate</w>
       <w>as.ITime</w>
+      <w>as.LLint</w>
       <w>as.Linteger</w>
       <w>as.MAList</w>
       <w>as.POSIXct</w>
@@ -3325,6 +3339,7 @@
       <w>as.call</w>
       <w>as.character</w>
       <w>as.character.Date</w>
+      <w>as.character.LLint</w>
       <w>as.character.Linteger</w>
       <w>as.character.POSIXt</w>
       <w>as.character.condition</w>
@@ -3408,6 +3423,7 @@
       <w>as.hexmode</w>
       <w>as.igraph</w>
       <w>as.integer</w>
+      <w>as.integer.LLint</w>
       <w>as.integer.Linteger</w>
       <w>as.is</w>
       <w>as.layer</w>
@@ -3424,6 +3440,7 @@
       <w>as.list.function</w>
       <w>as.list.numeric_version</w>
       <w>as.logical</w>
+      <w>as.logical.LLint</w>
       <w>as.logical.Linteger</w>
       <w>as.logical.factor</w>
       <w>as.math</w>
@@ -3449,6 +3466,7 @@
       <w>as.null.default</w>
       <w>as.numeric</w>
       <w>as.numeric.Cbind</w>
+      <w>as.numeric.LLint</w>
       <w>as.numeric.Linteger</w>
       <w>as.numeric_version</w>
       <w>as.octmode</w>
@@ -4039,6 +4057,7 @@
       <w>catsM</w>
       <w>cav</w>
       <w>cbind</w>
+      <w>cbind.DataFrame</w>
       <w>cbind.EList</w>
       <w>cbind.EListRaw</w>
       <w>cbind.MAList</w>
@@ -5002,6 +5021,7 @@
       <w>dichromat</w>
       <w>dichromat_pal</w>
       <w>diff</w>
+      <w>diff.AtomicList</w>
       <w>diff.Date</w>
       <w>diff.IntegerList</w>
       <w>diff.NumericList</w>
@@ -6589,6 +6609,7 @@
       <w>hdquantile</w>
       <w>head</w>
       <w>head.DataTable</w>
+      <w>head.LLint</w>
       <w>head.Linteger</w>
       <w>head.Vector</w>
       <w>head.matrix</w>
@@ -6780,6 +6801,7 @@
       <w>if_else</w>
       <w>ifelse</w>
       <w>ifelse1</w>
+      <w>ifelse2</w>
       <w>ifultools</w>
       <w>ignore.case</w>
       <w>igraph</w>
@@ -6964,6 +6986,15 @@
       <w>invokeRestartInteractively</w>
       <w>ionisation</w>
       <w>ions</w>
+      <w>ipcid</w>
+      <w>ipclock</w>
+      <w>ipclocked</w>
+      <w>ipcremove</w>
+      <w>ipcreset</w>
+      <w>ipctrylock</w>
+      <w>ipcunlock</w>
+      <w>ipcvalue</w>
+      <w>ipcyield</w>
       <w>irbinom</w>
       <w>iread.table</w>
       <w>ireadLines</w>
@@ -6977,6 +7008,7 @@
       <w>is</w>
       <w>is.Coord</w>
       <w>is.Formula</w>
+      <w>is.LLint</w>
       <w>is.Linteger</w>
       <w>is.R</w>
       <w>is.R6</w>
@@ -8749,6 +8781,7 @@
       <w>outputInt</w>
       <w>ovarian</w>
       <w>overlapsAny</w>
+      <w>overlapsRanges</w>
       <w>overscope_clean</w>
       <w>overscope_eval_next</w>
       <w>ozone</w>
@@ -9229,6 +9262,7 @@
       <w>populate</w>
       <w>population</w>
       <w>portmanteau.test</w>
+      <w>pos</w>
       <w>pos.to.env</w>
       <w>posamsize</w>
       <w>position_dodge</w>
@@ -9675,6 +9709,7 @@
       <w>raw_output</w>
       <w>rbeta</w>
       <w>rbind</w>
+      <w>rbind.DataFrame</w>
       <w>rbind.EList</w>
       <w>rbind.EListRaw</w>
       <w>rbind.MAList</w>
@@ -10045,6 +10080,7 @@
       <w>rgb2hsv</w>
       <w>rgb2mnsl</w>
       <w>rgeom</w>
+      <w>rglist</w>
       <w>rglplot</w>
       <w>rhDNase</w>
       <w>rhyper</w>
@@ -11550,6 +11586,8 @@
       <w>system_check</w>
       <w>system_output</w>
       <w>t</w>
+      <w>t.Hits</w>
+      <w>t.HitsList</w>
       <w>t.data.frame</w>
       <w>t.default</w>
       <w>t.test</w>
@@ -11598,6 +11636,7 @@
       <w>tags</w>
       <w>tail</w>
       <w>tail.DataTable</w>
+      <w>tail.LLint</w>
       <w>tail.Linteger</w>
       <w>tail.Vector</w>
       <w>tail.matrix</w>
@@ -12494,6 +12533,7 @@
       <w>wilcoxGST</w>
       <w>wilkinson</w>
       <w>window</w>
+      <w>window.LLint</w>
       <w>window.Linteger</w>
       <w>window.Vector</w>
       <w>wireframe</w>
@@ -12580,6 +12620,7 @@
       <w>writeChar</w>
       <w>writeLines</w>
       <w>writeMM</w>
+      <w>writeMSData</w>
       <w>writeUnitVignette</w>
       <w>write_PACKAGES</w>
       <w>write_PACKAGES_index</w>
