@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.3">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.5">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -17,8 +17,8 @@
             --pa=$pa
             --xset=$xset
             --library_db_pth=$library_db_pth
-            --ra_thres_l=$ra_thres_l
-            --ra_thres_t=$ra_thres_t
+            --ra_thres_l=$advanced.ra_thres_l
+            --ra_thres_t=$advanced.ra_thres_t
             --cores=\${GALAXY_SLOTS:-4}
             --pol=$pol
             --ppm_tol_prod=$ppm_tol_prod
@@ -28,18 +28,18 @@
             #if $advanced.topncond.topnbool:
                 --topn=$topn
             #end if
-            --scan_ids=$scan_ids
+            --scan_ids=$advanced.scan_ids
 
     ]]></command>
     <inputs>
 
-        <param type="data" name="pa" label="purityA object" format="rdata,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks"
+        <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
-        <param type="data" name="xset" label="xcmsSet object" format="rdata"
+        <param type="data" name="xset" label="xcmsSet object" format="rdata,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks"
                help="xcmsSet object saved as 'xset' in an RData file"/>
 
-        <param name="polarity" type="select" label="Polarity?" >
+        <param name="pol" type="select" label="Polarity?" >
                 <option value="positive" selected="true">Positive</option>
                 <option value="negative"  >negative</option>
         </param>
@@ -112,7 +112,7 @@
             <param name="ra_thres_t" type="float" value="2"
                help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
 
-            <repeat name="scanids" title="Specific scan ids">
+            <repeat name="scan_ids" title="Specific scan ids">
                 <param name="table" type="data" format="tsv,tabular"
                            multiple="false" label="Choose the file to concatenate"/>
                 <param name="columns" type="text" label="Columns to concatenate"
