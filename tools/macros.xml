@@ -3,7 +3,7 @@
     <xml name="requirements">
         <requirements>
            <requirement type="package" version="3.4.1" >R</requirement>
-           <requirement type="package" version="1.3.9" >bioconductor-mspurity</requirement>
+           <requirement type="package" version="1.4.1" >bioconductor-mspurity</requirement>
            <requirement type="package" version="1.4.4" >r-optparse</requirement>
             <yield />
         </requirements>
