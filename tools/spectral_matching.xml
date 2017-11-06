@@ -1,9 +1,12 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.5">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.8">
     <macros>
         <import>macros.xml</import>
     </macros>
 
-    <expand macro="requirements" />
+    <expand macro="requirements">
+        <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
+        <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+    </expand>
 
     <description>
         Perform spectral matching to spectral libraries using dot product cosine on a LC-MS/MS dataset and link to XCMS features.
@@ -23,12 +26,26 @@
             --pol=$pol
             --ppm_tol_prod=$ppm_tol_prod
             --ppm_tol_prec=$ppm_tol_prec
-            --instrument_types=$instrument_types
+            --instrument_types="$instrument_types"
             --library_sources=$library_sources
             #if $advanced.topncond.topnbool:
                 --topn=$topn
             #end if
             --scan_ids=$advanced.scan_ids
+            #if $reload.reload_bool
+                --mzML_files='
+                #for $i in $reload.source
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $reload.source
+                    $i.name,
+                #end for
+                '
+            #elif $mzML_data.format == "library"
+                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
 
     ]]></command>
     <inputs>
@@ -95,6 +112,17 @@
         <param type="data" name="library_db_pth" label="SQLite DB of library spectra" format="sqlite"
                help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
 
+
+        <conditional name="reload">
+                <param name="reload_bool" type="boolean" label="Reload mzML files?"/>
+                <when value="false">
+                </when>
+                <when value="true">
+                     <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
+                            <validator type="empty_field" />
+                     </param>
+                </when>
+        </conditional>
 
         <section name="advanced" title="advanced" expanded="False">
             <conditional name="topncond">

@@ -53,5 +53,5 @@ pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
 
 save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
 
-print(head(pa@puritydf))
+print(head(pa@grped_df))
 write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
