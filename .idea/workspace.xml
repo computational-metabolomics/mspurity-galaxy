@@ -4,8 +4,6 @@
     <list default="true" id="1f73b406-cf8f-4ebf-943d-ded9737a315d" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tasks.py" />
       <change type="DELETED" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/templates/submitted.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/test-data/Galaxy63-[xset.merged.group.RData].rdata.xcms.group" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/test-data/Galaxy67-[frag4feature_on_data_33_and_data_63__RData].rdata" afterPath="" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/dma/models.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/dma/models.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/adddata.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/adddata.py" />
@@ -13,12 +11,6 @@
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tests/test_adddata.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tests/test_adddata.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/views.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" afterPath="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conda_testing/meta.yaml" afterPath="$PROJECT_DIR$/conda_testing/meta.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.R" afterPath="$PROJECT_DIR$/tools/frag4feature.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.xml" afterPath="$PROJECT_DIR$/tools/frag4feature.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/macros.xml" afterPath="$PROJECT_DIR$/tools/macros.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.R" afterPath="$PROJECT_DIR$/tools/spectral_matching.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.xml" afterPath="$PROJECT_DIR$/tools/spectral_matching.xml" />
     </list>
     <ignored path="mspurity-galaxy.iws" />
@@ -74,11 +66,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frag4feature.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="frag4feature.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="721">
+            <state relative-caret-position="1099">
               <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spectral_matching.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/spectral_matching.R">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1296">
+              <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spectral_matching.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -147,10 +159,10 @@
         <option value="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/tools/spectral_matching.R" />
-        <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
         <option value="$PROJECT_DIR$/tools/macros.xml" />
         <option value="$PROJECT_DIR$/tools/frag4feature.R" />
         <option value="$PROJECT_DIR$/tools/frag4feature.xml" />
+        <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
       </list>
     </option>
   </component>
@@ -913,22 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-810">
@@ -950,7 +946,7 @@
         <state relative-caret-position="-373">
           <caret line="310" column="49" selection-start-line="310" selection-start-column="41" selection-end-line="310" selection-end-column="49" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -989,8 +985,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
+        <state relative-caret-position="1099">
           <caret line="67" column="24" selection-start-line="67" selection-start-column="24" selection-end-line="67" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="72" column="73" selection-start-line="72" selection-start-column="73" selection-end-line="72" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
           <folding />
         </state>
       </provider>

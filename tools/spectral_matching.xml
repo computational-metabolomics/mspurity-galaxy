@@ -38,20 +38,7 @@
                 #end for
                 '
             #end if
-            #if $reload.reload_bool
-                --mzML_files='
-                #for $i in $reload.source
-                    $i,
-                #end for
-                '
-                --galaxy_names='
-                #for $i in $reload.source
-                    $i.name,
-                #end for
-                '
-            #elif $mzML_data.format == "library"
-                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
-            #end if
+            
 
     ]]></command>
     <inputs>
