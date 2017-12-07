@@ -1,3 +1,4 @@
+.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -43,7 +44,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*.cover
+*,cover
 .hypothesis/
 
 # Translations
@@ -76,9 +77,6 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
-# SageMath parsed files
-*.sage.py
-
 # dotenv
 .env
 
@@ -87,15 +85,21 @@ celerybeat-schedule
 venv/
 ENV/
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# PyCharm
+# User-specific stuff:
+.idea/
 
-# Rope project settings
-.ropeproject
+# R-lanaguage
+# History files
+.Rhistory
+.Rapp.history
 
-# mkdocs documentation
-/site
+# Session Data files
+.RData
 
-# mypy
-.mypy_cache/
+#macOS
+*.DS_Store
+
+*~
+
+
