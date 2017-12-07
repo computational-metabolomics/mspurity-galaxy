@@ -29,29 +29,8 @@
             #elif $mzML_data.format == "library"
                 --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
             #end if
+            @purityA@
 
-            #if $offsets.offsets == 'user'
-                --minOffset=$minoffset
-                --maxOffset=$maxoffset
-            #end if
-
-            --iwNorm=$iw_norm
-            --ilim=$ilim
-
-            #if $nearest
-                --nearest
-            #end if
-
-            #if $mostIntense
-                --mostIntense
-            #end if
-
-            #if $isotopes.isotopes == "exclude_default"
-                --exclude_isotopes
-            #elif $isotopes.isotopes == "user"
-                --exclude_isotopes
-                --isotope_matrix=$isotopes.im
-            #end if
     ]]></command>
     <inputs>
 
@@ -75,27 +54,7 @@
             </when>
         </conditional>
 
-        <param name="mostIntense" type="boolean" checked="true" label="Use most intense peak within isolation window for precursor?"
-               help="If yes, this will ignore the recorded precursor within the mzML file and use
-               use the most intense peak within the isolation window to calculate the precursor ion purity"/>
-
-        <param name="nearest" type="boolean" checked="true" label="Use nearest full scan to determine precursor?"
-               help="If yes, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
-                     is of the precursor"/>
-
-        <conditional name="offsets">
-            <param name="offsets" type="select" label="offsets" >
-                <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
-                <option value="user">User supplied offset values</option>
-            </param>
-            <when value="user">
-                <expand macro="offsets" />
-            </when>
-	    <when value="auto">
-            </when>
-
-        </conditional>
-
+        <expand macro="purityA" />
 
         <expand macro="general_params" />
 

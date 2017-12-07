@@ -1,17 +1,17 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.8">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.11">
     <macros>
         <import>macros.xml</import>
     </macros>
 
     <expand macro="requirements">
         <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
-        <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+        <!--<requirement type="package" version="1.52.0" >bioconductor-xcms</requirement>-->
     </expand>
 
     <description>
         Perform spectral matching to spectral libraries using dot product cosine on a LC-MS/MS dataset and link to XCMS features.
     </description>
- <stdio>
+    <stdio>
         <exit_code range="1:" />
     </stdio>
     <command interpreter="Rscript"><![CDATA[
@@ -24,14 +24,21 @@
             --ra_thres_t=$advanced.ra_thres_t
             --cores=\${GALAXY_SLOTS:-4}
             --pol=$pol
+            --score_thres=$score_thres
             --ppm_tol_prod=$ppm_tol_prod
             --ppm_tol_prec=$ppm_tol_prec
-            --instrument_types="$instrument_types"
+            --instrument_types=$instrument_types
             --library_sources=$library_sources
             #if $advanced.topncond.topnbool:
                 --topn=$topn
             #end if
-            --scan_ids=$advanced.scan_ids
+            #if $advanced.scan_ids:
+              --scan_ids='
+                #for $i, $j in enumerate($advanced.scan_ids)
+                    $j.scan_ids,
+                #end for
+                '
+            #end if
             #if $reload.reload_bool
                 --mzML_files='
                 #for $i in $reload.source
@@ -50,13 +57,43 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="pa" label="purityA object" format="rdata"
-               help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
-
         <param type="data" name="xset" label="xcmsSet object" format="rdata,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks"
                help="xcmsSet object saved as 'xset' in an RData file"/>
+        <param type="data" name="pa" label="purityA object" format="rdata"
+               help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
 
-        <param name="pol" type="select" label="Polarity?" >
+        <!--<conditional name="purity">-->
+            <!--<param name="pa_option" type="select" label="Precursor ion purity assessments" >-->
+                <!--<option value="a" selected="true">Use purityA object generated prior to this tool</option>-->
+                <!--<option value="b">Run assessments as part of this tool</option>-->
+            <!--</param>-->
+            <!--<when value="a">-->
+                <!--<param type="data" name="pa" label="purityA object" format="rdata"-->
+               <!--help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>-->
+            <!--</when>-->
+            <!--<when value="b">-->
+                <!--<section name="assess_purity_msms" title="assess_purity_msms" expanded="True">-->
+                    <!--<expand macro="purityA" />-->
+                    <!--<expand macro="general_params" />-->
+                <!--</section>-->
+                <!--<section name="frag4feature" title="frag4feature" expanded="True">-->
+                    <!--<expand macro="frag4feature" />-->
+                <!--</section>-->
+            <!--</when>-->
+        <!--</conditional>-->
+
+        <conditional name="reload">
+                <param name="reload_bool" type="boolean" label="Reload mzML files?"/>
+                <when value="false">
+                </when>
+                <when value="true">
+                     <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
+                            <validator type="empty_field" />
+                     </param>
+                </when>
+        </conditional>
+
+        <param name="pol" type="select" label="polarity" >
                 <option value="positive" selected="true">Positive</option>
                 <option value="negative"  >negative</option>
         </param>
@@ -113,17 +150,6 @@
                help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
 
 
-        <conditional name="reload">
-                <param name="reload_bool" type="boolean" label="Reload mzML files?"/>
-                <when value="false">
-                </when>
-                <when value="true">
-                     <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
-                            <validator type="empty_field" />
-                     </param>
-                </when>
-        </conditional>
-
         <section name="advanced" title="advanced" expanded="False">
             <conditional name="topncond">
                 <param name="topnbool" type="boolean" label="Only use the top n spectral matching hits?"/>
@@ -141,41 +167,39 @@
                help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
 
             <repeat name="scan_ids" title="Specific scan ids">
-                <param name="table" type="data" format="tsv,tabular"
-                           multiple="false" label="Choose the file to concatenate"/>
-                <param name="columns" type="text" label="Columns to concatenate"
-               help="Comma separated string of columns to concatenate eg. mz,intensity"  />
+                <param name="scan_ids" type="integer" value=""/>
             </repeat>
-
         </section>
 
     </inputs>
     <outputs>
-	    <data name="purity_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
-              from_work_dir="purity_msms.tsv" visible="true"/>
-        <data name="purity_msms_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
-              from_work_dir="purity_msms.RData" visible="true"/>
+	    <data name="sqlite_results" format="sqlite" label="${tool.name} on ${on_string}: SQLite results"
+              from_work_dir="results.sqlite" visible="true"/>
+        <data name="scan_hits" format="tsv" label="${tool.name} on ${on_string}: scan hits"
+              from_work_dir="scan_hits.tsv" visible="true"/>
+        <data name="xcms_hits" format="tsv" label="${tool.name} on ${on_string}: xcms hits"
+              from_work_dir="xcms_hits.tsv" visible="true"/>
     </outputs>
     <tests>
         <test>
-            <conditional name="file_load_conditional">
-                <param name="file_load_select" value="yes"/>
-                <param name="input" >
-                    <collection type="list">
-                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
-                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
-                    </collection>
-                </param>
-            </conditional>
-            <conditional name="xgroups">
-                <param name="xgroups" value="choose"/>
-                <param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>
-            </conditional>
-            <param name="iw_norm" value="QE5" />
-            <param name="xset" value="xset.RData"/>
+            <!--<conditional name="file_load_conditional">-->
+                <!--<param name="file_load_select" value="yes"/>-->
+                <!--<param name="input" >-->
+                    <!--<collection type="list">-->
+                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
+                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
+                    <!--</collection>-->
+                <!--</param>-->
+            <!--</conditional>-->
+            <!--<conditional name="xgroups">-->
+                <!--<param name="xgroups" value="choose"/>-->
+                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
+            <!--</conditional>-->
+            <!--<param name="iw_norm" value="QE5" />-->
+            <!--<param name="xset" value="xset.RData"/>-->
 
-            <output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >
-            </output>
+            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
+            <!--</output>-->
         </test>
     </tests>
     <help><![CDATA[

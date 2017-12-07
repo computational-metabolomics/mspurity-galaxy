@@ -140,23 +140,7 @@
                      correct tracking with obiwarp an additional tool (track_rt_raw) should be performed prior to
                      any retention time correction."/>
 
-        <conditional name="file_load_conditional">
-                <param name="file_load_select" type="select" label="Resubmit your dataset"
-                       help="Use only if you get a message which say that your original dataset or
-                                dataset collection can not be found the server." >
-                    <option value="no" >no need</option>
-                    <option value="yes" >yes</option>
-                </param>
-                <when value="no">
-                </when>
-                <when value="yes">
-                    <param name="input" type="data_collection" collection_type="list"  format="mzxml,mzml,mzdata,netcdf"
-                           multiple="true" label="File(s) from your history containing your chromatograms"
-                           help="Select the dataset collection containing the files that were used
-                                 for processing" />
-                </when>
-        </conditional>
-
+        <expand macro="fileload" />
 
     </inputs>
     <outputs>

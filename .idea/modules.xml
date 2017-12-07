@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/Dropbox/code/deconrank/.idea/deconrank.iml" filepath="$USER_HOME$/Dropbox/code/deconrank/.idea/deconrank.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dma-tools-galaxy/.idea/dma-tools-galaxy.iml" filepath="$PROJECT_DIR$/../dma-tools-galaxy/.idea/dma-tools-galaxy.iml" />
       <module fileurl="file://$USER_HOME$/Dropbox/code/django/dma_site/.idea/dma_site.iml" filepath="$USER_HOME$/Dropbox/code/django/dma_site/.idea/dma_site.iml" />
       <module fileurl="file://$PROJECT_DIR$/../dmatools-galaxy/.idea/dmatools-galaxy.iml" filepath="$PROJECT_DIR$/../dmatools-galaxy/.idea/dmatools-galaxy.iml" />

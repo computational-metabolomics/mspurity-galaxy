@@ -2,7 +2,7 @@ import bioblend.galaxy
 
 url = 'http://0.0.0.0:8888'
 api_key = 'a28a3077e8dae9136d395a0d003d3723'
-tools = ["frag4feature", "spectral_matching", "assess_purity_msms"]
+tools = ["spectral_matching"]
 gi = bioblend.galaxy.GalaxyInstance(url, api_key)
 gi.verify = False
 

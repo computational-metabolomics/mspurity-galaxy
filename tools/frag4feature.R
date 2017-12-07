@@ -48,6 +48,14 @@ if(!all(basename(pa@fileList)==basename(xset@filepaths))){
   }
 }
 
+print(pa)
+print(pa@fileList)
+print(xset)
+print(xset@filepaths)
+print(opt$ppm)
+print(opt$plim)
+print(convert2RawRT)
+
 pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
                             intense=opt$mostIntense, convert2RawRT=convert2RawRT)
 

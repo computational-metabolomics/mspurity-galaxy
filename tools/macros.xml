@@ -2,7 +2,6 @@
 <macros>
     <xml name="requirements">
         <requirements>
-           <requirement type="package" version="3.4.1" >R</requirement>
            <requirement type="package" version="1.4.1" >bioconductor-mspurity</requirement>
            <requirement type="package" version="1.4.4" >r-optparse</requirement>
             <yield />
@@ -53,6 +52,102 @@
             </when>
         </conditional>
     </xml>
+
+
+
+    <xml name="purityA">
+        <param name="mostIntense" type="boolean" checked="true" label="Use most intense peak within isolation window for precursor?"
+               help="If yes, this will ignore the recorded precursor within the mzML file and use
+               use the most intense peak within the isolation window to calculate the precursor ion purity"/>
+
+        <param name="nearest" type="boolean" checked="true" label="Use nearest full scan to determine precursor?"
+               help="If yes, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
+                     is of the precursor"/>
+
+
+        <conditional name="offsets">
+            <param name="offsets" type="select" label="offsets" >
+                <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
+                <option value="user">User supplied offset values</option>
+            </param>
+            <when value="user">
+                <expand macro="offsets" />
+            </when>
+	        <when value="auto">
+            </when>
+
+        </conditional>
+    </xml>
+
+    <xml name="frag4feature">
+            <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature, use most intense peak within isolation window for precursor?"
+               />
+
+        <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
+               help="If retention time correction has been used in XCMS set this to yes"/>
+
+        <param name="ppm_f4f" type="float" label="ppm" value="10"
+                    help="ppm tolerance between precursor mz and feature mz"/>
+
+        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
+                    help="min purity of precursor to be included"/>
+    </xml>
+
+    <xml name="fileload">
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" type="select" label="Resubmit your dataset"
+                       help="Use only if you get a message which say that your original dataset or
+                                dataset collection can not be found the server." >
+                    <option value="no" >no need</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+                    <param name="input" type="data_collection" collection_type="list"  format="mzxml,mzml,mzdata,netcdf"
+                           multiple="true" label="File(s) from your history containing your chromatograms"
+                           help="Select the dataset collection containing the files that were used
+                                 for processing" />
+                </when>
+        </conditional>
+    </xml>
+
+
+    <token name="@purityA@">
+        #if $offsets.offsets == 'user'
+                --minOffset=$minoffset
+                --maxOffset=$maxoffset
+            #end if
+
+            --iwNorm=$iw_norm
+            --ilim=$ilim
+
+            #if $nearest
+                --nearest
+            #end if
+
+            #if $mostIntense
+                --mostIntense
+            #end if
+
+            #if $isotopes.isotopes == "exclude_default"
+                --exclude_isotopes
+            #elif $isotopes.isotopes == "user"
+                --exclude_isotopes
+                --isotope_matrix=$isotopes.im
+        #end if
+     </token>
+
+    <token name="@frag4feature@">
+            --ppm=$ppm_f4f
+            --plim=$plim_f4f
+            #if $mostIntense_f4f
+                --mostIntense
+            #end if
+            #if $convert2RawRT_f4f
+                --convert2RawRT
+            #end if
+     </token>
 
     <xml name="citations">
         <citations>
