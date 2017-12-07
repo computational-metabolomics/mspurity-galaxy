@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.11">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.13">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -17,9 +17,8 @@
     <command interpreter="Rscript"><![CDATA[
         spectral_matching.R
             --out_dir=.
-            --pa=$pa
-            --xset=$xset
-            --library_db_pth=$library_db_pth
+            --target_db_pth=$target_db
+            --library_db_pth=$library_db
             --ra_thres_l=$advanced.ra_thres_l
             --ra_thres_t=$advanced.ra_thres_t
             --cores=\${GALAXY_SLOTS:-4}
@@ -57,41 +56,12 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset" label="xcmsSet object" format="rdata,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks"
-               help="xcmsSet object saved as 'xset' in an RData file"/>
-        <param type="data" name="pa" label="purityA object" format="rdata"
-               help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
+        <param type="data" name="target_db" label="SQLite DB of target spectra" format="sqlite"
+               help="SQLite DB of target specta generated from frag4feature"/>
 
-        <!--<conditional name="purity">-->
-            <!--<param name="pa_option" type="select" label="Precursor ion purity assessments" >-->
-                <!--<option value="a" selected="true">Use purityA object generated prior to this tool</option>-->
-                <!--<option value="b">Run assessments as part of this tool</option>-->
-            <!--</param>-->
-            <!--<when value="a">-->
-                <!--<param type="data" name="pa" label="purityA object" format="rdata"-->
-               <!--help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>-->
-            <!--</when>-->
-            <!--<when value="b">-->
-                <!--<section name="assess_purity_msms" title="assess_purity_msms" expanded="True">-->
-                    <!--<expand macro="purityA" />-->
-                    <!--<expand macro="general_params" />-->
-                <!--</section>-->
-                <!--<section name="frag4feature" title="frag4feature" expanded="True">-->
-                    <!--<expand macro="frag4feature" />-->
-                <!--</section>-->
-            <!--</when>-->
-        <!--</conditional>-->
+        <param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
+               help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
 
-        <conditional name="reload">
-                <param name="reload_bool" type="boolean" label="Reload mzML files?"/>
-                <when value="false">
-                </when>
-                <when value="true">
-                     <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
-                            <validator type="empty_field" />
-                     </param>
-                </when>
-        </conditional>
 
         <param name="pol" type="select" label="polarity" >
                 <option value="positive" selected="true">Positive</option>
@@ -146,8 +116,6 @@
             <option value="GNPS">GNPS</option>
         </param>
 
-        <param type="data" name="library_db_pth" label="SQLite DB of library spectra" format="sqlite"
-               help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
 
 
         <section name="advanced" title="advanced" expanded="False">

@@ -1,4 +1,4 @@
-{% set version="1.4.1" %}
+{% set version="1.4.4" %}
 {% set name="msPurity" %}
 {% set bioc="3.6" %}
 
@@ -7,8 +7,8 @@ package:
   version: '{{ version }}'
 
 source:
-  fn: 33fe897a38e0e062cf6f47103dd5d9dddefbb9f3.zip
-  url: https://github.com/Viant-Metabolomics/msPurity/archive/33fe897a38e0e062cf6f47103dd5d9dddefbb9f3.zip
+  fn: 9308e5736b35d2856369e82bc25c97445fdcaf57.zip
+  url: https://github.com/Viant-Metabolomics/msPurity/archive/9308e5736b35d2856369e82bc25c97445fdcaf57.zip
 
 
 build:
