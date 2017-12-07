@@ -4,12 +4,10 @@
     </macros>
 
     <expand macro="requirements">
-        <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
-        <!--<requirement type="package" version="1.52.0" >bioconductor-xcms</requirement>-->
     </expand>
 
     <description>
-        Perform spectral matching to spectral libraries using dot product cosine on a LC-MS/MS dataset and link to XCMS features.
+        Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
     </description>
     <stdio>
         <exit_code range="1:" />
@@ -38,16 +36,24 @@
                 #end for
                 '
             #end if
-            
+            #if $create_new_database:
+              --create_new_database
+            #end if
+
+
 
     ]]></command>
     <inputs>
 
         <param type="data" name="target_db" label="SQLite DB of target spectra" format="sqlite"
-               help="SQLite DB of target specta generated from frag4feature"/>
+               help="SQLite DB of target spectra. (e.g. generated from frag4feature tool)"/>
 
         <param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
-               help="SQLite database of library (reference) spectra, Can be downloaded here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
+               help="SQLite database of library (reference) spectra,
+               As a temporary quick solution. The library can be used from this dropbox link
+               https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
+               A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz
+                "/>
 
 
         <param name="pol" type="select" label="polarity" >
@@ -102,8 +108,10 @@
             <option value="massbank" selected="true">MassBank</option>
             <option value="GNPS">GNPS</option>
         </param>
-
-
+        <param name="create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
+               help="A copy will be made of the input SQLite target database and the results will be added to this copy.
+                     When False, the input SQLite database will be updated  with the matching results. Use False
+                     if you want to reduce storage space being used."/>
 
         <section name="advanced" title="advanced" expanded="False">
             <conditional name="topncond">
@@ -124,38 +132,33 @@
             <repeat name="scan_ids" title="Specific scan ids">
                 <param name="scan_ids" type="integer" value=""/>
             </repeat>
+
+
         </section>
 
     </inputs>
     <outputs>
+
+
+
 	    <data name="sqlite_results" format="sqlite" label="${tool.name} on ${on_string}: SQLite results"
-              from_work_dir="results.sqlite" visible="true"/>
+              from_work_dir="results.sqlite" visible="true">
+            <filter>create_new_database is True</filter>
+        </data>
         <data name="scan_hits" format="tsv" label="${tool.name} on ${on_string}: scan hits"
               from_work_dir="scan_hits.tsv" visible="true"/>
         <data name="xcms_hits" format="tsv" label="${tool.name} on ${on_string}: xcms hits"
               from_work_dir="xcms_hits.tsv" visible="true"/>
     </outputs>
     <tests>
-        <test>
-            <!--<conditional name="file_load_conditional">-->
-                <!--<param name="file_load_select" value="yes"/>-->
-                <!--<param name="input" >-->
-                    <!--<collection type="list">-->
-                        <!--<element name="LCMS_1.mzML" value="LCMS_1.mzML"/>-->
-                        <!--<element name="LCMS_2.mzML" value="LCMS_2.mzML"/>-->
-                    <!--</collection>-->
-                <!--</param>-->
-            <!--</conditional>-->
-            <!--<conditional name="xgroups">-->
-                <!--<param name="xgroups" value="choose"/>-->
-                <!--<param name="xgroups_value" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15"/>-->
-            <!--</conditional>-->
-            <!--<param name="iw_norm" value="QE5" />-->
-            <!--<param name="xset" value="xset.RData"/>-->
+        <!--<test>-->
 
-            <!--<output name="anticipated_purity_lcms.tsv" value="anticipated_purity_lcms.tsv" >-->
-            <!--</output>-->
-        </test>
+            <!--<param name="target_db" value="alldata.sqlite" />-->
+            <!--<param name="library_db" value="https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=0"/>-->
+            <!--<output name="xcms_hits" value="spectra_matching_xcms_hits.tsv" />-->
+            <!--<output name="scan_hits" value="spectra_matching_scan_hits.tsv" />-->
+
+        <!--</test>-->
     </tests>
     <help><![CDATA[
 

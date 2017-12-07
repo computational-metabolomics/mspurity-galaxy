@@ -79,19 +79,7 @@
         </conditional>
     </xml>
 
-    <xml name="frag4feature">
-            <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature, use most intense peak within isolation window for precursor?"
-               />
 
-        <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
-               help="If retention time correction has been used in XCMS set this to yes"/>
-
-        <param name="ppm_f4f" type="float" label="ppm" value="10"
-                    help="ppm tolerance between precursor mz and feature mz"/>
-
-        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
-                    help="min purity of precursor to be included"/>
-    </xml>
 
     <xml name="fileload">
             <conditional name="file_load_conditional">
@@ -136,17 +124,6 @@
                 --exclude_isotopes
                 --isotope_matrix=$isotopes.im
         #end if
-     </token>
-
-    <token name="@frag4feature@">
-            --ppm=$ppm_f4f
-            --plim=$plim_f4f
-            #if $mostIntense_f4f
-                --mostIntense
-            #end if
-            #if $convert2RawRT_f4f
-                --convert2RawRT
-            #end if
      </token>
 
     <xml name="citations">

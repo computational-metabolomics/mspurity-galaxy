@@ -17,11 +17,22 @@ option_list <- list(
   make_option("--scan_ids", default=NA),
   make_option("--topn", default=NA),
   make_option("--mzML_files", type="character"),
-  make_option("--galaxy_names", type="character")
+  make_option("--galaxy_names", type="character"),
+  make_option("--create_new_database", action="store_true")
+
 )
 
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
+
+
+
+if (!is.null(opt$create_new_database)){
+    target_db_pth <-  file.path(opt$out_dir, 'db_with_spectral_matching.sqlite')
+    file.copy(opt$target_db_pth, target_db_pth)
+}else{
+    target_db_pth <- opt$target_db_pth
+}
 
 
 if (opt$instrument_types=='None'){
@@ -49,7 +60,7 @@ print(library_sources)
 print(scan_ids)
 
 result <- msPurity::spectral_matching(
-                            target_db_pth =opt$target_db_pth,
+                            target_db_pth =target_db_pth ,
                             library_db_pth = opt$library_db_pth,
                             ra_thres_l = opt$ra_thres_l,
                             ra_thres_t = opt$ra_thres_t,

@@ -32,7 +32,14 @@
                 #end for
                 '
             #end if
-            @frag4feature@
+            --ppm=$ppm_f4f
+            --plim=$plim_f4f
+            #if $mostIntense_f4f
+                --mostIntense
+            #end if
+            #if $convert2RawRT_f4f
+                --convert2RawRT
+            #end if
 
     ]]></command>
     <inputs>
@@ -42,8 +49,19 @@
         <param type="data" name="pa" label="purityA object"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
-    <expand macro="frag4feature" />
-    <expand macro="fileload" />
+        <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
+         use most intense peak within isolation window for precursor?"/>
+
+        <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
+               help="If retention time correction has been used in XCMS set this to yes"/>
+
+        <param name="ppm_f4f" type="float" label="ppm" value="10"
+                    help="ppm tolerance between precursor mz and feature mz"/>
+
+        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
+                    help="min purity of precursor to be included"/>
+
+        <expand macro="fileload" />
 
     </inputs>
     <outputs>
