@@ -57,6 +57,12 @@ if (is.null(opt$exclude_isotopes)){
     isotopes <- TRUE
 }
 
+if (is.null(opt$rtraw_columns)){
+    rtraw_columns <- FALSE
+}else{
+    rtraw_columns <- TRUE
+}
+
 loadRData <- function(rdata_path, xset_name){
 #loads an RData file, and returns the named xset object if it is there
     load(rdata_path)
@@ -92,7 +98,7 @@ if (opt$iwNorm=='none'){
     iwNormFun = msPurity::iwNormQE.5()
 }
 
-
+print(xset@filepaths)
 
 
 
@@ -157,7 +163,7 @@ ppLCMS <- msPurity::purityX(xset=xset,
                                 iwNormFun = iwNormFun,
                                 singleFile = opt$singleFile,
                                 fileignore = ignore_files,
-                                rtraw_columns=TRUE)
+                                rtraw_columns=rtraw_columns)
 
 
 dfp <- ppLCMS@predictions

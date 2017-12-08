@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.7">
+<tool id="frag4feature" name="frag4feature" version="0.0.12">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -20,7 +20,7 @@
             --xset=$xset
             --pa=$pa
             --cores=\${GALAXY_SLOTS:-4}
-            #if $file_load_conditional.file_load_select
+            #if $file_load_conditional.file_load_select=="yes"
                 --mzML_files='
                 #for $i in $file_load_conditional.input
                     $i,
@@ -40,13 +40,16 @@
             #if $convert2RawRT_f4f
                 --convert2RawRT
             #end if
+            #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
+                --grp_peaklist=$grp_peaklist
+            #end if
 
     ]]></command>
     <inputs>
 
         <param type="data" name="xset" label="xcmsSet object"
-               help="xcmsSet object saved as 'xset' in an RData file"/>
-        <param type="data" name="pa" label="purityA object"
+               help="xcmsSet object saved as 'xset' in an RData file" format="rdata"/>
+        <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
         <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
@@ -60,6 +63,20 @@
 
         <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
                     help="min purity of precursor to be included"/>
+
+        <conditional name="grp_peaklist_opt">
+            <param name="grp_peaklist_opt" type="select" label="Add a different grouped peaklist to database?">
+                <option value="yes" >Provide group peaklist </option>
+                <option value="no" selected="true">Use default grouped peaklist</option>
+            </param>
+            <when value="no">
+            </when>
+            <when value="yes">
+                <param type="data" name="grp_peaklist" label="grouped peaklist"
+                    help="User supplied grouped peaklist to add to the database (if additional columns required e.g.
+                          CAMERA annotations" format="tsv,tabular"/>
+            </when>
+        </conditional>
 
         <expand macro="fileload" />
 
@@ -87,11 +104,38 @@
             </conditional>
             <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
-            <output name="frag4feature.tsv" value="frag4feature.tsv" >
+            <output name="rag4feature_grouped_msms" value="frag4feature_output.tsv" >
             </output>
         </test>
     </tests>
+    <expand macro="citations" />
     <help><![CDATA[
+=============================================================
+Link fragmentation spectra to XCMS features
+=============================================================
+-----------
+Description
+-----------
+
+Tool to link XCMS features to fragmentation spectra and create an SQLite database of all the data and connections.
+
+The data inputs are:
+
+* A purityA object (generated from assess_purity_msms) saved in an rdata file.
+* A xcmsSet grouped object (generated from xcms_group) saved in an rdata file
+* [optional] a dataset collection of the mzML files to resubmit
+
+See Bioconductor documentation for more details, function msPurity::dimsPredictPurity()
+
+-----------
+Outputs
+-----------
+* frag4feature_rdata: An updated purityA object saved as rdata file with fragmentation-feature links added
+* frag4feature_grouped_msms: A flat file of all the XCMS peaks for each grouped feature and the corresponding fragmentation scans
+* frag4feature_sqlite: An SQLite database of the data (including fragmentation scans)
+
+
 
     ]]></help>
+
 </tool>

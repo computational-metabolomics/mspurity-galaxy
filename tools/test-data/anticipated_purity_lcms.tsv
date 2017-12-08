@@ -1,4 +1,4 @@
-"grpid"	"mean"	"median"	"sd"	"stde"	"RSD"	"pknm"	"i"	"mz"
+"peakID"	"meanPurity"	"medianPurity"	"sdPurity"	"sdePurity"	"cvPurity"	"pknmPurity"	"i"	"mz"
 1	1	1	0	0	0	1	61925043.3566382	102.091560881174
 2	1	1	0	0	0	1	25719001.4822415	103.054435681307
 3	1	1	0	0	0	1	3791623.64689146	103.094714179046

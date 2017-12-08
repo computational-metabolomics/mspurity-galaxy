@@ -11,7 +11,8 @@ option_list <- list(
   make_option("--mostIntense", action="store_true"),
   make_option("--cores", default=4),
   make_option("--mzML_files", type="character"),
-  make_option("--galaxy_names", type="character")
+  make_option("--galaxy_names", type="character"),
+  make_option("--grp_peaklist", type="character")
 )
 
 # store options
@@ -77,6 +78,11 @@ if(!all(basename(pa@fileList)==basename(xset@filepaths))){
   }
 }
 
+if(is.null(opt$grp_peaklist)){
+    grp_peaklist = NA
+}else{
+    grp_peaklist = opt$grp_peaklist
+}
 
 print(pa)
 print(pa@fileList)
@@ -91,7 +97,7 @@ print(convert2RawRT)
 
 pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
                             intense=opt$mostIntense, convert2RawRT=convert2RawRT,
-                            db_name='alldata.sqlite', out_dir=opt$out_dir)
+                            db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist)
 
 save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
 

@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.13">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.15">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -160,7 +160,41 @@
 
         <!--</test>-->
     </tests>
+    <expand macro="citations" />
     <help><![CDATA[
+=============================================================
+Spectral matching
+=============================================================
+-----------
+Description
+-----------
+
+Tool to perform spectral matching of MS/MS scans against library spectra
+
+The data inputs are:
+
+* library_db: An SQLite database of library ms/ms spectra (e.g. massbank, lipidsearch)
+* target_db: An SQLite database of the target ms/ms spectra (e.g. the data collected for an experiment)
+
+The library spectra can be downloaded from:
+
+* https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
+* (more official location) https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz
+
+The target_db can be generated from the frag4feature galaxy tool but will accept any SQLite database in the same format.
+
+See Bioconductor documentation for more details, function msPurity::spectral_matching().
+
+-----------
+Outputs
+-----------
+If the 'create_new_db', a copy of the target_db will be created that will now including spectral matching results
+spectra. Otherwise the original SQLite database will be updpated
+
+* scan_hits: All spectral matching hits for every scan
+* xcms_hits: All spectral matching hits that can be linked to an XCMS grouped feature
+* sqlite_results (if create_new_db==True): SQLite database of all data including spectral matching results
+
 
     ]]></help>
 </tool>

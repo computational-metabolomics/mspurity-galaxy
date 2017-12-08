@@ -4,19 +4,25 @@
     <list default="true" id="1f73b406-cf8f-4ebf-943d-ded9737a315d" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tasks.py" />
       <change type="DELETED" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/templates/submitted.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/tools/test-data/alldata_prior_spectral_matching.sqlite" afterPath="$PROJECT_DIR$/tools/test-data/alldata.sqlite" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tools/test-data/anticipated_dims_purity.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/django-db" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/dma/models.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/dma/models.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/adddata.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/adddata.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/models.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/models.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tests/test_adddata.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tests/test_adddata.py" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/views.py" afterPath="$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" afterPath="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conda_testing/meta.yaml" afterPath="$PROJECT_DIR$/conda_testing/meta.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_dims.R" afterPath="$PROJECT_DIR$/tools/anticipated_purity_dims.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_lcms.R" afterPath="$PROJECT_DIR$/tools/anticipated_purity_lcms.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" afterPath="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/assess_purity_msms.xml" afterPath="$PROJECT_DIR$/tools/assess_purity_msms.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.R" afterPath="$PROJECT_DIR$/tools/frag4feature.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/frag4feature.xml" afterPath="$PROJECT_DIR$/tools/frag4feature.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/macros.xml" afterPath="$PROJECT_DIR$/tools/macros.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.R" afterPath="$PROJECT_DIR$/tools/spectral_matching.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/spectral_matching.xml" afterPath="$PROJECT_DIR$/tools/spectral_matching.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/test-data/anticipated_purity_lcms.tsv" afterPath="$PROJECT_DIR$/tools/test-data/anticipated_purity_lcms.tsv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/tool_test_output.html" afterPath="$PROJECT_DIR$/tools/tool_test_output.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/tool_test_output.json" afterPath="$PROJECT_DIR$/tools/tool_test_output.json" />
     </list>
@@ -46,18 +52,38 @@
       <file leaf-file-name="macros.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/macros.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state relative-caret-position="1134">
+              <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frag4feature.R" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/frag4feature.R">
+      <file leaf-file-name="anticipated_purity_dims.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="35" selection-end-column="1" />
+            <state relative-caret-position="234">
+              <caret line="109" column="52" selection-start-line="109" selection-start-column="52" selection-end-line="109" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anticipated_purity_dims.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.R">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="131" column="74" selection-start-line="131" selection-start-column="74" selection-end-line="131" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="anticipated_purity_lcms.R" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.R">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="165" column="59" selection-start-line="165" selection-start-column="59" selection-end-line="165" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -66,48 +92,18 @@
       <file leaf-file-name="frag4feature.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-54">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="90" />
+            <state relative-caret-position="342">
+              <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="flag-remove-peaks.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/flag-remove-peaks.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2268">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cameradims.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/cameradims.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spectral_matching.R" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/spectral_matching.R">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spectral_matching.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spectral_matching.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="110" column="70" selection-start-line="110" selection-start-column="70" selection-end-line="110" selection-end-column="70" />
+            <state relative-caret-position="-270">
+              <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -129,11 +125,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/json.html" />
-        <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/lets_divide.html" />
-        <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/lipidsearch_result_group.html" />
-        <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/lipidsearch_result.html" />
-        <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/login.html" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/logout.html" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/metfrag_result.html" />
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/peak_plotly.html" />
@@ -175,11 +166,16 @@
         <option value="$USER_HOME$/Dropbox/code/django/dma_site/dma/models.py" />
         <option value="$PROJECT_DIR$/../dmatools-galaxy/tools/lcms-interval-scheduling.xml" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/tools/frag4feature.R" />
-        <option value="$PROJECT_DIR$/tools/macros.xml" />
-        <option value="$PROJECT_DIR$/tools/frag4feature.xml" />
         <option value="$PROJECT_DIR$/tools/spectral_matching.R" />
+        <option value="$PROJECT_DIR$/tools/frag4feature.R" />
         <option value="$PROJECT_DIR$/tools/spectral_matching.xml" />
+        <option value="$PROJECT_DIR$/tools/frag4feature.xml" />
+        <option value="$PROJECT_DIR$/tools/macros.xml" />
+        <option value="$PROJECT_DIR$/tools/assess_purity_msms.xml" />
+        <option value="$PROJECT_DIR$/tools/anticipated_purity_lcms.R" />
+        <option value="$PROJECT_DIR$/tools/anticipated_purity_lcms.xml" />
+        <option value="$PROJECT_DIR$/tools/anticipated_purity_dims.R" />
+        <option value="$PROJECT_DIR$/tools/anticipated_purity_dims.xml" />
       </list>
     </option>
   </component>
@@ -231,30 +227,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="External Libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dmatools-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mspurity-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dmatools-galaxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -530,42 +502,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/msp2db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/peak_pro_lcms.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/templates/dma/addanalysiszip.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/tests/tests.py" />
     <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/mzcloud/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -595,13 +531,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/add_lipidsearch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/add_dims_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -768,13 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1205">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/track_rt_raw.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-215">
@@ -796,81 +718,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="142" column="8" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/dma_add_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-373">
-          <caret line="310" column="49" selection-start-line="310" selection-start-column="41" selection-end-line="310" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/macros.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/cameradims.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/flag-remove-peaks.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2268">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="113" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-54">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="55" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/frag4feature.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="35" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -883,10 +734,150 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/dmadb-zip.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/galaxy/lcms_workflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-530">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/flag-remove-peaks.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="136" column="22" selection-start-line="109" selection-start-column="8" selection-end-line="136" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/peakpro/lcms_peak_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#32#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../dmatools-galaxy/tools/h-concatenate.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/add_dims_results.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/adddata/dma_add_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2214">
+          <caret line="310" column="49" selection-start-line="310" selection-start-column="41" selection-end-line="310" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Dropbox/code/django/dma_site/dma/peakpro/dims_peak_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/frag4feature.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/frag4feature.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="103" column="12" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tools/spectral_matching.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="110" column="70" selection-start-line="110" selection-start-column="70" selection-end-line="110" selection-end-column="70" />
+        <state relative-caret-position="-270">
+          <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1296">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/assess_purity_msms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-161">
+          <caret line="121" column="82" selection-start-line="121" selection-start-column="82" selection-end-line="121" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="165" column="59" selection-start-line="165" selection-start-column="59" selection-end-line="165" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_lcms.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="169" column="85" selection-start-line="169" selection-start-column="85" selection-end-line="169" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/macros.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1134">
+          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.R">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="131" column="74" selection-start-line="131" selection-start-column="74" selection-end-line="131" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/anticipated_purity_dims.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="109" column="52" selection-start-line="109" selection-start-column="52" selection-end-line="109" selection-end-column="52" />
           <folding />
         </state>
       </provider>

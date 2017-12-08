@@ -124,8 +124,9 @@ predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      isotopes = isotopes,
                                      im = im,
                                      iwNorm = iwNorm,
-                                     iwNormFun = iwNormFun)
+                                     iwNormFun = iwNormFun
+                                     )
 predicted <- cbind(df, predicted)
 
 
-write.table(predicted, file.path(opt$out_dir, 'anticipated_dims_purity.txt'), row.names=FALSE, sep='\t')
+write.table(predicted, file.path(opt$out_dir, 'anticipated_dims_purity.tsv'), row.names=FALSE, sep='\t')
