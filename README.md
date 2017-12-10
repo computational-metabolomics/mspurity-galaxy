@@ -8,7 +8,13 @@ A tool for spectral matching functionality is also currently being added.
 
 Warning
 ------
-Proceed with caution these tools are in active development so tools may change! Stable release coming soon.
+Proceed with caution these tools are in active development so tools may change! Stable release to Galaxy toolshed coming soon.
+
+
+Dependencies
+------
+Dependencies for these Galaxy tools should be handled by CONDA. The most recent version of the msPurity R package can found on channel  [tomnl](https://anaconda.org/tomnl/bioconductor-mspurity) on [anaconda](https://anaconda.org/tomnl/bioconductor-mspurity). Warning this will be a different version of the package compared to the BICONDA bioconductor-mspurity.
+
 
 Galaxy
 ------
