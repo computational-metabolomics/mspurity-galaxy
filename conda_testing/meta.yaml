@@ -19,7 +19,6 @@ build:
     - lib/
 requirements:
   build:
-    - r-rcpp
     - bioconductor-mzr
     - r-base
     - r-dbi
@@ -28,13 +27,13 @@ requirements:
     - r-foreach
     - r-ggplot2
     - r-plyr
+    - r-rcpp
     - r-reshape2
     - r-rsqlite
     - r-stringr
     - gcc  # [linux]
     - llvm  # [osx]
   run:
-    - r-rcpp
     - bioconductor-mzr
     - r-base
     - r-dbi
@@ -43,6 +42,7 @@ requirements:
     - r-foreach
     - r-ggplot2
     - r-plyr
+    - r-rcpp
     - r-reshape2
     - r-rsqlite
     - r-stringr

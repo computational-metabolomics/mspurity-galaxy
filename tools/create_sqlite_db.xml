@@ -19,6 +19,7 @@
         create_sqlite_db.R
             --out_dir=.
             --xset_xa=$xset_xa
+	    --pa=$pa
             --xcms_camera_option=$camera_xcms
             --cores=\${GALAXY_SLOTS:-4}
             #if $file_load_conditional.file_load_select=="yes"
@@ -88,7 +89,8 @@
                     </collection>
                 </param>
             </conditional>
-            <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
+	    <param name="camera_xcms" value="xcms"/>
+            <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
             <output name="lcms_data_sqlite" value="lcms_data.sqlite" >
             </output>
