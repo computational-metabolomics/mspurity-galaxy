@@ -54,9 +54,14 @@
     </xml>
 
 
-
-
-
+    <xml name="camera_xcms">
+            <param name="camera_xcms" type="select" label="Use CAMERA object or XCMS object from RData?"
+               help="Within the RData file there should be either an XCMS object called xset or a CAMERA object called
+                      xa (or both). The XCMS object is nested within the CAMERA object so either can be used">
+                <option value="xcms" selected="true" >XCMS (xset)</option>
+                <option value="camera" >CAMERA (xa)</option>
+        </param>
+    </xml>
 
 
     <xml name="fileload">
@@ -78,7 +83,21 @@
         </conditional>
     </xml>
 
-
+    <xml name="grp_peaklist">
+        <conditional name="grp_peaklist_opt">
+            <param name="grp_peaklist_opt" type="select" label="Add a different grouped peaklist to database?">
+                <option value="yes" >Provide group peaklist </option>
+                <option value="no" selected="true">Use default grouped peaklist</option>
+            </param>
+            <when value="no">
+            </when>
+            <when value="yes">
+                <param type="data" name="grp_peaklist" label="grouped peaklist"
+                    help="User supplied grouped peaklist to add to the database (if additional columns required e.g.
+                          CAMERA annotations" format="tsv,tabular"/>
+            </when>
+        </conditional>
+    </xml>
 
     <xml name="citations">
         <citations>

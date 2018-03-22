@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.12">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.1">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -6,16 +6,17 @@
     <expand macro="requirements">
         <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
         <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+        <requirement type="package" version="1.46.0" >bioconductor-camera</requirement>
     </expand>
 
     <description>
-        Assign fragmentation spectra to XCMS features using msPurity
+        Create SQLite database of an XCMS-CAMERA dataset
     </description>
  <stdio>
         <exit_code range="1:" />
     </stdio>
     <command interpreter="Rscript"><![CDATA[
-        frag4feature.R
+        create_sqlite_db.R
             --out_dir=.
             --xset=$xset
             --pa=$pa
@@ -47,24 +48,26 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset" label="xcmsSet object"
-               help="xcmsSet object saved as 'xset' in an RData file" format="rdata"/>
+
+        <param type="data" name="xset_xa" label="xcmsSet or CAMERA object"
+               help="Either xcmsSet object saved as 'xset' or CAMERA 'xa' object in an RData file. Please
+                     specify which to use below" format="rdata"/>
+        <expand macro="camera_xcms" />
+
         <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
-        <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
-         use most intense peak within isolation window for precursor?"/>
 
-        <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
-               help="If retention time correction has been used in XCMS set this to yes"/>
-
-        <param name="ppm_f4f" type="float" label="ppm" value="10"
-                    help="ppm tolerance between precursor mz and feature mz"/>
-
-        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
-                    help="min purity of precursor to be included"/>
+        <param name="eic" type="select" label="Include EIC data?"
+               help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
+                     the database. Note, this will take considerable some time for large datasets and
+                     the resulting SQLite database can be large">
+                <option value="yes" >yes </option>
+                <option value="no" selected="true">no</option>
+        </param>
 
         <expand macro="grp_peaklist" />
+
 
         <expand macro="fileload" />
 
@@ -92,14 +95,14 @@
             </conditional>
             <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
-            <output name="frag4feature_grouped_msms" value="frag4feature_output.tsv" >
+            <output name="rag4feature_grouped_msms" value="frag4feature_output.tsv" >
             </output>
         </test>
     </tests>
     <expand macro="citations" />
     <help><![CDATA[
 =============================================================
-Link fragmentation spectra to XCMS features
+Create SQLite database for LC-MS(/MS) dataset
 =============================================================
 -----------
 Description

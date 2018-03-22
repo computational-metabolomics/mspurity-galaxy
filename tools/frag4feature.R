@@ -1,6 +1,36 @@
 library(msPurity)
 library(optparse)
 
+xset_pa_filename_fix < function(opt, pa, xset){
+  if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
+    # NOTE: This only works if the pa file was generated IN Galaxy!! Relies on
+    # the pa@fileList having the names of files given as 'names' of the variables (done in frag4feature)
+    # Will update in the next version of msPurity
+    filepaths <- trimws(strsplit(opt$mzML_files, ',')[[1]])
+    filepaths <- filepaths[filepaths != ""]
+    new_names <- basename(filepaths)
+
+    galaxy_names <- trimws(strsplit(opt$galaxy_names, ',')[[1]])
+    galaxy_names <- galaxy_names[galaxy_names != ""]
+
+    nsave <- names(pa@fileList)
+    old_filenames  <- basename(pa@fileList)
+    pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
+    pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
+    pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
+  }
+
+  if(!all(basename(pa@fileList)==basename(xset@filepaths))){
+    if(!all(names(pa@fileList)==basename(xset@filepaths))){
+      quit(status = 1)
+    }else{
+      xset@filepaths <- unname(pa@fileList)
+    }
+  }
+  return(list(pa, xset))
+}
+
+
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--pa", type="character"),
@@ -51,32 +81,9 @@ if(!all(basename(pa@fileList)==basename(xset@filepaths))){
   }
 }
 
-if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
-    # NOTE: This only works if the pa file was generated IN Galaxy!! Relies on
-    # the pa@fileList having the names of files given as 'names' of the variables (done in frag4feature)
-    # Will update in the next version of msPurity
-    filepaths <- trimws(strsplit(opt$mzML_files, ',')[[1]])
-    filepaths <- filepaths[filepaths != ""]
-    new_names <- basename(filepaths)
-
-    galaxy_names <- trimws(strsplit(opt$galaxy_names, ',')[[1]])
-    galaxy_names <- galaxy_names[galaxy_names != ""]
-
-    nsave <- names(pa@fileList)
-    old_filenames  <- basename(pa@fileList)
-    pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
-
-    pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
-    pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
-}
-
-if(!all(basename(pa@fileList)==basename(xset@filepaths))){
-  if(!all(names(pa@fileList)==basename(xset@filepaths))){
-    quit(status = 1)
-  }else{
-    xset@filepaths <- unname(pa@fileList)
-  }
-}
+fix <- xset_pa_filename_fix(opt, pa, xset)
+pa <- fix[[1]]
+xset <- fix[[2]]
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA

@@ -127,12 +127,7 @@
                 <option value="purityFWmean" >FW mean</option>
         </param>
 
-        <param name="camera_xcms" type="select" label="Use CAMERA object or XCMS object from RData?"
-               help="Within the RData file there should be either an XCMS object called xset or a CAMERA object called
-                      xa (or both). The XCMS object is nested within the CAMERA object so either can be used">
-                <option value="xcms" selected="true" >XCMS (xset)</option>
-                <option value="camera" >CAMERA (xa)</option>
-        </param>
+        <expand macro="camera_xcms" />
 
         <param name="raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
                help="Only applicable when using retention time correction with obiwarp. When obiwarp is used
