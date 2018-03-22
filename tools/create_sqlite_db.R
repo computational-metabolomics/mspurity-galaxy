@@ -1,3 +1,5 @@
+library(xcms)
+library(CAMERA)
 library(msPurity)
 library(optparse)
 
@@ -5,7 +7,7 @@ option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--pa", type="character"),
   make_option("--xset_xa", type="character"),
-  make_option("--xset_xa_option", type="character"),
+  make_option("--xcms_camera_option", type="character"),
   make_option("--eic", action="store_true"),
   make_option("--cores", default=4),
   make_option("--mzML_files", type="character"),
@@ -27,7 +29,7 @@ loadRData <- function(rdata_path, name){
 # Requires
 pa <- loadRData(opt$pa, 'pa')
 
-if (opt$xset_xa_option=='xset'){
+if (opt$xcms_camera_option=='xcms'){
   xset <- loadRData(opt$xset, 'xset')
   xa <- NULL
 }else{
@@ -91,8 +93,10 @@ if (is.null(xset)){
 pa <- fix[[1]]
 xa@xcmsSet <- fix[[2]]
 
+
 db_pth <- msPurity::create_database(pa, xset=xset, xsa=xa, out_dir=out_dir,
                           grp_peaklist=grp_peaklist, db_name=db_name)
+
 
 if (!is.null(opt$eic)){
   if (is.null(opt$raw_rt_columns)){

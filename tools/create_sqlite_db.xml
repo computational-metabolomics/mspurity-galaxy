@@ -6,7 +6,7 @@
     <expand macro="requirements">
         <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
         <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
-        <requirement type="package" version="1.46.0" >bioconductor-camera</requirement>
+	<requirement type="package" version="1.32.0">bioconductor-camera</requirement>
     </expand>
 
     <description>
@@ -18,8 +18,8 @@
     <command interpreter="Rscript"><![CDATA[
         create_sqlite_db.R
             --out_dir=.
-            --xset=$xset
-            --pa=$pa
+            --xset_xa=$xset_xa
+            --xcms_camera_option=$camera_xcms
             --cores=\${GALAXY_SLOTS:-4}
             #if $file_load_conditional.file_load_select=="yes"
                 --mzML_files='
@@ -33,13 +33,12 @@
                 #end for
                 '
             #end if
-            --ppm=$ppm_f4f
-            --plim=$plim_f4f
-            #if $mostIntense_f4f
-                --mostIntense
+
+            #if $eic
+                --eic
             #end if
-            #if $convert2RawRT_f4f
-                --convert2RawRT
+            #if $raw_rt_columns
+                --raw_rt_columns
             #end if
             #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
                 --grp_peaklist=$grp_peaklist
@@ -51,20 +50,20 @@
 
         <param type="data" name="xset_xa" label="xcmsSet or CAMERA object"
                help="Either xcmsSet object saved as 'xset' or CAMERA 'xa' object in an RData file. Please
-                     specify which to use below" format="rdata"/>
+                     specify which to use below" format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <expand macro="camera_xcms" />
 
         <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
-
-        <param name="eic" type="select" label="Include EIC data?"
+	<param name="eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
                      the database. Note, this will take considerable some time for large datasets and
-                     the resulting SQLite database can be large">
-                <option value="yes" >yes </option>
-                <option value="no" selected="true">no</option>
-        </param>
+                     the resulting SQLite database can be large"/>
+	
+	<param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
+               help="Only use if the track_rt_raw tool has been used"/>
+
 
         <expand macro="grp_peaklist" />
 
@@ -73,12 +72,8 @@
 
     </inputs>
     <outputs>
-	    <data name="frag4feature_grouped_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
-              from_work_dir="frag4feature.tsv" visible="true"/>
-        <data name="frag4feature_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
-              from_work_dir="frag4feature.RData" visible="true"/>
-        <data name="frag4feature_sqlite" format="sqlite" label="${tool.name} on ${on_string}: Sqlite"
-              from_work_dir="alldata.sqlite" visible="true"/>
+        <data name="lcms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
+              from_work_dir="lcms_data.sqlite" visible="true"/>
     </outputs>
     <tests>
         <test>
@@ -95,7 +90,7 @@
             </conditional>
             <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
-            <output name="rag4feature_grouped_msms" value="frag4feature_output.tsv" >
+            <output name="lcms_data_sqlite" value="lcms_data.sqlite" >
             </output>
         </test>
     </tests>
@@ -104,27 +99,11 @@
 =============================================================
 Create SQLite database for LC-MS(/MS) dataset
 =============================================================
------------
-Description
------------
-
-Tool to link XCMS features to fragmentation spectra and create an SQLite database of all the data and connections.
-
-The data inputs are:
-
-* A purityA object (generated from assess_purity_msms) saved in an rdata file.
-* A xcmsSet grouped object (generated from xcms_group) saved in an rdata file
-* [optional] a dataset collection of the mzML files to resubmit
-
-See Bioconductor documentation for more details, function msPurity::dimsPredictPurity()
 
 -----------
-Outputs
+Output
 -----------
-* frag4feature_rdata: An updated purityA object saved as rdata file with fragmentation-feature links added
-* frag4feature_grouped_msms: A flat file of all the XCMS peaks for each grouped feature and the corresponding fragmentation scans
-* frag4feature_sqlite: An SQLite database of the data (including fragmentation scans)
-
+* lcms_sqlite: An SQLite database of the LC-MS(/MS) data (including fragmentation scans)
 
 
     ]]></help>

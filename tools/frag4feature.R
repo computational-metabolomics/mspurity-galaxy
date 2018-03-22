@@ -1,7 +1,7 @@
 library(msPurity)
 library(optparse)
 
-xset_pa_filename_fix < function(opt, pa, xset){
+xset_pa_filename_fix <- function(opt, pa, xset){
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
     # NOTE: This only works if the pa file was generated IN Galaxy!! Relies on
     # the pa@fileList having the names of files given as 'names' of the variables (done in frag4feature)
