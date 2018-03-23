@@ -6,10 +6,12 @@ print('CREATING DATABASE')
 
 
 xset_pa_filename_fix <- function(opt, pa, xset){
+
+
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
-    # NOTE: This only works if the pa file was generated IN Galaxy!! Relies on
-    # the pa@fileList having the names of files given as 'names' of the variables (done in frag4feature)
-    # Will update in the next version of msPurity
+    # NOTE: Relies on the pa@fileList having the names of files given as 'names' of the variables 
+    # needs to be done due to Galaxy moving the files around and screwing up any links to files
+
     filepaths <- trimws(strsplit(opt$mzML_files, ',')[[1]])
     filepaths <- filepaths[filepaths != ""]
     new_names <- basename(filepaths)
@@ -20,21 +22,27 @@ xset_pa_filename_fix <- function(opt, pa, xset){
     nsave <- names(pa@fileList)
     old_filenames  <- basename(pa@fileList)
     pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
+    names(pa@fileList) <- nsave
+
     pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
     pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
   }
-  print(xset)
-  print(xset@filepaths) 
-  if(!all(basename(pa@fileList)==basename(xset@filepaths))){
+
+
+ if(!all(basename(pa@fileList)==basename(xset@filepaths))){
     if(!all(names(pa@fileList)==basename(xset@filepaths))){
-      quit(status = 1)
+       print('FILELISTS DO NOT MATCH')
+       message('FILELISTS DO NOT MATCH')
+       quit(status = 1)
     }else{
       xset@filepaths <- unname(pa@fileList)
     }
   }
 
+
   return(list(pa, xset))
 }
+
 
 
 option_list <- list(
@@ -66,6 +74,10 @@ print(opt$xcms_camera_option)
 # Requires
 pa <- loadRData(opt$pa, 'pa')
 
+print('TESTETSTESTETE')
+print(pa@fileList)
+
+
 if (opt$xcms_camera_option=='xcms'){
   xset <- loadRData(opt$xset, 'xset')
   fix <- xset_pa_filename_fix(opt, pa, xset)  
@@ -92,6 +104,8 @@ if(is.null(opt$grp_peaklist)){
 }
 
 
+print(pa@fileList)
+print(xset@filepaths)
 
 
 db_pth <- msPurity::create_database(pa, xset=xset, xsa=xa, out_dir=opt$out_dir,

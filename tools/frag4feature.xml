@@ -40,6 +40,10 @@
             #if $convert2RawRT_f4f
                 --convert2RawRT
             #end if
+ 	    #if $createDB
+                --createDB
+            #end if
+
             #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
                 --grp_peaklist=$grp_peaklist
             #end if
@@ -63,6 +67,8 @@
 
         <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
                     help="min purity of precursor to be included"/>
+
+        <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spcetra?"/>
 
         <expand macro="grp_peaklist" />
 
