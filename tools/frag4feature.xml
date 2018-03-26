@@ -5,7 +5,7 @@
 
     <expand macro="requirements">
         <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
-        <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+       <!-- <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>-->
     </expand>
 
     <description>
