@@ -120,7 +120,7 @@ if (!is.null(opt$eic)){
   }
 
   # Saves the EICS into the previously created database
-  px <- msPurity::purityX(pa@fileList, saveEIC = TRUE,
-                           cores=opt$cores, sqlitePth=sqlitePth,
+  px <- msPurity::purityX(xset, saveEIC = TRUE,
+                           cores=opt$cores, sqlitePth=db_pth,
                            rtrawColumns = rtrawColumns)
 }

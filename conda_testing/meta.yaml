@@ -8,8 +8,8 @@ package:
   version: '{{ version }}'
 
 source:
-  fn: 1872ade4e50ebc5816fd20fc577b3b6ccd258735.zip
-  url: https://github.com/computational-metabolomics/msPurity/archive/1872ade4e50ebc5816fd20fc577b3b6ccd258735.zip
+  fn: 58c86942e49da14efb00f586414ccf4dc657da83.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/58c86942e49da14efb00f586414ccf4dc657da83.zip
 
 
 build:
