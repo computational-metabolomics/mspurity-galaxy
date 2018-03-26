@@ -19,7 +19,7 @@ xset_pa_filename_fix <- function(opt, pa, xset){
     nsave <- names(pa@fileList)
     old_filenames  <- basename(pa@fileList)
     pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
-    
+    names(pa@fileList) <- nsave
 
     pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
     pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
@@ -99,10 +99,17 @@ xset <- fix[[2]]
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
+
+
 }else{
     grp_peaklist = opt$grp_peaklist
 }
 
+print('heck')
+print(pa@fileList)
+print(names(pa@fileList))
+print(xset@filepaths)
+saveRDS(pa, 'test_pa.rds')
 
 pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
                             intense=opt$mostIntense, convert2RawRT=convert2RawRT,
