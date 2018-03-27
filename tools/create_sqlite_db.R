@@ -124,3 +124,22 @@ if (!is.null(opt$eic)){
                            cores=opt$cores, sqlitePth=db_pth,
                            rtrawColumns = rtrawColumns)
 }
+
+
+
+con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
+
+cmd <- paste('SELECT cpg.grpid, cpg.mz, cpg.mzmin, cpg.mzmax, cpg.rt, cpg.rtmin, cpg.rtmax, c_peaks.cid, ',
+             'c_peaks.mzmin AS c_peak_mzmin, c_peaks.mzmax AS c_peak_mzmax, ',
+             'c_peaks.rtmin AS c_peak_rtmin, c_peaks.rtmax AS c_peak_rtmax, s_peak_meta.*, fileinfo.filename, fileinfo.nm_save ',
+             'FROM c_peak_groups AS cpg ',
+             'LEFT JOIN c_peak_X_c_peak_group AS cXg ON cXg.grpid=cpg.grpid ',
+             'LEFT JOIN c_peaks on c_peaks.cid=cXg.cid ',
+             'LEFT JOIN c_peak_X_s_peak_meta AS cXs ON cXs.cid=c_peaks.cid ',
+             'LEFT JOIN s_peak_meta ON cXs.pid=s_peak_meta.pid ',
+             'LEFT JOIN fileinfo ON s_peak_meta.fileid=fileinfo.fileid')
+
+print(cmd)
+cpeakgroup_msms <- DBI::dbGetQuery(con, cmd)
+
+write.table(cpeakgroup_msms, file.path(opt$out_dir, 'cpeakgroup_msms.tsv'), row.names=FALSE, sep='\t')

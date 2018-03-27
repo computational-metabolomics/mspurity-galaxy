@@ -57,7 +57,7 @@
 
 	<param name="eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
-                     the database. Note, this will take considerable some time for large datasets and
+                     the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>
 	
 	<param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
@@ -73,6 +73,9 @@
     <outputs>
         <data name="lcms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
               from_work_dir="lcms_data.sqlite" visible="true"/>
+        <data name="cpeakgroup_msms" format="sqlite" label="${tool.name} on ${on_string}: c-peak-group-msms"
+              from_work_dir="cpeakgroup_msms.tsv" visible="true"/>
+
     </outputs>
     <tests>
         <test>
@@ -90,7 +93,7 @@
 	    <param name="camera_xcms" value="xcms"/>
             <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="frag4feature.rdata"/>
-            <output name="lcms_data_sqlite" value="create_sqlite_db_out.sqlite" >
+            <output name="cpeakgroup_msms" value="cpeakgroup_msms.tsv" >
             </output>
         </test>
     </tests>
@@ -99,12 +102,16 @@
 =============================================================
 Create SQLite database for LC-MS(/MS) dataset
 =============================================================
+Create an SQLite database for the msPurity and XCMS (CAMERA) outputs. The SQLite database created can 
+be used as input to the spectral_matching tool. 
+
+Please note that getting the extracted ion chromatograms can take a long time if the dataset has a large number of files and peaks.
 
 -----------
 Output
 -----------
 * lcms_sqlite: An SQLite database of the LC-MS(/MS) data (including fragmentation scans)
-
+* cpeakgroup_msms: A csv file for all grouped features that have associated fragmentation spectra
 
     ]]></help>
 
