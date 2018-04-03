@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.15">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.18">
     <macros>
         <import>macros.xml</import>
     </macros>

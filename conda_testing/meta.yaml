@@ -1,4 +1,4 @@
-{% set version="1.5.2" %}
+{% set version="1.5.4" %}
 {% set name="msPurity" %}
 {% set bioc="3.6" %}
 
@@ -8,8 +8,8 @@ package:
   version: '{{ version }}'
 
 source:
-  fn: 27edeb5a41143d23265402d145d8421cb2f25678.zip
-  url: https://github.com/computational-metabolomics/msPurity/archive/27edeb5a41143d23265402d145d8421cb2f25678.zip
+  fn: 8ca81e16abad872865802dd66e3035267cdaf52c.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/8ca81e16abad872865802dd66e3035267cdaf52c.zip
 
 
 build:
@@ -19,9 +19,9 @@ build:
     - lib/
 requirements:
   build:
-    - bioconductor-xcms
-    - bioconductor-camera
-    - r-base
+    - 'bioconductor-xcms >=3.0.0'
+    - 'bioconductor-camera >=1.34.0'
+    - 'r-base >=3.4.1'
     - r-dbi
     - r-dosnow
     - r-fastcluster
@@ -35,9 +35,9 @@ requirements:
     - gcc  # [linux]
     - llvm  # [osx]
   run:
-    - bioconductor-xcms
-    - bioconductor-camera
-    - r-base
+    - 'bioconductor-xcms >=3.0.0'
+    - 'bioconductor-camera >=1.34.0'
+    - 'r-base >=3.4.1'
     - r-dbi
     - r-dosnow
     - r-fastcluster

@@ -1,5 +1,6 @@
 library(msPurity)
 library(optparse)
+print(sessionInfo())
 
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),

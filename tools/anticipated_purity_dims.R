@@ -1,5 +1,6 @@
 library(msPurity)
 library(optparse)
+print(sessionInfo())
 
 option_list <- list(
   make_option(c("--mzML_file"), type="character"),

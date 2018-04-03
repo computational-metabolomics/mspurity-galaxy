@@ -1,4 +1,6 @@
 library(optparse)
+library(xcms)
+print(sessionInfo())
 
 option_list <- list(
   make_option(c("--xset_path"), type="character"),

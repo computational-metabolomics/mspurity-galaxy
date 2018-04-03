@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.12">
+<tool id="frag4feature" name="frag4feature" version="0.0.17">
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -52,7 +52,7 @@
     <inputs>
 
         <param type="data" name="xset" label="xcmsSet object"
-               help="xcmsSet object saved as 'xset' in an RData file" format="rdata"/>
+               help="grouped xcmsSet object saved as 'xset' in an RData file" format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
 
@@ -111,7 +111,9 @@ Link fragmentation spectra to XCMS features
 Description
 -----------
 
-Tool to link XCMS features to fragmentation spectra and create an SQLite database of all the data and connections.
+Tool to link XCMS features to fragmentation spectra and create an SQLite database of all the data and connections. 
+
+Please note that the xcmsSet object needs to have been grouped.
 
 The data inputs are:
 
@@ -119,7 +121,7 @@ The data inputs are:
 * A xcmsSet grouped object (generated from xcms_group) saved in an rdata file
 * [optional] a dataset collection of the mzML files to resubmit
 
-See Bioconductor documentation for more details, function msPurity::dimsPredictPurity()
+See Bioconductor documentation for more details, function msPurity::frag4feature()
 
 -----------
 Outputs

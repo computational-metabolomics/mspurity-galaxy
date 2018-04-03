@@ -2,6 +2,7 @@ library(msPurity)
 library(optparse)
 library(xcms)
 library(CAMERA)
+print(sessionInfo())
 print('CREATING DATABASE')
 
 

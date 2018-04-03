@@ -1,10 +1,8 @@
-<tool id="track_rt_raw" name="track_rt_raw" version="0.0.7">
+<tool id="track_rt_raw" name="track_rt_raw" version="0.0.8">
 
-        <requirements>
-           <requirement type="package" version="1.4.1" >bioconductor-mspurity</requirement>
-           <requirement type="package" version="1.4.4" >r-optparse</requirement>
-            <yield />
-        </requirements>
+     <requirements>
+           <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
+     </requirements>
 
     <description>Track the raw retention time in the peak slot of XCMSset objects.
     </description>

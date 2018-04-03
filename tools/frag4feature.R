@@ -1,6 +1,7 @@
 library(optparse)
 library(msPurity)
 library(xcms)
+print(sessionInfo())
 
 xset_pa_filename_fix <- function(opt, pa, xset){
 
@@ -18,13 +19,15 @@ xset_pa_filename_fix <- function(opt, pa, xset){
 
     nsave <- names(pa@fileList)
     old_filenames  <- basename(pa@fileList)
+ 
     pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
     names(pa@fileList) <- nsave
 
     pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
     pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
   }
-
+ print(pa@fileList)
+ print(xset@filepaths)
 
  if(!all(basename(pa@fileList)==basename(xset@filepaths))){
     if(!all(names(pa@fileList)==basename(xset@filepaths))){
