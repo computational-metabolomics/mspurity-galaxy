@@ -65,12 +65,28 @@ opt<- parse_args(OptionParser(option_list=option_list))
 loadRData <- function(rdata_path, name){
 #loads an RData file, and returns the named xset object if it is there
     load(rdata_path)
-    return(get(ls()[ls() == name]))
+    return(get(ls()[ls() %in% name]))
+}
+
+# This function retrieve a xset like object
+#@author Gildas Le Corguille lecorguille@sb-roscoff.fr
+getxcmsSetObject <- function(xobject) {
+    # XCMS 1.x
+    if (class(xobject) == "xcmsSet")
+        return (xobject)
+    # XCMS 3.x
+    if (class(xobject) == "XCMSnExp") {
+        # Get the legacy xcmsSet object
+        suppressWarnings(xset <- as(xobject, 'xcmsSet'))
+        sampclass(xset) <- xset@phenoData$sample_group
+        return (xset)
+    }
 }
 
 # Requires
 pa <- loadRData(opt$pa, 'pa')
-xset <- loadRData(opt$xset, 'xset')
+xset <- loadRData(opt$xset, c('xset','xdata'))
+xset <- getxcmsSetObject(xset)
 
 pa@cores <- opt$cores
 
@@ -102,8 +118,6 @@ xset <- fix[[2]]
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
-
-
 }else{
     grp_peaklist = opt$grp_peaklist
 }
