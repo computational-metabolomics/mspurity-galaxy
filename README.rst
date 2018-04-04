@@ -15,23 +15,25 @@ Proceed with caution these tools are in active development so tools may change! 
 
 Dependencies
 ------
-Dependencies for these Galaxy tools should be handled by CONDA. The most recent version of the msPurity R package can found on channel  [tomnl](https://anaconda.org/tomnl/bioconductor-mspurity) on [anaconda](https://anaconda.org/tomnl/bioconductor-mspurity). Warning this will be a different version of the package compared to the BICONDA bioconductor-mspurity.
+Dependencies for these Galaxy tools should be handled by CONDA. The most recent version of the msPurity R package can found on channel  `tomnl <https://anaconda.org/tomnl/bioconductor-mspurity>`_ on `anaconda <https://anaconda.org/tomnl/bioconductor-mspurity>`_. Warning this will be a different version of the package compared to the BICONDA bioconductor-mspurity.
 
 
 Galaxy
 ------
-[Galaxy](https://galaxyproject.org/) is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
+`Galaxy <https://galaxyproject.org>`_ is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
 
-Contacts
+
+Authors & contacts
 -------------------------
- - Thomas N. Lawson (tnl495@bham.ac.uk) - [University of Birmingham (UK)](http://www.birmingham.ac.uk/index.aspx)
 
+- Thomas N. Lawson (tnl495@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
+- Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 
-
-Developers & Contributors
+Acknowledgements
 -------------------------
- - Thomas N. Lawson (tnl495@bham.ac.uk) - [University of Birmingham (UK)](http://www.birmingham.ac.uk/index.aspx)
- - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - [University of Birmingham (UK)](http://www.birmingham.ac.uk/index.aspx)
+Additional testing and updates provided by:
+
+- Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
 
 Changes
 -------
@@ -51,6 +53,6 @@ Released under the GNU General Public License v3.0 (see `LICENSE file <https://g
 .. |Bioconda| image:: https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat&maxAge=3600
    :target: http://bioconda.github.io/recipes/mspurity/README.html
 
-.. |License| image:: https://img.shields.io/pypi/l/mspurity.svg?style=flat&maxAge=3600
+.. |License| image:: https://img.shields.io/badge/License-GPL%20v3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0.html
 
