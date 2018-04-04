@@ -10,4 +10,4 @@ before_install:
  - wget https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1 -P msPurity-galaxy/tools/test-data/
  - mv msPurity-galaxy/tools/test-data/library_spectra.db?dl=1 msPurity-galaxy/tools/test-data/library_spectra.db
 script:
-- planemo lint ${TRAVIS_BUILD_DIR}/tools && planemo test --conda_auto_init --conda_auto_install --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --conda_dependency_resolution --galaxy_branch release_17.09 --no_cache_galaxy ${TRAVIS_BUILD_DIR}/tools
+- planemo lint ${TRAVIS_BUILD_DIR}/tools && planemo test --conda_auto_init --conda_auto_install --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --conda_dependency_resolution --galaxy_branch release_17.09 
