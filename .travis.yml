@@ -7,6 +7,8 @@ before_install:
  - pip install --upgrade pip setuptools
  - pip install planemo==0.48.0
  - sudo apt-get install wget
+ - ls
+ - ls mspurity-galaxy/tools/test-data
  - wget https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1 -P mspurity-galaxy/tools/test-data/
  - mv mspurity-galaxy/tools/test-data/library_spectra.db?dl=1 mspurity-galaxy/tools/test-data/library_spectra.db
 script:
