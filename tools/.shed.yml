@@ -2,10 +2,11 @@ owner: tomnl
 remote_repository_url: https://github.com/computational-metabolomics/mspurity-galaxy
 homepage_url:  https://github.com/computational-metabolomics/mspurity-galaxy
 categories: ["Metabolomics"]
+description: "[Metabolomics][LC-MS][DIMS] msPurity -  R package for precursor ion purity assessments and spectral matching for LC-MS(/MS) and DI-MS(/MS) data"
 auto_tool_repositories:
   name_template: "{{ tool_id }}"
-  description_template: "{{ tool_name }} tool from the mspurity_package {{description}}"
+  description_template: "[Metabolomics][LC-MS][DIMS] msPurity - {{ tool_name }} {{description}}"
 suite:
   name: "suite_mspurity"
   description: "wrapper for msPurity R package"
-  long_description: "Galaxy wrappers for msPurity R packages for precursor ion purity assessments and spectral matching"
+  long_description: "Galaxy wrappers for msPurity R package for precursor ion purity assessments and spectral matching for LC-MS(/MS) and DI-MS(/MS) data"

@@ -1,15 +1,18 @@
 <tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.3">
+    <description>
+        Create SQLite database of an XCMS-CAMERA dataset
+    </description>
+
+
     <macros>
         <import>macros.xml</import>
     </macros>
 
     <expand macro="requirements">
-        <!-- would ideally have xcms 3.0.0 but not available in bioconda at the point of tool creation-->
+      
     </expand>
 
-    <description>
-        Create SQLite database of an XCMS-CAMERA dataset
-    </description>
+
  <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -72,9 +75,9 @@
     </inputs>
     <outputs>
         <data name="lcms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
-              from_work_dir="lcms_data.sqlite" visible="true"/>
+              from_work_dir="lcms_data.sqlite" />
         <data name="cpeakgroup_msms" format="sqlite" label="${tool.name} on ${on_string}: c-peak-group-msms"
-              from_work_dir="cpeakgroup_msms.tsv" visible="true"/>
+              from_work_dir="cpeakgroup_msms.tsv" />
 
     </outputs>
     <tests>
@@ -97,7 +100,7 @@
             </output>
         </test>
     </tests>
-    <expand macro="citations" />
+    
     <help><![CDATA[
 =============================================================
 Create SQLite database for LC-MS(/MS) dataset
@@ -114,5 +117,5 @@ Output
 * cpeakgroup_msms: A csv file for all grouped features that have associated fragmentation spectra
 
     ]]></help>
-
+<expand macro="citations" />
 </tool>

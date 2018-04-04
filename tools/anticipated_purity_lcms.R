@@ -164,7 +164,7 @@ ppLCMS <- msPurity::purityX(xset=xset,
                                 iwNormFun = iwNormFun,
                                 singleFile = opt$singleFile,
                                 fileignore = ignore_files,
-                                rtraw_columns=rtraw_columns)
+                                rtrawColumns=rtraw_columns)
 
 
 dfp <- ppLCMS@predictions

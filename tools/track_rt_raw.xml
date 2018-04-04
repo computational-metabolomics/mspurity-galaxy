@@ -1,11 +1,14 @@
-<tool id="track_rt_raw" name="track_rt_raw" version="0.0.8">
-
-     <requirements>
-           <requirement type="package" version="1.46.0" >bioconductor-xcms</requirement>
-     </requirements>
-
+<tool id="track_rt_raw" name="track_rt_raw" version="0.0.9">
     <description>Track the raw retention time in the peak slot of XCMSset objects.
     </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    
+    <expand macro="requirements">
+    </expand>
+
+
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -13,21 +16,55 @@
         track_rt_raw.R
             --xset_path=$xset
             --out_dir=.
+            #if $extract_peaks:
+                --extract_peaks
+            #end if
 
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset"
+        <param type="data" name="xset" format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.fillpeaks,rdata"
                 help="xcmsSet object saved as an RData file"/>
+
+        <param name="extract_peaks" type="boolean" checked="false" label="Save peaks to a tsv file"
+               />
 
     </inputs>
     <outputs>
 
-        <data name="xset_with_rt_raw" format="rdata" label="xset.track_rt_raw.RData"
-              from_work_dir="xset_rt_raw_tracked.RData" visible="true"/>
+        <data name="xset_with_rt_raw" format="rdata" label="xset.track_rt_raw.RData" from_work_dir="xset_rt_raw_tracked.RData"/>
+
+        <data name="xset_extract_peaks" format="tsv" label="xset_peaks.tsv" from_work_dir="xset_peaks.tsv">
+            <filter>extract_peaks is True</filter>
+         </data>
     </outputs>
     <tests>
-
+       <test>
+         <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
+         <param name="extract_peaks" value="True"/>
+         <output name="xset_extract_peaks" value="xset_peaks.tsv"/>
+       </test>
     </tests>
-    <help><![CDATA[]]></help>
+
+    
+    <help><![CDATA[
+=============================================================
+Track raw retention time for XCMS set
+=============================================================
+-----------
+Description
+-----------
+Tool to store the original raw peak information on the xset@peaks slot. Note: This can only be done BEFORE the retention alignment has been performed.
+
+
+-----------
+Outputs
+-----------
+
+* xset_with_rt_raw: xcmsSet object with raw retention of peaks saved on the xset@peaks slot
+
+
+
+]]></help>
+<expand macro="citations" />
 </tool>

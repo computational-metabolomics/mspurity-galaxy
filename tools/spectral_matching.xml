@@ -1,4 +1,8 @@
 <tool id="spectral_matching" name="spectral_matching" version="0.0.18">
+    <description>
+        Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
+    </description>
+
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -6,9 +10,7 @@
     <expand macro="requirements">
     </expand>
 
-    <description>
-        Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
-    </description>
+    
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -142,25 +144,26 @@
 
 
 	    <data name="sqlite_results" format="sqlite" label="${tool.name} on ${on_string}: SQLite results"
-              from_work_dir="results.sqlite" visible="true">
+              from_work_dir="results.sqlite" >
             <filter>create_new_database is True</filter>
         </data>
         <data name="scan_hits" format="tsv" label="${tool.name} on ${on_string}: scan hits"
-              from_work_dir="scan_hits.tsv" visible="true"/>
+              from_work_dir="scan_hits.tsv" />
         <data name="xcms_hits" format="tsv" label="${tool.name} on ${on_string}: xcms hits"
-              from_work_dir="xcms_hits.tsv" visible="true"/>
+              from_work_dir="xcms_hits.tsv" />
     </outputs>
     <tests>
-        <!--<test>-->
+        <test>
 
-            <!--<param name="target_db" value="alldata.sqlite" />-->
-            <!--<param name="library_db" value="https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=0"/>-->
-            <!--<output name="xcms_hits" value="spectra_matching_xcms_hits.tsv" />-->
-            <!--<output name="scan_hits" value="spectra_matching_scan_hits.tsv" />-->
+            <param name="target_db" value="alldata.sqlite" />
+            <param name="library_db" value="library_spectra.db"/>
+            <output name="xcms_hits" value="xcms_hits.tsv" />
+            <output name="scan_hits" value="scan_hits.tsv" />
 
-        <!--</test>-->
+        </test>
     </tests>
-    <expand macro="citations" />
+    
+
     <help><![CDATA[
 =============================================================
 Spectral matching
@@ -197,4 +200,6 @@ spectra. Otherwise the original SQLite database will be updpated
 
 
     ]]></help>
+
+<expand macro="citations">     </expand>
 </tool>

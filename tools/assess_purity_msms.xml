@@ -122,7 +122,7 @@
         <output name="assess_purity_msms" value="assess_purity_msms_output_LCMSMS1.tsv" />
         </test>
     </tests>
-    <expand macro="citations" />
+    
     <help><![CDATA[
 =============================================================
 Assess precursor ion purity of MS/MS files
@@ -149,4 +149,5 @@ Outputs
 
 
     ]]></help>
+<expand macro="citations" />
 </tool>
