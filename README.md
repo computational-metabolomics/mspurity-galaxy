@@ -1,5 +1,7 @@
 msPurity for Galaxy
 ========================
+|Build Status (Travis)| |Git| |Bioconda| |License|
+
 Galaxy tools for the Bioconductor R package msPurity. Tools available for assessing precursor ion purity of
 LC-MS/MS or DI-M/MS data that has been acquired. Additionally, tools are available to assess LC-MS or DI-MS for
 anticipated precursor ion purity to guide a later fragmentation experiment.
@@ -33,4 +35,22 @@ Developers & Contributors
 
 Changes
 -------
+
+
+License
+-------
+Released under the GNU General Public License v3.0 (see `LICENSE file <https://github.com/computational-metabolomics/dimspy-galaxy/blob/master/LICENSE>`_)
+
+
+.. |Build Status (Travis)| image:: https://img.shields.io/travis/computational-metabolomics/mspurity-galaxy.svg?style=flat&maxAge=3600&label=Travis-CI
+   :target: https://travis-ci.org/computational-metabolomics/mspurity-galaxy
+
+.. |Git| image:: https://img.shields.io/badge/repository-GitHub-blue.svg?style=flat&maxAge=3600
+   :target: https://github.com/computational-metabolomics/mspurity-galaxy
+
+.. |Bioconda| image:: https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat&maxAge=3600
+   :target: http://bioconda.github.io/recipes/mspurity/README.html
+
+.. |License| image:: https://img.shields.io/pypi/l/mspurity.svg?style=flat&maxAge=3600
+   :target: https://www.gnu.org/licenses/gpl-3.0.html
 
