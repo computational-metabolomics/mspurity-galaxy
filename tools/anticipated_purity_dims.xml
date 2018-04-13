@@ -1,4 +1,4 @@
-<tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.8">
+<tool id="anticipated_purity_dims" name="anticipated_purity_dims" version="0.0.9">
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
     <macros>

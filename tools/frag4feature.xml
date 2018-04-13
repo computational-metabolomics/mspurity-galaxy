@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.17">
+<tool id="frag4feature" name="frag4feature" version="0.0.18">
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>

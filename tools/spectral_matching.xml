@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.18">
+<tool id="spectral_matching" name="spectral_matching" version="0.0.19">
     <description>
         Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
     </description>

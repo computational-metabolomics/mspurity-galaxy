@@ -1,4 +1,4 @@
-<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.3">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.4">
     <description>
         Create SQLite database of an XCMS-CAMERA dataset
     </description>
