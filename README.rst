@@ -40,20 +40,14 @@ Galaxy
 `Galaxy <https://galaxyproject.org>`_ is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
 
 
-Authors & contacts
+Authors, contributors & contacts
 -------------------------
 
 - Thomas N. Lawson (tnl495@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
-
-Acknowledgements
--------------------------
-Additional testing and updates provided by:
-
+- Jordi Capellades (j.capellades.to@gmail.com) - `Universitat Rovira i Virgili (SP)  <http://www.urv.cat/en/>`_
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
 
-Changes
--------
 
 
 License

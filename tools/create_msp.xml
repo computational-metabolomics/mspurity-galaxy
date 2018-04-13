@@ -1,10 +1,12 @@
 <tool id="create_msp" name="Create MSP Files from msPurity" version="0.1.1">
     <description> </description>
-    <requirements>
-        <requirement type="package" version="1.4.4">r-optparse</requirement>
-        <requirement type="package" version="1.5.4">bioconductor-mspurity</requirement>			
-    </requirements>
-    
+     <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+
+
     <command interpreter="Rscript" ><![CDATA[
 	create_msp.R
 	--purity "$purity"
@@ -13,7 +15,7 @@
     ]]></command>
     <inputs>
         <param name="purity" type="data" format="rdata" label="msPurity frag4feature dataset" argument="--purity"/>
-        <param name="mode" type="select" label="Spectra use mode (if precursor was fragmented in >1 scans)" argument="--mode">
+        <param name="mode" type="select" label="Spectra use mode (if precursor was fragmented in >1 scans)" help='WARNING: The averaging and max options are still being developed and will likely fail' argument="--mode">
             <option value="max" >Max Intensity</option>
             <option value="average">Weighted Average</option>
             <option value="all" selected="true">All</option>
@@ -41,6 +43,7 @@
 Create MSP Files from msPurity
 ------------------------------
 
+* TO-DO: Averaging functionality
 * TO-DO: Add citation for MSP
 * TO-DO: Add PRECURSORTYPE if adducts available
 * TO-DO: Create MSP from xcms/mzml files
@@ -80,7 +83,9 @@ Developers and contributors
 - **Ralf Weber (r.j.weber@bham.ac.uk) - University of Birmingham (UK)**
 
 	]]></help>
-        <citations>
-            <citation type="doi">10.1186/s13321-016-0115-9</citation>
-        </citations>
+
+<expand macro="citations" >
+       <citation type="doi">10.1186/s13321-016-0115-9</citation>
+</expand>
+  
 </tool>
