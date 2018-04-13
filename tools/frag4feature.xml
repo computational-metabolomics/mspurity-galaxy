@@ -101,6 +101,7 @@
             <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
             <output name="frag4feature_grouped_msms" value="frag4feature_output.tsv" >
+                
             </output>
         </test>
     </tests>

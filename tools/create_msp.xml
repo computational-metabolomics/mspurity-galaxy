@@ -32,11 +32,7 @@
             <param name="purity" value="lightpurity.RData"/>
             <output name="msp_out" file="input.msp"/>
         </test>
-        <test>
-            <param name="mode" value="average"/>
-            <param name="purity" value="lightpurity.RData"/>
-            <output name="msp_out" file="input-average.msp"/>
-        </test>
+      
     </tests>
 	<help><![CDATA[
 ------------------------------
