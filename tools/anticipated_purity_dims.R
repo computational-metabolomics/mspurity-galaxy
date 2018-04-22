@@ -14,7 +14,7 @@ option_list <- list(
   make_option("--sim", action="store_true"),
   make_option("--remove_nas", action="store_true"),
   make_option("--iwNorm", default="none", type="character"),
-  make_option("--dimspy_file_num", default=1),
+  make_option("--file_num_dimspy", default=1),
   make_option("--exclude_isotopes", action="store_true"),
   make_option("--isotope_matrix", type="character")
 )
@@ -25,7 +25,11 @@ opt<- parse_args(OptionParser(option_list=option_list))
 print(sessionInfo())
 print(opt)
 
-if (opt$dimspy){
+if (is.null(opt$dimspy)){
+
+  df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
+  filename = NA
+}else{
   indf <- read.table(opt$peaks_file,
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
   filename = colnames(indf)[8:ncol(indf)][opt$dimspy_file_num]
@@ -49,9 +53,8 @@ if (opt$dimspy){
   df$mz <- as.numeric(df$mz)
 
 
-}else{
-  df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
-  filename = NA
+
+
 }
 
 if (!is.null(opt$remove_nas)){

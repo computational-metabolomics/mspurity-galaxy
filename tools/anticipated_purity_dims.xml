@@ -31,7 +31,7 @@
             #end if
             #if $dimspy_usage.usage == "dimspy"
                 --dimspy
-                --dimspy_file_num $dimspy_usage.file_num
+                --file_num_dimspy $dimspy_usage.file_num
             #end if
             #if $isotopes.isotopes == "exclude_default":
                 --exclude_isotopes
