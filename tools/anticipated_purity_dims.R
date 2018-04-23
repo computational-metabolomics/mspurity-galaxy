@@ -74,8 +74,6 @@ if (is.null(opt$exclude_isotopes)){
     isotopes <- TRUE
 }
 
-print('FIRST ROWS OF PEAK FILE')
-print(head(df))
 
 if (dir.exists(opt$mzML_file)){
   # if directory then we need to add a file name
@@ -116,6 +114,8 @@ if (opt$iwNorm=='none'){
     iwNormFun = msPurity::iwNormQE.5()
 }
 
+print('FIRST ROWS OF PEAK FILE')
+print(head(df))
 
 predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      filepth=mzml_file,
@@ -132,5 +132,6 @@ predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      )
 predicted <- cbind(df, predicted)
 
-
-write.table(predicted, file.path(opt$out_dir, 'anticipated_dims_purity.tsv'), row.names=FALSE, sep='\t')
+print(head(predicted))
+print(file.path(opt$out_dir, 'anticipated_purity_dims.tsv'))
+write.table(predicted, file.path(opt$out_dir, 'anticipated_purity_dims.tsv'), row.names=FALSE, sep='\t')
