@@ -32,14 +32,16 @@ if (is.null(opt$dimspy)){
 }else{
   indf <- read.table(opt$peaks_file,
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
-  filename = colnames(indf)[8:ncol(indf)][opt$dimspy_file_num]
+	
+  filename = colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
+  print(filename)
   # check if the data file is mzML or RAW (can only use mzML currently) so
   # we expect an mzML file of the same name in the same folder
   indf$i <- indf[,colnames(indf)==filename]
   indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
 
   filename = sub("raw", "mzML", filename, ignore.case = TRUE)
-
+  print(filename)
   df <- indf[4:nrow(indf),]
   if ('blank_flag' %in% colnames(df)){
     df <- df[df$blank_flag==1,]
@@ -51,7 +53,7 @@ if (is.null(opt$dimspy)){
     df[df$mz=='nan',]$mz <- NA
   }
   df$mz <- as.numeric(df$mz)
-
+  mzml_file <- file.path(opt$mzML_file, filename)	
 
 
 
@@ -75,19 +77,6 @@ if (is.null(opt$exclude_isotopes)){
 }
 
 
-if (dir.exists(opt$mzML_file)){
-  # if directory then we need to add a file name
-  print(filename)
-  if (is.na(filename)){
-    print('ERROR: If a directory is provided then a filename needs to be entered
-          directory or automatically obtained by using a dimspy output')
-    quit()
-  }else{
-    mzml_file <- file.path(opt$mzML_file, filename)
-  }
-}else{
-  mzml_file <- opt$mzML_file
-}
 
 if (is.null(opt$sim)){
     sim=FALSE
@@ -116,7 +105,7 @@ if (opt$iwNorm=='none'){
 
 print('FIRST ROWS OF PEAK FILE')
 print(head(df))
-
+print(mzml_file)
 predicted <- msPurity::dimsPredictPuritySingle(df$mz,
                                      filepth=mzml_file,
                                      minOffset=minOffset,
