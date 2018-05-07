@@ -58,8 +58,8 @@ option_list <- list(
   make_option("--grp_peaklist", type="character"),
   make_option("--db_name", type="character", default='lcms_data.sqlite'),
   make_option("--raw_rt_columns", action="store_true"),
-  make_option("--metfrag_result", type="character", default=NA),
-  make_option("--sirius_csifingerid_result", type="character", default=NA)
+  make_option("--metfrag_result", type="character"),
+  make_option("--sirius_csifingerid_result", type="character")
 )
 
 
@@ -132,21 +132,32 @@ if (!is.null(opt$eic)){
 con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
 
 add_extra_table <- function(name, pth){
-  if (!is.na(pth)){
-     df <- read.table(pth, sep='\t')
+
+  print('CHECK1')
+  print(name)
+  print(pth)
+  if (!is.null(pth)){
+     print('CHECK2')
+     print(pth)
+     df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
+     # bug for repeating headers
+     df <- df[!df$UID=='UID',]
+
      # get peakid, an scan id
      df_ids <- stringr::str_split_fixed(df$UID, '-', 3)
      colnames(df_ids) <- c('grp_id', 'file_id', 'peak_id')
      df <- cbind(df_ids, df)
      # export to database
+     
+
      DBI::dbWriteTable(con, name=name, value=df, row.names=FALSE)
 
   }
 
 }
 
-add_extra_table('metfrag_results', opt$metfrag_results)
-add_extra_table('sirius_csifingerid_results', opt$sirius_csifingerid_results)
+add_extra_table('metfrag_results', opt$metfrag_result)
+add_extra_table('sirius_csifingerid_results', opt$sirius_csifingerid_result)
 
 
 
