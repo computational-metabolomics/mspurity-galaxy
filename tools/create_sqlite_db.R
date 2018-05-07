@@ -57,8 +57,11 @@ option_list <- list(
   make_option("--galaxy_names", type="character"),
   make_option("--grp_peaklist", type="character"),
   make_option("--db_name", type="character", default='lcms_data.sqlite'),
-  make_option("--raw_rt_columns", action="store_true")
+  make_option("--raw_rt_columns", action="store_true"),
+  make_option("--metfrag_result", type="character", default=NA),
+  make_option("--sirius_csifingerid_result", type="character", default=NA)
 )
+
 
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
@@ -75,7 +78,7 @@ print(opt$xcms_camera_option)
 # Requires
 pa <- loadRData(opt$pa, 'pa')
 
-print('TESTETSTESTETE')
+
 print(pa@fileList)
 
 
@@ -126,9 +129,26 @@ if (!is.null(opt$eic)){
                            rtrawColumns = rtrawColumns)
 }
 
-
-
 con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
+
+add_extra_table <- function(name, pth){
+  if (!is.na(pth)){
+     df <- read.table(pth, sep='\t')
+     # get peakid, an scan id
+     df_ids <- stringr::str_split_fixed(df$UID, '-', 3)
+     colnames(df_ids) <- c('grp_id', 'file_id', 'peak_id')
+     df <- cbind(df_ids, df)
+     # export to database
+     DBI::dbWriteTable(con, name=name, value=df, row.names=FALSE)
+
+  }
+
+}
+
+add_extra_table('metfrag_results', opt$metfrag_results)
+add_extra_table('sirius_csifingerid_results', opt$sirius_csifingerid_results)
+
+
 
 cmd <- paste('SELECT cpg.grpid, cpg.mz, cpg.mzmin, cpg.mzmax, cpg.rt, cpg.rtmin, cpg.rtmax, c_peaks.cid, ',
              'c_peaks.mzmin AS c_peak_mzmin, c_peaks.mzmax AS c_peak_mzmax, ',

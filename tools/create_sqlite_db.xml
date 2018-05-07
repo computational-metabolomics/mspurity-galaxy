@@ -1,4 +1,4 @@
-<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.4">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.5">
     <description>
         Create SQLite database of an XCMS-CAMERA dataset
     </description>
@@ -36,6 +36,15 @@
                 '
             #end if
 
+
+            #if $metfrag_conditional.metfrag_select=="yes"
+                --metfrag_result=$metfrag_result
+            #end if
+
+            #if $sirius_csifingerid_conditional.sirius_csifingerid_select=="yes"
+                --sirius_csifingerid_result=$sirius_csifingerid_result
+            #end if
+
             #if $eic
                 --eic
             #end if
@@ -71,7 +80,32 @@
 
 
         <expand macro="fileload" />
+        <conditional name="metfrag_conditional">
+                <param name="metfrag_select" type="select" label="Include MetFrag results?">
+                    <option value="no" >no</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+                    <param type="data" name="metfrag_result" label="MetFrag result" format="tsv,tabular"
+                               help="MetFrag result from corresponding dataset"/>
+                </when>
+        </conditional>
 
+        <conditional name="sirius_csifingerid_conditional">
+                <param name="sirius_csifingerid_select" type="select" label="Include Sirius CSI-FingerID results?">
+                    <option value="no" >no</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+                    <param type="data" name="sirius_csifingerid_result" label="Sirius CSI-FingerID result" format="tsv,tabular"
+                    help="Sirius CSI-FingerID result from corresponding dataset"/>
+                </when>
+        </conditional>
+        
     </inputs>
     <outputs>
         <data name="lcms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
