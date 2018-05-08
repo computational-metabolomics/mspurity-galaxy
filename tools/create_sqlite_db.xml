@@ -1,4 +1,4 @@
-<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.5">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.6">
     <description>
         Create SQLite database of an XCMS-CAMERA dataset
     </description>
@@ -43,6 +43,10 @@
 
             #if $sirius_csifingerid_conditional.sirius_csifingerid_select=="yes"
                 --sirius_csifingerid_result=$sirius_csifingerid_result
+            #end if
+
+            #if $probmetab_conditional.probmetab_select=="yes"
+                --probmetab_result=$probmetab_result
             #end if
 
             #if $eic
@@ -103,6 +107,20 @@
                 <when value="yes">
                     <param type="data" name="sirius_csifingerid_result" label="Sirius CSI-FingerID result" format="tsv,tabular"
                     help="Sirius CSI-FingerID result from corresponding dataset"/>
+                </when>
+        </conditional>
+
+
+        <conditional name="probmetab_conditional">
+                <param name="probmetab_select" type="select" label="Include ProbMetab results?">
+                    <option value="no" >no</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+                    <param type="data" name="probmetab_result" label="ProbMetab result" format="tsv,tabular"
+                    help="ProbMetab result from corresponding dataset"/>
                 </when>
         </conditional>
         

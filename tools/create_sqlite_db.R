@@ -59,7 +59,8 @@ option_list <- list(
   make_option("--db_name", type="character", default='lcms_data.sqlite'),
   make_option("--raw_rt_columns", action="store_true"),
   make_option("--metfrag_result", type="character"),
-  make_option("--sirius_csifingerid_result", type="character")
+  make_option("--sirius_csifingerid_result", type="character"),
+  make_option("--probmetab_result", type="character")
 )
 
 
@@ -131,13 +132,10 @@ if (!is.null(opt$eic)){
 
 con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
 
-add_extra_table <- function(name, pth){
+add_extra_table_elucidation <- function(name, pth){
 
-  print('CHECK1')
-  print(name)
-  print(pth)
   if (!is.null(pth)){
-     print('CHECK2')
+ 
      print(pth)
      df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
      # bug for repeating headers
@@ -156,8 +154,54 @@ add_extra_table <- function(name, pth){
 
 }
 
-add_extra_table('metfrag_results', opt$metfrag_result)
-add_extra_table('sirius_csifingerid_results', opt$sirius_csifingerid_result)
+
+add_probmetab <- function(pth){
+  if (!is.null(pth)){
+
+      df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
+      df$grp_id <- 1:nrow(df)
+      start <- T 
+      for (i in 1:nrow(df)){
+
+         x <- df[i,]
+
+
+         if(is.na(x$proba) | x$proba =='NA'){
+
+	   next
+         }
+  
+         mpc <- stringr::str_split(x$mpc, ';')
+         proba <- stringr::str_split(x$proba, ';') 
+
+         for (j in 1:length(mpc[[1]])){
+    
+            row <-  c(x$grp_id, x$propmz, mpc[[1]][j], proba[[1]][j])
+           
+            if (start){
+               df_out <- data.frame(t(row), stringsAsFactors=F)
+               start <- F
+            }else{
+               df_out <- data.frame(rbind(df_out, row), stringsAsFactors=F)
+            }
+            print(df_out)
+
+         } 
+          
+     }
+
+     colnames(df_out) <- c('grp_id', 'propmz', 'mpc', 'proba')
+     DBI::dbWriteTable(con, name='probmetab_results', value=df_out, row.names=FALSE)
+
+  }
+
+
+}
+
+add_extra_table_elucidation('metfrag_results', opt$metfrag_result)
+add_extra_table_elucidation('sirius_csifingerid_results', opt$sirius_csifingerid_result)
+add_probmetab(opt$probmetab_result)
+
 
 
 
