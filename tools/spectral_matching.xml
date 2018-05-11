@@ -1,4 +1,4 @@
-<tool id="spectral_matching" name="spectral_matching" version="0.0.19">
+<tool id="spectral_matching" name="spectral_matching" version="0.1.0">
     <description>
         Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
     </description>
@@ -8,6 +8,7 @@
     </macros>
 
     <expand macro="requirements">
+    <requirement type="package" >bioconductor-mspuritydata</requirement>
     </expand>
 
     
@@ -18,7 +19,12 @@
         spectral_matching.R
             --out_dir=.
             --target_db_pth=$target_db
-            --library_db_pth=$library_db
+
+            #if $custom_sqlite.custom_sqlite_select=="yes"
+                --library_db_pth=$library_db
+            #end if
+
+            
             --ra_thres_l=$advanced.ra_thres_l
             --ra_thres_t=$advanced.ra_thres_t
             --cores=\${GALAXY_SLOTS:-4}
@@ -49,13 +55,23 @@
 
         <param type="data" name="target_db" label="SQLite DB of target spectra" format="sqlite"
                help="SQLite DB of target spectra. (e.g. generated from frag4feature tool)"/>
-
-        <param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
-               help="SQLite database of library (reference) spectra,
-               As a temporary quick solution. The library can be used from this dropbox link
-               https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
-               A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz
-                "/>
+        
+        <conditional name="custom_sqlite">
+                <param name="custom_sqlite_select" type="select" label="Use custom library SQLite Database?">
+                    <option value="no" >no</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+        		<param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
+               		help="SQLite database of library (reference) spectra, if left blank will use the default 
+                              library from msPurityData
+			      https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
+                              A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz
+                		"/>
+                </when>
+       </conditional>
 
 
         <param name="pol" type="select" label="polarity" >
@@ -156,7 +172,6 @@
         <test>
 
             <param name="target_db" value="alldata.sqlite" />
-            <param name="library_db" value="library_spectra.db"/>
             <output name="xcms_hits" value="xcms_hits.tsv" />
             <output name="scan_hits" value="scan_hits.tsv" />
 
@@ -179,7 +194,8 @@ The data inputs are:
 * library_db: An SQLite database of library ms/ms spectra (e.g. massbank, lipidsearch)
 * target_db: An SQLite database of the target ms/ms spectra (e.g. the data collected for an experiment)
 
-The library spectra can be downloaded from:
+The library spectra defaults to an SQLite database containing massbank and lipidsearch spectra. This can be downloaded and
+updated with your own spectra. Downloaded from:
 
 * https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
 * (more official location) https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz

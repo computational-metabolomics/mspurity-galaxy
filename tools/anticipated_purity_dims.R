@@ -29,31 +29,41 @@ if (is.null(opt$dimspy)){
 
   df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
   filename = NA
+  mzml_file <- opt$mzML_file
 }else{
   indf <- read.table(opt$peaks_file,
                      header = TRUE, sep='\t', stringsAsFactors = FALSE)
-	
-  filename = colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
-  print(filename)
-  # check if the data file is mzML or RAW (can only use mzML currently) so
-  # we expect an mzML file of the same name in the same folder
-  indf$i <- indf[,colnames(indf)==filename]
-  indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
+  
 
-  filename = sub("raw", "mzML", filename, ignore.case = TRUE)
-  print(filename)
+  if (file.exists(opt$mzML_file)){
+     mzml_file <- opt$mzML_file
+  }else{
+     
+     filename = colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
+     print(filename)
+     # check if the data file is mzML or RAW (can only use mzML currently) so
+     # we expect an mzML file of the same name in the same folder
+     indf$i <- indf[,colnames(indf)==filename]
+     indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
+
+     filename = sub("raw", "mzML", filename, ignore.case = TRUE)
+     print(filename)
+
+     mzml_file <- file.path(opt$mzML_file, filename)
+
+  }	
+  
   df <- indf[4:nrow(indf),]
   if ('blank_flag' %in% colnames(df)){
-    df <- df[df$blank_flag==1,]
+      df <- df[df$blank_flag==1,]
   }
-
   colnames(df)[colnames(df)=='m.z'] <- 'mz'
 
   if ('nan' %in% df$mz){
     df[df$mz=='nan',]$mz <- NA
   }
   df$mz <- as.numeric(df$mz)
-  mzml_file <- file.path(opt$mzML_file, filename)	
+	
 
 
 

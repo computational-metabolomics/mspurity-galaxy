@@ -1,4 +1,5 @@
 library(msPurity)
+library(msPurityData)
 library(optparse)
 print(sessionInfo())
 
@@ -6,7 +7,7 @@ print(sessionInfo())
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--target_db_pth", type="character"),
-  make_option("--library_db_pth", type="character"),
+  make_option("--library_db_pth", type="character", default=NA),
   make_option("--ra_thres_l", default=0),
   make_option("--ra_thres_t", default=2),
   make_option("--cores", default=1),
