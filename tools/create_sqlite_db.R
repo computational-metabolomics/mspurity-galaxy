@@ -46,6 +46,7 @@ xset_pa_filename_fix <- function(opt, pa, xset){
 
 
 
+
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--pa", type="character"),
@@ -109,13 +110,13 @@ if(is.null(opt$grp_peaklist)){
 }
 
 
-print(pa@fileList)
-print(xset@filepaths)
+
 
 
 db_pth <- msPurity::create_database(pa, xset=xset, xsa=xa, out_dir=opt$out_dir,
                           grp_peaklist=grp_peaklist, db_name=opt$db_name)
 
+print(db_pth)
 
 if (!is.null(opt$eic)){
   if (is.null(opt$raw_rt_columns)){
@@ -123,6 +124,8 @@ if (!is.null(opt$eic)){
   }else{
     rtrawColumns <- TRUE
   }
+  # previous check should have matched filelists together
+  xset@filepaths <- unname(pa@fileList)
 
   # Saves the EICS into the previously created database
   px <- msPurity::purityX(xset, saveEIC = TRUE,

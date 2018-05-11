@@ -1,4 +1,4 @@
-<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.6">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.9">
     <description>
         Create SQLite database of an XCMS-CAMERA dataset
     </description>
@@ -68,8 +68,8 @@
                      specify which to use below" format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <expand macro="camera_xcms" />
 
-        <param type="data" name="pa" label="purityA object" format="rdata"
-               help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
+        <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
+               help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
 
 	<param name="eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
@@ -148,7 +148,9 @@
 	    <param name="camera_xcms" value="xcms"/>
             <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
             <param name="pa" value="frag4feature.rdata"/>
+           
             <output name="cpeakgroup_msms" value="cpeakgroup_msms.tsv" >
+            
                  
             </output>
         </test>
