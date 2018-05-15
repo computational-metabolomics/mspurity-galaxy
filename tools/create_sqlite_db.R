@@ -124,12 +124,15 @@ if (!is.null(opt$eic)){
   }else{
     rtrawColumns <- TRUE
   }
+  if (is.null(xset)){
+      xset <- xsa@xa
+  }
   # previous check should have matched filelists together
   xset@filepaths <- unname(pa@fileList)
 
   # Saves the EICS into the previously created database
   px <- msPurity::purityX(xset, saveEIC = TRUE,
-                           cores=opt$cores, sqlitePth=db_pth,
+                           cores=1, sqlitePth=db_pth,
                            rtrawColumns = rtrawColumns)
 }
 
@@ -146,7 +149,7 @@ add_extra_table_elucidation <- function(name, pth){
 
      # get peakid, an scan id
      df_ids <- stringr::str_split_fixed(df$UID, '-', 3)
-     colnames(df_ids) <- c('grp_id', 'file_id', 'peak_id')
+     colnames(df_ids) <- c('grp_id', 'file_id', 'pid')
      df <- cbind(df_ids, df)
      # export to database
      
