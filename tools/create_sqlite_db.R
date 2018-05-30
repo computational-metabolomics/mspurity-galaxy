@@ -125,7 +125,7 @@ if (!is.null(opt$eic)){
     rtrawColumns <- TRUE
   }
   if (is.null(xset)){
-      xset <- xa@xset
+      xset <- xa@xcmsSet
   }
   # previous check should have matched filelists together
   xset@filepaths <- unname(pa@fileList)
