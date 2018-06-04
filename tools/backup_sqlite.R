@@ -138,13 +138,63 @@ if (!is.null(opt$eic)){
 
 con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
 
-add_extra_table_elucidation <- function(name, pth, db_con){
+add_extra_table_elucidation <- function(name, pth, db_con, filter_Score=NA, filter_Rank=NA){
     if (is.null(pth)){
         return(0)
-    } 
+    }
+    chunk=50
+    c = 1
+    header_s = FALSE
+    con = file(pth, "r")
+     while ( TRUE ) {
+      line = readLines(con, n = 1)
+      print(line)
+      if ( length(line) == 0 ) {
+       break
+      }
+      line_v <- unlist(strsplit(line, split="\t"))
+      if (!header_s){ 
+       header = line_v
+       header_s = TRUE
+       df <- data.frame(ncol=length(header), nrow=0)
+       print(header)
+       colnames(df) <- header
+       df_blank <- df
+       print('CHECK')
+       write_to_table(df, db_con, name, FALSE, NA, NA)
+      }
+      print(line_v)
+      
+       if (!is.na(filter_Score)){
+           if (line_v[header=='Score']<filter_Score){
+		next
+       	   }      
+       }
+        if (!is.na(filter_Rank)){
+      
+           if (line_v[header=='Rank']>filter_Rank){
+		next
+       	   } 
+        }
+    
+      df <- rbind(df, line_v)
+
+      
+
+      if (c>chunk){
+        write_to_table(df, db_con, name, TRUE, filter_Score, filter_Rank)
+        c=0
+        df <- df_blanks
+        
+      }
+      c = c+1
+
+      print(line)
+    }
+    
 
     
-    DBI::dbWriteTable(conn=db_con, name=name, value=pth, sep='\t', header=T)
+    close(con)
 
 
 }
@@ -164,11 +214,11 @@ write_to_table <- function(df, db_con, name, append){
         DBI::dbWriteTable(db_con, name=name, value=df, row.names=FALSE, append=append)
 }
 
-add_probmetab <- function(pth, xset, con){
+add_probmetab <- function(pth, con){
   if (!is.null(pth)){
 
       df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
-      df$grp_id <- match(df$name, xcms::groupnames(xset))
+      df$grp_id <- 1:nrow(df)
       start <- T 
       for (i in 1:nrow(df)){
 
@@ -207,19 +257,12 @@ add_probmetab <- function(pth, xset, con){
 
 }
 
-add_extra_table_elucidation('metfrag_results', opt$metfrag_result, con)
-add_extra_table_elucidation('sirius_csifingerid_results', opt$sirius_csifingerid_result, con)
+add_extra_table_elucidation('metfrag_results', opt$metfrag_result, con, filter_Score=0.6, filter_Rank=NA)
+add_extra_table_elucidation('sirius_csifingerid_results', opt$sirius_csifingerid_result, con, filter_Score=NA, filter_Rank=5)
+add_probmetab(opt$probmetab_result, con)
 
 
-if (is.null(xset)){
-  DBI::dbWriteTable(con, name='xset_classes', value=xa@xcmsSet@phenoData, row.names=TRUE)
-  add_probmetab(opt$probmetab_result, xa@xcmsSet,  con)
-}else{
 
-  DBI::dbWriteTable(con, name='xset_classes', value=xset@phenoData, row.names=TRUE)
-  add_probmetab(opt$probmetab_result, xset,  con)
-
-}
 
 cmd <- paste('SELECT cpg.grpid, cpg.mz, cpg.mzmin, cpg.mzmax, cpg.rt, cpg.rtmin, cpg.rtmax, c_peaks.cid, ',
              'c_peaks.mzmin AS c_peak_mzmin, c_peaks.mzmax AS c_peak_mzmax, ',

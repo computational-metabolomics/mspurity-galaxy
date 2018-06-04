@@ -122,7 +122,6 @@ if(is.null(opt$grp_peaklist)){
     grp_peaklist = opt$grp_peaklist
 }
 
-print('heck')
 print(pa@fileList)
 print(names(pa@fileList))
 print(xset@filepaths)
