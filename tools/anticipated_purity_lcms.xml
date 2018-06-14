@@ -5,10 +5,7 @@
         <import>macros.xml</import>
     </macros>
 
-
-
     <expand macro="requirements" />
-
 
     <stdio>
         <exit_code range="1:" />

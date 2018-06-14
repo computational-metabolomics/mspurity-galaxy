@@ -1,0 +1,26 @@
+<tool id="msp_split" name="msp_split" version="0.0.1">
+    <description>Slit MSP file into n number of files</description>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="python"><![CDATA[  msp_split.py -i $in_msp -o 'spec_out' -n $n  ]]></command>
+
+    <inputs>
+        <param name="in_msp" type="data" label="Input MSP file" format="txt,msp" help='MSP file (must have NAME: as the first element in each spectra entry'/>
+        <param name="n" type="integer" label="Number of new files" value="2"
+                    help="Number of new MSP files to split the original MSP file into"/>
+
+    </inputs>
+    <outputs>
+       <collection name="multiple" type="list" label="${tool.name} on ${on_string}: multi msp files">
+            <discover_datasets pattern="__designation_and_ext__" ext='msp' directory="spec_out" />
+       </collection>
+    </outputs>
+    <tests>
+
+    </tests>
+    <help><![CDATA[
+
+
+    ]]></help>
+</tool>

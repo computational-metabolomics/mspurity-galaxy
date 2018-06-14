@@ -7,7 +7,7 @@ print('CREATING DATABASE')
 
 
 xset_pa_filename_fix <- function(opt, pa, xset){
-
+  print(xset@filepaths)
 
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
     # NOTE: Relies on the pa@fileList having the names of files given as 'names' of the variables 
@@ -40,6 +40,9 @@ xset_pa_filename_fix <- function(opt, pa, xset){
     }
   }
 
+
+print(xset@phenoData)
+print(xset@filepaths)
 
   return(list(pa, xset))
 }
@@ -76,6 +79,7 @@ loadRData <- function(rdata_path, name){
 
 print(paste('pa', opt$pa))
 print(opt$xset)
+
 print(opt$xcms_camera_option)
 # Requires
 pa <- loadRData(opt$pa, 'pa')
@@ -108,8 +112,6 @@ if(is.null(opt$grp_peaklist)){
 }else{
   grp_peaklist = opt$grp_peaklist
 }
-
-
 
 
 
