@@ -31,7 +31,10 @@
 
     </tests>
     <help><![CDATA[
-
+=============================================================
+msp split
+=============================================================
+Split a MSP file into n MSP files. Where the the spectra will be divided between n files.
 
     ]]></help>
     
