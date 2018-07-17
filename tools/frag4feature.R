@@ -66,6 +66,8 @@ option_list <- list(
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
 
+print(opt)
+
 loadRData <- function(rdata_path, name){
 #loads an RData file, and returns the named xset object if it is there
     load(rdata_path)
@@ -116,13 +118,16 @@ if(is.null(opt$createDB)){
 }
 
 if(is.null(opt$use_group)){
-    # if are only aligning to the group not eah file we do not need to align the files between the xset and pa object
-    fix <- xset_pa_filename_fix(opt, pa, xset=NULL)
-    pa <- fix[[1]]
-}else{
     fix <- xset_pa_filename_fix(opt, pa, xset)
     pa <- fix[[1]]
     xset <- fix[[2]]
+    use_group=FALSE
+}else{
+    # if are only aligning to the group not eah file we do not need to align the files between the xset and pa object
+    print('use_group')
+    fix <- xset_pa_filename_fix(opt, pa)
+    pa <- fix[[1]]
+    use_group=TRUE
 }
 
 
@@ -140,7 +145,7 @@ saveRDS(pa, 'test_pa.rds')
 pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
                             intense=opt$mostIntense, convert2RawRT=convert2RawRT,
                             db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist,
-                             create_db=createDB)
+                             create_db=createDB, use_group=use_group)
 
 save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
 

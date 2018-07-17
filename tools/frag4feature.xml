@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.19">
+<tool id="frag4feature" name="frag4feature" version="0.0.20">
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
@@ -34,7 +34,10 @@
                 #end for
                 '
             #end if
-            --use_group=$use_group
+            #if $use_group
+                --use_group
+            #end if
+
             --ppm=$ppm_f4f
             --plim=$plim_f4f
             #if $mostIntense_f4f
@@ -43,7 +46,7 @@
             #if $convert2RawRT_f4f
                 --convert2RawRT
             #end if
- 	    #if $createDB
+ 	        #if $createDB
                 --createDB
             #end if
 

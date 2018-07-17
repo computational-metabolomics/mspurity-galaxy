@@ -1,4 +1,4 @@
-<tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.8">
+<tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.9">
     <description>
         Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
     </description>
