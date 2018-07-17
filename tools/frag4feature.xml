@@ -34,6 +34,7 @@
                 #end for
                 '
             #end if
+            --use_group=$use_group
             --ppm=$ppm_f4f
             --plim=$plim_f4f
             #if $mostIntense_f4f
@@ -60,6 +61,10 @@
 
         <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
          use most intense peak within isolation window for precursor?"/>
+
+        <param name="use_group" type="boolean" checked="false" label="For matching fragmentation to a feature,
+         use the grouped feature range" help="If the MS1 and MS2 are in different files this is option has to be set to true"
+         />
 
         <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
                help="If retention time correction has been used in XCMS set this to yes"/>

@@ -3,7 +3,7 @@ library(msPurity)
 library(xcms)
 print(sessionInfo())
 
-xset_pa_filename_fix <- function(opt, pa, xset){
+xset_pa_filename_fix <- function(opt, pa, xset=NULL){
 
 
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
@@ -26,19 +26,22 @@ xset_pa_filename_fix <- function(opt, pa, xset){
     pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
     pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
   }
- print(pa@fileList)
- print(xset@filepaths)
+  print(pa@fileList)
 
- if(!all(basename(pa@fileList)==basename(xset@filepaths))){
-    if(!all(names(pa@fileList)==basename(xset@filepaths))){
-       print('FILELISTS DO NOT MATCH')
-       message('FILELISTS DO NOT MATCH')
-       quit(status = 1)
-    }else{
-      xset@filepaths <- unname(pa@fileList)
-    }
-  }
+  if(!is.null(xset)){
 
+    print(xset@filepaths)
+
+    if(!all(basename(pa@fileList)==basename(xset@filepaths))){
+       if(!all(names(pa@fileList)==basename(xset@filepaths))){
+          print('FILELISTS DO NOT MATCH')
+          message('FILELISTS DO NOT MATCH')
+          quit(status = 1)
+       }else{
+          xset@filepaths <- unname(pa@fileList)
+       }
+   }
+ }
 
   return(list(pa, xset))
 }
@@ -56,7 +59,8 @@ option_list <- list(
   make_option("--cores", default=4),
   make_option("--mzML_files", type="character"),
   make_option("--galaxy_names", type="character"),
-  make_option("--grp_peaklist", type="character")
+  make_option("--grp_peaklist", type="character"),
+  make_option("--use_group", action="store_true")
 )
 
 # store options
@@ -111,10 +115,16 @@ if(is.null(opt$createDB)){
     createDB = TRUE
 }
 
+if(is.null(opt$use_group)){
+    # if are only aligning to the group not eah file we do not need to align the files between the xset and pa object
+    fix <- xset_pa_filename_fix(opt, pa, xset=NULL)
+    pa <- fix[[1]]
+}else{
+    fix <- xset_pa_filename_fix(opt, pa, xset)
+    pa <- fix[[1]]
+    xset <- fix[[2]]
+}
 
-fix <- xset_pa_filename_fix(opt, pa, xset)
-pa <- fix[[1]]
-xset <- fix[[2]]
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
