@@ -1,5 +1,9 @@
 <tool id="msp_split" name="msp_split" version="0.0.1">
     <description>Slit MSP file into n number of files</description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+        
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -27,7 +31,13 @@
 
     </tests>
     <help><![CDATA[
-
+=============================================================
+msp split
+=============================================================
+Split a MSP file into n MSP files. Where the the spectra will be divided between n files.
 
     ]]></help>
+    
+<expand macro="citations" />
+    
 </tool>
