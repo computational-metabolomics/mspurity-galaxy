@@ -2,8 +2,7 @@
 <macros>
     <xml name="requirements">
         <requirements>
-           <requirement type="package" version="1.5.4" >bioconductor-mspurity</requirement>
-           <requirement type="package" version="1.4.4" >r-optparse</requirement>
+           <requirement type="package" version="1.7.7" >bioconductor-mspurity</requirement>
             <yield />
         </requirements>
 

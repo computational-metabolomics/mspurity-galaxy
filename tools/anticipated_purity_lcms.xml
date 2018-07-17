@@ -1,14 +1,11 @@
-<tool id="anticipated_purity_lcms" name="anticipated_purity_lcms" version="0.0.6">
+<tool id="anticipated_purity_lcms" name="anticipated_purity_lcms" version="0.0.7">
         <description>Calculate the anticipated precursor ion purity from a LC-MS XCMS dataset.
     </description>
     <macros>
         <import>macros.xml</import>
     </macros>
 
-
-
     <expand macro="requirements" />
-
 
     <stdio>
         <exit_code range="1:" />
