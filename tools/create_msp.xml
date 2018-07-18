@@ -1,4 +1,4 @@
-<tool id="create_msp" name="Create MSP Files from msPurity" version="0.1.2">
+<tool id="create_msp" name="Create MSP Files from msPurity" version="0.1.3">
     <description> </description>
      <macros>
         <import>macros.xml</import>

@@ -21,11 +21,11 @@ puritydf <- pa@puritydf
 
 
 
+#grped_df$fileid <- sapply(grped_df$filename, function(x) which(basename(pa@fileList)==x))
+#puritydf$fileid <- sapply(puritydf$filename, function(x) which(basename(pa@fileList)==x))
 
 
-grped_df$fileid <- sapply(grped_df$filename, function(x) which(basename(pa@fileList)==x))
 
-puritydf$fileid <- sapply(puritydf$filename, function(x) which(basename(pa@fileList)==x))
 
 selfrag <- as.numeric(unique(grped_df$grpid)) 
 
@@ -66,9 +66,15 @@ for(i in selfrag){
 
                 specj <- spec[[jj]]
 
-                grpdj <- grpd[jj,]
 
-                name = paste(i, grpdj$sample, grpdj$pid, sep='-')
+
+                grpdj <- grpd[jj,]
+                if ('sample' %in% colnames(grpd)){
+                    fileid = grpdj$sample
+                }else{
+                    fileid = grpdj$fileid
+                }
+                name = paste(i, fileid, grpdj$pid, sep='-')
 
                 write.msp(name,grpdj$precurMtchMZ,"",specj,of)
             }
@@ -82,7 +88,13 @@ for(i in selfrag){
                 idx <- which(prec_int==max(prec_int))
 
                 grpd <- grpd[idx,]
-                name = paste(i, grpd$sample, grpd$pid, sep='-')
+                if ('sample' %in% colnames(grpd)){
+                    fileid = grpd$sample
+                }else{
+                    fileid = grpd$fileid
+                }
+
+                name = paste(i, fileid, grpd$pid, sep='-')
                 write.msp(name,grpd$precurMtchMZ,"",specj[[idx]], of)
             }
 
@@ -175,7 +187,12 @@ for(i in selfrag){
         spec <- spec[[1]]
 
         grpd <- grped_df[j,]
-        name = paste(i, grpd$sample, grpd$pid, sep='-')
+        if ('sample' %in% colnames(grpd)){
+            fileid = grpd$sample
+        }else{
+            fileid = grpd$fileid
+        }
+        name = paste(i, fileid, grpd$pid, sep='-')
         write.msp(name,grpd$precurMtchMZ,"",spec,of)
     }
 }
