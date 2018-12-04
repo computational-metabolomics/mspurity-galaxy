@@ -71,12 +71,12 @@
         <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
 
-	<param name="eic" type="boolean" label="Include EIC data?"
+      	<param name="eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
                      the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>
 	
-	<param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
+	      <param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
                help="Only use if the track_rt_raw tool has been used"/>
 
 
