@@ -5,7 +5,9 @@
     </macros>
     <expand macro="requirements">
     </expand>
-
+     <stdio>
+        <exit_code range="1:" />
+    </stdio>
 
     <command interpreter="Rscript" ><![CDATA[
 	  create_msp.R
@@ -13,30 +15,32 @@
     --method "$method"
     
     #if $metadata_cond.metadata_select == "true"
-	    --metadata "$metadata"
-	    --metadata_cols "$metadata_cols"
-	    --adduct_split "$adduct_split"
+	    --metadata "$metadata_cond.metadata"
+	    --metadata_cols "$metadata_cond.metadata_cols"
+	    --adduct_split "$metadata_cond.adduct_split"
 	  #end if
 	  
 	  #if $xcms_group_cond.xcms_group_select == "true"
-	    --xcms_groupids "$xcms_groupids"
+	    --xcms_groupids "$xcms_group_cond.xcms_groupids"
 	  #end if
+	  
+	  --out_dir '.'
 	  
     ]]></command>
     <inputs>
         <param name="rdata_input" type="data" format="rdata" label="msPurity purityA dataset" argument="--purity_dataset"
         help="RData file containing the purityA object following frag4feature and/or averageFragmentation"/>
-        <param name="method" type="select" label="Spectra use mode (if precursor was fragmented in >1 scans)" 
+        <param name="method" type="select" label="How to choose fragmentation spectra (if precursor was fragmented in >1 scans per XCMS group feature)" 
         help="'Average all' will use the averaged MS/MS spectra of the XCMS grouped feature, ignoring inter and intra file relationships,
              'Average' (intra)' will use the intra file (within file) averaged MS/MS spectra of the XCMS grouped feature,
              'Average (inter)' will use the inter file (across file) MS/MS averaged spectra,
              'All scans' will export all matching MS/MS spectra to XCMS grouped features,  
              'Max intensity' will choose the most MS/MS spectra with the most intense precursor ion for each XCMS grouped feature"  
              argument="--method">
-            <option value="av_all" selected="true" >Average (all)</option>
+            <option value="av_all" selected="true">Average (all)</option>
             <option value="av_intra">Average (intra)</option>
             <option value="av_inter">Average (inter)</option>
-            <option value="all_scans">All scans</option>
+            <option value="all">All scans</option>
             <option value="max" >Max intensity</option>
         </param>
      
@@ -70,15 +74,48 @@
   
     </inputs>
     <outputs>
-        <data name="output" format="txt" label="log" />
-        <data name="msp_out" format="msp" from_work_dir="outfile.msp" label="${rdata_input.name} MSP file"/>
+        <data name="lcmsms_spectra" format="msp" from_work_dir="lcmsms_spectra.msp" label="${tool.name} on ${on_string}: msp"/>
     </outputs>
     <tests>
         <test>
-            <param name="mode" value="all"/>
-            <param name="purity" value="lightpurity.RData"/>
-            <output name="msp_out" file="input.msp"/>
+            <param name="method" value="all"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <output name="msp_out" file="lcmsms_spectra_scans_all.msp"/>
         </test>
+        <test>
+            <param name="mode" value="av_all"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <output name="msp_out" file="lcmsms_spectra_av_all.msp"/>
+        </test>
+        <test>
+            <param name="mode" value="av_all"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <output name="msp_out" file="lcmsms_spectra_av_all_and_all_xcms.msp"/>
+        </test>
+        <test>
+            <param name="mode" value="av_intra"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <output name="msp_out" file="lcmsms_spectra_av_intra.msp"/>
+        </test>
+        <test>
+            <param name="mode" value="av_inter"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <output name="msp_out" file="lcmsms_spectra_av_inter.msp"/>
+        </test>
+        <test>
+            <param name="mode" value="max"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <output name="msp_out" file="lcmsms_spectra_max.msp"/>
+        </test>
+
+
+
+
       
     </tests>
 	<help><![CDATA[
@@ -98,7 +135,7 @@ Developers and contributors
 ---------------------------
 
 - **Jordi Capellades (j.capellades.to@gmail.com) - Universitat Rovira i Virgili (SP)**
-- **Andris Jankevics () - University of Birmingham (UK)**
+- **Andris Jankevics (a.jankevics@bham.ac.uk) - University of Birmingham (UK)**
 - **Thomas N. Lawson (t.n.lawson@bham.ac.uk) - University of Birmingham (UK)**
 - **Ralf Weber (r.j.weber@bham.ac.uk) - University of Birmingham (UK)**
 
