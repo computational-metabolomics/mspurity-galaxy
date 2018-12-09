@@ -8,7 +8,7 @@ option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--pa", type="character"),
   
-  make_option("--av_level"),
+  make_option("--av_level", default="intra", type="character"),
 
   make_option("--minfrac", default=0.5),
   make_option("--minnum", default=1),
@@ -18,18 +18,17 @@ option_list <- list(
   
   make_option("--ra", default=0),
   
-  make_option("--snr_pre", default=0, 
+  make_option("--snr_pre", default=0), 
   make_option("--ra_pre", default=0), 
   
-  make_option("--av", default='median', type="character"),
+  make_option("--av", default="median", type="character"),
   make_option("--sum_i", action="store_true"),
   make_option("--plim", default=0.5), 
   make_option("--remove_peaks", action="store_true"),
   make_option("--cores", default=1)
 )
 
-# store options
-opt<- parse_args(OptionParser(option_list=option_list))
+opt <- parse_args(OptionParser(option_list=option_list))
 
 print(opt)
 
@@ -44,8 +43,6 @@ pa <- loadRData(opt$pa, 'pa')
 
 pa@cores <- opt$cores
 
-print(pa@fileList)
-
 if(is.null(opt$remove_peaks)){
   remove_peaks = FALSE
 }else{
@@ -58,53 +55,50 @@ if(is.null(opt$sum_i)){
   sum_i = TRUE
 }
 
-print(pa@fileList)
-print(names(pa@fileList))
-saveRDS(pa, 'test_pa.rds')
 if(opt$av_level=="intra"){
 
   pa <- msPurity::averageIntraFragSpectra(pa, 
-                                      minfrac=ops$minfrac,
-                                      minnum=ops$minnum,
-                                      ppm=ops$ppm,
-                                      snr=ops$snr,
-                                      ra=ops$ra,
-                                      snr_pre=ops$snr_pre,
-                                      ra_pre=ops$ra_pre,
-                                      av=ops$av,
+                                      minfrac=opt$minfrac,
+                                      minnum=opt$minnum,
+                                      ppm=opt$ppm,
+                                      snr=opt$snr,
+                                      ra=opt$ra,
+                                      snr_pre=opt$snr_pre,
+                                      ra_pre=opt$ra_pre,
+                                      av=opt$av,
                                       sum_i=sum_i,
-                                      plim=ops$plim,
+                                      plim=opt$plim,
                                       remove_peaks=remove_peaks,
-                                      cores=ops$cores)
+                                      cores=opt$cores)
 
 } else if(opt$av_level=="inter"){
 
   pa <- msPurity::averageInterFragSpectra(pa, 
-                                      minfrac=ops$minfrac,
-                                      minnum=ops$minnum,
-                                      ppm=ops$ppm,
-                                      snr=ops$snr,
-                                      ra=ops$ra,
-                                      av=ops$av,
+                                      minfrac=opt$minfrac,
+                                      minnum=opt$minnum,
+                                      ppm=opt$ppm,
+                                      snr=opt$snr,
+                                      ra=opt$ra,
+                                      av=opt$av,
                                       sum_i=sum_i,
-                                      plim=ops$plim,
+                                      plim=opt$plim,
                                       remove_peaks=remove_peaks,
-                                      cores=ops$cores)
+                                      cores=opt$cores)
 } else if(opt$av_level=="all"){
 
   pa <- msPurity::averageAllFragSpectra(pa, 
-                                        minfrac=ops$minfrac,
-                                        minnum=ops$minnum,
-                                        ppm=ops$ppm,
-                                        snr=ops$snr,
-                                        ra=ops$ra,
-                                        snr_pre=ops$snr_pre,
-                                        ra_pre=ops$ra_pre,
-                                        av=ops$av,
+                                        minfrac=opt$minfrac,
+                                        minnum=opt$minnum,
+                                        ppm=opt$ppm,
+                                        snr=opt$snr,
+                                        ra=opt$ra,
+                                        snr_pre=opt$snr_pre,
+                                        ra_pre=opt$ra_pre,
+                                        av=opt$av,
                                         sum_i=sum_i,
-                                        plim=ops$plim,
+                                        plim=opt$plim,
                                         remove_peaks=remove_peaks,
-                                        cores=ops$cores)
+                                        cores=opt$cores)
 
 }
 
