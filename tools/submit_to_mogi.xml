@@ -3,7 +3,6 @@
         Submit Galaxy datasets to MOGI django database
     </description>
 
-
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -11,7 +10,6 @@
     <expand macro="requirements">
       
     </expand>
-
 
  <stdio>
         <exit_code range="1:" />
@@ -39,25 +37,19 @@
   
          <param type="text" name="galaxy_url" label="Galaxy URL"
                help="URL of the Galaxy site (not required, but useful for a reference)" />
-
-
-	
     </inputs>
     <outputs>
         <data name="curl_out" format="json" label="${tool.name} on ${on_string}: submit to MOGI (json if successful)"
               from_work_dir="curl_out.txt" />
-
     </outputs>
     <tests>
         <test>
-	    
             <param name="mogi_data" value="alldata.sqlite"/>
             <param name="mogi_url" value="https://www.djangoproject.com/"/>
-           
             <output name="curl_out" >
-        	    <assert_contents>
-		       <has_text_matching expression=".*django.*" />
-		    </assert_contents>
+                <assert_contents>
+                    <has_text_matching expression=".*django.*" />
+                </assert_contents>
             </output>
         </test>
     </tests>

@@ -5,10 +5,10 @@ print(sessionInfo())
 
 
 option_list <- list(
-  make_option(c("-o", "--out_dir"), type="character"),
+  make_option(c("-o", "--out"), type="character"),
   make_option("--pa", type="character"),
   
-  make_option("--av_level", default="intra", type="character"),
+  make_option("--av_level", type="character"),
 
   make_option("--minfrac", default=0.5),
   make_option("--minnum", default=1),
@@ -56,7 +56,7 @@ if(is.null(opt$sum_i)){
 }
 
 if(opt$av_level=="intra"){
-
+  
   pa <- msPurity::averageIntraFragSpectra(pa, 
                                       minfrac=opt$minfrac,
                                       minnum=opt$minnum,
@@ -102,5 +102,6 @@ if(opt$av_level=="intra"){
 
 }
 
-save(pa, file=file.path(opt$out_dir, paste('average_', opt$av_level, '_fragementation_spectra.RData', sep=""))
+print(pa)
+save(pa, file=opt$out)
 

@@ -12,23 +12,21 @@
     <inputs>
         <param name="in_msp" type="data" label="Input MSP file" format="txt,msp" help='MSP file (must have NAME: as the first element in each spectra entry'/>
         <param name="n" type="integer" label="Number of new files" value="2"
-                    help="Number of new MSP files to split the original MSP file into"/>
-
+               help="Number of new MSP files to split the original MSP file into"/>
     </inputs>
     <outputs>
-       <collection name="multiple" type="list" label="${tool.name} on ${on_string}: multi msp files">
+        <collection name="multiple" type="list" label="${tool.name} on ${on_string}: multi msp files">
             <discover_datasets pattern="__designation_and_ext__" ext='msp' directory="spec_out" format='msp' />
-       </collection>
+        </collection>
     </outputs>
     <tests>
-       <test>
+        <test>
             <param name="in_msp" value="input.msp"/>
             <output_collection name="multiple" type="list">
                 <element name="file1" file="file01.msp" ftype="msp"/>
                 <element name="file2" file="file02.msp" ftype="msp"/>
             </output_collection>
-      </test>
-
+        </test>
     </tests>
     <help><![CDATA[
 =============================================================

@@ -109,11 +109,8 @@
             <param name="mzML_data|source" value="FULL_SCAN.mzML" />
             <param name="remove_NAs" value="True" />
             <param name="dimspy_usage|usage" value="dimspy" />
-
             <param name="peaks_file" value="dimspy_peakmatrix.tsv" />
-
-            <output name="anticipated_purity_dims" value="anticipated_purity_dims.tsv">
-            </output>
+            <output name="anticipated_purity_dims" value="anticipated_purity_dims.tsv" />
         </test>
     </tests>
 
