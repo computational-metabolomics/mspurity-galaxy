@@ -146,13 +146,9 @@
                 </param>
             </conditional>
 	    <param name="camera_xcms" value="xcms"/>
-            <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
-            <param name="pa" value="frag4feature.rdata"/>
-           
-            <output name="cpeakgroup_msms" value="cpeakgroup_msms.tsv" >
-            
-                 
-            </output>
+            <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.RData"/>
+            <param name="pa" value="frag4feature.RData"/>
+            <output name="cpeakgroup_msms" value="cpeakgroup_msms.tsv"/>
         </test>
     </tests>
     

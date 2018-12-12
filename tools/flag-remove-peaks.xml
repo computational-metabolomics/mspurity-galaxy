@@ -122,14 +122,14 @@
             <when value="update">
                 <param name="egauss_thr" type="text" label="egauss_thr" value="NA"
                     help="Threshold for filtering out non gaussian shaped peaks. Note this only works
-                            if the 'verbose columns' and 'fit gauss' was used with xcms (--egauss_thr)"/>
+                          if the 'verbose columns' and 'fit gauss' was used with xcms (--egauss_thr)"/>
                 <param name="temp_save" type="boolean" label="temp_save" checked="false" truevalue="--temp_save" falsevalue=""
                     help="Assign True if files for each step saved (for testing purposes) (--temp_save)"/>
                 <param name="polarity" type="select" label="polarity"
                     help="polarity (just used for naming purpose when files are saved) (--polarity)">
-                        <option value="positive">Positive</option>
-                        <option value="negative" >Negative</option>
-                        <option value="NA" selected="true">NA</option>
+                    <option value="positive">Positive</option>
+                    <option value="negative" >Negative</option>
+                    <option value="NA" selected="true">NA</option>
                 </param>
                 <param name="grp_rm_ids" type="text" label="grp_rm_ids" value="NA"
                 help="comma seperated list of grouped_xcms peak ids to remove (corresponds to the row from xcms::group output)
@@ -137,25 +137,24 @@
                  (--grp_rm_ids)"/>
                 <param name="xset_name" type="text" label="xset_name" value="xset"
                     help="Name of the xcmsSet object within the RData file (--xset_name)"/>
-	      </when>
-	</conditional>
-	    	<conditional name="choose_samp">
-            		<param name="choose_samp" type="select" label="Samplelist">
-            		    <option value="yes" >Use samplelist</option>
-            		    <option value="" selected="true">Don't use samplelist</option>
-            		</param>
-            		<when value="">
-            		</when>
-            		<when value="yes">
-            		    <param name="samplelist" type="data" label="samplelist" format="tsv,tabular"
-            		        help="A samplelist can be provided to find an appriopiate blank class (requires a column 'blank' where 'yes' indicates
-            	              the class should be used as the blank (--samplelist)"/>
+            </when>
+        </conditional>
+        <conditional name="choose_samp">
+            <param name="choose_samp" type="select" label="Samplelist">
+                        <option value="yes" >Use samplelist</option>
+                        <option value="" selected="true">Don't use samplelist</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="yes">
+                <param name="samplelist" type="data" label="samplelist" format="tsv,tabular"
+                       help="A samplelist can be provided to find an appriopiate blank class (requires a column 'blank' where 'yes' indicates the class should be used as the blank (--samplelist)"/>
 
-            		</when>
-	        </conditional>
+            </when>
+        </conditional>
     </inputs>
     <outputs>
-       <data name="peaklist_filtered" format="tsv" label="${tool.name} on ${on_string}: peaklist_filtered (tsv)"
+        <data name="peaklist_filtered" format="tsv" label="${tool.name} on ${on_string}: peaklist_filtered (tsv)"
               from_work_dir="peaklist_filtered.tsv" />
         <data name="removed_peaks" format="tsv" label="${tool.name} on ${on_string}: removed_peaks (tsv)"
               from_work_dir="removed_peaks.tsv" />
@@ -176,10 +175,6 @@
                 <param name="peak_removal"  value="remove"/>
             </conditional>
             <output name="peaklist_filtered" file="peaklist_filtered.tsv"/>
-
-
-
-
         </test>
     </tests>
     <help><![CDATA[

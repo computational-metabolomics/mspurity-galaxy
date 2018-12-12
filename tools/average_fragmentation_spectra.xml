@@ -1,0 +1,147 @@
+<tool id="average_x_frag_spectra" name="Average and filter fragmentation spectra" version="0.0.1">
+    <description>
+        (Inter, Intra or All)
+    </description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements">
+    </expand>
+
+ <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        average_fragmentation_spectra.R
+            --out="$average_fragmentation_spectra_rdata"
+            --pa="$pa"
+            --av_level $av.level
+            --cores=\${GALAXY_SLOTS:-4}
+
+            --minfrac=$minfrac
+            --minnum=$minnum
+            --ppm=$ppm
+
+            #if $av.level == "intra"
+                --snr_pre=$av.snr_pre
+                --ra_pre=$av.ra_pre
+                --snr=$av.snr
+                --ra=$av.ra
+            #elif $av.level == "intra"
+                --snr_pre=$av.snr_pre
+                --ra_pre=$av.ra_pre
+            #elif $av.level == "intra"
+                --snr_pre=$av.snr_pre
+                --ra_pre=$av.ra_pre
+                --snr=$av.snr
+                --ra=$av.ra
+	    #end if
+
+            #if $intensity_method == "mean"
+                --av=$intensity_method
+            #elif $intensity_method == "median"
+                --av=$intensity_method
+            #elif $intensity_method == "sum"
+                --sum_i 
+            #end if
+
+            --plim=$plim
+
+            #if $remove_peaks
+                --remove_peaks
+            #end if
+
+    ]]></command>
+    <inputs>
+        <param name="pa" type="data" label="purityA object" format="rdata"
+               help="purityA object saved as 'pa' in a RData file (output from frag4feature tool)"/>
+        <conditional name="av">
+            <param name="level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
+                <option value="intra" selected="true">within a MS data file</option>
+                <option value="inter">accross MS data files</option>
+                <option value="all">within and accross MS data files (ignoring intra and inter relationships)</option>
+            </param>
+            <when value="intra">
+                <param name="snr_pre" type="float" value="0.0" label="Signal-to-noise threshold prior to averaging or summing" help="" />
+                <param name="ra_pre" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold prior to averaging or summing" help="" />
+                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
+                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
+            </when>
+            <when value="inter">
+                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
+                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
+            </when>
+            <when value="all">
+                <param name="snr_pre" type="float" value="0.0" label="Signal-to-noise threshold prior to averaging or summing" help="" />
+                <param name="ra_pre" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold prior to averaging or summing" help="" />
+                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
+                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
+            </when>
+        </conditional>
+        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of scans a fragment peak has to be present in." help="" />
+
+        <param name="minnum" type="float" value="1.0" label="Minimum number of fragmentation scans for a fragmentation event (precursor)" help="" />
+
+        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
+        <param name="intensity_method" type="select" label="Function to represent the intensity" help="" >
+            <option value="median" selected="true">median</option>
+            <option value="mean">mean</option>
+            <option value="sum">sum</option>
+        </param>
+        <param name="plim" type="float" value="0.8" label="Minimum purity precursor threshold" help="Minium purity of a precursor to be included" />
+        <param name="remove_peaks" type="boolean" checked="true" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
+               help="" />
+    </inputs>
+    <outputs>
+        <data name="average_fragmentation_spectra_rdata" format="rdata" label="${tool.name} (${av.level}) on ${on_string}: RData" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="av|level" value="intra" />
+            <param name="pa" value="frag4feature.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_intra_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+        </test>
+        <test>
+            <param name="av|level" value="inter" />
+            <param name="pa" value="average_intra_fragmentation_spectra.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_inter_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+        </test>
+        <test>
+            <param name="av|level" value="all" />
+            <param name="pa" value="frag4feature.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_all_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+        </test>
+    </tests>
+    
+    <help><![CDATA[
+=============================================================
+Averag Fragmentation Spectra
+=============================================================
+-----------
+Description
+-----------
+
+Tool to . 
+
+
+The data inputs are:
+
+* 
+
+See Bioconductor documentation for more details, functions:
+msPurity::averageIntraFragSpectra()
+msPurity::averageInterFragSpectra()
+msPurity::averageAllFragSpectra()
+
+-----------
+Outputs
+-----------
+* average_x_fragmentation_spectra_rdata
+
+    ]]></help>
+
+<expand macro="citations" />
+
+</tool>
