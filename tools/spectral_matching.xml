@@ -19,8 +19,8 @@
             --out_dir=.
             --target_db_pth=$target_db
 
-            #if $custom_sqlite.custom_sqlite_select=="yes"
-                --library_db_pth=$library_db
+            #if $custom_sqlite.custom_sqlite_select:
+                --library_db_pth=$custom_sqlite.library_db
             #end if
 
             
@@ -203,8 +203,10 @@
     <tests>
         <test>
             <param name="target_db" value="alldata.sqlite" />     
-            <param name="custom_sqlite" value="True" /> 
+            <param name="custom_sqlite|custom_sqlite_select" value="true" /> 
             <param name="library_db" value="massbank_test.sqlite" />
+            <param name="library_sources" value="any" />
+            <param name="spectra_type_q" value="scans" />
             <output name="xcms_hits" value="xcms_hits.tsv" />
             <output name="scan_hits" value="scan_hits.tsv" />
         </test>
