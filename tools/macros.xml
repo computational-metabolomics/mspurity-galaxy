@@ -2,11 +2,9 @@
 <macros>
     <xml name="requirements">
         <requirements>
-<<<<<<< HEAD
+
            <requirement type="package" version="1.9.6" >bioconductor-mspurity</requirement>
-=======
-           <requirement type="package" version="1.9.4" >bioconductor-mspurity</requirement>
->>>>>>> create_msp_update
+
             <yield />
         </requirements>
 

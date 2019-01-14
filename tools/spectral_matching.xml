@@ -1,6 +1,6 @@
 <tool id="spectral_matching" name="spectral_matching" version="0.1.3">
     <description>
-        Perform spectral matching to spectral libraries using dot product cosine on a MS/MS dataset
+        Perform spectral matching to MS/MS spectral libraries
     </description>
 
     <macros>
@@ -10,7 +10,7 @@
     <expand macro="requirements">
     </expand>
 
-    
+
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -31,11 +31,21 @@
             --score_thres=$score_thres
             --ppm_tol_prod=$ppm_tol_prod
             --ppm_tol_prec=$ppm_tol_prec
-            --instrument_types=$instrument_types
+           
+            #if $advanced.match_method:
+              --match_method=$advanced.match_method
+            #end if
+            
+            #if $instrument_type_cond.instrument_types_bool:
+              --instrument_types=$instrument_type_cond.instrument_types
+            #end if
+            
             --library_sources=$library_sources
+            
             #if $advanced.topncond.topnbool:
                 --topn=$topn
             #end if
+
             #if $advanced.scan_ids:
               --scan_ids='
                 #for $i, $j in enumerate($advanced.scan_ids)
@@ -53,21 +63,19 @@
     <inputs>
 
         <param type="data" name="target_db" label="SQLite DB of target spectra" format="sqlite"
-               help="SQLite DB of target spectra. (e.g. generated from frag4feature tool)"/>
-        
+               help="SQLite DB of Query spectra. (e.g. generated from frag4feature tool)"/>
+
+
         <conditional name="custom_sqlite">
-                <param name="custom_sqlite_select" type="select" label="Use custom library SQLite Database?">
-                    <option value="no" >no</option>
-                    <option value="yes" >yes</option>
+                <param name="custom_sqlite_select" type="boolean" label="Use custom library SQLite Database?"
+                help="The default SQLite database of library spectra contains fragmentation spectra from MassBank, LipidBlast and GNPS,
+                     A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz" >
                 </param>
-                <when value="no">
+                <when value="false">
                 </when>
-                <when value="yes">
+                <when value="true">
                     <param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
-                           help="SQLite database of library (reference) spectra, if left blank will use the default 
-                                 library from msPurityData
-                                 https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1
-                                 A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz"/>
+                           help="Custom SQLite database of library (reference) spectra"/>
                 </when>
        </conditional>
 
@@ -76,6 +84,14 @@
                 <option value="positive" selected="true">Positive</option>
                 <option value="negative"  >negative</option>
         </param>
+        
+        <param name="spectra_type_q" type="select" label="spectra_type_q" >
+                <option value="scans"  >all individual scans</option>
+                <option value="av_intra"  >averaged intra spectra </option>
+                <option value="av_inter"  >averaged inter spectra</option>
+                <option value="av_all" selected="true">averaged all spectra ignoring inter-intra relationships </option>
+        </param>
+
 
         <param name="ppm_tol_prod" type="float" value="10"
                     help="Parts per million tolerance to match product mz values"/>
@@ -84,52 +100,74 @@
                     help="Parts per million tolerance to match precursor mz values"/>
 
         <param name="score_thres" type="float" min="0" max="1" value="0.6"
-                    help="Dot product cosine score threshold"/>
+                    help="Score threshold"/>
 
-        <param name="instrument_types" type="select"  multiple="true" >
-            <option value="APCI-ITFT">APCI-ITFT</option>
-            <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
-            <option value="CI-B">CI-B</option>
-            <option value="EI-B">EI-B</option>
-            <option value="EI-EBEB">EI-EBEB</option>
-            <option value="ESI-ITFT" selected="true">ESI-ITFT</option>
-            <option value="ESI-ITTOF" selected="true">ESI-ITTOF</option>
-            <option value="ESI-QTOF" selected="true">ESI-QTOF</option>
-            <option value="FAB-B">FAB-B</option>
-            <option value="FAB-BE-MS">FAB-BE-MS</option>
-            <option value="FAB-EB">FAB-EB</option>
-            <option value="FAB-EBEB">FAB-EBEB</option>
-            <option value="FI-B">FI-B</option>
-            <option value="GC-EI-Q">GC-EI-Q</option>
-            <option value="GC-EI-QQ">GC-EI-QQ</option>
-            <option value="GC-EI-TOF">GC-EI-TOF</option>
-            <option value="LC-APCI-QTOF">LC-APCI-QTOF</option>
-            <option value="LC-APPI-QQ">LC-APPI-QQ</option>
-            <option value="LC-ESI-IT" selected="true">LC-ESI-IT</option>
-            <option value="LC-ESI-ITFT" selected="true">LC-ESI-ITFT</option>
-            <option value="LC-ESI-ITTOF" selected="true">LC-ESI-ITTOF</option>
-            <option value="LC-ESI-Q">LC-ESI-Q</option>
-            <option value="LC-ESI-QFT" selected="true" >LC-ESI-QFT</option>
-            <option value="LC-ESI-QIT" selected="true">LC-ESI-QIT</option>
-            <option value="LC-ESI-QQ" selected="true">LC-ESI-QQ</option>
-            <option value="LC-ESI-QTOF" selected="true">LC-ESI-QTOF</option>
-            <option value="LC-ESI-TOF" selected="true">LC-ESI-TOF</option>
-            <option value="MALDI-QIT">MALDI-QIT</option>
-            <option value="MALDI-TOF">MALDI-TOF</option>
-            <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
-        </param>
 
-        <param name="library_sources" type="select"  multiple="true" >
+
+        
+        <conditional name="instrument_type_cond">
+            <param name="instrument_types_bool" type="boolean" label="Filter on instrument types?"/>
+                <when value="false">
+                </when>
+                <when value="true">
+                   <param name="instrument_types" type="select"  multiple="true" >
+                    <option value="APCI-ITFT">APCI-ITFT</option>
+                    <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
+                    <option value="CI-B">CI-B</option>
+                    <option value="EI-B">EI-B</option>
+                    <option value="EI-EBEB">EI-EBEB</option>
+                    <option value="ESI-ITFT" selected="true">ESI-ITFT</option>
+                    <option value="ESI-ITTOF" selected="true">ESI-ITTOF</option>
+                    <option value="ESI-QTOF" selected="true">ESI-QTOF</option>
+                    <option value="FAB-B">FAB-B</option>
+                    <option value="FAB-BE-MS">FAB-BE-MS</option>
+                    <option value="FAB-EB">FAB-EB</option>
+                    <option value="FAB-EBEB">FAB-EBEB</option>
+                    <option value="FI-B">FI-B</option>
+                    <option value="GC-EI-Q">GC-EI-Q</option>
+                    <option value="GC-EI-QQ">GC-EI-QQ</option>
+                    <option value="GC-EI-TOF">GC-EI-TOF</option>
+                    <option value="LC-APCI-QTOF">LC-APCI-QTOF</option>
+                    <option value="LC-APPI-QQ">LC-APPI-QQ</option>
+                    <option value="LC-ESI-IT" selected="true">LC-ESI-IT</option>
+                    <option value="LC-ESI-ITFT" selected="true">LC-ESI-ITFT</option>
+                    <option value="LC-ESI-ITTOF" selected="true">LC-ESI-ITTOF</option>
+                    <option value="LC-ESI-Q">LC-ESI-Q</option>
+                    <option value="LC-ESI-QFT" selected="true" >LC-ESI-QFT</option>
+                    <option value="LC-ESI-QIT" selected="true">LC-ESI-QIT</option>
+                    <option value="LC-ESI-QQ" selected="true">LC-ESI-QQ</option>
+                    <option value="LC-ESI-QTOF" selected="true">LC-ESI-QTOF</option>
+                    <option value="LC-ESI-TOF" selected="true">LC-ESI-TOF</option>
+                    <option value="MALDI-QIT">MALDI-QIT</option>
+                    <option value="MALDI-TOF">MALDI-TOF</option>
+                    <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
+                    <option value="none">None</option>
+                  </param>
+          </when>
+      </conditional>
+      
+      <param name="library_sources" type="select"  multiple="true" >
             <option value="lipidblast">LipidBlast</option>
             <option value="massbank" selected="true">MassBank</option>
-            <option value="GNPS">GNPS</option>
-        </param>
+            <option value="gnps">GNPS</option>
+            <option value="any">Any (use with custom library database)</option>
+      </param>
         <param name="create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
                help="A copy will be made of the input SQLite target database and the results will be added to this copy.
                      When False, the input SQLite database will be updated  with the matching results. Use False
                      if you want to reduce storage space being used."/>
 
         <section name="advanced" title="advanced" expanded="False">
+              <param name="match_method" type="select" label="match_method" 
+                help="Choose the matching method to use for assessing the similarity between the query and library
+                      spectra. Current options are to use dot product cosine on weighted mass x intensity vectors or 
+                      use the composite approach where the dot product cosine approach is combined with a similarity measure of
+                      peak profiles">
+                <option value="dpc" selected="true">Dot product cosine </option>
+                <option value="composite">Composite</option>
+              </param>
+          
+          
             <conditional name="topncond">
                 <param name="topnbool" type="boolean" label="Only use the top n spectral matching hits?"/>
                 <when value="false">
@@ -142,7 +180,7 @@
             <param name="ra_thres_l" type="float" value="0"
                help="Relative abundance threshold for library spectra"/>
 
-            <param name="ra_thres_t" type="float" value="2"
+            <param name="ra_thres_t" type="float" value="0"
                help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
 
             <repeat name="scan_ids" title="Specific scan ids">
@@ -164,12 +202,14 @@
     </outputs>
     <tests>
         <test>
-            <param name="target_db" value="alldata.sqlite" />
+            <param name="target_db" value="alldata.sqlite" />     
+            <param name="custom_sqlite" value="True" /> 
+            <param name="library_db" value="massbank_test.sqlite" />
             <output name="xcms_hits" value="xcms_hits.tsv" />
             <output name="scan_hits" value="scan_hits.tsv" />
         </test>
     </tests>
-    
+
 
     <help><![CDATA[
 =============================================================

@@ -21,6 +21,7 @@ option_list <- list(
   make_option("--topn", default=NA),
   make_option("--mzML_files", type="character"),
   make_option("--galaxy_names", type="character"),
+  make_option("--match_method", type="character"),
   make_option("--create_new_database", action="store_true")
 
 )
@@ -28,7 +29,12 @@ option_list <- list(
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
 
-
+if (is.null(opt$matching_method)){
+  match_method='dpc'
+  
+}else{
+  match_method = opt$match_method
+}
 
 if (!is.null(opt$create_new_database)){
     target_db_pth <-  file.path(opt$out_dir, 'db_with_spectral_matching.sqlite')
@@ -38,12 +44,12 @@ if (!is.null(opt$create_new_database)){
 }
 
 
-if (opt$instrument_types=='None'){
+if ((opt$instrument_types=='None') || (is.null(opt$instrument_types))){
     instrument_types <- NA
 }else{
     instrument_types <- trimws(strsplit(opt$instrument_types, ',')[[1]])
 }
-if (opt$library_sources=='None'){
+if ((opt$library_sources=='None') ||(is.null(opt$library_sources))){
     library_sources <- NA
 }else{
     library_sources <- trimws(strsplit(opt$library_sources, ',')[[1]])
@@ -75,6 +81,7 @@ result <- msPurity::spectral_matching(
                             out_dir = opt$out_dir,
                             topn = opt$topn,
                             grp_peaklist = NA,
+                            match_alg=match_method,
 
                             instrument_types = instrument_types,
                             library_sources = library_sources,
