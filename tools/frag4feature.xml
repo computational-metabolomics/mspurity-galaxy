@@ -106,10 +106,10 @@
                     </collection>
                 </param>
             </conditional>
-            <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.RData"/>
+            <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <param name="pa" value="assess_purity_msms_output_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
-            <output name="frag4feature_grouped_msms" value="frag4feature.tsv"/>
-            <output name="frag4feature_rdata" value="frag4feature.RData" ftype="rdata" compare="sim_size"/>
+            <output name="frag4feature_grouped_msms" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.tsv"/>
+            <output name="frag4feature_rdata" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size"/>
         </test>
     </tests>
     

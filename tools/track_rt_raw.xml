@@ -4,7 +4,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    
+
     <expand macro="requirements">
     </expand>
 
@@ -38,13 +38,13 @@
     </outputs>
     <tests>
        <test>
-         <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.RData"/>
+         <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
          <param name="extract_peaks" value="True"/>
          <output name="xset_extract_peaks" value="xset_peaks.tsv"/>
        </test>
     </tests>
 
-    
+
     <help><![CDATA[
 =============================================================
 Track raw retention time for XCMS set

@@ -100,18 +100,18 @@
     <tests>
         <test>
             <param name="av|level" value="intra" />
-            <param name="pa" value="frag4feature.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_intra_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+            <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
         </test>
         <test>
             <param name="av|level" value="inter" />
-            <param name="pa" value="average_intra_fragmentation_spectra.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_inter_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+            <param name="pa" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
         </test>
         <test>
             <param name="av|level" value="all" />
-            <param name="pa" value="frag4feature.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_all_fragmentation_spectra.RData" ftype="rdata" compare="sim_size" />
+            <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
+            <output name="average_fragmentation_spectra_rdata" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
         </test>
     </tests>
     

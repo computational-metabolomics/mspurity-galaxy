@@ -1,4 +1,4 @@
-{% set version="1.9.6" %}
+{% set version="1.9.7" %}
 {% set name="msPurity" %}
 {% set bioc="3.8" %}
 
@@ -9,8 +9,8 @@ package:
 
 source:
 
-  fn: msPurity-382b32b0c9c077ede0a9e2f6671036d6b85815c9.zip
-  url: https://github.com/computational-metabolomics/msPurity/archive/382b32b0c9c077ede0a9e2f6671036d6b85815c9.zip
+  fn: msPurity-3ea03aa9ec23076e372c489cca4874256d09a71e.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/3ea03aa9ec23076e372c489cca4874256d09a71e.zip
 
 
 requirements:

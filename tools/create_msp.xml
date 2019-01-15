@@ -79,44 +79,44 @@
     <tests>
         <test>
             <param name="method" value="all"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <param name="rdata_input" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <output name="msp_out" file="lcmsms_spectra_scans_all.msp"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_scans_all.msp"/>
         </test>
         <test>
             <param name="mode" value="av_all"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <output name="msp_out" file="lcmsms_spectra_av_all.msp"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_av_all.msp"/>
         </test>
         <test>
             <param name="mode" value="av_all"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
+            <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12,27"/>
-            <output name="msp_out" file="lcmsms_spectra_av_all_metadata.msp"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_av_all_metadata.msp"/>
         </test>
         <test>
             <param name="mode" value="av_all"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
-            <output name="msp_out" file="lcmsms_spectra_av_all_and_all_xcms.msp"/>
+            <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_av_all_and_all_xcms.msp"/>
         </test>
         <test>
             <param name="mode" value="av_intra"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
-            <output name="msp_out" file="lcmsms_spectra_av_intra.msp"/>
+            <param name="rdata_input" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_av_intra.msp"/>
         </test>
         <test>
             <param name="mode" value="av_inter"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
-            <output name="msp_out" file="lcmsms_spectra_av_inter.msp"/>
+            <param name="rdata_input" value="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_av_inter.msp"/>
         </test>
         <test>
             <param name="mode" value="max"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <param name="rdata_input" value="pa_averaged_msms.RData"/>
-            <output name="msp_out" file="lcmsms_spectra_max.msp"/>
+            <param name="rdata_input" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <output name="msp_out" file="create_msp_lcmsms_spectra_max.msp"/>
         </test>
 
 
