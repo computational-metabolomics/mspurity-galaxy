@@ -60,7 +60,7 @@ option_list <- list(
   make_option("--mzML_files", type="character"),
   make_option("--galaxy_names", type="character"),
   make_option("--grp_peaklist", type="character"),
-  make_option("--db_name", type="character", default='lcms_data.sqlite'),
+  make_option("--db_name", type="character", default='lcmsms_data.sqlite'),
   make_option("--raw_rt_columns", action="store_true"),
   make_option("--metfrag_result", type="character"),
   make_option("--sirius_csifingerid_result", type="character"),

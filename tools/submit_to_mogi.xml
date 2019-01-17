@@ -8,7 +8,7 @@
     </macros>
 
     <expand macro="requirements">
-      
+
     </expand>
 
  <stdio>
@@ -18,8 +18,8 @@
        #set $galaxy_data_id=$__app__.security.encode_id($mogi_data.id)
        #set $galaxy_history_id=$__app__.security.encode_id($mogi_data.creating_job.history.id)
        #set $galaxy_history_name=$mogi_data.creating_job.history.name
-       curl -X POST --insecure $mogi_url/rest/incoming_galaxy_data/ -d galaxy_data_id=$galaxy_data_id 
-                    -d galaxy_history_id=$galaxy_history_id -d galaxy_history_name='$galaxy_history_name' 
+       curl -X POST --insecure $mogi_url/rest/incoming_galaxy_data/ -d galaxy_data_id=$galaxy_data_id
+                    -d galaxy_history_id=$galaxy_history_id -d galaxy_history_name='$galaxy_history_name'
                     -d galaxy_name=$galaxy_name  -d galaxy_url=$galaxy_url > curl_out.txt;
       </command>
     <inputs>
@@ -29,12 +29,12 @@
                help="SQLite database to submit to MOGI" />
 
 
-        <param type="text" name="mogi_url" label="MOGI URL" 
+        <param type="text" name="mogi_url" label="MOGI URL"
                help="URL for MOGI" />
 
         <param type="text" name="galaxy_name" label="Name of Galaxy instance in MOGI"
                help="Should be lower cases with no white spaces or non alphnumeric characters" />
-  
+
          <param type="text" name="galaxy_url" label="Galaxy URL"
                help="URL of the Galaxy site (not required, but useful for a reference)" />
     </inputs>
@@ -44,7 +44,7 @@
     </outputs>
     <tests>
         <test>
-            <param name="mogi_data" value="alldata.sqlite"/>
+            <param name="mogi_data" value="create_sqlite_db_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.sqlite"/>
             <param name="mogi_url" value="https://www.djangoproject.com/"/>
             <output name="curl_out" >
                 <assert_contents>
@@ -53,7 +53,7 @@
             </output>
         </test>
     </tests>
-    
+
     <help><![CDATA[
 =============================================================
 Submit SQLite Database to MOGI
