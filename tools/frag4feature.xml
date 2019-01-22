@@ -1,4 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.19">
+<tool id="frag4featureTest" name="frag4featureTest" version="0.0.19">
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
@@ -16,12 +16,17 @@
  <stdio>
         <exit_code range="1:" />
     </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        frag4feature.R
+    <command><![CDATA[
+        Rscript $__tool_directory__/frag4feature.R
+
             --out_dir=.
+
             --xset=$xset
             --pa=$pa
+            --fileMatchingFile=$fileMatchingFile
+
             --cores=\${GALAXY_SLOTS:-4}
+
             #if $file_load_conditional.file_load_select=="yes"
                 --mzML_files='
                 #for $i in $file_load_conditional.input
@@ -34,15 +39,19 @@
                 #end for
                 '
             #end if
+
             --ppm=$ppm_f4f
             --plim=$plim_f4f
+
             #if $mostIntense_f4f
                 --mostIntense
             #end if
+
             #if $convert2RawRT_f4f
                 --convert2RawRT
             #end if
- 	    #if $createDB
+
+ 	        #if $createDB
                 --createDB
             #end if
 
@@ -57,6 +66,8 @@
                help="grouped xcmsSet object saved as 'xset' in an RData file" format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <param type="data" name="pa" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from assess_purity_msms)"/>
+        <param type="data" name="fileMatchingFile" label="CSV file matching MS1 with MS2, like a sampleMetaData file" 
+               help="CSV file containing the name of MS1 file for each name of MS2 file (describe in the help at the end)" format="tabular" />   
 
         <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
          use most intense peak within isolation window for precursor?"/>
@@ -70,7 +81,7 @@
         <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
                     help="min purity of precursor to be included"/>
 
-        <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spcetra?"/>
+        <param name="createDB" type="boolean" checked="false" label="Create SQLite database of spectra?" help="Have to be fix"/>
 
         <expand macro="grp_peaklist" />
 
@@ -83,7 +94,9 @@
         <data name="frag4feature_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
               from_work_dir="frag4feature.RData" />
         <data name="frag4feature_sqlite" format="sqlite" label="${tool.name} on ${on_string}: Sqlite"
-              from_work_dir="alldata.sqlite" />
+              from_work_dir="alldata.sqlite" >
+              <filter>createDB is True</filter>
+        </data>
     </outputs>
     <tests>
         <test>

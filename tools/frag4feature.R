@@ -1,53 +1,46 @@
-library(optparse)
-library(msPurity)
-library(xcms)
-print(sessionInfo())
-
-xset_pa_filename_fix <- function(opt, pa, xset){
+#!/usr/bin/env Rscript
 
 
-  if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
-    # NOTE: Relies on the pa@fileList having the names of files given as 'names' of the variables 
-    # needs to be done due to Galaxy moving the files around and screwing up any links to files
-
-    filepaths <- trimws(strsplit(opt$mzML_files, ',')[[1]])
-    filepaths <- filepaths[filepaths != ""]
-    new_names <- basename(filepaths)
-
-    galaxy_names <- trimws(strsplit(opt$galaxy_names, ',')[[1]])
-    galaxy_names <- galaxy_names[galaxy_names != ""]
-
-    nsave <- names(pa@fileList)
-    old_filenames  <- basename(pa@fileList)
- 
-    pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
-    names(pa@fileList) <- nsave
-
-    pa@puritydf$filename <- basename(pa@fileList[match(pa@puritydf$filename, old_filenames)])
-    pa@grped_df$filename <- basename(pa@fileList[match(pa@grped_df$filename, old_filenames)])
-  }
- print(pa@fileList)
- print(xset@filepaths)
-
- if(!all(basename(pa@fileList)==basename(xset@filepaths))){
-    if(!all(names(pa@fileList)==basename(xset@filepaths))){
-       print('FILELISTS DO NOT MATCH')
-       message('FILELISTS DO NOT MATCH')
-       quit(status = 1)
-    }else{
-      xset@filepaths <- unname(pa@fileList)
-    }
-  }
+# ----- LOG FILE -----
+#log_file <- file("assess_purity_log.txt", open="wt")
+#sink(log_file)
+#sink(log_file, type = "output")
 
 
-  return(list(pa, xset))
-}
+# ----- PACKAGE -----
+cat("\tSESSION INFO\n")
+
+#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+#source_local("lib.r")
+
+#Import the different functions
+#Modify the frag4feature functions (DELETE IT AFTER)
+source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
+pkgs <- c("xcms","optparse")#,"batch")#,"msPurity")
+loadAndDisplayPackages(pkgs)
+cat("\n\n")
+
+source("/home/jsaintvanne/W4M/msPurityTest/R/create_database.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-class.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/flag-filter-remove.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-constructor.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-frag4feature.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/iw-norm.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/pcalc.R")
+
+
+
+# ----- ARGUMENTS -----
+cat("\tARGUMENTS INFO\n\n")
+#args <- parseCommandArgs(evaluate = FALSE) #interpretation of arguments given in command line as an R list of objects
+#write.table(as.matrix(args), col.names=F, quote=F, sep='\t')
 
 
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--pa", type="character"),
   make_option("--xset", type="character"),
+  make_option("--fileMatchingFile", type="character"),
   make_option("--ppm", default=10),
   make_option("--plim", default=0.0),
   make_option("--convert2RawRT", action="store_true"),
@@ -60,38 +53,22 @@ option_list <- list(
 )
 
 # store options
-opt<- parse_args(OptionParser(option_list=option_list))
+opt <- parse_args(OptionParser(option_list=option_list))
 
-loadRData <- function(rdata_path, name){
-#loads an RData file, and returns the named xset object if it is there
-    load(rdata_path)
-    return(get(ls()[ls() %in% name]))
-}
-
-# This function retrieve a xset like object
-#@author Gildas Le Corguille lecorguille@sb-roscoff.fr
-getxcmsSetObject <- function(xobject) {
-    # XCMS 1.x
-    if (class(xobject) == "xcmsSet")
-        return (xobject)
-    # XCMS 3.x
-    if (class(xobject) == "XCMSnExp") {
-        # Get the legacy xcmsSet object
-        suppressWarnings(xset <- as(xobject, 'xcmsSet'))
-        sampclass(xset) <- xset@phenoData$sample_group
-        return (xset)
-    }
-}
+print(opt)
 
 # Requires
 pa <- loadRData(opt$pa, 'pa')
-xset <- loadRData(opt$xset, c('xset','xdata'))
-xset <- getxcmsSetObject(xset)
+xdata <- loadRData(opt$xset, c('xset','xdata'))
+#xset <- getxcmsSetObject(xdata)
 
 pa@cores <- opt$cores
 
-print(pa@fileList)
-print(xset@filepaths)
+if(is.null(opt$fileMatchingFile)){
+  CSVfile <- NULL
+}else{
+  CSVfile <- opt$fileMatchingFile
+}
 
 if(is.null(opt$mostIntense)){
     mostIntense = FALSE
@@ -112,9 +89,9 @@ if(is.null(opt$createDB)){
 }
 
 
-fix <- xset_pa_filename_fix(opt, pa, xset)
-pa <- fix[[1]]
-xset <- fix[[2]]
+#fix <- xset_pa_filename_fix(opt, pa, xset)
+#pa <- fix[[1]]
+#xset <- fix[[2]]
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
@@ -122,17 +99,34 @@ if(is.null(opt$grp_peaklist)){
     grp_peaklist = opt$grp_peaklist
 }
 
-print(pa@fileList)
-print(names(pa@fileList))
-print(xset@filepaths)
+
+cat("\n\n")
+
+# ----- PROCESSING INFILE -----
+cat("\tARGUMENTS PROCESSING INFO\n")
+
+
+cat("\n\n")
+
+# ----- INFILE PROCESSING -----
+cat("\tINFILE PROCESSING INFO\n")
+cat("\n\n")
+
+# ----- MAIN PROCESSING INFO -----
+cat("\tMAIN PROCESSING INFO\n")
+
+
+cat("\t\tCOMPUTE\n\n")
+
 saveRDS(pa, 'test_pa.rds')
 
-pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
-                            intense=opt$mostIntense, convert2RawRT=convert2RawRT,
-                            db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist,
-                             create_db=createDB)
+pa <- frag4feature(pa=pa, xdata=xdata, CSVfile=CSVfile, ppm=opt$ppm, plim=opt$plim,
+                   intense=opt$mostIntense, convert2RawRT=convert2RawRT,
+                   db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist,
+                   create_db=createDB)
 
-save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
+object2save <- c("pa")
+save(list=object2save[object2save %in% ls()], file=file.path(opt$out_dir, 'frag4feature.RData'))
 
-print(head(pa@grped_df))
+
 write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
