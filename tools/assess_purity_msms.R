@@ -1,11 +1,43 @@
-library(msPurity)
-library(optparse)
-print(sessionInfo())
+#!/usr/bin/env Rscript
 
+# ----- LOG FILE -----
+#log_file <- file("assess_purity_log.txt", open="wt")
+#sink(log_file)
+#sink(log_file, type = "output")
+
+# ----- PACKAGE -----
+cat("\tSESSION INFO\n")
+
+#Import the different functions
+#Modify the frag4feature functions (DELETE IT AFTER)
+source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
+pkgs <- c("xcms","optparse","tools")#,"batch")#,"msPurity")
+loadAndDisplayPackages(pkgs)
+cat("\n\n")
+
+source("/home/jsaintvanne/W4M/msPurityTest/R/create_database.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-class.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/flag-filter-remove.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-constructor.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/iw-norm.R")
+source("/home/jsaintvanne/W4M/msPurityTest/R/pcalc.R")
+#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+#source_local("lib.r")
+
+
+
+
+
+# ----- ARGUMENTS -----
+cat("\tARGUMENTS INFO\n\n")
+#args <- parseCommandArgs(evaluate = FALSE) #interpretation of arguments given in command line as an R list of objects
+#write.table(as.matrix(args), col.names=F, quote=F, sep='\t')
+
+# List options
 option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
-  make_option("--mzML_files", type="character"),
-  make_option("--galaxy_names", type="character"),
+  make_option("--singlefile_galaxyPath", type="character"),
+  make_option("--singlefile_sampleName", type="character"),
   make_option("--minOffset", default=0.5),
   make_option("--maxOffset", default=0.5),
   make_option("--ilim", default=0.05),
@@ -15,14 +47,15 @@ option_list <- list(
   make_option("--mostIntense", action="store_true"),
   make_option("--plotP", action="store_true"),
   make_option("--nearest", action="store_true"),
-  make_option("--cores", default=4)
+  make_option("--cores", default=1)
 )
 
-# store options
-opt<- parse_args(OptionParser(option_list=option_list))
+# Store options
+opt <- parse_args(OptionParser(option_list=option_list))
 
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
+
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE
@@ -38,17 +71,11 @@ if (opt$iwNorm=='none'){
     iwNormFun = msPurity::iwNormQE.5()
 }
 
-filepaths <- trimws(strsplit(opt$mzML_files, ',')[[1]])
-filepaths <- filepaths[filepaths != ""]
-
-
-
 if(is.null(opt$minOffset) || is.null(opt$maxOffset)){
     offsets = NA
 }else{
     offsets = as.numeric(c(opt$minOffset, opt$maxOffset))
 }
-
 
 if(is.null(opt$mostIntense)){
     mostIntense = FALSE
@@ -70,7 +97,6 @@ if(is.null(opt$plotP)){
     plotdir = opt$out_dir
 }
 
-
 if (is.null(opt$isotope_matrix)){
     im <- NULL
 }else{
@@ -84,35 +110,65 @@ if (is.null(opt$exclude_isotopes)){
     isotopes <- TRUE
 }
 
-pa <- msPurity::purityA(filepaths,
-                        cores = opt$cores,
-                        mostIntense = mostIntense,
-                        nearest = nearest,
-                        offsets = offsets,
-                        plotP = plotP,
-                        plotdir = plotdir,
-                        interpol = "linear",
-                        iwNorm = iwNorm,
-                        iwNormFun = iwNormFun,
-                        ilim = opt$ilim,
-                        mzRback = "pwiz",
-                        isotopes = isotopes,
-                        im = im)
+print(opt)
 
+cat("\n")
 
-if (!is.null(opt$galaxy_names)){
-    galaxy_names <- trimws(strsplit(opt$galaxy_names, ',')[[1]])
-    galaxy_names <- galaxy_names[galaxy_names != ""]
-    names(pa@fileList) <- galaxy_names
+# ----- PROCESSING INFILE -----
+cat("\tARGUMENTS PROCESSING INFO\n\n")
+
+zipfile <- NULL
+filepaths <- getRawfilePathFromArguments(opt$singlefile_galaxyPath,zipfile,opt)
+cat("\n")
+
+# ----- INFILE PROCESSING -----
+cat("\tINFILE PROCESSING INFO\n")
+
+if(is.null("singlefile_galaxyPath") || ("singlefile_galaxyPath" == "" )){
+  message("no file as input")
+  return(NULL)
 }
 
-print(pa)
+cat("\n\n")
 
-save(pa, file=file.path(opt$out_dir, 'purity_msms.RData'))
 
-print(head(pa@puritydf))
-write.table(pa@puritydf, file.path(opt$out_dir, 'purity_msms.tsv'), row.names=FALSE, sep='\t')
+# ----- MAIN PROCESSING INFO -----
+cat("\tMAIN PROCESSING INFO\n")
+
+
+cat("\t\tCOMPUTE\n")
+
+pa <- purityA(fileList = filepaths$singlefile,
+              cores = opt$cores,
+              mostIntense = mostIntense,
+              nearest = nearest,
+              offsets = offsets,
+              plotP = plotP,
+              plotdir = plotdir,
+              interpol = "linear",
+              iwNorm = iwNorm,
+              iwNormFun = iwNormFun,
+              ilim = opt$ilim,
+              mzRback = "pwiz",
+              isotopes = isotopes,
+              im = im)
+
+
+cat("\n\n")
+
+
+# ----- EXPORT -----
+
+write.table(pa@puritydf, file.path(opt$out_dir, 'purity_msms.tsv'), row.names=FALSE, sep='\t', quote=FALSE)
+
+#saving R data in .Rdata file to save the variables used in the present tool
+objects2save <- c("pa")
+save(list=objects2save[objects2save %in% ls()], file=file.path(opt$out_dir, 'purity_msms.RData'))
+
+
 
 # removed_peaks <- data.frame(removed_peaks)
 # write.table(data.frame('ID'=rownames(removed_peaks),removed_peaks),
 #         file.path(opt$out_dir, 'removed_peaks.txt'), row.names=FALSE, sep='\t')
+
+cat("\tDONE\n")
