@@ -100,8 +100,7 @@ if(is.null(opt$plotP)){
 if (is.null(opt$isotope_matrix)){
     im <- NULL
 }else{
-    im <- read.table(opt$isotope_matrix,
-                     header = TRUE, sep='\t', stringsAsFactors = FALSE)
+    im <- read.table(opt$isotope_matrix, header = TRUE, sep='\t', stringsAsFactors = FALSE)
 }
 
 if (is.null(opt$exclude_isotopes)){
@@ -164,7 +163,6 @@ write.table(pa@puritydf, file.path(opt$out_dir, 'purity_msms.tsv'), row.names=FA
 #saving R data in .Rdata file to save the variables used in the present tool
 objects2save <- c("pa")
 save(list=objects2save[objects2save %in% ls()], file=file.path(opt$out_dir, 'purity_msms.RData'))
-
 
 
 # removed_peaks <- data.frame(removed_peaks)
