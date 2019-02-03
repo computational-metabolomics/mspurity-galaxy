@@ -24,35 +24,24 @@
             --minnum=$minnum
             --ppm=$ppm
 
-            #if $av.level == "intra"
+            #if $av.level == "inter"
+                --snr=$av.snr
+                --ra=$av.ra
+            #else
                 --snr_pre=$av.snr_pre
                 --ra_pre=$av.ra_pre
                 --snr=$av.snr
                 --ra=$av.ra
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-                --snr=$av.snr
-                --ra=$av.ra
-	    #end if
-
-            #if $intensity_method == "mean"
-                --av=$intensity_method
-            #elif $intensity_method == "median"
-                --av=$intensity_method
-            #elif $intensity_method == "sum"
-                --sum_i 
             #end if
+
+            --av=$function_average
+            
+            $sum_intensities
 
             --plim=$plim
 
-            #if $remove_peaks
-                --remove_peaks
-            #end if
-
+            $remove_peaks
+            
     ]]></command>
     <inputs>
         <param name="pa" type="data" label="purityA object" format="rdata"
@@ -80,18 +69,23 @@
                 <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
             </when>
         </conditional>
-        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of scans a fragment peak has to be present in." help="" />
-
-        <param name="minnum" type="float" value="1.0" label="Minimum number of fragmentation scans for a fragmentation event (precursor)" help="" />
-
-        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
-        <param name="intensity_method" type="select" label="Function to represent the intensity" help="" >
+        <param name="function_noise" type="select" label="Function to calculate noise" help="">
             <option value="median" selected="true">median</option>
             <option value="mean">mean</option>
-            <option value="sum">sum</option>
+            <option value="mad">mad</option>
+        </param>
+        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
+
+        <param name="minnum" type="integer" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
+        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
+        <param name="sum_intensities" type="boolean" checked="false" truevalue="--sum_i" falsevalue="" label="Sum intensities across (averaged) scans?"
+               help="" />
+        <param name="function_average" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
+            <option value="median" selected="true">median</option>
+            <option value="mean">mean</option>
         </param>
         <param name="plim" type="float" value="0.8" label="Minimum purity precursor threshold" help="Minium purity of a precursor to be included" />
-        <param name="remove_peaks" type="boolean" checked="true" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
+        <param name="remove_peaks" type="boolean" checked="true" truevalue="--remove_peaks" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
                help="" />
     </inputs>
     <outputs>
@@ -117,7 +111,7 @@
     
     <help><![CDATA[
 =============================================================
-Averag Fragmentation Spectra
+Average Fragmentation Spectra
 =============================================================
 -----------
 Description
