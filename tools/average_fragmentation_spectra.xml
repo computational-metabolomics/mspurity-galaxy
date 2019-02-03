@@ -24,20 +24,10 @@
             --minnum=$minnum
             --ppm=$ppm
 
-            #if $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-                --snr=$av.snr
-                --ra=$av.ra
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-                --snr=$av.snr
-                --ra=$av.ra
-	    #end if
+            --snr_pre=$av.snr_pre
+            --ra_pre=$av.ra_pre
+            --snr=$av.snr
+            --ra=$av.ra
 
             #if $intensity_method == "mean"
                 --av=$intensity_method
