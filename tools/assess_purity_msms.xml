@@ -1,7 +1,9 @@
 <tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.9">
+
     <description>
         Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
     </description>
+    
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -17,43 +19,35 @@
             
             --out_dir=.
             
-        
             #set mzML_files = '|'.join( [ str( $single_file ) for $single_file in $filesource ] )
             #set FileNames = '|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )
                 --singlefile_galaxyPath='$mzML_files'
                 --singlefile_sampleName='$FileNames'
 
-
-            #if $offsets.offsets == 'user'
-                --minOffset=$minoffset
-                --maxOffset=$maxoffset
+            #if $AdvOptions.offsets.offsets == 'user'
+                --minOffset=$AdvOptions.minoffset
+                --maxOffset=$AdvOptions.maxoffset
             #end if
 
-
-            --iwNorm=$iw_norm
-            --ilim=$ilim
-
+            --iwNorm=$AdvOptions.iw_norm
+            --ilim=$AdvOptions.ilim
 
             --cores=\${GALAXY_SLOTS:-4}
-
 
             #if $nearest
                 --nearest
             #end if
 
-
             #if $mostIntense
                 --mostIntense
             #end if
 
-
-            #if $isotopes.isotopes == "exclude_default"
+            #if $AdvOptions.isotopes.isotopes == "exclude_default"
                 --exclude_isotopes
-            #elif $isotopes.isotopes == "user"
+            #elif $AdvOptions.isotopes.isotopes == "user"
                 --exclude_isotopes
-                --isotope_matrix=$isotopes.im
+                --isotope_matrix=$AdvOptions.isotopes.im
             #end if
-
 
     ]]></command>
 
@@ -68,31 +62,31 @@
         <param name="mostIntense" type="boolean" checked="true" label="Use most intense peak within isolation window for precursor?" help="If yes, this will ignore the recorded precursor within the mzML file and use the most intense peak within the isolation window to calculate the precursor ion purity"/>
         <param name="nearest" type="boolean" checked="true" label="Use nearest full scan to determine precursor?" help="If yes, this will use the neareset full scan to the fragmentation scan to determine what the m/z value is of the precursor"/>
 
-        <!-- -->
-        <conditional name="offsets">
-            <param name="offsets" type="select" label="offsets" >
-                <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
-                <option value="user">User supplied offset values</option>
-            </param>
-            <when value="user">
-                <expand macro="offsets" />
-            </when>
-            <when value="auto">
-            </when>
-        </conditional>
+        <section name="AdvOptions" title="Advanced Options" expanded="False">
+            <!-- -->
+            <conditional name="offsets">
+                <param name="offsets" type="select" label="offsets" >
+                    <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
+                    <option value="user">User supplied offset values</option>
+                </param>
+                <when value="user">
+                    <expand macro="offsets" />
+                </when>
+                <when value="auto">
+                </when>
+            </conditional>
 
-        <!-- Parameters ilim, normalisation for isolation efficiency and the handling of isotopic peaks -->
-        <expand macro="general_params" />
+            <!-- Parameters ilim, normalisation for isolation efficiency and the handling of isotopic peaks -->
+            <expand macro="general_params" />
+        </section>
 
     </inputs>
 
     <outputs>
 
-        <data name="assess_purity" format="tsv" label="${tool.name}_on_${'|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )}: tsv" from_work_dir="purity_msms.tsv">  
-        </data>
+        <data name="assess_purity" format="tsv" label="${tool.name}_on_${'|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )}: tsv" from_work_dir="purity_msms.tsv"/>  
 
-        <data name="assess_purity_onefile_rdata" format="rdata" label="${tool.name}_on_${'|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )}: RData" from_work_dir="purity_msms.RData">
-        </data>
+        <data name="assess_purity_rdata" format="rdata" label="${tool.name}_on_${'|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )}: RData" from_work_dir="purity_msms.RData"/>
 
     </outputs>
 
@@ -100,12 +94,15 @@
 
         <test>
             <param name="filesource" value="LCMSMS_1.mzML"/>
-            <output name="assess_purity_onefile" value="assess_purity_msms_on_LCMSMS_1.tsv"/>
+            <output name="assess_purity" value="assess_purity_msms_on_LCMSMS_1.tsv"/>
         </test>
 
     </tests>
     
     <help><![CDATA[
+
+/!\\ WORK IN PROGRESS /!\\
+
 =============================================================
 Assess precursor ion purity of MS/MS files
 =============================================================

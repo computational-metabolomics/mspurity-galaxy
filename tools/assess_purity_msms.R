@@ -42,6 +42,8 @@ option_list <- list(
 opt <- parse_args(OptionParser(option_list=option_list))
 print(opt)
 
+print(opt)
+
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
 
