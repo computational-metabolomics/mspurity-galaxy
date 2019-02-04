@@ -140,3 +140,4 @@ object2save <- c("pa")
 save(list=object2save[object2save %in% ls()], file=file.path(opt$out_dir, 'frag4feature.RData'))
 
 write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
+
