@@ -1,6 +1,28 @@
-library(optparse)
-library(msPurity)
-print(sessionInfo())
+#!/usr/bin/env Rscript
+
+
+# ----- LOG FILE -----
+#log_file <- file("assess_purity_log.txt", open="wt")
+#sink(log_file)
+#sink(log_file, type = "output")
+
+
+# ----- PACKAGE -----
+cat("\tSESSION INFO\n")
+
+#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+#source_local("lib.r")
+
+#Import the different functions
+#Modify the frag4feature functions (DELETE IT AFTER)
+source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
+pkgs <- c("optparse","msPurity")
+loadAndDisplayPackages(pkgs)
+cat("\n\n")
+
+
+# ----- ARGUMENTS -----
+cat("\tARGUMENTS INFO\n\n")
 
 # Get the parameter
 option_list <- list(
@@ -12,10 +34,12 @@ option_list <- list(
   make_option(c("-x","--xcms_groupids"),type="character"),
   make_option(c("-o","--out_dir"),type="character", default=".")
 )
-opt <- parse_args(OptionParser(option_list=option_list))
 
+# store options
+opt <- parse_args(OptionParser(option_list=option_list))
 print(opt)
 
+# Requires
 load(opt$rdata_input)
 
 if (is.null(opt$metadata)){
@@ -37,6 +61,23 @@ if (is.null(opt$xcms_groupids)){
   xcms_groupids <- trimws(strsplit(opt$xcms_groupids, ',')[[1]])  
 }
 
+cat("\n\n")
+
+# ----- PROCESSING INFILE -----
+cat("\tARGUMENTS PROCESSING INFO\n")
+
+
+cat("\n\n")
+
+# ----- INFILE PROCESSING -----
+cat("\tINFILE PROCESSING INFO\n")
+cat("\n\n")
+
+# ----- MAIN PROCESSING INFO -----
+cat("\tMAIN PROCESSING INFO\n")
+
+
+cat("\t\tCOMPUTE\n\n")
 
 msPurity::createMSP(pa, 
                     msp_file_pth = file.path(opt$out_dir, 'lcmsms_spectra.msp'),
