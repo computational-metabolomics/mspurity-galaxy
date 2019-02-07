@@ -15,9 +15,10 @@
     </stdio>
     <command interpreter="Rscript"><![CDATA[
         average_fragmentation_spectra.R
-            --out="$average_fragmentation_spectra_rdata"
+            --out_rdata="$average_fragmentation_spectra_rdata"
+            --out_peaklist="$peaklist_tsv"
             --pa="$pa"
-            --av_level $av.level
+            --av_level=$av.level
             --cores=\${GALAXY_SLOTS:-4}
 
             --minfrac=$minfrac
@@ -41,7 +42,6 @@
             --plim=$plim
 
             $remove_peaks
-            
     ]]></command>
     <inputs>
         <param name="pa" type="data" label="purityA object" format="rdata"
@@ -90,22 +90,26 @@
     </inputs>
     <outputs>
         <data name="average_fragmentation_spectra_rdata" format="rdata" label="${tool.name} (${av.level}) on ${on_string}: RData" />
+        <data name="peaklist_tsv" format="tsv" label="${tool.name} (${av.level}) on ${on_string}: peaklist" />
     </outputs>
     <tests>
         <test>
             <param name="av|level" value="intra" />
             <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_intra.tsv" ftype="tsv" />
         </test>
         <test>
             <param name="av|level" value="inter" />
             <param name="pa" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_inter.tsv" ftype="tsv" />
         </test>
         <test>
             <param name="av|level" value="all" />
             <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_all.tsv" ftype="tsv" />
         </test>
     </tests>
     

@@ -65,7 +65,6 @@ option_list <- list(
 
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
-
 print(opt)
 
 loadRData <- function(rdata_path, name){
@@ -137,17 +136,23 @@ if(is.null(opt$grp_peaklist)){
     grp_peaklist = opt$grp_peaklist
 }
 
-print(pa@fileList)
-print(names(pa@fileList))
-print(xset@filepaths)
-saveRDS(pa, 'test_pa.rds')
 
-pa <- msPurity::frag4feature(pa=pa, xset=xset, ppm=opt$ppm, plim=opt$plim,
-                            intense=opt$mostIntense, convert2RawRT=convert2RawRT,
-                            db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist,
-                             create_db=createDB, use_group=use_group)
+pa <- msPurity::frag4feature(pa=pa,
+                             xset=xset,
+                             ppm=opt$ppm,
+                             plim=opt$plim,
+                             intense=opt$mostIntense,
+                             convert2RawRT=convert2RawRT,
+                             db_name='alldata.sqlite',
+                             out_dir=opt$out_dir, 
+                             grp_peaklist=grp_peaklist,
+                             create_db=createDB,
+                             use_group=use_group)
 
+print(pa)
 save(pa, file=file.path(opt$out_dir, 'frag4feature.RData'))
+
+pa@grped_df$filename <- sapply(pa@grped_df$fileid, function(x) names(pa@fileList)[as.integer(x)])
 
 print(head(pa@grped_df))
 write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
