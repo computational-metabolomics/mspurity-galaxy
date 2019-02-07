@@ -18,8 +18,8 @@ option_list <- list(
   make_option("--cores", default=4)
 )
 
-# store options
-opt<- parse_args(OptionParser(option_list=option_list))
+opt <- parse_args(OptionParser(option_list=option_list))
+print(opt)
 
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
@@ -107,8 +107,9 @@ if (!is.null(opt$galaxy_names)){
 }
 
 print(pa)
-
 save(pa, file=file.path(opt$out_dir, 'purity_msms.RData'))
+
+pa@puritydf$filename <- sapply(pa@puritydf$fileid, function(x) names(pa@fileList)[as.integer(x)])
 
 print(head(pa@puritydf))
 write.table(pa@puritydf, file.path(opt$out_dir, 'purity_msms.tsv'), row.names=FALSE, sep='\t')

@@ -1,31 +1,29 @@
 <tool id="create_msp" name="Create MSP" version="0.2.0">
-    <description>files from msPurity</description>
-     <macros>
+    <description>files from msPurity processed data</description>
+    <macros>
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
     </expand>
-     <stdio>
+    <stdio>
         <exit_code range="1:" />
     </stdio>
-
     <command interpreter="Rscript" ><![CDATA[
-	  create_msp.R
-	  --rdata_input "$rdata_input"
+    create_msp.R
+    --rdata_input "$rdata_input"
     --method "$method"
 
     #if $metadata_cond.metadata_select == "true"
-	    --metadata "$metadata_cond.metadata"
-	    --metadata_cols "$metadata_cond.metadata_cols"
-	    --adduct_split "$metadata_cond.adduct_split"
-	  #end if
+        --metadata "$metadata_cond.metadata"
+        --metadata_cols "$metadata_cond.metadata_cols"
+        --adduct_split "$metadata_cond.adduct_split"
+    #end if
 
-	  #if $xcms_group_cond.xcms_group_select == "true"
-	    --xcms_groupids "$xcms_group_cond.xcms_groupids"
-	  #end if
+    #if $xcms_group_cond.xcms_group_select == "true"
+        --xcms_groupids "$xcms_group_cond.xcms_groupids"
+    #end if
 
-	  --out_dir '.'
-
+    --out_dir '.'
     ]]></command>
     <inputs>
         <param name="rdata_input" type="data" format="rdata" label="msPurity purityA dataset" argument="--purity_dataset"
@@ -45,27 +43,22 @@
         </param>
 
         <conditional name="metadata_cond">
-          <param name="metadata_select" type="boolean" label="Use additional metadata?" />
-
-	          <when value="true">
-                <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular"
-                    help="Metadata for each grouped XCMS feature, the data will be added to the MSP metadata.
-                    Using the MassBank format e.g. https://github.com/MassBank/MassBank-data/blob/master/MetaboLights/ML003001.txt "/>
-                <param name="metadata_cols" type="text" label="Metadata columns for name" value="CH$NAME, MS$FOCUSED_ION: PRECURSOR_TYPE"
-                    help="Comma separated string of column names where the corresponding values in the metadata will be used for the MSP spectra name"/>
-                <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
-                    help="If either 'adduct' or  'MS$FOCUSED_ION: PRECURSOR_TYPE'
-                            column is in metadata then each adduct will have it's own MSP spectra.
-                            (Useful, if the MSP file will be used for further annotation)"  />
+            <param name="metadata_select" type="boolean" label="Use additional metadata?" />
+	    <when value="true">
+                <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular" help="Metadata for each grouped XCMS feature, the data will be added to the MSP metadata. Using the MassBank format e.g. https://github.com/MassBank/MassBank-data/blob/master/MetaboLights/ML003001.txt "/>
+                <param name="metadata_cols" type="text" label="Metadata columns for name" value="CH$NAME, MS$FOCUSED_ION: PRECURSOR_TYPE" help="Comma separated string of column names where the corresponding values in the metadata will be used for the MSP spectra name"/>
+                <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?" help="If either 'adduct' or 'MS$FOCUSED_ION: PRECURSOR_TYPE'
+                    column is in metadata then each adduct will have it's own MSP spectra.
+                    (Useful, if the MSP file will be used for further annotation)"  />
             </when>
             <when value="false">
             </when>
         </conditional>
 
         <conditional name="xcms_group_cond">
-          <param name="xcms_group_select" type="boolean" label="Select XCMS groups?" help="if set to no, all XCMS group features will be used" />
+            <param name="xcms_group_select" type="boolean" label="Select XCMS groups?" help="if set to no, all XCMS group features will be used" />
             <when value="true">
-              <param name="xcms_groupids" type="text" label="XCMS peak group ids" value=""
+                <param name="xcms_groupids" type="text" label="XCMS peak group ids" value=""
                 help="Comma separated string of XCMS group ids to export MSP spectra for. If blank all XCMS peak groups will be used"/>
             </when>
             <when value="false">
@@ -80,49 +73,47 @@
         <test>
             <param name="method" value="all"/>
             <param name="rdata_input" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_scans_all.msp"/>
         </test>
         <test>
-            <param name="mode" value="av_all"/>
+            <param name="method" value="av_all"/>
             <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_av_all.msp"/>
         </test>
         <test>
-            <param name="mode" value="av_all"/>
+            <param name="method" value="av_all"/>
             <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12,27"/>
+            <param name="metadata_cond|metadata_select" value="true"/>
+            <param name="metadata_cond|metadata" value="metadata_for_msp.tsv"/>
+            <param name="metadata_cond|metadata_cols" value="AC$CHROMATOGRAPHY: COLUMN_NAME, AC$MASS_SPECTROMETRY: ION_MODE, AC$MASS_SPECTROMETRY: MS_TYPE, CH$LINK: INCHIKEY, CH$LINK: PUBCHEM	CH$NAME
+"/>
+            <param name="xcms_group_cond|xcms_group_select" value="true"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="metadata_cond|adduct_split" value="true"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_av_all_metadata.msp"/>
         </test>
         <test>
-            <param name="mode" value="av_all"/>
+            <param name="method" value="av_all"/>
             <param name="rdata_input" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <param name="xcms_group_cond|xcms_group_select" value="true"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_av_all_and_all_xcms.msp"/>
         </test>
         <test>
-            <param name="mode" value="av_intra"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="method" value="av_intra"/>
             <param name="rdata_input" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_av_intra.msp"/>
         </test>
         <test>
-            <param name="mode" value="av_inter"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="method" value="av_inter"/>
             <param name="rdata_input" value="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_av_inter.msp"/>
         </test>
         <test>
-            <param name="mode" value="max"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+            <param name="method" value="max"/>
             <param name="rdata_input" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <output name="lcmsms_spectra" file="create_msp_lcmsms_spectra_max.msp"/>
         </test>
-
-
-
-
-
     </tests>
 	<help><![CDATA[
 ------------------------------

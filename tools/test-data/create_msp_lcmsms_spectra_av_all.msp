@@ -1,7 +1,7 @@
 CH$NAME:  MZ:112.0508 | RT:67.5 | XCMS_group:12 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050766766484
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.47903
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100
@@ -9,7 +9,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:113.0354 | RT:83.4 | XCMS_group:14 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 113.03541992282
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 113.03479385376	10613844.25	100
@@ -17,7 +17,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0706 | RT:47.7 | XCMS_group:17 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070637437099
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 116.016609191895	4434.369140625	2.81
@@ -27,7 +27,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1018 | RT:73.5 | XCMS_group:41 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101827805179
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.529172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 132.102035522461	338114.46875	100
@@ -35,7 +35,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:137.0456 | RT:127 | XCMS_group:47 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 137.045578757527
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.956946
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 110.035266876221	290341.673828125	4.45
@@ -46,7 +46,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0547 | RT:50.7 | XCMS_group:48 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.05471057982
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.6971758
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 110.060348510742	32966.80859375	8.97
@@ -55,7 +55,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:140.0678 | RT:46.2 | XCMS_group:51 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 140.067802644286
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 114.089179992676	568595.515625	10.75
@@ -64,7 +64,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:146.1174 | RT:46.2 | XCMS_group:62 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 146.117395027245
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 108.055770874023	9930.2236328125	0.83
@@ -75,7 +75,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:147.0438 | RT:70.5 | XCMS_group:63 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 147.043849698061
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 101.071311950684	3386.74780273438	0.1
@@ -90,7 +90,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:148.0427 | RT:64.4 | XCMS_group:66 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 148.042683925669
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 102.001239776611	494904.296875	28.13
@@ -105,7 +105,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:149.0263 | RT:91.2 | XCMS_group:67 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 149.026338801704
 AC$CHROMATOGRAPHY: RETENTION_TIME 91.18956
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
 104.016593933105	35712.279296875	1.48
@@ -131,7 +131,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:150.0582 | RT:62.9 | XCMS_group:68 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 150.058153535588
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 102.055404663086	2102817.74414062	29.74
@@ -143,7 +143,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0407 | RT:84.2 | XCMS_group:72 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.040721562011
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 107.085746765137	9505.548828125	0.42
@@ -161,7 +161,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0762 | RT:47.7 | XCMS_group:75 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076172444314
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 110.071655273438	80221.330078125	22.73
@@ -174,7 +174,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:158.0912 | RT:43.9 | XCMS_group:77 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 158.091194778484
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 102.091789245605	36397.75	12.2
@@ -189,7 +189,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:164.93 | RT:40.2 | XCMS_group:88 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 164.929981664987
 AC$CHROMATOGRAPHY: RETENTION_TIME 40.1901702
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 164.930236816406	1078114.4375	100
@@ -197,7 +197,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:165.0545 | RT:70.5 | XCMS_group:89 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 165.054460611227
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 103.054641723633	223038.375	4.22
@@ -215,7 +215,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.4 | XCMS_group:97 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092213123268
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 107.060737609863	15911.8725585938	0.27
@@ -230,7 +230,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:178.0573 | RT:45.4 | XCMS_group:106 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 178.057265428919
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.3966672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 105.042713165283	16808.7358398438	1.11
@@ -242,7 +242,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.5 | XCMS_group:114 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.080982868609
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
 103.054626464844	90547.6875	1.36
@@ -261,7 +261,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:189.1238 | RT:49.2 | XCMS_group:127 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 189.123836918215
 AC$CHROMATOGRAPHY: RETENTION_TIME 49.182402
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 115.086891174316	12369.7568359375	8.02
@@ -276,7 +276,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:192.07 | RT:121.8 | XCMS_group:134 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 192.070004316993
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.840812
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
 102.055397033691	3442.68041992188	4.92
@@ -292,7 +292,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:194.034 | RT:45.4 | XCMS_group:136 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 194.033955868316
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.3966672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 194.03254699707	3640.81140136719	100
@@ -300,7 +300,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:200.039 | RT:43.9 | XCMS_group:143 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 200.039036175676
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
 117.042617797852	6342.0810546875	0.31
@@ -320,7 +320,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.139 | RT:72 | XCMS_group:150 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.139004267186
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.006432
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 116.071060180664	20653.5434570312	20.84
@@ -330,7 +330,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1213 | RT:56.8 | XCMS_group:152 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.121345376641
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.7980382
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 103.039367675781	21870.412109375	1.35
@@ -345,7 +345,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:207.016 | RT:41.8 | XCMS_group:158 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 207.015970241864
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.826645
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
 102.055213928223	14664.9248046875	10.68
@@ -371,7 +371,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:214.0624 | RT:55.4 | XCMS_group:172 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 214.06240374159
 AC$CHROMATOGRAPHY: RETENTION_TIME 55.4140188
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
 100.022003173828	18210.814453125	0.48
@@ -392,7 +392,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1384 | RT:89.6 | XCMS_group:180 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.138404003909
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.6403
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 144.101890563965	77202.0625	15.16
@@ -402,7 +402,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:219.1345 | RT:84.2 | XCMS_group:182 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 219.134537648256
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 117.065921783447	4423.58276367188	0.2
@@ -420,7 +420,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:227.1131 | RT:46.9 | XCMS_group:199 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 227.11306151597
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.926273
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
 110.071586608887	4586480.375	100
@@ -444,7 +444,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1544 | RT:110.4 | XCMS_group:205 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154447166191
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.36505
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 114.055229187012	60647.390625	5.43
@@ -455,7 +455,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:231.1694 | RT:130.8 | XCMS_group:209 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 231.169440223829
 AC$CHROMATOGRAPHY: RETENTION_TIME 130.794318
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 118.086345672607	25840.970703125	100
@@ -465,7 +465,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1492 | RT:66.7 | XCMS_group:214 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149205713464
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 102.055374145508	51696.87890625	100
@@ -478,7 +478,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:244.9534 | RT:41 | XCMS_group:234 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 244.953385254716
 AC$CHROMATOGRAPHY: RETENTION_TIME 40.9547952
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 104.992706298828	378396.8125	100
@@ -491,7 +491,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:245.0766 | RT:83.4 | XCMS_group:235 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 245.07657810262
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 103.039363861084	10410.1005859375	0.51
@@ -503,7 +503,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1285 | RT:62.9 | XCMS_group:241 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.12854349772
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 183.112762451172	74141.34765625	100
@@ -513,7 +513,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:249.0948 | RT:43.9 | XCMS_group:246 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 249.094795122248
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
 110.071601867676	46123.9765625	4.3
@@ -536,7 +536,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:253.152 | RT:130.8 | XCMS_group:254 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 253.152010413701
 AC$CHROMATOGRAPHY: RETENTION_TIME 130.794318
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 110.071685791016	35854.03515625	45.17
@@ -548,7 +548,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.4 | XCMS_group:268 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.159953818855
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
 101.07137298584	133178.875	12.6
@@ -571,7 +571,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:263.1945 | RT:74.3 | XCMS_group:278 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 263.194464580713
 AC$CHROMATOGRAPHY: RETENTION_TIME 74.297424
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 125.070919036865	7439.07629394531	51.06
@@ -584,7 +584,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:268.9977 | RT:42.4 | XCMS_group:298 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 268.997725920593
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.4292958
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 104.992702484131	2385384.125	100
@@ -602,7 +602,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:272.1708 | RT:59.1 | XCMS_group:303 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 272.170776556479
 AC$CHROMATOGRAPHY: RETENTION_TIME 59.113914
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
 100.076290130615	15373.1440429688	2.1
@@ -632,7 +632,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:274.1757 | RT:93.5 | XCMS_group:306 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 274.175657429697
 AC$CHROMATOGRAPHY: RETENTION_TIME 93.504684
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 157.133560180664	144051.40234375	100
@@ -643,7 +643,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:277.1029 | RT:34 | XCMS_group:311 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 277.102858679325
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.0415226
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
 102.055404663086	50160.4453125	61.35
@@ -659,7 +659,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:279.1033 | RT:63.7 | XCMS_group:313 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 279.103270568746
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.683916
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
 102.055374145508	99060.15625	12.22
@@ -693,7 +693,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:280.0487 | RT:70.5 | XCMS_group:315 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 280.048703311343
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
 116.98596572876	61798.4921875	36.7
@@ -730,7 +730,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:285.0838 | RT:83.4 | XCMS_group:329 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 285.083759240311
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
 103.039367675781	34832.5	1.31
@@ -747,7 +747,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:287.052 | RT:43.2 | XCMS_group:332 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 287.052049791825
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.1829192
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
 111.116577148438	2635.97485351562	3.74
@@ -766,7 +766,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:292.1947 | RT:44.8 | XCMS_group:346 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 292.194651731624
 AC$CHROMATOGRAPHY: RETENTION_TIME 44.7995376
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
 112.08748626709	146886.8125	0.82
@@ -790,7 +790,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1544 | RT:92.7 | XCMS_group:350 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154362544209
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.725812
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
 112.039520263672	31905.9140625	7.1
@@ -811,7 +811,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:295.1284 | RT:76.5 | XCMS_group:353 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 295.128370886131
 AC$CHROMATOGRAPHY: RETENTION_TIME 76.520544
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
 102.055332183838	142006.7578125	1.76
@@ -827,7 +827,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:296.0658 | RT:42.4 | XCMS_group:354 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 296.065756003644
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.4292958
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 104.107410430908	45445.0532226562	100
@@ -835,7 +835,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:302.1706 | RT:88.9 | XCMS_group:369 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 302.170645577843
 AC$CHROMATOGRAPHY: RETENTION_TIME 88.866054
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 116.070919036865	336741.171875	100
@@ -848,7 +848,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.1651 | RT:61.4 | XCMS_group:373 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.165091499144
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 38
 PK$PEAK: m/z int. rel.int.
 101.071464538574	18300.72265625	15.38
@@ -893,7 +893,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:306.1653 | RT:60.6 | XCMS_group:379 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 306.165343359271
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.634806
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
 106.050338745117	60478.6015625	65.04
@@ -913,7 +913,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:307.0652 | RT:83.4 | XCMS_group:381 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 307.065221870812
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 133.049362182617	4987.00708007812	0.38
@@ -925,7 +925,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:310.1362 | RT:64.4 | XCMS_group:390 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 310.136154574354
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 112.037281036377	85147.5859375	27.02
@@ -940,7 +940,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:311.1234 | RT:60.6 | XCMS_group:391 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 311.123379951208
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.634806
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 102.055355072021	50134.0400390625	6.1
@@ -958,7 +958,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:313.1745 | RT:70.5 | XCMS_group:397 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 313.174482616203
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 123.044132232666	3785.5224609375	31.67
@@ -969,7 +969,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:317.1788 | RT:69.2 | XCMS_group:407 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 317.178762768594
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.154026
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
 129.102073669434	5174.90893554688	5.86
@@ -986,7 +986,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:320.1805 | RT:62.9 | XCMS_group:415 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 320.180476490627
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 101.071388244629	143180.492919922	20.61
@@ -1001,7 +1001,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:323.0385 | RT:83.4 | XCMS_group:423 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 323.038522617119
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
 323.039337158203	9602.89892578125	100
@@ -1009,7 +1009,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:326.1474 | RT:97.7 | XCMS_group:429 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 326.147406045903
 AC$CHROMATOGRAPHY: RETENTION_TIME 97.724058
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
 110.071594238281	18136.025390625	100
@@ -1024,7 +1024,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1813 | RT:65.9 | XCMS_group:443 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181334574007
 AC$CHROMATOGRAPHY: RETENTION_TIME 65.949288
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 102.05542755127	26123.17578125	50.58
@@ -1034,7 +1034,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:334.1384 | RT:121.6 | XCMS_group:450 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 334.138365714283
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.56708
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 130.065124511719	96286.6640625	51.16
@@ -1046,7 +1046,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.1919 | RT:78 | XCMS_group:479 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.191936720949
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.035046
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
 101.071472167969	40989.35546875	43.21
@@ -1069,7 +1069,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0633 | RT:112 | XCMS_group:488 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.063275879513
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
 105.00089263916	16334.1181640625	2.95
@@ -1090,7 +1090,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:362.1915 | RT:64.4 | XCMS_group:515 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 362.191525584631
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
 101.071460723877	22447.7890625	9.82
@@ -1114,7 +1114,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:363.1562 | RT:69.7 | XCMS_group:518 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 363.156167686281
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.717042
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
 119.049404144287	67519.607421875	21.83
@@ -1128,7 +1128,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:369.1509 | RT:118.6 | XCMS_group:537 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 369.150928816373
 AC$CHROMATOGRAPHY: RETENTION_TIME 118.583076
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 113.532424926758	3462.68896484375	100
@@ -1140,7 +1140,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1875 | RT:51.4 | XCMS_group:551 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.187492298947
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.4450368
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
 101.071445465088	16066.8872070312	22.53
@@ -1163,7 +1163,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:394.1621 | RT:112 | XCMS_group:596 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 394.162103579203
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 125.071136474609	12022.4211425781	22.95
@@ -1175,7 +1175,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:401.0617 | RT:34 | XCMS_group:612 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 401.061711739436
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.0415226
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
 116.995010375977	136892.984375	3.25
@@ -1188,7 +1188,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:404.1419 | RT:126.2 | XCMS_group:618 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 404.141901772703
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.186204
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 136.061767578125	170576.3046875	64.29
@@ -1197,7 +1197,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:407.2046 | RT:72.2 | XCMS_group:625 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 407.204554471595
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.171048
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
 102.055419921875	29241.109375	5.9
@@ -1235,7 +1235,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:414.2346 | RT:113.6 | XCMS_group:641 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 414.234577223874
 AC$CHROMATOGRAPHY: RETENTION_TIME 113.597328
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
 101.072120666504	3460.662109375	2.89
@@ -1253,7 +1253,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:417.2097 | RT:77.5 | XCMS_group:651 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 417.20974572592
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.474424
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 50
 PK$PEAK: m/z int. rel.int.
 101.071632385254	21183.01171875	8.79
@@ -1310,7 +1310,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:422.2455 | RT:77.3 | XCMS_group:661 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 422.245503008018
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.267322
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
 132.102210998535	3878.61560058594	18.14
@@ -1321,7 +1321,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:423.1908 | RT:84.2 | XCMS_group:664 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 423.190755443941
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
 101.071411132812	46732.83203125	5.16
@@ -1353,7 +1353,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:429.1368 | RT:71.2 | XCMS_group:678 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 429.13678581444
 AC$CHROMATOGRAPHY: RETENTION_TIME 71.233434
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
 109.076499938965	20519.05859375	2.96
@@ -1381,7 +1381,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:436.215 | RT:113.6 | XCMS_group:699 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 436.215002909334
 AC$CHROMATOGRAPHY: RETENTION_TIME 113.597328
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
 114.550689697266	3498.04321289062	3.12
@@ -1398,7 +1398,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:452.192 | RT:112.8 | XCMS_group:739 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 452.191973065994
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.786446
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 173.128524780273	11933.6540527344	27.41
@@ -1407,7 +1407,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:461.2071 | RT:76.5 | XCMS_group:757 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 461.207113324101
 AC$CHROMATOGRAPHY: RETENTION_TIME 76.520544
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
 112.037200927734	64088.408203125	4.45
@@ -1419,7 +1419,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:462.2212 | RT:57.7 | XCMS_group:759 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 462.22122959389
 AC$CHROMATOGRAPHY: RETENTION_TIME 57.7060356
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 33
 PK$PEAK: m/z int. rel.int.
 102.055290222168	25408.091796875	7.69
@@ -1459,7 +1459,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:476.1907 | RT:81.2 | XCMS_group:787 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 476.190702761819
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.162672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 18
 PK$PEAK: m/z int. rel.int.
 102.055328369141	20673.876953125	11.45
@@ -1484,7 +1484,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:487.1812 | RT:66.7 | XCMS_group:812 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 487.181176540989
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050846099854	11784687	100
@@ -1493,7 +1493,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:494.1968 | RT:49.9 | XCMS_group:830 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 494.196757645669
 AC$CHROMATOGRAPHY: RETENTION_TIME 49.9356528
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
 102.055374145508	147275.96875	14.46
@@ -1517,7 +1517,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:498.1693 | RT:81.2 | XCMS_group:840 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 498.169308539313
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.162672
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
 110.071098327637	19380.7294921875	1.67
@@ -1539,7 +1539,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:499.2505 | RT:129.3 | XCMS_group:843 | file:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 499.250501059464
 AC$CHROMATOGRAPHY: RETENTION_TIME 129.271086
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.7 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
 118.086486816406	5748.27075195312	0.3

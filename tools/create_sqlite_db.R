@@ -7,7 +7,6 @@ print('CREATING DATABASE')
 
 
 xset_pa_filename_fix <- function(opt, pa, xset){
-  print(xset@filepaths)
 
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
     # NOTE: Relies on the pa@fileList having the names of files given as 'names' of the variables 
@@ -40,9 +39,8 @@ xset_pa_filename_fix <- function(opt, pa, xset){
     }
   }
 
-
-print(xset@phenoData)
-print(xset@filepaths)
+  print(xset@phenoData)
+  print(xset@filepaths)
 
   return(list(pa, xset))
 }
@@ -70,6 +68,7 @@ option_list <- list(
 
 # store options
 opt<- parse_args(OptionParser(option_list=option_list))
+print(opt)
 
 loadRData <- function(rdata_path, name){
   #loads an RData file, and returns the named xset object if it is there
@@ -105,8 +104,6 @@ if (opt$xcms_camera_option=='xcms'){
 
 
 
-
-
 if(is.null(opt$grp_peaklist)){
   grp_peaklist = NA
 }else{
@@ -114,11 +111,8 @@ if(is.null(opt$grp_peaklist)){
 }
 
 
-
 db_pth <- msPurity::create_database(pa, xset=xset, xsa=xa, out_dir=opt$out_dir,
                           grp_peaklist=grp_peaklist, db_name=opt$db_name)
-
-print(db_pth)
 
 if (!is.null(opt$eic)){
   if (is.null(opt$raw_rt_columns)){
@@ -141,63 +135,51 @@ if (!is.null(opt$eic)){
 con <- DBI::dbConnect(RSQLite::SQLite(), db_pth)
 
 add_extra_table_elucidation <- function(name, pth, db_con){
-    if (is.null(pth)){
-        return(0)
-    } 
-
-    
-    DBI::dbWriteTable(conn=db_con, name=name, value=pth, sep='\t', header=T)
-
-
+  if (is.null(pth)){
+    return(0)
+  }
+  DBI::dbWriteTable(conn=db_con, name=name, value=pth, sep='\t', header=T)
 }
 
 write_to_table <- function(df, db_con, name, append){
 
-       df <- df[!df$UID=='UID',]
-        print(filter_Score)
-        print(filter_Rank)
-        print('filter rank and score')
+  df <- df[!df$UID=='UID',]
+  # get peakid, an scan id
+  df_ids <- stringr::str_split_fixed(df$UID, '-', 3)
+  colnames(df_ids) <- c('grp_id', 'file_id', 'pid')
+  df <- cbind(df_ids, df)
+  DBI::dbWriteTable(db_con, name=name, value=df, row.names=FALSE, append=append)
 
-
-        # get peakid, an scan id
-        df_ids <- stringr::str_split_fixed(df$UID, '-', 3)
-        colnames(df_ids) <- c('grp_id', 'file_id', 'pid')
-        df <- cbind(df_ids, df)
-        DBI::dbWriteTable(db_con, name=name, value=df, row.names=FALSE, append=append)
 }
 
 add_probmetab <- function(pth, xset, con){
   if (!is.null(pth)){
 
-      df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
-      df$grp_id <- match(df$name, xcms::groupnames(xset))
-      start <- T 
-      for (i in 1:nrow(df)){
+    df <- read.table(pth,  header = TRUE, sep='\t', stringsAsFactors = FALSE,  comment.char = "")
+    df$grp_id <- match(df$name, xcms::groupnames(xset))
+    start <- T 
+    for (i in 1:nrow(df)){
 
-         x <- df[i,]
+      x <- df[i,]
 
-
-         if(is.na(x$proba) | x$proba =='NA'){
-
-	   next
-         }
+      if(is.na(x$proba) | x$proba =='NA'){
+        next
+      }
   
-         mpc <- stringr::str_split(x$mpc, ';')
-         proba <- stringr::str_split(x$proba, ';') 
+      mpc <- stringr::str_split(x$mpc, ';')
+      proba <- stringr::str_split(x$proba, ';') 
 
-         for (j in 1:length(mpc[[1]])){
+      for (j in 1:length(mpc[[1]])){
     
-            row <-  c(x$grp_id, x$propmz, mpc[[1]][j], proba[[1]][j])
+        row <-  c(x$grp_id, x$propmz, mpc[[1]][j], proba[[1]][j])
            
-            if (start){
-               df_out <- data.frame(t(row), stringsAsFactors=F)
-               start <- F
-            }else{
-               df_out <- data.frame(rbind(df_out, row), stringsAsFactors=F)
-            }
-            print(df_out)
-
-         } 
+        if (start){
+          df_out <- data.frame(t(row), stringsAsFactors=F)
+          start <- F
+        }else{
+          df_out <- data.frame(rbind(df_out, row), stringsAsFactors=F)
+        }
+      } 
           
      }
 
@@ -205,8 +187,6 @@ add_probmetab <- function(pth, xset, con){
      DBI::dbWriteTable(con, name='probmetab_results', value=df_out, row.names=FALSE)
 
   }
-
-
 }
 
 add_extra_table_elucidation('metfrag_results', opt$metfrag_result, con)
@@ -225,7 +205,7 @@ if (is.null(xset)){
 
 cmd <- paste('SELECT cpg.grpid, cpg.mz, cpg.mzmin, cpg.mzmax, cpg.rt, cpg.rtmin, cpg.rtmax, c_peaks.cid, ',
              'c_peaks.mzmin AS c_peak_mzmin, c_peaks.mzmax AS c_peak_mzmax, ',
-             'c_peaks.rtmin AS c_peak_rtmin, c_peaks.rtmax AS c_peak_rtmax, s_peak_meta.*, fileinfo.filename, fileinfo.nm_save ',
+             'c_peaks.rtmin AS c_peak_rtmin, c_peaks.rtmax AS c_peak_rtmax, s_peak_meta.*, fileinfo.nm_save as filename',
              'FROM c_peak_groups AS cpg ',
              'LEFT JOIN c_peak_X_c_peak_group AS cXg ON cXg.grpid=cpg.grpid ',
              'LEFT JOIN c_peaks on c_peaks.cid=cXg.cid ',
@@ -233,7 +213,7 @@ cmd <- paste('SELECT cpg.grpid, cpg.mz, cpg.mzmin, cpg.mzmax, cpg.rt, cpg.rtmin,
              'LEFT JOIN s_peak_meta ON cXs.pid=s_peak_meta.pid ',
              'LEFT JOIN fileinfo ON s_peak_meta.fileid=fileinfo.fileid')
 
-print(cmd)
 cpeakgroup_msms <- DBI::dbGetQuery(con, cmd)
 
+print(head(cpeakgroup_msms))
 write.table(cpeakgroup_msms, file.path(opt$out_dir, 'cpeakgroup_msms.tsv'), row.names=FALSE, sep='\t')

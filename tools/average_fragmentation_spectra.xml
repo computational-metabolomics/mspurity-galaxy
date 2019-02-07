@@ -15,44 +15,33 @@
     </stdio>
     <command interpreter="Rscript"><![CDATA[
         average_fragmentation_spectra.R
-            --out="$average_fragmentation_spectra_rdata"
+            --out_rdata="$average_fragmentation_spectra_rdata"
+            --out_peaklist="$peaklist_tsv"
             --pa="$pa"
-            --av_level $av.level
+            --av_level=$av.level
             --cores=\${GALAXY_SLOTS:-4}
 
             --minfrac=$minfrac
             --minnum=$minnum
             --ppm=$ppm
 
-            #if $av.level == "intra"
+            #if $av.level == "inter"
+                --snr=$av.snr
+                --ra=$av.ra
+            #else
                 --snr_pre=$av.snr_pre
                 --ra_pre=$av.ra_pre
                 --snr=$av.snr
                 --ra=$av.ra
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-            #elif $av.level == "intra"
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-                --snr=$av.snr
-                --ra=$av.ra
-	    #end if
-
-            #if $intensity_method == "mean"
-                --av=$intensity_method
-            #elif $intensity_method == "median"
-                --av=$intensity_method
-            #elif $intensity_method == "sum"
-                --sum_i 
             #end if
+
+            --av=$function_average
+            
+            $sum_intensities
 
             --plim=$plim
 
-            #if $remove_peaks
-                --remove_peaks
-            #end if
-
+            $remove_peaks
     ]]></command>
     <inputs>
         <param name="pa" type="data" label="purityA object" format="rdata"
@@ -80,44 +69,53 @@
                 <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
             </when>
         </conditional>
-        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of scans a fragment peak has to be present in." help="" />
-
-        <param name="minnum" type="float" value="1.0" label="Minimum number of fragmentation scans for a fragmentation event (precursor)" help="" />
-
-        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
-        <param name="intensity_method" type="select" label="Function to represent the intensity" help="" >
+        <param name="function_noise" type="select" label="Function to calculate noise" help="">
             <option value="median" selected="true">median</option>
             <option value="mean">mean</option>
-            <option value="sum">sum</option>
+            <option value="mad">mad</option>
+        </param>
+        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
+
+        <param name="minnum" type="integer" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
+        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
+        <param name="sum_intensities" type="boolean" checked="false" truevalue="--sum_i" falsevalue="" label="Sum intensities across (averaged) scans?"
+               help="" />
+        <param name="function_average" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
+            <option value="median" selected="true">median</option>
+            <option value="mean">mean</option>
         </param>
         <param name="plim" type="float" value="0.8" label="Minimum purity precursor threshold" help="Minium purity of a precursor to be included" />
-        <param name="remove_peaks" type="boolean" checked="true" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
+        <param name="remove_peaks" type="boolean" checked="true" truevalue="--remove_peaks" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
                help="" />
     </inputs>
     <outputs>
         <data name="average_fragmentation_spectra_rdata" format="rdata" label="${tool.name} (${av.level}) on ${on_string}: RData" />
+        <data name="peaklist_tsv" format="tsv" label="${tool.name} (${av.level}) on ${on_string}: peaklist" />
     </outputs>
     <tests>
         <test>
             <param name="av|level" value="intra" />
             <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_intra.tsv" ftype="tsv" />
         </test>
         <test>
             <param name="av|level" value="inter" />
             <param name="pa" value="average_intra_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_inter_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_inter.tsv" ftype="tsv" />
         </test>
         <test>
             <param name="av|level" value="all" />
             <param name="pa" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" />
-            <output name="average_fragmentation_spectra_rdata" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="average_fragmentation_spectra_rdata" file="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size" />
+            <output name="peaklist_tsv" file="peaklist_msms_all.tsv" ftype="tsv" />
         </test>
     </tests>
     
     <help><![CDATA[
 =============================================================
-Averag Fragmentation Spectra
+Average Fragmentation Spectra
 =============================================================
 -----------
 Description

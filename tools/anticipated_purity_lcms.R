@@ -25,11 +25,10 @@ option_list <- list(
   make_option("--rtraw_columns",  action="store_true")
 )
 
-# store options
-opt<- parse_args(OptionParser(option_list=option_list))
 
-print(sessionInfo())
+opt<- parse_args(OptionParser(option_list=option_list))
 print(opt)
+
 
 if (!is.null(opt$xgroups)){
     xgroups = as.numeric(strsplit(opt$xgroups, ',')[[1]])
@@ -67,7 +66,6 @@ if (is.null(opt$rtraw_columns)){
 loadRData <- function(rdata_path, xset_name){
 #loads an RData file, and returns the named xset object if it is there
     load(rdata_path)
-    print(ls())
     return(get(ls()[ls() == xset_name]))
 }
 
@@ -100,8 +98,6 @@ if (opt$iwNorm=='none'){
 }
 
 print(xset@filepaths)
-
-
 
 if (!is.null(opt$files)){
   updated_filepaths <- trimws(strsplit(opt$files, ',')[[1]])
@@ -181,8 +177,8 @@ if(sum(is.na(dfp$medianPurity))>0){
     dfp[is.na(dfp$medianPurity),]$medianPurity = 0
 }
 
-print('saving tsv')
+
 print(head(dfp))
 write.table(dfp, file.path(opt$out_dir, 'anticipated_purity_lcms.tsv'), row.names=FALSE, sep='\t')
-print('saving RData')
+
 save.image(file.path(opt$out_dir, 'anticipated_purity_lcms.RData'))

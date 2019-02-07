@@ -75,8 +75,7 @@
         <param name="ppm_f4f" type="float" label="ppm" value="10"
                     help="ppm tolerance between precursor mz and feature mz"/>
 
-        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
-                    help="min purity of precursor to be included"/>
+        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0" help="min purity of precursor to be included"/>
 
         <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spcetra?"/>
 
@@ -139,9 +138,6 @@ Outputs
 * frag4feature_rdata: An updated purityA object saved as rdata file with fragmentation-feature links added
 * frag4feature_grouped_msms: A flat file of all the XCMS peaks for each grouped feature and the corresponding fragmentation scans
 * frag4feature_sqlite: An SQLite database of the data (including fragmentation scans)
-
-
-
     ]]></help>
 
 <expand macro="citations" />
