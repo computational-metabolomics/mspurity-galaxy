@@ -57,7 +57,6 @@ if ((opt$library_sources=='') || (is.null(opt$library_sources)) || (opt$library_
 }else{
     library_sources <- trimws(strsplit(opt$library_sources, ',')[[1]])
 }
-print(c(library_sources, "test test test"))
 
 if (!is.na(opt$scan_ids)){
     scan_ids <- trimws(strsplit(opt$scan_ids, ',')[[1]])
