@@ -126,7 +126,7 @@ cat("\n\n")
 cat("\tMAIN PROCESSING INFO\n")
 
 
-cat("\t\tCOMPUTE\n")
+cat("\t\tCOMPUTE\n\n")
 
 pa <- msPurity::purityA(fileList = filepaths$singlefile,
               cores = opt$cores,
