@@ -36,10 +36,10 @@ option_list <- list(
   make_option("--mostIntense", action="store_true"),
   make_option("--createDB", action="store_true"),
   make_option("--cores", default=4),
-  make_option("--mzML_files", type="character"),
-  make_option("--galaxy_names", type="character"),
-  make_option("--grp_peaklist", type="character"),
-  make_option("--use_group", action="store_true")
+  make_option("--singlefile_galaxyPath", type="character"),
+  make_option("--singlefile_sampleName", type="character"),
+  make_option("--zipfile", type="character"),
+  make_option("--grp_peaklist", type="character")
 )
 
 # store options
@@ -73,10 +73,12 @@ if(is.null(opt$mostIntense)){
     mostIntense = TRUE
 }
 
-if(is.null(opt$convert2RawRT)){
-    convert2RawRT = FALSE
-}else{
+convert2RawRT = FALSE
+for(p in 1:length(xdata@.processHistory)){
+  if(xdata@.processHistory[[p]]@type == "Retention time correction"){
+    print("Retention time used")
     convert2RawRT= TRUE
+  }
 }
 
 if(is.null(opt$createDB)){

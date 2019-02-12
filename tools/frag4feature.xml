@@ -18,7 +18,7 @@
         <exit_code range="1:" />
     </stdio>
     <command><![CDATA[
-        Rscript $__tool_directory__/frag4feature.R
+        @COMMAND_RSCRIPT@/frag4feature.R
 
             --out_dir=.
 
@@ -28,19 +28,6 @@
 
             --cores=\${GALAXY_SLOTS:-4}
 
-            #if $file_load_conditional.file_load_select=="yes"
-                --mzML_files='
-                #for $i in $file_load_conditional.input
-                    $i,
-                #end for
-                '
-                --galaxy_names='
-                #for $i in $file_load_conditional.input
-                    $i.name,
-                #end for
-                '
-            #end if
-
             --ppm=$ppm_f4f
             --plim=$plim_f4f
 
@@ -48,17 +35,17 @@
                 --mostIntense
             #end if
 
-            #if $convert2RawRT_f4f
-                --convert2RawRT
-            #end if
-
  	        #if $createDB
                 --createDB
             #end if
 
-            #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
-                --grp_peaklist=$grp_peaklist
+            #if $AdvOptions.grp_peaklist_opt.grp_peaklist_opt=="yes"
+                --grp_peaklist=$AdvOptions.grp_peaklist
             #end if
+
+            @COMMAND_FILE_LOAD@
+
+            @COMMAND_LOG_EXIT@
 
     ]]></command>
     <inputs>
@@ -73,24 +60,18 @@
         <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
          use most intense peak within isolation window for precursor?"/>
 
-        <param name="use_group" type="boolean" checked="false" label="For matching fragmentation to a feature,
-         use the grouped feature range" help="If the MS1 and MS2 are in different files this is option has to be set to true"
-         />
-
-        <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
-               help="If retention time correction has been used in XCMS set this to yes"/>
-
         <param name="ppm_f4f" type="float" label="ppm" value="10"
                     help="ppm tolerance between precursor mz and feature mz"/>
 
         <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0" help="min purity of precursor to be included"/>
 
-        <param name="createDB" type="boolean" checked="false" label="Create SQLite database of spectra?" help="Have to be fix"/>
+        <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spectra?" />
 
-        <expand macro="grp_peaklist" />
+        <section name="AdvOptions" title="Advanced options" expanded="False">
+            <expand macro="grp_peaklist" />
+        </section>
 
-        <expand macro="fileload" />
-
+        <expand macro="input_file_load" />
 
     </inputs>
 
