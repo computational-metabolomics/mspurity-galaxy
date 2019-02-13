@@ -19,10 +19,14 @@
             --out_dir=.
             --query_db_pth=$query_db
 
-            #if $custom_sqlite.custom_sqlite_select:
+            #if $custom_sqlite.custom_sqlite_select
                 --library_db_pth=$custom_sqlite.library_db
+                --library_sources=$custom_sqlite.library_sources
+                --instrument_types=$custom_sqlite.instrument_types
+            #else
+                --library_sources=$custom_sqlite.library_sources
+                --instrument_types=$custom_sqlite.instrument_types
             #end if
-
 
             --ra_thres_l=$advanced.ra_thres_l
             --ra_thres_q=$advanced.ra_thres_q
@@ -32,25 +36,21 @@
             --ppm_tol_prod=$ppm_tol_prod
             --ppm_tol_prec=$ppm_tol_prec
 
+            #if float($rt_tol) > 0.0
+              --rttol=$rt_tol
+            #end if
+
             --spectra_type_q=$spectra_type_q
 
-            #if $advanced.match_method:
+            #if $advanced.match_method
               --match_method=$advanced.match_method
             #end if
 
-            #if $instrument_type_cond.instrument_types_bool:
-              --instrument_types=$instrument_type_cond.instrument_types
-            #end if
-
-            --library_sources=$library_sources
-
-            #if $advanced.topncond.topnbool:
+            #if $advanced.topncond.topnbool
                 --topn=$topn
             #end if
 
-
-
-            #if $advanced.scan_ids:
+            #if $advanced.scan_ids
               --scan_ids='
                 #for $i, $j in enumerate($advanced.scan_ids)
                     $j.scan_ids,
@@ -61,60 +61,24 @@
               --create_new_database
             #end if
 
-
-
     ]]></command>
     <inputs>
 
         <param type="data" name="query_db" label="SQLite DB of query spectra" format="sqlite"
                help="SQLite DB of Query spectra. (e.g. generated from frag4feature tool)"/>
 
-
         <conditional name="custom_sqlite">
-                <param name="custom_sqlite_select" type="boolean" label="Use custom library SQLite Database?"
-                help="The default SQLite database of library spectra contains fragmentation spectra from MassBank, LipidBlast and GNPS,
-                     A more official location can be found here: https://bioconductor.org/packages/release/data/experiment/src/contrib/msPurityData_1.6.0.tar.gz" >
+            <param name="custom_sqlite_select" type="boolean" label="Use custom library SQLite Database?"
+            help="" />
+            <when value="false">
+                <param name="library_sources" type="select" multiple="true" 
+                       help="The default internal SQLite database of library (reference) spectra contains fragmentation spectra from MassBank, LipidBlast and GNPS. A copy is available from here: https://bioconductor.org/packages/release/data/experiment/html/msPurityData.html" >
+                    <option value="massbank" selected="true">MassBank from MoNa</option>
+                    <option value="gnps">GNPS</option>
+                    <!-- <option value="hmdb">HMDB</option> -->
+                    <option value="lipidblast">LipidBlast</option>
                 </param>
-                <when value="false">
-                </when>
-                <when value="true">
-                    <param type="data" name="library_db" label="SQLite DB of library spectra" format="sqlite"
-                           help="Custom SQLite database of library (reference) spectra"/>
-                </when>
-       </conditional>
-
-
-        <param name="pol" type="select" label="polarity" >
-                <option value="positive" selected="true">Positive</option>
-                <option value="negative"  >negative</option>
-        </param>
-
-        <param name="spectra_type_q" type="select" label="spectra_type_q" >
-                <option value="scans"  >all individual scans</option>
-                <option value="av_intra"  >averaged intra spectra </option>
-                <option value="av_inter"  >averaged inter spectra</option>
-                <option value="av_all" selected="true">averaged all spectra ignoring inter-intra relationships </option>
-        </param>
-
-
-        <param name="ppm_tol_prod" type="float" value="10"
-                    help="Parts per million tolerance to match product mz values"/>
-
-        <param name="ppm_tol_prec" type="float" value="5"
-                    help="Parts per million tolerance to match precursor mz values"/>
-
-        <param name="score_thres" type="float" min="0" max="1" value="0.6"
-                    help="Score threshold"/>
-
-
-
-
-        <conditional name="instrument_type_cond">
-            <param name="instrument_types_bool" type="boolean" label="Filter on instrument types?"/>
-                <when value="false">
-                </when>
-                <when value="true">
-                   <param name="instrument_types" type="select"  multiple="true" >
+                <param name="instrument_types" type="select"  multiple="true" >
                     <option value="APCI-ITFT">APCI-ITFT</option>
                     <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
                     <option value="CI-B">CI-B</option>
@@ -146,31 +110,54 @@
                     <option value="MALDI-TOF">MALDI-TOF</option>
                     <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
                     <option value="none">None</option>
-                  </param>
-          </when>
-      </conditional>
+                </param>
+            </when>
+            <when value="true">
+                <param type="data" name="library_db" label="Custom SQLite database of library (reference) spectra" format="sqlite" help=""/>
+                <param name="library_sources" type="text" value="" help="Names of the libraries to be searched (e.g. 'Lipids,InternalLibrary' or 'InternalLibrary'). Use a comma to separate the names or leave empty to search all libraries."/>
+                <param name="instrument_types" type="text" value="" help="Types of the instruments to be included in the search. Use a comma to separate the instrument types or leave empty to ignore filter."/>
+            </when>
+        </conditional>
 
-      <param name="library_sources" type="select"  multiple="true" >
-            <option value="lipidblast">LipidBlast</option>
-            <option value="massbank" selected="true">MassBank</option>
-            <option value="gnps">GNPS</option>
-            <option value="any">Any (use with custom library database)</option>
-      </param>
+        <param name="pol" type="select" label="polarity" >
+            <option value="positive" selected="true">Positive</option>
+            <option value="negative" >negative</option>
+        </param>
+
+        <param name="spectra_type_q" type="select" label="spectra_type_q" >
+            <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
+            <option value="av_inter">Averaged inter spectra</option>
+            <option value="av_intra">Averaged intra spectra </option>
+            <option value="scans">All individual scans</option>
+        </param>
+
+        <param name="ppm_tol_prod" type="float" min="0" value="10"
+               help="Parts per million tolerance to match product mz values"/>
+
+        <param name="ppm_tol_prec" type="float" min="0" value="5"
+               help="Parts per million tolerance to match precursor mz values"/>
+
+        <param name="rt_tol" type="float" value="0" min="0" label="Retention time tolerance (i.e. min,max)"
+               help="Retention time tolerance in seconds to match precursors. Use 0 to ignore."/>
+
+        <param name="score_thres" type="float" min="0" max="1" value="0.6"
+               help="Score threshold"/>
+
         <param name="create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
                help="A copy will be made of the input SQLite target database and the results will be added to this copy.
                      When False, the input SQLite database will be updated  with the matching results. Use False
                      if you want to reduce storage space being used."/>
 
         <section name="advanced" title="advanced" expanded="False">
-              <param name="match_method" type="select" label="match_method"
-                help="Choose the matching method to use for assessing the similarity between the query and library
-                      spectra. Current options are to use dot product cosine on weighted mass x intensity vectors or
-                      use the composite approach where the dot product cosine approach is combined with a similarity measure of
-                      peak profiles">
-                <option value="dpc" selected="true">Dot product cosine </option>
+            <param name="match_method" type="select" label="match_method"
+                   help="Choose the matching method to use for calculating the similarity between the query and library
+                         spectra. Current options are: 
+                         1) dot product cosine on weighted mass x intensity vectors;
+                         2) composite approach where the dot product cosine approach is combined with a similarity measure of
+                         peak profiles.">
+                <option value="dpc" selected="true">Dot product cosine</option>
                 <option value="composite">Composite</option>
-              </param>
-
+            </param>
 
             <conditional name="topncond">
                 <param name="topnbool" type="boolean" label="Only use the top n spectral matching hits?"/>
@@ -182,15 +169,14 @@
             </conditional>
 
             <param name="ra_thres_l" type="float" value="0"
-               help="Relative abundance threshold for library spectra"/>
+                   help="Relative abundance threshold for library spectra"/>
 
             <param name="ra_thres_q" type="float" value="0"
-               help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
+                   help="Relative abundance threshold for target spectra (e.g. spectral data from users MS files)"/>
 
             <repeat name="scan_ids" title="Specific scan ids">
                 <param name="scan_ids" type="integer" value=""/>
             </repeat>
-
         </section>
 
     </inputs>
@@ -201,9 +187,9 @@
         </data>
         <data name="scan_hits" format="tsv" label="${tool.name} on ${on_string}: scan hits"
               from_work_dir="scan_hits.tsv" >
-            <filter>spectra_type_q==scans</filter>
+            <filter>spectra_type_q == "scans"</filter>
         </data>
-        <data name="xcms_hits" format="tsv" label="${tool.name} on ${on_string}: xcms hits"
+        <data name="xcms_hits" format="tsv" label="${tool.name} on ${on_string}: XCMS hits"
               from_work_dir="xcms_hits.tsv" />
     </outputs>
     <tests>
@@ -212,11 +198,10 @@
             <param name="custom_sqlite|custom_sqlite_select" value="true" />
             <param name="create_new_database" value="true" />
             <param name="library_db" value="massbank_test.sqlite" />
-            <param name="library_sources" value="any" />
+            <param name="library_sources" value="" />
             <param name="spectra_type_q" value="av_all" />
             <param name="ppm_tol_prec"  value="100"/>
             <output name="xcms_hits" file="spectra_matching_xcms_hits.tsv" />
-
         </test>
     </tests>
 

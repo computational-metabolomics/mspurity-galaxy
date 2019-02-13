@@ -14,6 +14,7 @@ option_list <- list(
   make_option("--pol", default='positive'),
   make_option("--ppm_tol_prod", default=10),
   make_option("--ppm_tol_prec", default=5),
+  make_option("--rttol", default=NA),
   make_option("--score_thres", default=0.6),
   make_option("--instrument_types", type='character'),
   make_option("--spectra_type_q", type='character'),
@@ -32,7 +33,6 @@ opt<- parse_args(OptionParser(option_list=option_list))
 
 if (is.null(opt$matching_method)){
   match_method='dpc'
-  
 }else{
   match_method = opt$match_method
 }
@@ -47,17 +47,17 @@ if (!is.null(opt$create_new_database)){
 }
 
 
-if ((opt$instrument_types=='None') || (is.null(opt$instrument_types))){
+if ((opt$instrument_types=='None') || (is.null(opt$instrument_types)) || (opt$instrument_types=='')){
     instrument_types <- NA
 }else{
     instrument_types <- trimws(strsplit(opt$instrument_types, ',')[[1]])
 }
-if ((opt$library_sources=='None') ||(is.null(opt$library_sources)) || (opt$library_sources=='any')){
+if ((opt$library_sources=='') || (is.null(opt$library_sources)) || (opt$library_sources=='any')){
     library_sources <- NA
 }else{
     library_sources <- trimws(strsplit(opt$library_sources, ',')[[1]])
 }
-
+print(c(library_sources, "test test test"))
 
 if (!is.na(opt$scan_ids)){
     scan_ids <- trimws(strsplit(opt$scan_ids, ',')[[1]])
@@ -76,6 +76,7 @@ result <- msPurity::spectral_matching(
                             pol = opt$pol,
                             ppm_tol_prod = opt$ppm_tol_prod,
                             ppm_tol_prec = opt$ppm_tol_prec,
+                            rttol=opt$rttol,
                             score_thres = opt$score_thres,
                             out_dir = opt$out_dir,
                             topn = opt$topn,
