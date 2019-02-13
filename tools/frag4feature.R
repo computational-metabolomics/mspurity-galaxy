@@ -141,17 +141,29 @@ object2save <- c("pa")
 save(list=object2save[object2save %in% ls()], file=file.path(opt$out_dir, 'frag4feature.RData'))
 
 #Build a comprehensive table for users
+outputdata <- pa@grped_df
 if(pa@f4f_link_type == 'group'){
-  if(!("filename" %in% names(pa@grped_df))) {
-    temp <- names(pa@fileList)[pa@grped_df[,"fileid"]]
-    outputdata <- tibble::add_column(pa@grped_df,filename=temp,.before=length(pa@grped_df))
+  print(head(outputdata))
+  if(!("filename" %in% names(outputdata))) {
+    temp <- names(pa@fileList)[outputdata[,"fileid"]]
+    outputdata <- tibble::add_column(outputdata,filename=temp,.before=length(outputdata))
+  }else{
+    cols.dont.want <- "filename"
+    temp <- names(pa@fileList)[outputdata[,"fileid"]]
+    outputdata <- tibble::add_column(outputdata,filename=temp,.before=length(outputdata))
   }
   cols.dont.want <- c("pid", "precurMtchID", "fileid") # if you want to remove multiple columns
   outputdata <- outputdata[, ! names(outputdata) %in% cols.dont.want, drop = F]
 }else{
-  if(!("filename" %in% names(pa@grped_df))) {
-    temp <- names(pa@fileList)[pa@grped_df[,"fileid"]]
-    outputdata <- tibble::add_column(pa@grped_df,filename=temp,.before=length(pa@grped_df))
+  print(head(outputdata))
+  if(!("filename" %in% names(outputdata))) {
+    temp <- names(pa@fileList)[outputdata[,"fileid"]]
+    outputdata <- tibble::add_column(outputdata,filename=temp,.before=length(outputdata))
+  }else{
+    cols.dont.want <- "filename"
+    outputdata <- outputdata[, ! names(outputdata) %in% cols.dont.want, drop = F]
+    temp <- names(pa@fileList)[outputdata[,"fileid"]]
+    outputdata <- tibble::add_column(outputdata,filename=temp,.before=length(outputdata))
   }
   cols.dont.want <- c("sample", "is_filled", "cid", "pid", "precurMtchID", "fileid") # if you want to remove multiple columns
   outputdata <- outputdata[, ! names(outputdata) %in% cols.dont.want, drop = F]
