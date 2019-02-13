@@ -1,9 +1,8 @@
 #!/usr/bin/env Rscript
 
 # ----- LOG FILE -----
-#log_file <- file("assess_purity_log.txt", open="wt")
-#sink(log_file)
-#sink(log_file, type = "output")
+log_file <- file("log.txt", open="wt")
+sink(log_file, type = "output")
 
 
 # ----- PACKAGE -----
@@ -141,5 +140,20 @@ pa <- msPurity::frag4feature(pa=pa,
 object2save <- c("pa")
 save(list=object2save[object2save %in% ls()], file=file.path(opt$out_dir, 'frag4feature.RData'))
 
-write.table(pa@grped_df, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
-
+#Build a comprehensive table for users
+if(pa@f4f_link_type == 'group'){
+  if(!("filename" %in% names(pa@grped_df))) {
+    temp <- names(pa@fileList)[pa@grped_df[,"fileid"]]
+    outputdata <- tibble::add_column(pa@grped_df,filename=temp,.before=length(pa@grped_df))
+  }
+  cols.dont.want <- c("pid", "precurMtchID", "fileid") # if you want to remove multiple columns
+  outputdata <- outputdata[, ! names(outputdata) %in% cols.dont.want, drop = F]
+}else{
+  if(!("filename" %in% names(pa@grped_df))) {
+    temp <- names(pa@fileList)[pa@grped_df[,"fileid"]]
+    outputdata <- tibble::add_column(pa@grped_df,filename=temp,.before=length(pa@grped_df))
+  }
+  cols.dont.want <- c("sample", "is_filled", "cid", "pid", "precurMtchID", "fileid") # if you want to remove multiple columns
+  outputdata <- outputdata[, ! names(outputdata) %in% cols.dont.want, drop = F]
+}
+write.table(outputdata, file.path(opt$out_dir, 'frag4feature.tsv'), row.names=FALSE, sep='\t')
