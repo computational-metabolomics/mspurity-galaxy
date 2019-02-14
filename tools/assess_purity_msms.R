@@ -11,27 +11,15 @@ cat("\tSESSION INFO\n")
 #Import the different functions
 #Modify the frag4feature functions (DELETE IT AFTER)
 source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
-pkgs <- c("xcms","optparse","tools")#,"batch")#,"msPurity")
+pkgs <- c("xcms","optparse","tools","batch","msPurity")
 loadAndDisplayPackages(pkgs)
 cat("\n\n")
 
-source("/home/jsaintvanne/W4M/msPurityTest/R/create_database.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-class.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/flag-filter-remove.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-constructor.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/iw-norm.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/pcalc.R")
 #source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
 #source_local("lib.r")
 
-
-
-
-
 # ----- ARGUMENTS -----
 cat("\tARGUMENTS INFO\n\n")
-#args <- parseCommandArgs(evaluate = FALSE) #interpretation of arguments given in command line as an R list of objects
-#write.table(as.matrix(args), col.names=F, quote=F, sep='\t')
 
 # List options
 option_list <- list(
@@ -52,6 +40,7 @@ option_list <- list(
 
 # Store options
 opt <- parse_args(OptionParser(option_list=option_list))
+print(opt)
 
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
@@ -137,7 +126,7 @@ cat("\tMAIN PROCESSING INFO\n")
 
 cat("\t\tCOMPUTE\n")
 
-pa <- purityA(fileList = filepaths$singlefile,
+pa <- msPurity::purityA(fileList = filepaths$singlefile,
               cores = opt$cores,
               mostIntense = mostIntense,
               nearest = nearest,
@@ -163,7 +152,6 @@ write.table(pa@puritydf, file.path(opt$out_dir, 'purity_msms.tsv'), row.names=FA
 #saving R data in .Rdata file to save the variables used in the present tool
 objects2save <- c("pa")
 save(list=objects2save[objects2save %in% ls()], file=file.path(opt$out_dir, 'purity_msms.RData'))
-
 
 # removed_peaks <- data.frame(removed_peaks)
 # write.table(data.frame('ID'=rownames(removed_peaks),removed_peaks),

@@ -1,4 +1,5 @@
 <tool id="frag4featureTest" name="frag4featureTest" version="0.0.19">
+
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
@@ -72,14 +73,17 @@
         <param name="mostIntense_f4f" type="boolean" checked="true" label="For matching fragmentation to a feature,
          use most intense peak within isolation window for precursor?"/>
 
+        <param name="use_group" type="boolean" checked="false" label="For matching fragmentation to a feature,
+         use the grouped feature range" help="If the MS1 and MS2 are in different files this is option has to be set to true"
+         />
+
         <param name="convert2RawRT_f4f" type="boolean" checked="false" label="Was retention time correction used?"
                help="If retention time correction has been used in XCMS set this to yes"/>
 
         <param name="ppm_f4f" type="float" label="ppm" value="10"
                     help="ppm tolerance between precursor mz and feature mz"/>
 
-        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0"
-                    help="min purity of precursor to be included"/>
+        <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0" help="min purity of precursor to be included"/>
 
         <param name="createDB" type="boolean" checked="false" label="Create SQLite database of spectra?" help="Have to be fix"/>
 
@@ -89,7 +93,7 @@
 
     </inputs>
     <outputs>
-	    <data name="frag4feature_grouped_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
+        <data name="frag4feature_grouped_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
               from_work_dir="frag4feature.tsv" />
         <data name="frag4feature_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
               from_work_dir="frag4feature.RData" />
@@ -104,18 +108,17 @@
                 <param name="file_load_select" value="yes"/>
                 <param name="input" >
                     <collection type="list">
-                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
-                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
-                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
                         <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
                     </collection>
                 </param>
             </conditional>
-            <param name="xset" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
-            <param name="pa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.assess_purity.rdata"/>
-            <output name="frag4feature_grouped_msms" value="frag4feature_output.tsv" >
-                
-            </output>
+            <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <param name="pa" value="assess_purity_msms_output_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <output name="frag4feature_grouped_msms" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.tsv"/>
+            <output name="frag4feature_rdata" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size"/>
         </test>
     </tests>
     
@@ -145,9 +148,6 @@ Outputs
 * frag4feature_rdata: An updated purityA object saved as rdata file with fragmentation-feature links added
 * frag4feature_grouped_msms: A flat file of all the XCMS peaks for each grouped feature and the corresponding fragmentation scans
 * frag4feature_sqlite: An SQLite database of the data (including fragmentation scans)
-
-
-
     ]]></help>
 
 <expand macro="citations" />

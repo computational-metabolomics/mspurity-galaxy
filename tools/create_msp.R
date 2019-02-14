@@ -1,14 +1,5 @@
 library(optparse)
-#library(msPurity)
-source("/home/jsaintvanne/W4M/msPurityTest/R/all-generics.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/create_database.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-class.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/flag-filter-remove.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-constructor.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/iw-norm.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/pcalc.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-create-msp.R")
-
+library(msPurity)
 print(sessionInfo())
 
 # Get the parameter
@@ -47,8 +38,7 @@ if (is.null(opt$xcms_groupids)){
 }
 
 
-#msPurity::
-createMSP(pa, 
+msPurity::createMSP(pa, 
                     msp_file_pth = file.path(opt$out_dir, 'lcmsms_spectra.msp'),
                     metadata = metadata,
                     metadata_cols = opt$metadata_cols,

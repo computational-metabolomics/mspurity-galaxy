@@ -1,6 +1,5 @@
 #!/usr/bin/env Rscript
 
-
 # ----- LOG FILE -----
 #log_file <- file("assess_purity_log.txt", open="wt")
 #sink(log_file)
@@ -19,16 +18,6 @@ source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
 pkgs <- c("xcms","optparse")#,"batch")#,"msPurity")
 loadAndDisplayPackages(pkgs)
 cat("\n\n")
-
-source("/home/jsaintvanne/W4M/msPurityTest/R/create_database.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-class.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/flag-filter-remove.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-constructor.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/purityA-frag4feature.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/iw-norm.R")
-source("/home/jsaintvanne/W4M/msPurityTest/R/pcalc.R")
-
-
 
 # ----- ARGUMENTS -----
 cat("\tARGUMENTS INFO\n\n")
@@ -49,11 +38,19 @@ option_list <- list(
   make_option("--cores", default=4),
   make_option("--mzML_files", type="character"),
   make_option("--galaxy_names", type="character"),
-  make_option("--grp_peaklist", type="character")
+  make_option("--grp_peaklist", type="character"),
+  make_option("--use_group", action="store_true")
 )
 
 # store options
-opt <- parse_args(OptionParser(option_list=option_list))
+opt<- parse_args(OptionParser(option_list=option_list))
+print(opt)
+
+loadRData <- function(rdata_path, name){
+#loads an RData file, and returns the named xset object if it is there
+    load(rdata_path)
+    return(get(ls()[ls() %in% name]))
+}
 
 print(opt)
 
@@ -88,17 +85,24 @@ if(is.null(opt$createDB)){
     createDB = TRUE
 }
 
-
-#fix <- xset_pa_filename_fix(opt, pa, xset)
-#pa <- fix[[1]]
-#xset <- fix[[2]]
+if(is.null(opt$use_group)){
+    fix <- xset_pa_filename_fix(opt, pa, xset)
+    pa <- fix[[1]]
+    xset <- fix[[2]]
+    use_group=FALSE
+}else{
+    # if are only aligning to the group not eah file we do not need to align the files between the xset and pa object
+    print('use_group')
+    fix <- xset_pa_filename_fix(opt, pa)
+    pa <- fix[[1]]
+    use_group=TRUE
+}
 
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
 }else{
     grp_peaklist = opt$grp_peaklist
 }
-
 
 cat("\n\n")
 
@@ -120,10 +124,17 @@ cat("\t\tCOMPUTE\n\n")
 
 saveRDS(pa, 'test_pa.rds')
 
-pa <- frag4feature(pa=pa, xdata=xdata, CSVfile=CSVfile, ppm=opt$ppm, plim=opt$plim,
-                   intense=opt$mostIntense, convert2RawRT=convert2RawRT,
-                   db_name='alldata.sqlite', out_dir=opt$out_dir, grp_peaklist=grp_peaklist,
-                   create_db=createDB)
+pa <- msPurity::frag4feature(pa=pa, 
+                             xdata=xdata, 
+                             CSVfile=CSVfile, 
+                             ppm=opt$ppm, 
+                             plim=opt$plim,
+                             intense=opt$mostIntense, 
+                             convert2RawRT=convert2RawRT,
+                             db_name='alldata.sqlite', 
+                             out_dir=opt$out_dir, 
+                             grp_peaklist=grp_peaklist,
+                             create_db=createDB)
 
 object2save <- c("pa")
 save(list=object2save[object2save %in% ls()], file=file.path(opt$out_dir, 'frag4feature.RData'))

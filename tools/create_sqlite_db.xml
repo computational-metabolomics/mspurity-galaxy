@@ -1,4 +1,4 @@
-<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.19">
+<tool id="create_sqlite_db" name="create_sqlite_db" version="0.0.21">
     <description>
         Create SQLite database of an XCMS-CAMERA dataset
     </description>
@@ -71,12 +71,12 @@
         <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
 
-	<param name="eic" type="boolean" label="Include EIC data?"
+      	<param name="eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
                      the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>
 	
-	<param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
+	      <param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
                help="Only use if the track_rt_raw tool has been used"/>
 
 
@@ -126,8 +126,8 @@
         
     </inputs>
     <outputs>
-        <data name="lcms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
-              from_work_dir="lcms_data.sqlite" />
+        <data name="lcmsms_data_sqlite" format="sqlite" label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
+              from_work_dir="lcmsms_data.sqlite" />
         <data name="cpeakgroup_msms" format="tsv" label="${tool.name} on ${on_string}: c-peak-group-msms"
               from_work_dir="cpeakgroup_msms.tsv" />
 
@@ -145,14 +145,12 @@
                     </collection>
                 </param>
             </conditional>
-	    <param name="camera_xcms" value="xcms"/>
-            <param name="xset_xa" value="LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.xset.group.rdata"/>
-            <param name="pa" value="frag4feature.rdata"/>
+	         <param name="camera_xcms" value="xcms"/>
+           <param name="xset_xa" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+           <param name="pa" value="average_all_fragmentation_spectra_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+           <output name="cpeakgroup_msms" value="create_sqlite_db_cpeakgroup_msms_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.tsv"/>
+           <output name="lcmsms_data_sqlite" value="create_sqlite_db_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.sqlite" ftype="sqlite" compare="sim_size"/>
            
-            <output name="cpeakgroup_msms" value="cpeakgroup_msms.tsv" >
-            
-                 
-            </output>
         </test>
     </tests>
     
