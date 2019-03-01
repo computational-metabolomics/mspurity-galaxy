@@ -1,20 +1,23 @@
-{% set version="1.9.7" %}
+{% set version="1.9.8" %}
 {% set name="msPurity" %}
 {% set bioc="3.8" %}
-
 
 package:
   name: 'bioconductor-{{ name|lower}}'
   version: '{{ version }}'
 
 source:
+  url: https://github.com/computational-metabolomics/msPurity/archive/7ed43f6e82681739deb365bb1054cbe3db92bfbe.zip
 
-  fn: msPurity-3ea03aa9ec23076e372c489cca4874256d09a71e.zip
-  url: https://github.com/computational-metabolomics/msPurity/archive/3ea03aa9ec23076e372c489cca4874256d09a71e.zip
 
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
 
 requirements:
-  build:
+  host:
     - 'libnetcdf 4.4.*'
     - 'r-base >=3.4.1'
     - 'bioconductor-xcms >=3.0.0'
@@ -31,8 +34,9 @@ requirements:
     - r-reshape2
     - r-rsqlite
     - r-stringr
-    - gcc  # [linux]
-    - llvm  # [osx]
+    - r-uuid
+    - r-jsonlite
+    - bioconductor-keggrest
   run:
     - 'libnetcdf 4.4.*'
     - 'r-base >=3.4.1'
@@ -50,6 +54,13 @@ requirements:
     - r-reshape2
     - r-rsqlite
     - r-stringr
+    - r-uuid
+    - r-jsonlite
+    - bioconductor-keggrest
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
 test:
   commands:
     - '$R -e "library(''{{ name }}'')"'
