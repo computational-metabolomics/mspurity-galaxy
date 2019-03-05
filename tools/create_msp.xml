@@ -8,24 +8,22 @@
     <stdio>
         <exit_code range="1:" />
     </stdio>
-
     <command><![CDATA[
     @COMMAND_RSCRIPT@/create_msp.R
     --rdata_input "$rdata_input"
     --method "$method"
-        
+
     #if $metadata_cond.metadata_select == "true"
         --metadata "$metadata_cond.metadata"
         --metadata_cols "$metadata_cond.metadata_cols"
         --adduct_split "$metadata_cond.adduct_split"
     #end if
-        
+
     #if $xcms_group_cond.xcms_group_select == "true"
         --xcms_groupids "$xcms_group_cond.xcms_groupids"
     #end if
-        
-    --out_dir '.'
 
+    --out_dir '.'
     ]]></command>
     <inputs>
         <param name="rdata_input" type="data" format="rdata" label="msPurity purityA dataset" argument="--purity_dataset"
@@ -61,7 +59,7 @@
         </conditional>
 
         <conditional name="xcms_group_cond">
-          <param name="xcms_group_select" type="boolean" label="Select XCMS groups?" help="if set to no, all XCMS group features will be used" />
+            <param name="xcms_group_select" type="boolean" label="Select XCMS groups?" help="if set to no, all XCMS group features will be used" />
             <when value="true">
                 <param name="xcms_groupids" type="text" label="XCMS peak group ids" value=""
                 help="Comma separated string of XCMS group ids to export MSP spectra for. If blank all XCMS peak groups will be used"/>
