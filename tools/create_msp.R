@@ -10,16 +10,12 @@
 # ----- PACKAGE -----
 cat("\tSESSION INFO\n")
 
-#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
-#source_local("lib.r")
-
 #Import the different functions
-#Modify the frag4feature functions (DELETE IT AFTER)
-source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
+source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+source_local("lib.r")
 pkgs <- c("optparse","msPurity")
 loadAndDisplayPackages(pkgs)
 cat("\n\n")
-
 
 # ----- ARGUMENTS -----
 cat("\tARGUMENTS INFO\n\n")

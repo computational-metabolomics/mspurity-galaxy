@@ -126,19 +126,6 @@ retrieveRawfileInTheWorkingDirectory <- function(singlefile, zipfile) {
     return (directory)
 }
 
-#This function list the compatible files within the directory as xcms did
-#@author Gildas Le Corguille lecorguille@sb-roscoff.fr ABiMS TEAM
-getMSFiles <- function (directory) {
-    filepattern <- c("[Cc][Dd][Ff]", "[Nn][Cc]", "([Mm][Zz])?[Xx][Mm][Ll]","[Mm][Zz][Dd][Aa][Tt][Aa]", "[Mm][Zz][Mm][Ll]")
-    filepattern <- paste(paste("\\.", filepattern, "$", sep=""),collapse="|")
-    info <- file.info(directory)
-    listed <- list.files(directory[info$isdir], pattern=filepattern,recursive=TRUE, full.names=TRUE)
-    files <- c(directory[!info$isdir], listed)
-    exists <- file.exists(files)
-    files <- files[exists]
-    return(files)
-}
-
 # Just to verify the msPurity version
 use <- function(package, version=0, ...) {
   package <- as.character(substitute(package))

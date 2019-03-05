@@ -1,5 +1,4 @@
-<tool id="frag4feature" name="frag4feature" version="0.0.19">
-
+<tool id="frag4feature" name="frag4feature" version="0.0.20">
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
@@ -19,22 +18,17 @@
     </stdio>
     <command><![CDATA[
         @COMMAND_RSCRIPT@/frag4feature.R
-
             --out_dir=.
-
             --xset=$xset
             --pa=$pa
             --fileMatchingFile=$fileMatchingFile
-
             --cores=\${GALAXY_SLOTS:-4}
 
             --ppm=$ppm_f4f
             --plim=$plim_f4f
-
             #if $mostIntense_f4f
                 --mostIntense
             #end if
-
  	        #if $createDB
                 --createDB
             #end if
@@ -65,19 +59,16 @@
 
         <param name="plim_f4f" type="float" label="plim" value="0" max="1" min="0" help="min purity of precursor to be included"/>
 
-        <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spectra?" />
+        <param name="createDB" type="boolean" checked="true" label="Create SQLite database of spectra?"/>
 
         <section name="AdvOptions" title="Advanced options" expanded="False">
             <expand macro="grp_peaklist" />
         </section>
 
-        <expand macro="input_file_load" />
+        <expand macro="fileload" />
 
     </inputs>
-
-
     <outputs>
-
         <data name="log" format="txt" label="f4f.log.txt" from_work_dir="log.txt" />
 	    <data name="frag4feature_grouped_msms" format="tsv" label="${tool.name} on ${on_string}: tsv"
               from_work_dir="frag4feature.tsv" />
@@ -88,10 +79,7 @@
               <filter>createDB is True</filter>
         </data>
     </outputs>
-
-
     <tests>
-
         <test>
             <conditional name="file_load_conditional">
                 <param name="file_load_select" value="yes"/>
@@ -109,13 +97,9 @@
             <output name="frag4feature_grouped_msms" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.tsv"/>
             <output name="frag4feature_rdata" value="frag4feature_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size"/>
         </test>
-
     </tests>
     
     <help><![CDATA[
-
-/!\\ WORK IN PROGRESS /!\\
-
 =============================================================
 Link fragmentation spectra to XCMS features
 =============================================================

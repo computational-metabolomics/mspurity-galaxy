@@ -1,16 +1,15 @@
 <tool id="assess_purity_msms" name="assess_purity_msms" version="0.0.9">
-
     <description>
         Assess the precursor ion purity for fragmentation spectra acquired from either a LC-MS/MS or DI-MS/MS (MSn) experiment
     </description>
-    
     <macros>
         <import>macros.xml</import>
     </macros>
 
     <expand macro="requirements" />
 
-    <stdio>
+
+<stdio>
         <exit_code range="1:" />
     </stdio>
 
@@ -19,10 +18,16 @@
             
             --out_dir=.
             
-            #set mzML_files = '|'.join( [ str( $single_file ) for $single_file in $filesource ] )
-            #set FileNames = '|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )
-                --singlefile_galaxyPath='$mzML_files'
-                --singlefile_sampleName='$FileNames'
+            #if $mzML_data.format == "mzML_files"
+                #set mzML_files = '|'.join( [ str( $single_file ) for $single_file in $filesource ] )
+                #set FileNames = '|'.join( [ str( $single_file.name ) for $single_file in $filesource ] )
+                    --singlefile_galaxyPath='$mzML_files'
+                    --singlefile_sampleName='$FileNames'
+            #elif $mzML_data.format == "library"
+                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
+
+            
 
             #if $AdvOptions.offsets.offsets == 'user'
                 --minOffset=$AdvOptions.minoffset
@@ -54,12 +59,25 @@
     ]]></command>
 
     <inputs>
-
-        <!-- Choose if your input has MS and MSn datas in the same file or not -->
-        <param name="filesource" type="data" format="mzml" label="*.mzML files" multiple="true">
-            <validator type="empty_field"/>
-        </param>  
         
+        <conditional name="mzML_data">
+            <param name="format" type="select" label="Choose the source for the dataset" >
+                <option value="mzML_files" selected="true">.mzML files to check purity from</option>
+                <option value="library">Library directory name (to be used with dimspy workflows) or path to
+                                        to an individual .mzML file</option>
+            </param>
+            <when value="mzML_files">
+                <param name="filesource" type="data" format="mzml" label="*.mzML files" multiple="true">
+                </param> 
+            </when>
+            <when value="library">
+                <param name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files
+                                                                 or path to an individual *.mzML">
+                    <validator type="empty_field" />
+                </param>
+            </when>
+        </conditional>
         <!-- Choose how determine the precursor -->
         <param name="mostIntense" type="boolean" checked="true" label="Use most intense peak within isolation window for precursor?" help="If yes, this will ignore the recorded precursor within the mzML file and use the most intense peak within the isolation window to calculate the precursor ion purity"/>
         <param name="nearest" type="boolean" checked="true" label="Use nearest full scan to determine precursor?" help="If yes, this will use the neareset full scan to the fragmentation scan to determine what the m/z value is of the precursor"/>
@@ -93,6 +111,21 @@
     </outputs>
 
     <tests>
+        <test>
+           <conditional name="mzML_data">
+               <param name="format" value="mzML_files"/>
+               <param name="source" >
+                    <collection type="list">
+                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+            <output name="assess_purity_msms" value="assess_purity_msms_output_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.tsv" />
+            <output name="assess_purity_msms_rdata" value="assess_purity_msms_output_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData" ftype="rdata" compare="sim_size"/>
+        </test>
 
         <test>
             <param name="filesource" value="LCMSMS_1.mzML"/>
@@ -102,9 +135,6 @@
     </tests>
     
     <help><![CDATA[
-
-/!\\ WORK IN PROGRESS /!\\
-
 =============================================================
 Assess precursor ion purity of MS/MS files
 =============================================================

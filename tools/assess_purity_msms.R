@@ -9,14 +9,13 @@ sink(log_file, type = "output")
 cat("\tSESSION INFO\n")
 
 #Import the different functions
-#Modify the frag4feature functions (DELETE IT AFTER)
-source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
+source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+source_local("lib.r")
 pkgs <- c("xcms","optparse","tools","batch","msPurity")
 loadAndDisplayPackages(pkgs)
 cat("\n\n")
 
-#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
-#source_local("lib.r")
+
 
 # ----- ARGUMENTS -----
 cat("\tARGUMENTS INFO\n\n")
@@ -35,18 +34,15 @@ option_list <- list(
   make_option("--mostIntense", action="store_true"),
   make_option("--plotP", action="store_true"),
   make_option("--nearest", action="store_true"),
-  make_option("--cores", default=1)
+  make_option("--cores", default=4)
 )
 
 # Store options
 opt <- parse_args(OptionParser(option_list=option_list))
 print(opt)
 
-print(opt)
-
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
-
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE
@@ -68,6 +64,7 @@ if(is.null(opt$minOffset) || is.null(opt$maxOffset)){
     offsets = as.numeric(c(opt$minOffset, opt$maxOffset))
 }
 
+
 if(is.null(opt$mostIntense)){
     mostIntense = FALSE
 }else{
@@ -88,10 +85,12 @@ if(is.null(opt$plotP)){
     plotdir = opt$out_dir
 }
 
+
 if (is.null(opt$isotope_matrix)){
     im <- NULL
 }else{
-    im <- read.table(opt$isotope_matrix, header = TRUE, sep='\t', stringsAsFactors = FALSE)
+    im <- read.table(opt$isotope_matrix,
+                     header = TRUE, sep='\t', stringsAsFactors = FALSE)
 }
 
 if (is.null(opt$exclude_isotopes)){
@@ -99,8 +98,6 @@ if (is.null(opt$exclude_isotopes)){
 }else{
     isotopes <- TRUE
 }
-
-print(opt)
 
 cat("\n")
 

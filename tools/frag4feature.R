@@ -8,13 +8,10 @@ sink(log_file, type = "output")
 # ----- PACKAGE -----
 cat("\tSESSION INFO\n")
 
-#source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
-#source_local("lib.r")
-
 #Import the different functions
-#Modify the frag4feature functions (DELETE IT AFTER)
-source("/home/jsaintvanne/W4M/mspurity-galaxyTest/tools/lib.R")
-pkgs <- c("xcms","optparse")#,"batch")#,"msPurity")
+source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+source_local("lib.r")
+pkgs <- c("xcms","optparse","batch","msPurity")
 loadAndDisplayPackages(pkgs)
 cat("\n\n")
 
@@ -50,8 +47,6 @@ loadRData <- function(rdata_path, name){
     load(rdata_path)
     return(get(ls()[ls() %in% name]))
 }
-
-print(opt)
 
 # Requires
 pa <- loadRData(opt$pa, 'pa')
@@ -99,6 +94,7 @@ if(is.null(opt$use_group)){
     use_group=TRUE
 }
 
+
 if(is.null(opt$grp_peaklist)){
     grp_peaklist = NA
 }else{
@@ -130,9 +126,9 @@ pa <- msPurity::frag4feature(pa=pa,
                              CSVfile=CSVfile, 
                              ppm=opt$ppm, 
                              plim=opt$plim,
-                             intense=opt$mostIntense, 
+                             intense=opt$mostIntense,
                              convert2RawRT=convert2RawRT,
-                             db_name='alldata.sqlite', 
+                             db_name='alldata.sqlite',
                              out_dir=opt$out_dir, 
                              grp_peaklist=grp_peaklist,
                              create_db=createDB)

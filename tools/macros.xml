@@ -89,7 +89,7 @@
         #end if
     </token>
 
-    <xml name="input_file_load">
+    <xml name="fileload">
         <section name="file_load_section" title="Resubmit your raw dataset or your zip file" expanded="false">
             <conditional name="file_load_conditional">
                 <param name="file_load_select" type="select" label="Resubmit your dataset or your zip file" help="Use only if you get a message saying that your original dataset or zip file have been deleted on the server." >
