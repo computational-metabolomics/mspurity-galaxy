@@ -53,6 +53,7 @@
 
     ]]></command>
     <inputs>
+        
         <conditional name="mzML_data">
             <param name="format" type="select" label="Choose the source for the dataset" >
                 <option value="mzML_files" selected="true">.mzML files to check purity from</option>

@@ -12,7 +12,7 @@
     @COMMAND_RSCRIPT@/create_msp.R
     --rdata_input "$rdata_input"
     --method "$method"
- 
+
     #if $metadata_cond.metadata_select == "true"
         --metadata "$metadata_cond.metadata"
         --metadata_cols "$metadata_cond.metadata_cols"
