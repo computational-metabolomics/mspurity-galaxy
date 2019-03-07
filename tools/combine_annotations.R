@@ -33,10 +33,15 @@ weights <-list('sm'=opt$sm_weight,
                'probmetab'=opt$probmetab_weight
                )
 
-msPurity::combineAnnotations(sm_resultPth,
+if (round(!sum(unlist(weights),0)==1)){
+
+  stop(paste0('The weights should sum to 1 not ', sum(unlist(weights))))
+}
+
+summary_output <- msPurity::combineAnnotations(sm_resultPth,
                              opt$metfrag_resultPth,
                              opt$sirius_csi_resultPth,
                              opt$probmetab_resultPth,
                              weights = weights)
 
-
+write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
