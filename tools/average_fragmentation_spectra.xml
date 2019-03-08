@@ -25,23 +25,17 @@
             --minnum=$minnum
             --ppm=$ppm
 
-            #if $av.level == "inter"
-                --snr=$av.snr
-                --ra=$av.ra
-            #else
-                --snr_pre=$av.snr_pre
-                --ra_pre=$av.ra_pre
-                --snr=$av.snr
-                --ra=$av.ra
-            #end if
+            --snr=$av.snr
+            --ra=$av.ra
+            
 
             --av=$function_average
             
             $sum_intensities
 
-            --plim=$plim
 
-            $remove_peaks
+
+            $rmp
     ]]></command>
     <inputs>
         <param name="pa" type="data" label="purityA object" format="rdata"
@@ -53,8 +47,6 @@
                 <option value="all">within and accross MS data files (ignoring intra and inter relationships)</option>
             </param>
             <when value="intra">
-                <param name="snr_pre" type="float" value="0.0" label="Signal-to-noise threshold prior to averaging or summing" help="" />
-                <param name="ra_pre" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold prior to averaging or summing" help="" />
                 <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
                 <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
             </when>
@@ -63,8 +55,6 @@
                 <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
             </when>
             <when value="all">
-                <param name="snr_pre" type="float" value="0.0" label="Signal-to-noise threshold prior to averaging or summing" help="" />
-                <param name="ra_pre" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold prior to averaging or summing" help="" />
                 <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
                 <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
             </when>
@@ -78,14 +68,14 @@
 
         <param name="minnum" type="integer" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
         <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
-        <param name="sum_intensities" type="boolean" checked="false" truevalue="--sum_i" falsevalue="" label="Sum intensities across (averaged) scans?"
+        <param name="sum_intensities" type="boolean" checked="false" truevalue="--sumi" falsevalue="" label="Sum intensities across (averaged) scans?"
                help="" />
         <param name="function_average" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
             <option value="median" selected="true">median</option>
             <option value="mean">mean</option>
         </param>
-        <param name="plim" type="float" value="0.8" label="Minimum purity precursor threshold" help="Minium purity of a precursor to be included" />
-        <param name="remove_peaks" type="boolean" checked="true" truevalue="--remove_peaks" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
+        
+        <param name="rmp" type="boolean" checked="true" truevalue="--rmp" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
                help="" />
     </inputs>
     <outputs>
