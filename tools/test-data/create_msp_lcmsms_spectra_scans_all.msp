@@ -1,6 +1,7 @@
 CH$NAME:  MZ:112.0507 | RT:67.5 | XCMS_group:12 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050704956055
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.47903
+XCMS groupid (grpid): 12
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
@@ -9,6 +10,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:112.0507 | RT:67.6 | XCMS_group:12 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050743103027
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.634034
+XCMS groupid (grpid): 12
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -18,6 +20,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:113.0347 | RT:83.4 | XCMS_group:14 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 113.034736633301
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
+XCMS groupid (grpid): 14
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
@@ -26,6 +29,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:113.0347 | RT:83.6 | XCMS_group:14 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 113.034736633301
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 14
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -35,6 +39,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:113.0347 | RT:83.6 | XCMS_group:14 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 113.034713745117
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 14
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -51,6 +56,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.7 | XCMS_group:17 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070838928223
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -61,6 +67,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.7 | XCMS_group:17 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070831298828
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -72,6 +79,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.7 | XCMS_group:17 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070770263672
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -82,6 +90,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.8 | XCMS_group:17 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070816040039
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.814411
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -93,6 +102,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.8 | XCMS_group:17 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070823669434
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.814411
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
@@ -101,6 +111,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:116.0708 | RT:47.8 | XCMS_group:17 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 116.070785522461
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.814411
+XCMS groupid (grpid): 17
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -111,6 +122,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1018 | RT:73.5 | XCMS_group:41 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101821899414
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.529172
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -120,6 +132,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1019 | RT:73.5 | XCMS_group:41 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101867675781
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.529172
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -129,6 +142,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1019 | RT:73.5 | XCMS_group:41 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101852416992
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.529172
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 1
 PK$PEAK: m/z int. rel.int.
@@ -137,6 +151,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1019 | RT:73.7 | XCMS_group:41 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101852416992
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.692786
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -147,6 +162,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1018 | RT:73.7 | XCMS_group:41 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.101806640625
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.692786
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -156,6 +172,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:132.1019 | RT:73.7 | XCMS_group:41 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 132.10188293457
 AC$CHROMATOGRAPHY: RETENTION_TIME 73.692786
+XCMS groupid (grpid): 41
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -165,6 +182,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:137.0457 | RT:127 | XCMS_group:47 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 137.045669555664
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.956946
+XCMS groupid (grpid): 47
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -179,6 +197,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:137.0456 | RT:127 | XCMS_group:47 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 137.045639038086
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.956946
+XCMS groupid (grpid): 47
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -195,6 +214,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:137.0457 | RT:127.2 | XCMS_group:47 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 137.045669555664
 AC$CHROMATOGRAPHY: RETENTION_TIME 127.214454
+XCMS groupid (grpid): 47
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -209,6 +229,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:137.0456 | RT:127.2 | XCMS_group:47 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 137.045623779297
 AC$CHROMATOGRAPHY: RETENTION_TIME 127.214454
+XCMS groupid (grpid): 47
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -222,6 +243,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.7 | XCMS_group:48 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054763793945
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.6971758
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -238,6 +260,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0549 | RT:50.7 | XCMS_group:48 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.05485534668
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.6971758
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -250,6 +273,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0547 | RT:50.7 | XCMS_group:48 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054748535156
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.6971758
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -272,6 +296,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.7 | XCMS_group:48 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054809570312
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.6971758
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -283,6 +308,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.8 | XCMS_group:48 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054809570312
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.8435338
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -297,6 +323,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.8 | XCMS_group:48 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054809570312
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.8435338
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -308,6 +335,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.8 | XCMS_group:48 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054824829102
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.8435338
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -324,6 +352,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0548 | RT:50.8 | XCMS_group:48 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.054779052734
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.8435338
+XCMS groupid (grpid): 48
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -338,6 +367,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0488 | RT:127 | XCMS_group:49 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.048767089844
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.956946
+XCMS groupid (grpid): 49
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -352,6 +382,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:138.0488 | RT:126.4 | XCMS_group:49 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 138.048797607422
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.441198
+XCMS groupid (grpid): 49
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -364,6 +395,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:140.0681 | RT:46.2 | XCMS_group:51 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 140.068130493164
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
+XCMS groupid (grpid): 51
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -375,6 +407,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:140.0681 | RT:46.3 | XCMS_group:51 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 140.068084716797
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.2952926
+XCMS groupid (grpid): 51
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -384,6 +417,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:146.1175 | RT:46.2 | XCMS_group:62 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 146.117492675781
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
+XCMS groupid (grpid): 62
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -399,6 +433,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:146.1173 | RT:46.2 | XCMS_group:62 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 146.117309570312
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
+XCMS groupid (grpid): 62
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -417,6 +452,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:146.1174 | RT:46.3 | XCMS_group:62 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 146.117416381836
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.2952926
+XCMS groupid (grpid): 62
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -429,6 +465,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:146.1174 | RT:46.3 | XCMS_group:62 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 146.117370605469
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.2952926
+XCMS groupid (grpid): 62
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -445,6 +482,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:147.0438 | RT:70.5 | XCMS_group:63 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 147.043823242188
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 63
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -463,6 +501,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:147.0439 | RT:70.5 | XCMS_group:63 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 147.043853759766
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 63
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -483,6 +522,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:147.0438 | RT:70.6 | XCMS_group:63 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 147.043838500977
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 63
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -505,6 +545,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:147.0438 | RT:70.6 | XCMS_group:63 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 147.043838500977
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 63
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -525,6 +566,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:148.0426 | RT:64.4 | XCMS_group:66 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 148.042587280273
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 66
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -547,6 +589,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:148.0426 | RT:64.6 | XCMS_group:66 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 148.042556762695
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 66
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -566,6 +609,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:149.0263 | RT:91.2 | XCMS_group:67 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 149.026306152344
 AC$CHROMATOGRAPHY: RETENTION_TIME 91.18956
+XCMS groupid (grpid): 67
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -595,6 +639,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:149.0263 | RT:91.4 | XCMS_group:67 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 149.026321411133
 AC$CHROMATOGRAPHY: RETENTION_TIME 91.376562
+XCMS groupid (grpid): 67
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -624,6 +669,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:150.0582 | RT:62.9 | XCMS_group:68 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 150.058166503906
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 68
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -640,6 +686,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:150.0581 | RT:62.9 | XCMS_group:68 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 150.058135986328
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 68
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -660,6 +707,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:150.0581 | RT:63.1 | XCMS_group:68 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 150.058135986328
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 68
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -674,6 +722,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:150.0581 | RT:63.1 | XCMS_group:68 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 150.05810546875
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 68
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -696,6 +745,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0405 | RT:84.2 | XCMS_group:72 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.040512084961
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
+XCMS groupid (grpid): 72
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -713,6 +763,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0403 | RT:84.2 | XCMS_group:72 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.040344238281
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
+XCMS groupid (grpid): 72
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -747,6 +798,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0405 | RT:84.4 | XCMS_group:72 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.040512084961
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 72
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -765,6 +817,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0404 | RT:84.4 | XCMS_group:72 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.04035949707
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 72
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -792,6 +845,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:153.0406 | RT:84.4 | XCMS_group:72 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 153.040557861328
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 72
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -820,6 +874,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0767 | RT:47.7 | XCMS_group:75 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076675415039
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -838,6 +893,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0767 | RT:47.7 | XCMS_group:75 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076675415039
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -853,6 +909,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0766 | RT:47.7 | XCMS_group:75 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076614379883
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -872,6 +929,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0766 | RT:47.7 | XCMS_group:75 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076599121094
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.662548
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -892,6 +950,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0767 | RT:48.6 | XCMS_group:75 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076690673828
 AC$CHROMATOGRAPHY: RETENTION_TIME 48.5632728
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -910,6 +969,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0767 | RT:48.6 | XCMS_group:75 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076675415039
 AC$CHROMATOGRAPHY: RETENTION_TIME 48.5632728
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -925,6 +985,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0766 | RT:48.6 | XCMS_group:75 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076644897461
 AC$CHROMATOGRAPHY: RETENTION_TIME 48.5632728
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -945,6 +1006,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:156.0766 | RT:48.6 | XCMS_group:75 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 156.076553344727
 AC$CHROMATOGRAPHY: RETENTION_TIME 48.5632728
+XCMS groupid (grpid): 75
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -968,6 +1030,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:158.0924 | RT:43.9 | XCMS_group:77 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 158.092361450195
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
+XCMS groupid (grpid): 77
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -986,6 +1049,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:158.0924 | RT:44.1 | XCMS_group:77 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 158.092376708984
 AC$CHROMATOGRAPHY: RETENTION_TIME 44.0806488
+XCMS groupid (grpid): 77
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -1006,6 +1070,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:164.9301 | RT:40.2 | XCMS_group:88 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 164.930053710938
 AC$CHROMATOGRAPHY: RETENTION_TIME 40.1901702
+XCMS groupid (grpid): 88
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -1016,6 +1081,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:164.9301 | RT:40.3 | XCMS_group:88 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 164.930099487305
 AC$CHROMATOGRAPHY: RETENTION_TIME 40.331784
+XCMS groupid (grpid): 88
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -1025,6 +1091,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:165.0545 | RT:70.5 | XCMS_group:89 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 165.054473876953
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 89
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -1047,6 +1114,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:165.0544 | RT:70.5 | XCMS_group:89 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 165.054412841797
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 89
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1068,6 +1136,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:165.0545 | RT:70.6 | XCMS_group:89 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 165.054458618164
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 89
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -1091,6 +1160,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0923 | RT:61.4 | XCMS_group:97 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092300415039
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 18
 PK$PEAK: m/z int. rel.int.
@@ -1116,6 +1186,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.4 | XCMS_group:97 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092178344727
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1134,6 +1205,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.4 | XCMS_group:97 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092163085938
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -1156,6 +1228,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.5 | XCMS_group:97 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092239379883
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.541034
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 24
 PK$PEAK: m/z int. rel.int.
@@ -1187,6 +1260,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.5 | XCMS_group:97 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092193603516
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.541034
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1208,6 +1282,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:170.0922 | RT:61.5 | XCMS_group:97 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 170.092163085938
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.541034
+XCMS groupid (grpid): 97
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -1227,6 +1302,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:178.0585 | RT:45.4 | XCMS_group:106 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 178.058502197266
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.3966672
+XCMS groupid (grpid): 106
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -1242,6 +1318,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:178.0585 | RT:45.5 | XCMS_group:106 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 178.058502197266
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.5280288
+XCMS groupid (grpid): 106
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -1257,6 +1334,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.0809 | RT:70.5 | XCMS_group:114 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.080947875977
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1278,6 +1356,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.5 | XCMS_group:114 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.080978393555
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -1305,6 +1384,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.5 | XCMS_group:114 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.081024169922
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -1325,6 +1405,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.6 | XCMS_group:114 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.081039428711
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -1347,6 +1428,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.6 | XCMS_group:114 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.080963134766
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -1369,6 +1451,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:182.081 | RT:70.6 | XCMS_group:114 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 182.081008911133
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 114
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -1399,6 +1482,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:189.1232 | RT:49.2 | XCMS_group:127 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 189.123199462891
 AC$CHROMATOGRAPHY: RETENTION_TIME 49.182402
+XCMS groupid (grpid): 127
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1417,6 +1501,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:189.1232 | RT:50.1 | XCMS_group:127 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 189.12321472168
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.0837946
+XCMS groupid (grpid): 127
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1438,6 +1523,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:191.0402 | RT:41.7 | XCMS_group:131 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 191.040237426758
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.6846646
+XCMS groupid (grpid): 131
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -1458,6 +1544,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:191.0402 | RT:41.7 | XCMS_group:131 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 191.040237426758
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.6846646
+XCMS groupid (grpid): 131
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -1475,6 +1562,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:191.0402 | RT:41.7 | XCMS_group:131 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 191.040191650391
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.6846646
+XCMS groupid (grpid): 131
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1493,6 +1581,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:192.0687 | RT:121.8 | XCMS_group:134 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 192.06867980957
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.840812
+XCMS groupid (grpid): 134
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -1509,6 +1598,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:194.0325 | RT:45.4 | XCMS_group:136 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 194.032531738281
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.3966672
+XCMS groupid (grpid): 136
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -1519,6 +1609,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:194.0325 | RT:45.5 | XCMS_group:136 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 194.032531738281
 AC$CHROMATOGRAPHY: RETENTION_TIME 45.5280288
+XCMS groupid (grpid): 136
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -1531,6 +1622,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:200.0405 | RT:43.9 | XCMS_group:143 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 200.040481567383
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
+XCMS groupid (grpid): 143
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -1551,6 +1643,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:200.0405 | RT:44.1 | XCMS_group:143 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 200.040496826172
 AC$CHROMATOGRAPHY: RETENTION_TIME 44.0806488
+XCMS groupid (grpid): 143
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -1570,6 +1663,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.1388 | RT:72 | XCMS_group:150 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.138809204102
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.006432
+XCMS groupid (grpid): 150
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -1586,6 +1680,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.1388 | RT:72 | XCMS_group:150 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.13883972168
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.006432
+XCMS groupid (grpid): 150
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1604,6 +1699,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.1389 | RT:72.2 | XCMS_group:150 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.138854980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.171048
+XCMS groupid (grpid): 150
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -1620,6 +1716,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.1388 | RT:72.2 | XCMS_group:150 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.138793945312
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.171048
+XCMS groupid (grpid): 150
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -1637,6 +1734,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:203.1389 | RT:72.2 | XCMS_group:150 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 203.138854980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.171048
+XCMS groupid (grpid): 150
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -1653,6 +1751,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1228 | RT:56.8 | XCMS_group:152 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.122802734375
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.7980382
+XCMS groupid (grpid): 152
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 18
 PK$PEAK: m/z int. rel.int.
@@ -1678,6 +1777,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1228 | RT:56.8 | XCMS_group:152 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.122817993164
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.7980382
+XCMS groupid (grpid): 152
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1699,6 +1799,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1228 | RT:56.8 | XCMS_group:152 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.122848510742
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.7980382
+XCMS groupid (grpid): 152
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1717,6 +1818,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1228 | RT:56.9 | XCMS_group:152 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.122817993164
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.9384052
+XCMS groupid (grpid): 152
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -1735,6 +1837,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:204.1229 | RT:56.9 | XCMS_group:152 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 204.122863769531
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.9384052
+XCMS groupid (grpid): 152
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -1759,6 +1862,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:207.0141 | RT:41.8 | XCMS_group:158 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 207.014144897461
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.826645
+XCMS groupid (grpid): 158
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
@@ -1785,6 +1889,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:214.0642 | RT:55.4 | XCMS_group:172 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 214.064239501953
 AC$CHROMATOGRAPHY: RETENTION_TIME 55.4140188
+XCMS groupid (grpid): 172
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -1806,6 +1911,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1385 | RT:89.6 | XCMS_group:180 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.13850402832
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.6403
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -1820,6 +1926,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1385 | RT:89.6 | XCMS_group:180 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.138473510742
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.6403
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -1836,6 +1943,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1385 | RT:89.6 | XCMS_group:180 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.138488769531
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.6403
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -1851,6 +1959,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1384 | RT:89.8 | XCMS_group:180 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.138366699219
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.831544
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -1870,6 +1979,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1385 | RT:89.8 | XCMS_group:180 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.138458251953
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.831544
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -1884,6 +1994,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:218.1385 | RT:89.8 | XCMS_group:180 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 218.13850402832
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.831544
+XCMS groupid (grpid): 180
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -1898,6 +2009,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:219.1337 | RT:84.2 | XCMS_group:182 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 219.133682250977
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
+XCMS groupid (grpid): 182
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -1922,6 +2034,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:219.1337 | RT:83.6 | XCMS_group:182 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 219.133697509766
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 182
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -1946,6 +2059,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:227.1137 | RT:46.9 | XCMS_group:199 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 227.113693237305
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.926273
+XCMS groupid (grpid): 199
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 28
 PK$PEAK: m/z int. rel.int.
@@ -1981,6 +2095,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:227.1135 | RT:46.9 | XCMS_group:199 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 227.113494873047
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.926273
+XCMS groupid (grpid): 199
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -2014,6 +2129,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:227.1137 | RT:47.1 | XCMS_group:199 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 227.113677978516
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.0589156
+XCMS groupid (grpid): 199
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 28
 PK$PEAK: m/z int. rel.int.
@@ -2049,6 +2165,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:227.1135 | RT:47.1 | XCMS_group:199 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 227.113540649414
 AC$CHROMATOGRAPHY: RETENTION_TIME 47.0589156
+XCMS groupid (grpid): 199
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -2082,6 +2199,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1545 | RT:110.4 | XCMS_group:205 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154479980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.36505
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -2093,6 +2211,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1544 | RT:110.4 | XCMS_group:205 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154418945312
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.36505
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -2115,6 +2234,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1544 | RT:110.4 | XCMS_group:205 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154434204102
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.36505
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -2136,6 +2256,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1545 | RT:110.4 | XCMS_group:205 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154479980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.36505
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -2147,6 +2268,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1545 | RT:110.6 | XCMS_group:205 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154495239258
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.559792
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -2162,6 +2284,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1544 | RT:110.6 | XCMS_group:205 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154403686523
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.559792
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -2182,6 +2305,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1544 | RT:110.6 | XCMS_group:205 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154434204102
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.559792
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -2204,6 +2328,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:229.1545 | RT:110.6 | XCMS_group:205 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 229.154479980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 110.559792
+XCMS groupid (grpid): 205
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
@@ -2213,6 +2338,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:230.1385 | RT:116.8 | XCMS_group:206 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 230.138534545898
 AC$CHROMATOGRAPHY: RETENTION_TIME 116.806434
+XCMS groupid (grpid): 206
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -2228,6 +2354,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:230.1384 | RT:116.8 | XCMS_group:206 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 230.138412475586
 AC$CHROMATOGRAPHY: RETENTION_TIME 116.806434
+XCMS groupid (grpid): 206
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -2252,6 +2379,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:230.1385 | RT:117 | XCMS_group:206 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 230.13850402832
 AC$CHROMATOGRAPHY: RETENTION_TIME 116.993448
+XCMS groupid (grpid): 206
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -2266,6 +2394,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:230.1384 | RT:117 | XCMS_group:206 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 230.138442993164
 AC$CHROMATOGRAPHY: RETENTION_TIME 116.993448
+XCMS groupid (grpid): 206
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -2278,6 +2407,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:230.1384 | RT:117 | XCMS_group:206 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 230.138442993164
 AC$CHROMATOGRAPHY: RETENTION_TIME 116.993448
+XCMS groupid (grpid): 206
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -2298,6 +2428,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:231.1699 | RT:130.8 | XCMS_group:209 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 231.169937133789
 AC$CHROMATOGRAPHY: RETENTION_TIME 130.794318
+XCMS groupid (grpid): 209
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -2312,6 +2443,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:231.1699 | RT:131.1 | XCMS_group:209 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 231.169860839844
 AC$CHROMATOGRAPHY: RETENTION_TIME 131.148558
+XCMS groupid (grpid): 209
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -2325,6 +2457,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1493 | RT:66.7 | XCMS_group:214 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149276733398
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -2343,6 +2476,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1492 | RT:66.7 | XCMS_group:214 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149154663086
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -2360,6 +2494,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1491 | RT:66.7 | XCMS_group:214 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149139404297
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -2390,6 +2525,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1493 | RT:66.7 | XCMS_group:214 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149337768555
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -2406,6 +2542,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1493 | RT:67.6 | XCMS_group:214 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149291992188
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.634034
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -2422,6 +2559,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1492 | RT:67.6 | XCMS_group:214 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.14924621582
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.634034
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -2439,6 +2577,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1492 | RT:67.6 | XCMS_group:214 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.149185180664
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.634034
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -2469,6 +2608,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:233.1492 | RT:67.6 | XCMS_group:214 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 233.14924621582
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.634034
+XCMS groupid (grpid): 214
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -2483,6 +2623,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:244.9539 | RT:41 | XCMS_group:234 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 244.953887939453
 AC$CHROMATOGRAPHY: RETENTION_TIME 40.9547952
+XCMS groupid (grpid): 234
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -2500,6 +2641,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:244.9538 | RT:41.1 | XCMS_group:234 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 244.953842163086
 AC$CHROMATOGRAPHY: RETENTION_TIME 41.0984136
+XCMS groupid (grpid): 234
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -2516,6 +2658,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:245.0764 | RT:83.4 | XCMS_group:235 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 245.076446533203
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
+XCMS groupid (grpid): 235
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -2531,6 +2674,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:245.0765 | RT:83.6 | XCMS_group:235 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 245.076461791992
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 235
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -2547,6 +2691,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:246.1445 | RT:56 | XCMS_group:238 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 246.14453125
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.048412
+XCMS groupid (grpid): 238
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 39
 PK$PEAK: m/z int. rel.int.
@@ -2593,6 +2738,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:246.1446 | RT:56.2 | XCMS_group:238 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 246.144577026367
 AC$CHROMATOGRAPHY: RETENTION_TIME 56.1655458
+XCMS groupid (grpid): 238
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 40
 PK$PEAK: m/z int. rel.int.
@@ -2640,6 +2786,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1285 | RT:62.9 | XCMS_group:241 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.128524780273
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
@@ -2677,6 +2824,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1286 | RT:62.9 | XCMS_group:241 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.128555297852
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -2699,6 +2847,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1285 | RT:62.9 | XCMS_group:241 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.128494262695
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 33
 PK$PEAK: m/z int. rel.int.
@@ -2739,6 +2888,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1286 | RT:63.1 | XCMS_group:241 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.128570556641
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
@@ -2777,6 +2927,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1284 | RT:63.1 | XCMS_group:241 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.12841796875
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -2800,6 +2951,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:247.1285 | RT:63.1 | XCMS_group:241 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 247.128540039062
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 241
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -2841,6 +2993,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:249.0956 | RT:43.9 | XCMS_group:246 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 249.095626831055
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.9150368
+XCMS groupid (grpid): 246
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -2875,6 +3028,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:249.0956 | RT:44.1 | XCMS_group:246 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 249.095642089844
 AC$CHROMATOGRAPHY: RETENTION_TIME 44.0806488
+XCMS groupid (grpid): 246
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 24
 PK$PEAK: m/z int. rel.int.
@@ -2906,6 +3060,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:253.1518 | RT:130.8 | XCMS_group:254 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 253.151809692383
 AC$CHROMATOGRAPHY: RETENTION_TIME 130.794318
+XCMS groupid (grpid): 254
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -2923,6 +3078,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:253.1517 | RT:131.1 | XCMS_group:254 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 253.151733398438
 AC$CHROMATOGRAPHY: RETENTION_TIME 131.148558
+XCMS groupid (grpid): 254
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -2943,6 +3099,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160125732422
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -2976,6 +3133,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160003662109
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 24
 PK$PEAK: m/z int. rel.int.
@@ -3007,6 +3165,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160034179688
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 24
 PK$PEAK: m/z int. rel.int.
@@ -3038,6 +3197,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160125732422
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 38
 PK$PEAK: m/z int. rel.int.
@@ -3083,6 +3243,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160034179688
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
@@ -3109,6 +3270,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.4 | XCMS_group:268 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160095214844
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -3150,6 +3312,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1602 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.16015625
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -3184,6 +3347,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160125732422
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -3217,6 +3381,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160064697266
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -3247,6 +3412,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.1601 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160064697266
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -3277,6 +3443,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.160034179688
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -3309,6 +3476,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:260.16 | RT:64.6 | XCMS_group:268 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 260.159973144531
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 268
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -3337,6 +3505,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:263.196 | RT:74.3 | XCMS_group:278 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 263.196014404297
 AC$CHROMATOGRAPHY: RETENTION_TIME 74.297424
+XCMS groupid (grpid): 278
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -3358,6 +3527,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:263.1961 | RT:74.5 | XCMS_group:278 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 263.196075439453
 AC$CHROMATOGRAPHY: RETENTION_TIME 74.45592
+XCMS groupid (grpid): 278
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -3377,6 +3547,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:265.0696 | RT:46.2 | XCMS_group:282 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 265.069580078125
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.161033
+XCMS groupid (grpid): 282
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -3407,6 +3578,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:265.0697 | RT:46.3 | XCMS_group:282 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 265.069671630859
 AC$CHROMATOGRAPHY: RETENTION_TIME 46.2952926
+XCMS groupid (grpid): 282
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -3434,6 +3606,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:268.9983 | RT:42.4 | XCMS_group:298 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 268.998260498047
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.4292958
+XCMS groupid (grpid): 298
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -3457,6 +3630,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:268.9983 | RT:42.6 | XCMS_group:298 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 268.998291015625
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.5736636
+XCMS groupid (grpid): 298
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
@@ -3483,6 +3657,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:271.0771 | RT:43.2 | XCMS_group:301 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 271.077117919922
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.1829192
+XCMS groupid (grpid): 301
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -3502,6 +3677,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:271.0772 | RT:43.3 | XCMS_group:301 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 271.077239990234
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.3414116
+XCMS groupid (grpid): 301
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -3523,6 +3699,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:272.1712 | RT:59.1 | XCMS_group:303 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 272.171234130859
 AC$CHROMATOGRAPHY: RETENTION_TIME 59.113914
+XCMS groupid (grpid): 303
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 32
 PK$PEAK: m/z int. rel.int.
@@ -3562,6 +3739,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:272.1712 | RT:59.1 | XCMS_group:303 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 272.171203613281
 AC$CHROMATOGRAPHY: RETENTION_TIME 59.113914
+XCMS groupid (grpid): 303
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -3603,6 +3781,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:272.1713 | RT:58.5 | XCMS_group:303 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 272.171264648438
 AC$CHROMATOGRAPHY: RETENTION_TIME 58.478901
+XCMS groupid (grpid): 303
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -3644,6 +3823,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:272.1712 | RT:58.5 | XCMS_group:303 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 272.171234130859
 AC$CHROMATOGRAPHY: RETENTION_TIME 58.478901
+XCMS groupid (grpid): 303
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 35
 PK$PEAK: m/z int. rel.int.
@@ -3686,6 +3866,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:274.1756 | RT:93.5 | XCMS_group:306 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 274.175598144531
 AC$CHROMATOGRAPHY: RETENTION_TIME 93.504684
+XCMS groupid (grpid): 306
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -3699,6 +3880,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:274.1758 | RT:93.5 | XCMS_group:306 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 274.175750732422
 AC$CHROMATOGRAPHY: RETENTION_TIME 93.504684
+XCMS groupid (grpid): 306
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -3719,6 +3901,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:274.1757 | RT:93.7 | XCMS_group:306 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 274.175689697266
 AC$CHROMATOGRAPHY: RETENTION_TIME 93.704046
+XCMS groupid (grpid): 306
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -3735,6 +3918,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:274.1758 | RT:93.7 | XCMS_group:306 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 274.175811767578
 AC$CHROMATOGRAPHY: RETENTION_TIME 93.704046
+XCMS groupid (grpid): 306
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -3750,6 +3934,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:277.1027 | RT:34 | XCMS_group:311 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 277.102722167969
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.0415226
+XCMS groupid (grpid): 311
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -3768,6 +3953,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:277.1027 | RT:35 | XCMS_group:311 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 277.102691650391
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.9703976
+XCMS groupid (grpid): 311
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -3789,6 +3975,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:277.1027 | RT:35 | XCMS_group:311 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 277.102661132812
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.9703976
+XCMS groupid (grpid): 311
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -3819,6 +4006,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:279.1005 | RT:63.7 | XCMS_group:313 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 279.100494384766
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.683916
+XCMS groupid (grpid): 313
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -3853,6 +4041,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:280.0488 | RT:70.5 | XCMS_group:315 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 280.048767089844
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 315
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 39
 PK$PEAK: m/z int. rel.int.
@@ -3899,6 +4088,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:280.0488 | RT:70.6 | XCMS_group:315 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 280.048767089844
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 315
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 55
 PK$PEAK: m/z int. rel.int.
@@ -3961,6 +4151,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:281.1524 | RT:75 | XCMS_group:320 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 281.152435302734
 AC$CHROMATOGRAPHY: RETENTION_TIME 75.040038
+XCMS groupid (grpid): 320
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -3976,6 +4167,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:281.1525 | RT:75.2 | XCMS_group:320 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 281.152526855469
 AC$CHROMATOGRAPHY: RETENTION_TIME 75.21942
+XCMS groupid (grpid): 320
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -3993,6 +4185,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:285.0824 | RT:83.4 | XCMS_group:329 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 285.082427978516
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
+XCMS groupid (grpid): 329
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -4014,6 +4207,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:285.0825 | RT:83.6 | XCMS_group:329 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 285.082458496094
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 329
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -4032,6 +4226,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:285.0825 | RT:83.6 | XCMS_group:329 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 285.08251953125
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.64567
+XCMS groupid (grpid): 329
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -4053,6 +4248,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:287.0512 | RT:43.2 | XCMS_group:332 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 287.051239013672
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.1829192
+XCMS groupid (grpid): 332
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -4072,6 +4268,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:292.1975 | RT:44.8 | XCMS_group:346 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 292.197509765625
 AC$CHROMATOGRAPHY: RETENTION_TIME 44.7995376
+XCMS groupid (grpid): 346
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -4096,6 +4293,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1542 | RT:92.7 | XCMS_group:350 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154174804688
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.725812
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -4137,6 +4335,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1543 | RT:92.7 | XCMS_group:350 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154296875
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.725812
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 49
 PK$PEAK: m/z int. rel.int.
@@ -4193,6 +4392,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1543 | RT:92.7 | XCMS_group:350 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154266357422
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.725812
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -4217,6 +4417,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1443 | RT:127 | XCMS_group:350 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.144256591797
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.956946
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -4241,6 +4442,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1542 | RT:92.9 | XCMS_group:350 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154235839844
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.927058
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -4282,6 +4484,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1543 | RT:92.9 | XCMS_group:350 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154266357422
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.927058
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 46
 PK$PEAK: m/z int. rel.int.
@@ -4335,6 +4538,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1543 | RT:92.9 | XCMS_group:350 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.154327392578
 AC$CHROMATOGRAPHY: RETENTION_TIME 92.927058
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -4362,6 +4566,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:294.1442 | RT:127.2 | XCMS_group:350 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 294.144195556641
 AC$CHROMATOGRAPHY: RETENTION_TIME 127.214454
+XCMS groupid (grpid): 350
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -4385,6 +4590,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:295.1284 | RT:76.5 | XCMS_group:353 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 295.128387451172
 AC$CHROMATOGRAPHY: RETENTION_TIME 76.520544
+XCMS groupid (grpid): 353
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 14
 PK$PEAK: m/z int. rel.int.
@@ -4406,6 +4612,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:295.1283 | RT:76.7 | XCMS_group:353 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 295.128326416016
 AC$CHROMATOGRAPHY: RETENTION_TIME 76.72203
+XCMS groupid (grpid): 353
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -4425,6 +4632,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:296.0658 | RT:42.4 | XCMS_group:354 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 296.065826416016
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.4292958
+XCMS groupid (grpid): 354
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 28
 PK$PEAK: m/z int. rel.int.
@@ -4460,6 +4668,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:296.0656 | RT:42.4 | XCMS_group:354 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 296.065551757812
 AC$CHROMATOGRAPHY: RETENTION_TIME 42.4292958
+XCMS groupid (grpid): 354
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -4484,6 +4693,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:296.0658 | RT:43.3 | XCMS_group:354 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 296.065826416016
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.3414116
+XCMS groupid (grpid): 354
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -4516,6 +4726,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:296.0656 | RT:43.3 | XCMS_group:354 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 296.065582275391
 AC$CHROMATOGRAPHY: RETENTION_TIME 43.3414116
+XCMS groupid (grpid): 354
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -4535,6 +4746,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:302.1707 | RT:88.9 | XCMS_group:369 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 302.170684814453
 AC$CHROMATOGRAPHY: RETENTION_TIME 88.866054
+XCMS groupid (grpid): 369
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -4554,6 +4766,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:302.1707 | RT:88.9 | XCMS_group:369 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 302.170715332031
 AC$CHROMATOGRAPHY: RETENTION_TIME 88.866054
+XCMS groupid (grpid): 369
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -4576,6 +4789,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:302.1706 | RT:89.1 | XCMS_group:369 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 302.170593261719
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.058666
+XCMS groupid (grpid): 369
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -4594,6 +4808,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:302.1707 | RT:89.1 | XCMS_group:369 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 302.170745849609
 AC$CHROMATOGRAPHY: RETENTION_TIME 89.058666
+XCMS groupid (grpid): 369
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -4616,6 +4831,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.1658 | RT:61.4 | XCMS_group:373 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.165832519531
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 45
 PK$PEAK: m/z int. rel.int.
@@ -4668,6 +4884,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.1658 | RT:61.4 | XCMS_group:373 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.165802001953
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.39704
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 43
 PK$PEAK: m/z int. rel.int.
@@ -4718,6 +4935,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.0948 | RT:105.5 | XCMS_group:373 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.094818115234
 AC$CHROMATOGRAPHY: RETENTION_TIME 105.491046
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -4745,6 +4963,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.0948 | RT:105.5 | XCMS_group:373 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.094818115234
 AC$CHROMATOGRAPHY: RETENTION_TIME 105.491046
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -4778,6 +4997,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.0947 | RT:105.5 | XCMS_group:373 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.0947265625
 AC$CHROMATOGRAPHY: RETENTION_TIME 105.491046
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 19
 PK$PEAK: m/z int. rel.int.
@@ -4804,6 +5024,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.1659 | RT:61.5 | XCMS_group:373 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.165893554688
 AC$CHROMATOGRAPHY: RETENTION_TIME 61.541034
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 41
 PK$PEAK: m/z int. rel.int.
@@ -4852,6 +5073,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:303.0948 | RT:106.6 | XCMS_group:373 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 303.094757080078
 AC$CHROMATOGRAPHY: RETENTION_TIME 106.573314
+XCMS groupid (grpid): 373
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -4881,6 +5103,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:306.1654 | RT:60.6 | XCMS_group:379 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 306.165435791016
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.634806
+XCMS groupid (grpid): 379
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -4915,6 +5138,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:306.1654 | RT:60.8 | XCMS_group:379 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 306.165435791016
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.766158
+XCMS groupid (grpid): 379
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -4947,6 +5171,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:307.0644 | RT:83.4 | XCMS_group:381 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 307.064361572266
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
+XCMS groupid (grpid): 381
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -4963,6 +5188,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:307.0644 | RT:84.4 | XCMS_group:381 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 307.064361572266
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 381
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -4980,6 +5206,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:310.1391 | RT:64.4 | XCMS_group:390 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 310.139099121094
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 390
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
@@ -5017,6 +5244,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:310.1733 | RT:99.9 | XCMS_group:390 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 310.173309326172
 AC$CHROMATOGRAPHY: RETENTION_TIME 99.89805
+XCMS groupid (grpid): 390
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -5035,6 +5263,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:310.1733 | RT:100.1 | XCMS_group:390 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 310.173309326172
 AC$CHROMATOGRAPHY: RETENTION_TIME 100.10529
+XCMS groupid (grpid): 390
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -5062,6 +5291,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:311.1232 | RT:60.6 | XCMS_group:391 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 311.123199462891
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.634806
+XCMS groupid (grpid): 391
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -5091,6 +5321,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:311.1232 | RT:60.6 | XCMS_group:391 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 311.123229980469
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.634806
+XCMS groupid (grpid): 391
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 32
 PK$PEAK: m/z int. rel.int.
@@ -5130,6 +5361,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:311.1233 | RT:60.8 | XCMS_group:391 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 311.123321533203
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.766158
+XCMS groupid (grpid): 391
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -5163,6 +5395,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:311.1233 | RT:60.8 | XCMS_group:391 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 311.123321533203
 AC$CHROMATOGRAPHY: RETENTION_TIME 60.766158
+XCMS groupid (grpid): 391
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 28
 PK$PEAK: m/z int. rel.int.
@@ -5198,6 +5431,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:313.1752 | RT:70.5 | XCMS_group:397 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 313.175231933594
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.461672
+XCMS groupid (grpid): 397
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -5217,6 +5451,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:313.1753 | RT:70.6 | XCMS_group:397 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 313.175262451172
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 397
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -5235,6 +5470,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:317.1815 | RT:69.2 | XCMS_group:407 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 317.181549072266
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.154026
+XCMS groupid (grpid): 407
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 38
 PK$PEAK: m/z int. rel.int.
@@ -5280,6 +5516,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:317.1816 | RT:69.2 | XCMS_group:407 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 317.181579589844
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.154026
+XCMS groupid (grpid): 407
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
@@ -5318,6 +5555,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:320.1811 | RT:62.9 | XCMS_group:415 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 320.181091308594
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 415
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
@@ -5355,6 +5593,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:320.181 | RT:62.9 | XCMS_group:415 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 320.181030273438
 AC$CHROMATOGRAPHY: RETENTION_TIME 62.924034
+XCMS groupid (grpid): 415
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -5396,6 +5635,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:320.1811 | RT:63.1 | XCMS_group:415 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 320.181121826172
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 415
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 32
 PK$PEAK: m/z int. rel.int.
@@ -5435,6 +5675,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:320.1811 | RT:63.1 | XCMS_group:415 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 320.181060791016
 AC$CHROMATOGRAPHY: RETENTION_TIME 63.078168
+XCMS groupid (grpid): 415
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
@@ -5472,6 +5713,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:323.0384 | RT:83.4 | XCMS_group:423 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 323.038360595703
 AC$CHROMATOGRAPHY: RETENTION_TIME 83.441172
+XCMS groupid (grpid): 423
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -5483,6 +5725,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:323.0384 | RT:84.4 | XCMS_group:423 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 323.038360595703
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 423
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -5497,6 +5740,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:323.0383 | RT:84.4 | XCMS_group:423 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 323.038269042969
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.41529
+XCMS groupid (grpid): 423
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -5513,6 +5757,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:326.1472 | RT:97.7 | XCMS_group:429 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 326.147247314453
 AC$CHROMATOGRAPHY: RETENTION_TIME 97.724058
+XCMS groupid (grpid): 429
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -5528,6 +5773,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1812 | RT:65.9 | XCMS_group:443 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181243896484
 AC$CHROMATOGRAPHY: RETENTION_TIME 65.949288
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 18
 PK$PEAK: m/z int. rel.int.
@@ -5553,6 +5799,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1811 | RT:65.9 | XCMS_group:443 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181060791016
 AC$CHROMATOGRAPHY: RETENTION_TIME 65.949288
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -5575,6 +5822,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.181 | RT:65.9 | XCMS_group:443 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181030273438
 AC$CHROMATOGRAPHY: RETENTION_TIME 65.949288
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -5603,6 +5851,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1002 | RT:127.7 | XCMS_group:443 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.100189208984
 AC$CHROMATOGRAPHY: RETENTION_TIME 127.720194
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -5615,6 +5864,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1812 | RT:66.1 | XCMS_group:443 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181213378906
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.147648
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -5643,6 +5893,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1811 | RT:66.1 | XCMS_group:443 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.181121826172
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.147648
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -5677,6 +5928,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:332.1003 | RT:128 | XCMS_group:443 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 332.100311279297
 AC$CHROMATOGRAPHY: RETENTION_TIME 127.98057
+XCMS groupid (grpid): 443
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -5690,6 +5942,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:334.1393 | RT:121.6 | XCMS_group:450 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 334.139282226562
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.56708
+XCMS groupid (grpid): 450
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 30
 PK$PEAK: m/z int. rel.int.
@@ -5727,6 +5980,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:334.1393 | RT:121.6 | XCMS_group:450 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 334.139251708984
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.56708
+XCMS groupid (grpid): 450
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -5747,6 +6001,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:334.1393 | RT:121.8 | XCMS_group:450 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 334.139343261719
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.840812
+XCMS groupid (grpid): 450
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -5779,6 +6034,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:334.1392 | RT:121.8 | XCMS_group:450 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 334.139221191406
 AC$CHROMATOGRAPHY: RETENTION_TIME 121.840812
+XCMS groupid (grpid): 450
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -5796,6 +6052,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:335.0734 | RT:37.1 | XCMS_group:451 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 335.073364257812
 AC$CHROMATOGRAPHY: RETENTION_TIME 37.1197878
+XCMS groupid (grpid): 451
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -5826,6 +6083,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.192 | RT:78 | XCMS_group:479 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192047119141
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.035046
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 41
 PK$PEAK: m/z int. rel.int.
@@ -5874,6 +6132,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.1921 | RT:78 | XCMS_group:479 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192077636719
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.035046
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 32
 PK$PEAK: m/z int. rel.int.
@@ -5913,6 +6172,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.1919 | RT:78 | XCMS_group:479 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.19189453125
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.035046
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 59
 PK$PEAK: m/z int. rel.int.
@@ -5979,6 +6239,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.1921 | RT:78 | XCMS_group:479 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192138671875
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.035046
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 37
 PK$PEAK: m/z int. rel.int.
@@ -6023,6 +6284,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.192 | RT:78.2 | XCMS_group:479 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192016601562
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.227304
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 41
 PK$PEAK: m/z int. rel.int.
@@ -6071,6 +6333,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.192 | RT:78.2 | XCMS_group:479 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.191955566406
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.227304
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -6100,6 +6363,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.192 | RT:78.2 | XCMS_group:479 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192016601562
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.227304
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 51
 PK$PEAK: m/z int. rel.int.
@@ -6158,6 +6422,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:347.192 | RT:78.2 | XCMS_group:479 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 347.192047119141
 AC$CHROMATOGRAPHY: RETENTION_TIME 78.227304
+XCMS groupid (grpid): 479
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 26
 PK$PEAK: m/z int. rel.int.
@@ -6191,6 +6456,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0628 | RT:112 | XCMS_group:488 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062774658203
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -6213,6 +6479,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0627 | RT:112 | XCMS_group:488 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062713623047
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 35
 PK$PEAK: m/z int. rel.int.
@@ -6255,6 +6522,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0627 | RT:112 | XCMS_group:488 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062683105469
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -6287,6 +6555,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0628 | RT:113 | XCMS_group:488 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062805175781
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.983072
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 20
 PK$PEAK: m/z int. rel.int.
@@ -6314,6 +6583,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0627 | RT:113 | XCMS_group:488 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062713623047
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.983072
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
@@ -6352,6 +6622,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:352.0628 | RT:113 | XCMS_group:488 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 352.062805175781
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.983072
+XCMS groupid (grpid): 488
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 36
 PK$PEAK: m/z int. rel.int.
@@ -6395,6 +6666,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:361.1388 | RT:70.6 | XCMS_group:513 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 361.138793945312
 AC$CHROMATOGRAPHY: RETENTION_TIME 70.627524
+XCMS groupid (grpid): 513
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 85
 PK$PEAK: m/z int. rel.int.
@@ -6487,6 +6759,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:362.1915 | RT:64.4 | XCMS_group:515 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 362.191528320312
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.427298
+XCMS groupid (grpid): 515
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -6516,6 +6789,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:362.1916 | RT:64.6 | XCMS_group:515 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 362.191558837891
 AC$CHROMATOGRAPHY: RETENTION_TIME 64.605414
+XCMS groupid (grpid): 515
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -6546,6 +6820,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:363.1544 | RT:69.7 | XCMS_group:518 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 363.154388427734
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.717042
+XCMS groupid (grpid): 518
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 16
 PK$PEAK: m/z int. rel.int.
@@ -6569,6 +6844,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:363.1544 | RT:69.9 | XCMS_group:518 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 363.154418945312
 AC$CHROMATOGRAPHY: RETENTION_TIME 69.864534
+XCMS groupid (grpid): 518
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -6587,6 +6863,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:369.1532 | RT:118.6 | XCMS_group:537 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 369.153167724609
 AC$CHROMATOGRAPHY: RETENTION_TIME 118.583076
+XCMS groupid (grpid): 537
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 5
 PK$PEAK: m/z int. rel.int.
@@ -6599,6 +6876,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.187 | RT:51.4 | XCMS_group:551 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186950683594
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.4450368
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 50
 PK$PEAK: m/z int. rel.int.
@@ -6656,6 +6934,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1869 | RT:51.4 | XCMS_group:551 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186920166016
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.4450368
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 28
 PK$PEAK: m/z int. rel.int.
@@ -6691,6 +6970,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1868 | RT:51.4 | XCMS_group:551 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186798095703
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.4450368
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -6725,6 +7005,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1868 | RT:51.4 | XCMS_group:551 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186767578125
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.4450368
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 29
 PK$PEAK: m/z int. rel.int.
@@ -6761,6 +7042,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1871 | RT:51.6 | XCMS_group:551 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.187103271484
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.5947758
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 36
 PK$PEAK: m/z int. rel.int.
@@ -6804,6 +7086,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1869 | RT:51.6 | XCMS_group:551 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186859130859
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.5947758
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -6834,6 +7117,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1869 | RT:51.6 | XCMS_group:551 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186920166016
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.5947758
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -6862,6 +7146,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:375.1867 | RT:51.6 | XCMS_group:551 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 375.186706542969
 AC$CHROMATOGRAPHY: RETENTION_TIME 51.5947758
+XCMS groupid (grpid): 551
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -6894,6 +7179,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:394.1604 | RT:112 | XCMS_group:596 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 394.160400390625
 AC$CHROMATOGRAPHY: RETENTION_TIME 111.9768
+XCMS groupid (grpid): 596
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -6918,6 +7204,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:394.1605 | RT:113 | XCMS_group:596 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 394.160461425781
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.983072
+XCMS groupid (grpid): 596
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -6942,6 +7229,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:401.0603 | RT:34 | XCMS_group:612 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 401.060302734375
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.0415226
+XCMS groupid (grpid): 612
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -6970,6 +7258,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:401.0603 | RT:34 | XCMS_group:612 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 401.060333251953
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.0415226
+XCMS groupid (grpid): 612
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -6994,6 +7283,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:401.0603 | RT:34.2 | XCMS_group:612 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 401.060333251953
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.1913918
+XCMS groupid (grpid): 612
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 23
 PK$PEAK: m/z int. rel.int.
@@ -7024,6 +7314,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:401.0604 | RT:34.2 | XCMS_group:612 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 401.060363769531
 AC$CHROMATOGRAPHY: RETENTION_TIME 34.1913918
+XCMS groupid (grpid): 612
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 15
 PK$PEAK: m/z int. rel.int.
@@ -7046,6 +7337,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:404.1419 | RT:126.2 | XCMS_group:618 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 404.141937255859
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.186204
+XCMS groupid (grpid): 618
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -7061,6 +7353,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:404.1418 | RT:126.4 | XCMS_group:618 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 404.141845703125
 AC$CHROMATOGRAPHY: RETENTION_TIME 126.441198
+XCMS groupid (grpid): 618
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -7074,6 +7367,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:407.2017 | RT:72.2 | XCMS_group:625 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 407.20166015625
 AC$CHROMATOGRAPHY: RETENTION_TIME 72.171048
+XCMS groupid (grpid): 625
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
@@ -7112,6 +7406,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:414.2344 | RT:113.6 | XCMS_group:641 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 414.234375
 AC$CHROMATOGRAPHY: RETENTION_TIME 113.597328
+XCMS groupid (grpid): 641
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -7130,6 +7425,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:417.2086 | RT:77.5 | XCMS_group:651 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 417.208648681641
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.474424
+XCMS groupid (grpid): 651
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 50
 PK$PEAK: m/z int. rel.int.
@@ -7187,6 +7483,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:422.249 | RT:77.3 | XCMS_group:661 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 422.2490234375
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.267322
+XCMS groupid (grpid): 661
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 11
 PK$PEAK: m/z int. rel.int.
@@ -7205,6 +7502,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:422.249 | RT:77.5 | XCMS_group:661 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 422.248962402344
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.474424
+XCMS groupid (grpid): 661
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 12
 PK$PEAK: m/z int. rel.int.
@@ -7224,6 +7522,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:423.1868 | RT:84.2 | XCMS_group:664 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 423.186798095703
 AC$CHROMATOGRAPHY: RETENTION_TIME 84.215802
+XCMS groupid (grpid): 664
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -7256,6 +7555,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:429.1367 | RT:71.2 | XCMS_group:678 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 429.136749267578
 AC$CHROMATOGRAPHY: RETENTION_TIME 71.233434
+XCMS groupid (grpid): 678
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 34
 PK$PEAK: m/z int. rel.int.
@@ -7297,6 +7597,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:429.1367 | RT:71.2 | XCMS_group:678 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 429.136657714844
 AC$CHROMATOGRAPHY: RETENTION_TIME 71.233434
+XCMS groupid (grpid): 678
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 33
 PK$PEAK: m/z int. rel.int.
@@ -7337,6 +7638,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:429.1368 | RT:71.4 | XCMS_group:678 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 429.136810302734
 AC$CHROMATOGRAPHY: RETENTION_TIME 71.396808
+XCMS groupid (grpid): 678
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 32
 PK$PEAK: m/z int. rel.int.
@@ -7376,6 +7678,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:429.1367 | RT:71.4 | XCMS_group:678 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 429.136688232422
 AC$CHROMATOGRAPHY: RETENTION_TIME 71.396808
+XCMS groupid (grpid): 678
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 38
 PK$PEAK: m/z int. rel.int.
@@ -7421,6 +7724,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:436.2162 | RT:113.6 | XCMS_group:699 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 436.216247558594
 AC$CHROMATOGRAPHY: RETENTION_TIME 113.597328
+XCMS groupid (grpid): 699
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -7438,6 +7742,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:437.26 | RT:82.7 | XCMS_group:705 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 437.259979248047
 AC$CHROMATOGRAPHY: RETENTION_TIME 82.686066
+XCMS groupid (grpid): 705
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 10
 PK$PEAK: m/z int. rel.int.
@@ -7455,6 +7760,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:437.26 | RT:82.9 | XCMS_group:705 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 437.260040283203
 AC$CHROMATOGRAPHY: RETENTION_TIME 82.86993
+XCMS groupid (grpid): 705
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 17
 PK$PEAK: m/z int. rel.int.
@@ -7479,6 +7785,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:452.1902 | RT:112.8 | XCMS_group:739 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 452.190155029297
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.786446
+XCMS groupid (grpid): 739
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.
@@ -7490,6 +7797,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:452.1902 | RT:113 | XCMS_group:739 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 452.190155029297
 AC$CHROMATOGRAPHY: RETENTION_TIME 112.983072
+XCMS groupid (grpid): 739
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 7
 PK$PEAK: m/z int. rel.int.
@@ -7504,6 +7812,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:461.2099 | RT:76.5 | XCMS_group:757 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 461.209899902344
 AC$CHROMATOGRAPHY: RETENTION_TIME 76.520544
+XCMS groupid (grpid): 757
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -7517,6 +7826,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:461.2099 | RT:77.5 | XCMS_group:757 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 461.209899902344
 AC$CHROMATOGRAPHY: RETENTION_TIME 77.474424
+XCMS groupid (grpid): 757
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 9
 PK$PEAK: m/z int. rel.int.
@@ -7533,6 +7843,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:462.2188 | RT:57.7 | XCMS_group:759 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 462.218811035156
 AC$CHROMATOGRAPHY: RETENTION_TIME 57.7060356
+XCMS groupid (grpid): 759
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 33
 PK$PEAK: m/z int. rel.int.
@@ -7573,6 +7884,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:476.1868 | RT:81.2 | XCMS_group:787 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 476.186828613281
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.162672
+XCMS groupid (grpid): 787
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 25
 PK$PEAK: m/z int. rel.int.
@@ -7605,6 +7917,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:476.187 | RT:81.3 | XCMS_group:787 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 476.186981201172
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.344292
+XCMS groupid (grpid): 787
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -7634,6 +7947,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:476.187 | RT:81.3 | XCMS_group:787 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 476.187042236328
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.344292
+XCMS groupid (grpid): 787
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 22
 PK$PEAK: m/z int. rel.int.
@@ -7663,6 +7977,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:487.1776 | RT:66.7 | XCMS_group:812 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 487.177612304688
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.710418
+XCMS groupid (grpid): 812
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 6
 PK$PEAK: m/z int. rel.int.
@@ -7676,6 +7991,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:487.1779 | RT:66.9 | XCMS_group:812 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 487.177856445312
 AC$CHROMATOGRAPHY: RETENTION_TIME 66.865908
+XCMS groupid (grpid): 812
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 3
 PK$PEAK: m/z int. rel.int.
@@ -7686,6 +8002,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:494.1976 | RT:49.9 | XCMS_group:830 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 494.197631835938
 AC$CHROMATOGRAPHY: RETENTION_TIME 49.9356528
+XCMS groupid (grpid): 830
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 31
 PK$PEAK: m/z int. rel.int.
@@ -7724,6 +8041,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:494.1976 | RT:50.1 | XCMS_group:830 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 494.197631835938
 AC$CHROMATOGRAPHY: RETENTION_TIME 50.0837946
+XCMS groupid (grpid): 830
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 29
 PK$PEAK: m/z int. rel.int.
@@ -7760,6 +8078,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:498.1687 | RT:81.2 | XCMS_group:840 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 498.168731689453
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.162672
+XCMS groupid (grpid): 840
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 27
 PK$PEAK: m/z int. rel.int.
@@ -7794,6 +8113,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:498.1689 | RT:81.3 | XCMS_group:840 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 498.168914794922
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.344292
+XCMS groupid (grpid): 840
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 21
 PK$PEAK: m/z int. rel.int.
@@ -7822,6 +8142,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:498.1697 | RT:81.3 | XCMS_group:840 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 498.169708251953
 AC$CHROMATOGRAPHY: RETENTION_TIME 81.344292
+XCMS groupid (grpid): 840
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 13
 PK$PEAK: m/z int. rel.int.
@@ -7842,6 +8163,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:499.2504 | RT:129.3 | XCMS_group:843 | file:1
 MS$FOCUSED_ION: PRECURSOR_M/Z 499.250396728516
 AC$CHROMATOGRAPHY: RETENTION_TIME 129.271086
+XCMS groupid (grpid): 843
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 8
 PK$PEAK: m/z int. rel.int.
@@ -7857,6 +8179,7 @@ PK$PEAK: m/z int. rel.int.
 CH$NAME:  MZ:499.2504 | RT:129.5 | XCMS_group:843 | file:2
 MS$FOCUSED_ION: PRECURSOR_M/Z 499.250396728516
 AC$CHROMATOGRAPHY: RETENTION_TIME 129.525558
+XCMS groupid (grpid): 843
 COMMENT: Exported from msPurity purityA object using function createMSP, using method 'all' msPurity version:1.9.8 
 PK$NUM_PEAK: 4
 PK$PEAK: m/z int. rel.int.

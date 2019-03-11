@@ -1,5 +1,5 @@
-<tool id="create_msp" name="Create MSP" version="0.2.0">
-    <description>files from msPurity processed data</description>
+<tool id="create_msp" name="msPurity.createMSP" version="0.2.0">
+    <description>Create MSP files from msPurity processed data</description>
     <macros>
         <import>macros.xml</import>
     </macros>
@@ -23,6 +23,11 @@
         --xcms_groupids "$xcms_group_cond.xcms_groupids"
     #end if
 
+    $filter
+
+    --msp_schema "$msp_schema"
+    --intensity_ra "$intensity_ra"
+
     --out_dir '.'
     ]]></command>
     <inputs>
@@ -45,7 +50,10 @@
         <conditional name="metadata_cond">
             <param name="metadata_select" type="boolean" label="Use additional metadata?" />
 	    <when value="true">
-                <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular" help="Metadata for each grouped XCMS feature, the data will be added to the MSP metadata. Using the MassBank format e.g. https://github.com/MassBank/MassBank-data/blob/master/MetaboLights/ML003001.txt "/>
+                <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular"
+                help="Metadata for each grouped XCMS feature, the data will be added to the MSP metadata.
+                Using the MassBank format e.g. https://github.com/MassBank/MassBank-data/blob/master/MetaboLights/ML003001.txt "/>
+
                 <param name="metadata_cols" type="text" label="Metadata columns for name" value="CH$NAME, MS$FOCUSED_ION: PRECURSOR_TYPE" help="Comma separated string of column names where the corresponding values in the metadata will be used for the MSP spectra name"/>
                 <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?" help="If either 'adduct' or 'MS$FOCUSED_ION: PRECURSOR_TYPE'
                     column is in metadata then each adduct will have it's own MSP spectra.
@@ -64,6 +72,22 @@
             <when value="false">
             </when>
         </conditional>
+
+        <param name="intensity_ra" type="select" label="Include intensity, relative abundanace or both in the MSP file"
+             argument="--intensity_ra">
+            <option value="intensity_ra" selected="true">Both intensity and relative abundance</option>
+            <option value="intensity">Intensity only</option>
+            <option value="ra">Relative abundance only</option>
+        </param>
+
+        <param name="msp_schema" type="select" label="MSP schema to use for files"
+             argument="--msp_schema">
+            <option value="massbank" selected="true">MassBank (Europe)</option>
+            <option value="mona">MoNA</option>
+
+        </param>
+
+        <param name="filter" type="boolean" checked="true" truevalue="--filter" falsevalue="" label="Filter peaks that have been flagged in prior processing steps"   help="" />
 
     </inputs>
     <outputs>

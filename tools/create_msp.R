@@ -10,6 +10,9 @@ option_list <- list(
   make_option(c("-metac","--metadata_cols"),type="character"),
   make_option(c("-a","--adduct_split"),type="character"),
   make_option(c("-x","--xcms_groupids"),type="character"),
+  make_option(c("-f","--filter"),action="store_true"),
+  make_option("--intensity_ra",type="character"),
+  make_option("--msp_schema",type="character"),
   make_option(c("-o","--out_dir"),type="character", default=".")
 )
 opt <- parse_args(OptionParser(option_list=option_list))
@@ -21,7 +24,7 @@ load(opt$rdata_input)
 if (is.null(opt$metadata)){
   metadata <- NULL
 }else{
-  metadata <- read.table(opt$metadata,  header = TRUE, sep='\t', stringsAsFactors = FALSE, check.names = FALSE) 
+  metadata <- read.table(opt$metadata,  header = TRUE, sep='\t', stringsAsFactors = FALSE, check.names = FALSE)
   print(head(metadata))
 }
 
@@ -34,16 +37,24 @@ if(is.null(opt$adduct_split)){
 if (is.null(opt$xcms_groupids)){
   xcms_groupids <- NULL
 }else{
-  xcms_groupids <- trimws(strsplit(opt$xcms_groupids, ',')[[1]])  
+  xcms_groupids <- trimws(strsplit(opt$xcms_groupids, ',')[[1]])
 }
 
+if(is.null(opt$filter)){
+  filter <- FALSE
+}else{
+  filter <- TRUE
+}
 
-msPurity::createMSP(pa, 
+msPurity::createMSP(pa,
                     msp_file_pth = file.path(opt$out_dir, 'lcmsms_spectra.msp'),
                     metadata = metadata,
                     metadata_cols = opt$metadata_cols,
-                    method = opt$method, 
+                    method = opt$method,
                     adduct_split = adduct_split,
-                    xcms_groupids = xcms_groupids)
+                    xcms_groupids = xcms_groupids,
+                    filter = filter,
+                    intensity_ra=opt$intensity_ra,
+                    msp_schema=opt$msp_schema)
 
 print('msp created')
