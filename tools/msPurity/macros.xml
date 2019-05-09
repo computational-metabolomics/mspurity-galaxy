@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<macros>
+    <xml name="requirements">
+        <requirements>
+           <requirement type="package" version="1.9.10" >bioconductor-mspurity</requirement>
+            <yield />
+        </requirements>
+    </xml>
+    <xml name="offsets">
+        <param name="minoffset" type="float" label="minoffset" value="0.5" argument='--minoffset'
+               help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
+               100.0 then the range would be from 999.5 to 100.0"/>
+        <param name="maxoffset" type="float" label="maxoffset" value="0.5" argument='--maxoffset'
+               help="Offset to the 'right' for the precursor range  e.g. if precursor of interest is
+               100.0 then the range would be from 100.0 to 100.5"/>
+    </xml>
+    <xml name="general_params">
+        <param name="ilim" type="float" value="0.05" argument='--ilim'
+               label="Threshold to remove peaks below x % of the relative intensity of
+               precursor of interest"
+               help="All peaks less than this percentage of the precursor ion of interest will be
+               removed from the purity calculation, default is 5\% (0.05).
+               Essentially a noise filter to remove peaks that are thought to have either none or
+               very limited impact on the resulting fragmentation spectra."/>
+        <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
+                <option value="gauss" >Gaussian</option>
+                <option value="rcosine" >Raised cosine</option>
+                <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
+                <option value="none" selected="true" >No normalisation</option>
+        </param>
+        <conditional name="isotopes">
+            <param name="isotopes" type="select" label="Handling of isotopic peaks" >
+                <option value="keep" >Keep isotopes in precursor ion purity calculation</option>
+                <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
+                <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
+            </param>
+            <when value="keep">
+            </when>
+            <when value="exclude_default">
+            </when>
+            <when value="user">
+                <param name="im" type="data" format="tabular" label="Isotope matrix" help="
+                 tabular file composing of columns:
+                  ['isotope_id', 'mass diff', 'abundance of isotope', 'ppm tol for mz', 'abundance buffer',
+                                  'charge', 'relative atomic mass (int)', 'xflag'].
+                The xflag indicates if the larger (mass) isotope is the most abundant or less abundant.
+                e.g. for c12 to c13, the c13 is less abundant so we flag as 1 for Li6 to Li7, the Li7 is more abundant
+                so we would flag as 0.
+                Example row: For C13 isotope (single charge) the row could be [1, 1.003355, 1.07, 4, 0.1, 1, 12, 1]"/>
+            </when>
+        </conditional>
+    </xml>
+
+
+    <xml name="camera_xcms">
+            <param name="camera_xcms" type="select" label="Use CAMERA object or XCMS object from RData?"
+               help="Within the RData file there should be either an XCMS object called xset or a CAMERA object called
+                      xa (or both). The XCMS object is nested within the CAMERA object so either can be used">
+                <option value="xcms" selected="true" >XCMS (xset)</option>
+                <option value="camera" >CAMERA (xa)</option>
+        </param>
+    </xml>
+
+
+    <xml name="fileload">
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" type="select" label="Resubmit your dataset"
+                       help="Use only if you get a message which say that your original dataset or
+                                dataset collection can not be found the server." >
+                    <option value="no" >no need</option>
+                    <option value="yes" >yes</option>
+                </param>
+                <when value="no">
+                </when>
+                <when value="yes">
+                    <param name="input" type="data_collection" collection_type="list"  format="mzxml,mzml,mzdata,netcdf"
+                           multiple="true" label="File(s) from your history containing your chromatograms"
+                           help="Select the dataset collection containing the files that were used
+                                 for processing" />
+                </when>
+        </conditional>
+    </xml>
+
+    <xml name="grp_peaklist">
+        <conditional name="grp_peaklist_opt">
+            <param name="grp_peaklist_opt" type="select" label="Add a different grouped peaklist to database?">
+                <option value="yes" >Provide group peaklist </option>
+                <option value="no" selected="true">Use default grouped peaklist</option>
+            </param>
+            <when value="no">
+            </when>
+            <when value="yes">
+                <param type="data" name="grp_peaklist" label="grouped peaklist"
+                    help="User supplied grouped peaklist to add to the database (if additional columns required e.g.
+                          CAMERA annotations" format="tsv,tabular"/>
+            </when>
+        </conditional>
+    </xml>
+    
+
+    <xml name="sm_input" token_ql='Query' token_dblabel="SQLite database"  token_ql_shrt="Q"
+         token_user="True" token_mspuritydatalib="False" token_msp="False" token_help="">
+        <conditional name="@QL_SHRT@_dbPth_con">
+            <param name="@QL_SHRT@_dbPth_select" type="select" label="Input" help="@HELP@" >
+                <option value="userdb" selected="@USER@" >SQLite database of (LC)-MS/MS data</option>
+                <option value="msPurityData"  selected="@MSPURITYDATALIB@" >Prepared database of MassBank, HMDB, LipidBlast and GNPS</option>
+                <option value="msp" >MSP file (SQLite database will be created using using msp2db)</option>
+            </param>    
+            <when value="userdb">
+               <param type="data" name="@QL_SHRT@_dbPth" label="@QL@ SQLite database" format="sqlite" help=""/>
+            </when>
+            <when value="msp">
+              <param type="data" name="@QL_SHRT@_msp" label="@QL@ MSP file" format="msp" help=""/>
+            </when>
+            
+            <when value="msPurityData">
+            </when>
+        </conditional>
+    </xml>
+    
+    
+    <xml name="filters" token_ql="Query" token_polarity_positive="false" token_ql_shrt="Q"
+         token_sources_select="false" token_instrument_types_select="false">
+      
+        <section name="@QL_SHRT@_filters" title="Filters" expanded="False">
+            
+            <param name="@QL_SHRT@_ppmPrec" type="float" value="5" label="ppm error of the precursor for spectra"/>
+            <param name="@QL_SHRT@_ppmProd" type="float" value="10" label="ppm error of the product for spectra"/>
+              
+            <conditional name="@QL_SHRT@_raThres_cond">
+                <param name="@QL_SHRT@_raThres_bool" type="boolean" label="Filter on relative abundance threshold?"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_raThres" type="float" value = '2' label="Relative abundance threshold"/>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            <conditional name="@QL_SHRT@_polarity_cond">
+                <param name="@QL_SHRT@_polarity_bool" type="boolean" label="Filter on polarity?" help="" />
+                <when value="true">
+                    <param name="@QL_SHRT@_polarity" type="select" label="Polarity" multiple="true" >
+                      <option value="positive" selected="@POLARITY_POSITIVE@">Positive</option>
+                      <option value="negative" >Negative</option>
+                      <option value="NA" >NA</option>
+                    </param>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+                                                              
+            <conditional name="@QL_SHRT@_purity_cond">
+                <param name="@QL_SHRT@_purity_bool" type="boolean" label="Filter on precursor ion purity?"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_purity" type="float" min="0" max="1" value="0.6"
+                           label="Precursor ion purity threshold"/>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            <conditional name="@QL_SHRT@_xcmsGroups_cond">
+                <param name="@QL_SHRT@_xcmsGroups_bool" type="boolean" label="Filter on XCMS groups ids?"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_xcmsGroups" type="text" value=""
+                          label="XCMS group ids of spectra" 
+                          help="comma seperated list of grpids (correspond to column 'grpid in c_peak_group'))
+                                e.g '12,27,30'" />
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            
+            <conditional name="@QL_SHRT@_pids_cond">
+                <param name="@QL_SHRT@_pids_bool" type="boolean" label="Filter on pids?"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_pids" type="text" value=""
+                          label="pids of spectra (correspond to column 'pid; in s_peak_meta)" 
+                          help="comma seperated list of pids (correspond to column 'pid; in s_peak_meta))
+                                e.g '3001,5561'" />
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            
+            <conditional name="@QL_SHRT@_rtrange_cond">
+                <param name="@QL_SHRT@_rtrange_bool" type="boolean" 
+                       label="Filter on retention time range?"
+                       help="Filter the spectra between two points of retention time range"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_rtrangeMin" label="Minimum retention time range (seconds)"
+                           type="float" value="0" help=""/>
+                    <param name="@QL_SHRT@_rtrangeMax" label="Maximum retention time range (seconds)"
+                           type="float" value="3000" help=""/>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            
+            
+            <conditional name="@QL_SHRT@_accessions_cond">
+                <param name="@QL_SHRT@_accessions_bool" type="boolean" 
+                       label="Filter on accessions?"
+                       help="Filter on unique accessions IDs (e.g. from MassBank and MoNA)"/>
+                <when value="true">
+                    <param name="@QL_SHRT@_accessions" type="text" value=""
+                          label="Spectra accessions" 
+                          help="Comma seperated list of accessions))
+                                e.g 'AC000001,BS001003,LIT00001'" />
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            
+            <conditional name="@QL_SHRT@_sources_cond">
+                <param name="@QL_SHRT@_sources_bool" type="boolean" 
+                       label="Filter on sources?" help="" value="@SOURCES_SELECT@" />
+                <when value="true">
+                    <param name="@QL_SHRT@_sources" type="select" multiple="true"
+                       help="@QL_SHRT@ The default internal SQLite database of library (reference) spectra 
+                       contains fragmentation spectra from MassBank, LipidBlast and GNPS. A copy is 
+                       available from here: 
+                       https://bioconductor.org/packages/release/data/experiment/html/msPurityData.html" >
+                        <option value="massbank" selected="true">MassBank from MoNa</option>
+                        <option value="gnps" selected="true">GNPS</option>
+                        <option value="hmdb" selected="true">HMDB</option>
+                        <option value="lipidblast" selected="true">LipidBlast</option>
+                    </param>
+                    <param name="@QL_SHRT@_sourcesUser" type="text" label="Sources - user specific" value=""
+                      help="comma seperated list of additional sources (e.g. if the user has other
+                      sources - like there own personal library)
+                      e.g 'LIPIDS_03052019,HILIC_03052019'" />
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            <conditional name="@QL_SHRT@_instrumentTypes_cond">
+                <param name="@QL_SHRT@_instrumentTypes_bool" type="boolean" 
+                       value="@INSTRUMENT_TYPES_SELECT@"
+                       label="Filter on instrument type?" help="" />
+                <when value="true">
+                    <param name="@QL_SHRT@_instrumentTypes" type="select" multiple="true"
+                       help="" >
+                        <option value="APCI-ITFT">APCI-ITFT</option>
+                        <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
+                        <option value="CI-B">CI-B</option>
+                        <option value="EI-B">EI-B</option>
+                        <option value="EI-EBEB">EI-EBEB</option>
+                        <option value="ESI-ITFT" selected="true">ESI-ITFT</option>
+                        <option value="ESI-ITTOF" selected="true">ESI-ITTOF</option>
+                        <option value="ESI-QTOF" selected="true">ESI-QTOF</option>
+                        <option value="FAB-B">FAB-B</option>
+                        <option value="FAB-BE-MS">FAB-BE-MS</option>
+                        <option value="FAB-EB">FAB-EB</option>
+                        <option value="FAB-EBEB">FAB-EBEB</option>
+                        <option value="FI-B">FI-B</option>
+                        <option value="GC-EI-Q">GC-EI-Q</option>
+                        <option value="GC-EI-QQ">GC-EI-QQ</option>
+                        <option value="GC-EI-TOF">GC-EI-TOF</option>
+                        <option value="LC-APCI-QTOF">LC-APCI-QTOF</option>
+                        <option value="LC-APPI-QQ">LC-APPI-QQ</option>
+                        <option value="LC-ESI-IT" selected="true">LC-ESI-IT</option>
+                        <option value="LC-ESI-ITFT" selected="true">LC-ESI-ITFT</option>
+                        <option value="LC-ESI-ITTOF" selected="true">LC-ESI-ITTOF</option>
+                        <option value="LC-ESI-Q">LC-ESI-Q</option>
+                        <option value="LC-ESI-QFT" selected="true" >LC-ESI-QFT</option>
+                        <option value="LC-ESI-QIT" selected="true">LC-ESI-QIT</option>
+                        <option value="LC-ESI-QQ" selected="true">LC-ESI-QQ</option>
+                        <option value="LC-ESI-QTOF" selected="true">LC-ESI-QTOF</option>
+                        <option value="LC-ESI-TOF" selected="true">LC-ESI-TOF</option>
+                        <option value="MALDI-QIT">MALDI-QIT</option>
+                        <option value="MALDI-TOF">MALDI-TOF</option>
+                        <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
+                        <option value="none">None</option>
+                  </param>
+                  <param name="@QL_SHRT@_instrumentTypesUser" type="text" value=""
+                         help="Types of the instruments to be included in the search. Use a comma to 
+                               separate the instrument types or leave empty to ignore filter."/>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            <conditional name="@QL_SHRT@_instruments_cond">
+                <param name="@QL_SHRT@_instruments_bool" type="boolean" label="Filter on instrument name?" help="" />
+                <when value="true">
+                    <param name="@QL_SHRT@_instruments" type="text" value=""
+                         help="Known instrument names to filter on. Use a comma to 
+                               separate the instrument types or leave empty to ignore filter."/>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+            
+            
+
+            <conditional name="@QL_SHRT@_spectraTypes_cond">
+                <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?" 
+                help="" />
+                <when value="true">
+                    <param name="@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
+                        <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
+                        <option value="av_inter">Averaged inter spectra</option>
+                        <option value="av_intra">Averaged intra spectra </option>
+                        <option value="scans">All individual scans</option>
+                        <option value="NA">Not applicable/defined</option>
+                    </param>
+                </when>
+                <when value="false">
+                </when>
+            </conditional>
+
+           <param name="@QL_SHRT@_spectraFilter" type="boolean" checked="true"
+                  label="Ignore any peaks flagged in the spectra in previous stages?" 
+                          help="" />
+            
+        </section>
+    </xml>
+    
+
+    
+
+    <xml name="citations">
+        <citations>
+            <citation type="doi">10.1021/acs.analchem.6b04358</citation>
+            <yield />
+        </citations>
+    </xml>
+
+</macros>

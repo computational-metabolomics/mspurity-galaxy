@@ -1,0 +1,114 @@
+<tool id="mspurity_createdatabase" name="msPurity.createDatabase" version="0.1.0">
+    <description>
+        Create and SQLite database of an LC-MS(/MS) experiment
+    </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements">
+    </expand>
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        createDatabase.R
+            --outDir=.
+            --xset_xa=$xset_xa
+	          --pa=$pa
+            --xcms_camera_option=$camera_xcms
+            --cores=\${GALAXY_SLOTS:-4}
+            #if $file_load_conditional.file_load_select=="yes"
+                --mzML_files='
+                #for $i in $file_load_conditional.input
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $file_load_conditional.input
+                    $i.name,
+                #end for
+                '
+            #end if
+
+            #if $eic
+                --eic
+            #end if
+            #if $raw_rt_columns
+                --raw_rt_columns
+            #end if
+            #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
+                --grp_peaklist=$grp_peaklist
+            #end if
+
+    ]]></command>
+    <inputs>
+        <param type="data" name="xset_xa" label="xcmsSet or CAMERA object"
+               help="Either xcmsSet object saved as 'xset' or CAMERA 'xa' object in an RData file. 
+                     Please specify which to use below" 
+               format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
+        <expand macro="camera_xcms" />
+        <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
+               help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
+      	<param name="eic" type="boolean" label="Include EIC data?"
+               help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
+                     the database. Note, this will take considerable time for large datasets and
+                     the resulting SQLite database can be large"/>
+	      <param name="raw_rt_columns" type="boolean" label="Use user defined Raw RT columns?"
+               help="Only use if the track_rt_raw tool has been used"/>
+        <expand macro="grp_peaklist" />
+          <expand macro="fileload" />
+    </inputs>
+    <outputs>
+        <data name="createDatabase_output_sqlite" format="sqlite"
+              label="${tool.name} on ${on_string}: LC-MS(/MS) data SQLite db"
+              from_work_dir="createDatabase_output.sqlite" />
+
+    </outputs>
+    <tests>
+        <test>
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" value="yes"/>
+                <param name="input" >
+                    <collection type="list">
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+	         <param name="camera_xcms" value="xcms"/>
+           <param name="xset_xa" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+           <param name="pa" value="averageFragSpectra_output_all.RData"/>
+           <output name="createDatabase_output_sqlite" value="createDatabase_output.sqlite" ftype="sqlite" compare="sim_size"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+=============================================================
+Create SQLite database for LC-MS(/MS) dataset
+=============================================================
+** General **
+
+Create and SQLite database of an LC-MS(/MS) experiment (replaces the create_database function).
+
+Schema details can be found [here](https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-datatabase-schema.html).
+
+**Example LC-MS/MS processing workflow**
+
+* Purity assessments
+    +  (mzML files) -> purityA -> (pa)
+* XCMS processing
+    +  (mzML files) -> xcms.xcmsSet -> xcms.merge -> xcms.group -> xcms.retcor -> xcms.group -> (xset)
+* Fragmentation processing
+    + (xset, pa) -> frag4feature -> filterFragSpectra -> averageAllFragSpectra -> **createDatabase** -> spectralMatching -> (sqlite spectral database)
+
+
+-----------
+Output
+-----------
+* lcms_sqlite: An SQLite database of the LC-MS(/MS) data (including fragmentation scans)
+
+    ]]></help>
+<expand macro="citations" />
+</tool>

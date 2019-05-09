@@ -1,0 +1,175 @@
+<tool id="mspurity_frag4feature" name="msPurity.frag4feature" version="0.1.0">
+    <description>
+        Assign fragmentation spectra to XCMS features using msPurity
+    </description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements">
+    </expand>
+ <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        frag4feature.R
+            --out_dir=.
+            --xset=$xset
+            --pa=$pa
+            --cores=\${GALAXY_SLOTS:-4}
+            #if $file_load_conditional.file_load_select=="yes"
+                --mzML_files='
+                #for $i in $file_load_conditional.input
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $file_load_conditional.input
+                    $i.name,
+                #end for
+                '
+            #end if
+            #if $useGroup
+                --useGroup
+            #end if
+
+            --ppm=$ppm
+            --plim=$plim
+            #if $intense
+                --intense
+            #end if
+            #if $convert2RawRT
+                --convert2RawRT
+            #end if
+
+
+    ]]></command>
+    <inputs>
+
+        <param type="data" name="xset" label="xcmsSet object" argument="--xset"
+               help="grouped xcmsSet object saved as 'xset' in an RData file"
+               format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
+        <param type="data" name="pa" label="purityA object" format="rdata" argument="--pa"
+               help="purityA object generated from msPurity_purityA.
+               Contains details of fragmentation spectra and precursor ion purity results
+               (output from purityA tool)"/>
+        <param name="ppm" type="float" argument="--ppm" value="10"
+               label="ppm error tolerance between precursor mz and XCMS feature mz"
+               help="Fragmentation will be ignored if the precursor mz value is not within
+               the ppm error tolerance to the XCMS feature mz"/>
+        <param name="plim" type="float" label="Precursor ion purity threshold"
+               value="0" max="1" min="0" argument="--plim"
+               help="Fragmentation will be ignore if the precursor ion purity is less than the
+               threshold (further filtering on the precursor ion purity can be done at the averaging
+               stage if required)."/>
+        <param name="intense" type="boolean" checked="true"  argument="--intense"
+               label="Should the most intense precursor be used within the isolation window?"
+               help="If TRUE the most intense precursor will be used. If FALSE the precursor
+               closest to the center of the isolation window will be used"/>
+        <param name="convert2RawRT" type="boolean" checked="false"  argument="--convert2RawRT"
+               label="Was retention time correction used?"
+               help="If retention time correction has been used in XCMS set this to yes"/>
+        <param name="useGroup" type="boolean" checked="false"  argument="--useGroup"
+              label="For matching fragmentation to a feature, use the grouped feature range"
+              help="If the MS1 and MS2 are in different files this is option has to be set to
+              true"  />
+
+        <expand macro="fileload" />
+
+    </inputs>
+    <outputs>
+        <data name="frag4feature_output_tsv" format="tsv" label="${tool.name} on ${on_string}: tsv"
+              from_work_dir="frag4feature_output.tsv" />
+        <data name="frag4feature_output_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
+              from_work_dir="frag4feature_output.RData" />
+    </outputs>
+    <tests>
+        <test>
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" value="yes"/>
+                <param name="input" >
+                    <collection type="list">
+                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+            <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+            <param name="pa" value="purityA_output.RData"/>
+            <output name="frag4feature_output_tsv" value="frag4feature_output.tsv"/>
+            <output name="frag4feature_output_rdata" value="frag4feature_output.RData" ftype="rdata" compare="sim_size"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+=============================================================
+Link fragmentation spectra to XCMS features
+=============================================================
+-----------
+Description
+-----------
+
+**General**
+
+Tool to Assign fragmentation spectra (MS/MS) stored within a purityA class object to grouped features within an XCMS xset object.
+
+Please note that the xcmsSet object needs to have been grouped.
+
+The data inputs are:
+
+* A purityA object (generated from purityA) saved in an rdata file.
+* A xcmsSet grouped object (generated from xcms_group) saved in an rdata file
+* [optional] a dataset collection of the mzML files to resubmit
+
+XCMS calculates individual chromatographic peaks for each mzML file (saved in xset@peaks), these are then grouped together
+(using xcms.group). Ideally the mzML files that contain the MS/MS spectra also contain sufficient MS1 scans for XCMS to detect
+MS1 chromatographic features. If this is the case, to determine if a MS2 spectra is to be linked to an XCMS grouped feature,
+the associated acquisition time of the MS/MS event has to be within the retention time window defined for the individual peaks
+associated for each file. The precursor m/z value also has to be within the user ppm tolerance to XCMS feature.
+
+See below for representation of the linking (the \*------\* represent a many-to-many relationship) e.g. 1 or more MS/MS events can be
+linked to 1 or more individual feature and an individual XCMS feature can be linked to 1 or more grouped XCMS features
+
+* \[grouped XCMS feature - across files\] \*------\*  \[individual XCMS feature - per file\] \*------\*  \[MS/MS spectra\]
+
+Alternatively, if the "useGroup" argument is set to TRUE, the full width of the grouped peak (determined as the minimum rtmin
+and maximum rtmax of the all associated individual peaks) will be used. This option should be used if the mzML file with
+MS/MS has very limited MS1 data and so individual chromatographic peaks might not be detected with the mzML files containing the
+MS/MS data. However, it should be noted this may lead to potential inaccurate linking.
+
+* \[grouped XCMS peaks\] \*------\* \[MS/MS spectra\]
+
+**Example LC-MS/MS processing workflow**
+
+
+* Purity assessments
+    +  (mzML files) -> purityA -> (pa)
+* XCMS processing
+    +  (mzML files) -> xcms.xcmsSet -> xcms.merge -> xcms.group -> xcms.retcor -> xcms.group -> (xset)
+* Fragmentation processing
+    + (xset, pa) -> **frag4feature** -> filterFragSpectra -> averageAllFragSpectra -> createDatabase -> spectralMatching -> (sqlite spectral database)
+
+**Additional notes**
+
+* If using only a single file, then grouping still needs to be performed within XCMS before frag4feature can be used.
+* Fragmentation spectra below a certain precursor ion purity can be be removed (see plim argument).
+* A SQLite database can be created directly here but the functionality has been deprecated and the createDatabase function should now be used
+* Can experience some problems when using XCMS version < 3 and obiwarp retention time correction.
+
+See Bioconductor documentation for more details, function msPurity::frag4feature()
+
+-----------
+Outputs
+-----------
+* frag4feature_rdata: An updated purityA object saved as rdata file with fragmentation-feature links added
+* frag4feature_grouped_msms: A flat file of all the XCMS peaks for each grouped feature and the corresponding fragmentation scans
+* frag4feature_sqlite: An SQLite database of the data (including fragmentation scans)
+
+    ]]></help>
+
+<expand macro="citations" />
+
+</tool>

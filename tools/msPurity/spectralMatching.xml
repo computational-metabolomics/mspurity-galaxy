@@ -1,0 +1,401 @@
+<tool id="mspurity_spectralmatching" name="msPurity.spectralMatching" version="0.1.3">
+    <description>
+        Perform spectral matching to MS/MS spectral libraries
+    </description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements">
+    </expand>
+
+
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        spectralMatching.R
+            --outDir=.
+            --cores=\${GALAXY_SLOTS:-4}
+          
+
+            #if $Query.q_dbPth_con.q_dbPth_select == 'userdb'
+              --q_dbPth=$Query.q_dbPth_con.q_dbPth
+            #elif  $Query.q_dbPth_con.q_dbPth_select == 'msp'
+              --q_msp=$Query.q_dbPth_con.q_msp
+            #else
+              --q_defaultDb
+            #end if
+            
+            #if $Library.l_dbPth_con.l_dbPth_select == 'userdb'
+              --l_dbPth=$Library.l_dbPth_con.l_dbPth
+            #elif $Library.l_dbPth_con.l_dbPth_select == 'msp'
+              --l_msp=$Library.l_dbPth_con.l_msp
+            #else
+              --l_defaultDb
+            #end if
+            
+            --q_ppmPrec=$Query.q_filters.q_ppmPrec
+            --l_ppmPrec=$Library.l_filters.l_ppmPrec
+            
+            --q_ppmProd=$Query.q_filters.q_ppmProd
+            --l_ppmProd=$Library.l_filters.l_ppmProd
+            
+            
+            #if $Query.q_filters.q_raThres_cond.q_raThres_bool
+              --q_raThres=$Query.q_filters.q_raThres_cond.q_raThres
+            #end if
+            
+            #if $Library.l_filters.l_raThres_cond.l_raThres_bool
+              --l_raThres=$Library.l_filters.l_raThres_cond.l_raThres
+            #end if
+            
+            #if $Query.q_filters.q_polarity_cond.q_polarity_bool
+              --q_polarity=$Query.q_filters.q_polarity_cond.q_polarity
+            #end if
+            
+            #if $Library.l_filters.l_polarity_cond.l_polarity_bool
+              --l_polarity=$Library.l_filters.l_polarity_cond.l_polarity
+            #end if
+            
+            #if $Query.q_filters.q_purity_cond.q_purity_bool
+              --q_purity=$Query.q_filters.q_purity_cond.q_purity
+            #end if
+            
+            #if $Library.l_filters.l_purity_cond.l_purity_bool
+              --l_purity=$Library.l_filters.l_purity_cond.l_purity
+            #end if
+            
+            #if $Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups_bool
+              --q_xcmsGroups=$Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups
+            #end if
+            
+            #if $Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups_bool
+              --l_xcmsGroups=$Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups
+            #end if
+
+            #if $Query.q_filters.q_pids_cond.q_pids_bool
+              --q_pids=$Query.q_filters.q_pids_cond.q_pids
+            #end if
+            
+            #if $Library.l_filters.l_pids_cond.l_pids_bool
+              --l_pids=$Library.l_filters.l_pids_cond.l_pids
+            #end if
+            
+            #if $Query.q_filters.q_rtrange_cond.q_rtrange_bool
+              --q_rtrangeMin=$Query.q_filters.q_rtrange_cond.q_rtrangeMin
+              --q_rtrangeMax=$Query.q_filters.q_rtrange_cond.q_rtrangeMax
+            #end if
+            
+            #if $Library.l_filters.l_rtrange_cond.l_rtrange_bool
+              --l_rtrangeMin=$Library.l_filters.l_rtrange_cond.l_rtrangeMin
+              --l_rtrangeMax=$Library.l_filters.l_rtrange_cond.l_rtrangeMax
+            #end if
+            
+            #if $Query.q_filters.q_accessions_cond.q_accessions_bool
+              --q_accessions=$Query.q_filters.q_accessions_cond.q_accessions
+            #end if
+            
+            #if $Library.l_filters.l_accessions_cond.l_accessions_bool
+              --l_accessions=$Library.l_filters.l_accessions_cond.l_accessions
+            #end if
+            
+            
+            #if $Query.q_filters.q_sources_cond.q_sources_bool
+              --q_sources=$Query.q_filters.q_sources_cond.q_sources
+              --q_sourcesUser=$Query.q_filters.q_sources_cond.q_sourcesUser
+            #end if
+            
+            #if $Library.l_filters.l_sources_cond.l_sources_bool
+              --l_sources=$Library.l_filters.l_sources_cond.l_sources
+              --l_sourcesUser=$Library.l_filters.l_sources_cond.l_sourcesUser
+            #end if
+            
+            #if $Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes_bool
+              --q_instrumentTypes=$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes
+              --q_instrumentTypesUser=$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser
+            #end if
+            
+            #if $Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes_bool
+              --l_instrumentTypes=$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes
+              --l_instrumentTypesUser=$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser
+            #end if
+            
+            #if $Query.q_filters.q_instruments_cond.q_instruments_bool
+              --q_instruments=$Query.q_filters.q_instruments_cond.q_instruments
+            #end if
+            
+            #if $Library.l_filters.l_instruments_cond.l_instruments_bool
+              --l_instruments=$Library.l_filters.l_instruments_cond.l_instruments
+            #end if
+
+            #if $Query.q_filters.q_spectraTypes_cond.q_spectraTypes_bool
+              --q_spectraTypes=$Query.q_filters.q_spectraTypes_cond.q_spectraTypes
+            #end if
+            
+            #if $Library.l_filters.l_spectraTypes_cond.l_spectraTypes_bool
+              --l_spectraTypes=$Library.l_filters.l_spectraTypes_cond.l_spectraTypes
+            #end if
+
+            #if $Query.q_filters.q_spectraFilter
+              --q_spectraFilter
+            #end if
+            
+            #if $Library.l_filters.l_spectraFilter
+              --l_spectraFilter
+            #end if
+
+            #if $General.rttol_cond.rttol_bool
+              --rttol=$General.rttol_cond.rttol
+            #end if
+            
+            --raW=$General.raW
+            --mzW=$General.mzW
+            
+            #if $General.updateDb_cond.updateDb
+              --updateDb
+              #if $General.updateDb_cond.copyDb
+                 --copyDb
+              #end if
+            #end if
+            
+            #if $General.usePrecursors
+                 --usePrecursors
+            #end if
+       
+
+
+    ]]></command>
+    <inputs>
+      
+
+    
+    <section name="Query" title="Query spectra input and filters" expanded="True">
+        <expand macro="sm_input" ql='Query' ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
+                help="Query SQLite database - in the standard XCMS msPurity workflow - the output
+                      of msPurity.createDatabase should be used here. However any SQLite database 
+                      following the schema of xxx can be used as input"/>
+        <expand macro="filters" ql="Query" ql_shrt="q"/>
+    </section>
+  
+    <section name="Library" title="Library spectra input and filters" expanded="True">
+        <expand macro="sm_input" ql='Library' ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
+                help="Library SQLite database - in the standard XCMS msPurity workflow - a default 
+                      database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite 
+                      database following the schema of xxx can be used as input"/>
+        <expand macro="filters" ql="Library"  ql_shrt="l"/>
+    </section>
+    
+    <section name="General" title="General arguments" expanded="False">
+        <conditional name="rttol_cond">
+                <param name="rttol_bool" type="boolean" label="Filter on retention time match?" 
+                       help="" />
+                <when value="true">
+                    <param name="rttol" type="float" value="30" min="0" 
+                           label="Retention time tolerance (seconds)"
+                           help="Retention time tolerance in seconds to match precursors"/>
+                </when>
+                <when value="false">
+                </when>
+        </conditional>
+        
+        
+        <param name="usePrecursors" type="boolean" checked="true" label="Filter on matching precursors?" 
+                  help="If True, spectra will be filtered by similarity of precursors based on 
+                        the library and query ppm defined tolerance" />
+         
+        <param name="raW" label="Weighting for relative abundance" 
+               type="float" value="0.5"
+               help="Relative abundance weight for spectra (default to 0.5 as determined by
+                     massbank for ESI data)"/>
+          
+        <param name="mzW" label="Weighting for mz" 
+               type="float" value="2"
+               help="mz weight for spectra (default to 2 as determined by massbank for ESI data)"/>
+              
+        <conditional name="updateDb_cond">
+                <param name="updateDb" type="boolean" checked="true"
+                       label="Update database with results?" help="" />
+                <when value="true">
+                    <param name="copyDb" type="boolean" checked="true" 
+                           label="Make a copy of the database?"
+                           help="A copy will be made of the input SQLite target database and the 
+                                 results will be added to this copy.  When False, the input SQLite 
+                                 database will be updated  with the matching results. Use False if 
+                                 you want to reduce storage space being used."/>
+                </when>
+                <when value="false">
+                </when>
+        </conditional>
+
+
+
+        </section>
+    
+        
+
+
+    </inputs>
+
+    <outputs>
+        <data name="sqlite_results" format="sqlite" label="${tool.name} on ${on_string}: SQLite results"
+              from_work_dir="db_with_spectral_matching.sqlite" >
+            <filter>create_new_database is True</filter>
+        </data>
+        <data name="matches" format="tsv" label="${tool.name} on ${on_string}: matches"
+              from_work_dir="matched_results.tsv" >
+            <filter>spectra_type_q == "scans"</filter>
+        </data>
+        <data name="xcms_matches" format="tsv" label="${tool.name} on ${on_string}: XCMS matches"
+              from_work_dir="xcms_matched_results.tsv" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="q_dbPth" value="createDatabase_output.sqlite" />
+
+            <param name="q_pids_bool" value="true" />
+            <param name="l_pids_bool" value="true" />
+            <param name="q_pids" value="1664" />
+            <param name="l_pids" value="37347" />
+            <output name="xcms_matches" file="matched_results.tsv" />
+            <output name="matches" file="xcms_matched_results.tsv" />
+            <output name="sqlite_results" value="db_with_spectral_matching.sqlite" ftype="sqlite" compare="sim_size"/>
+        </test>
+    </tests>
+
+
+
+    <help><![CDATA[
+
+=============================================================
+Spectral matching
+=============================================================
+-----------
+General
+-----------
+
+
+Perform spectral matching to spectral libraries for an LC-MS/MS dataset. 
+
+The spectral matching is performed from a **Query** SQLite spectral-database against a **Library** SQLite spectral-database. 
+
+The SQLite schema of the spectral database here: spectral_database_schema_
+
+
+The query spectral-database in most cases should contain be the "unknown" spectra database generated the msPurity 
+function createDatabase as part of a msPurity-XCMS data processing workflow. 
+
+The library spectral-database in most cases should contain the "known" spectra from either public or user generated resources. 
+The library SQLite database by default contains data from MoNA including Massbank, HMDB, LipidBlast and GNPS. 
+A larger_database_ can be download and used from the msp2db github repository.
+
+To create a user generated library SQLite database the following tool can be used to generate a SQLite database 
+from a collection of MSP files: msp2db_.
+
+It should be noted though, that as long as the schema of the spectral-database is as described here, then any database can be used 
+for either the library or query -  even allowing for the same database to be used. 
+
+The spectral matching functionality has four main components, spectral filtering, spectral alignment, spectral matching, 
+and summarising the results. 
+
+Spectral filtering is simply filtering both the library and query spectra to be search against (e.g. choosing 
+the library source, instrument, retention time, precursor PPM tolerance etc). 
+
+The spectral alignment stage involves aligning the query peaks to the library peaks. The approach used is similar 
+to modified pMatch algorithm described in Zhou et al 2015. 
+
+The spectral matching of the aligned spectra is performed against a combined intensity and m/z weighted vector - created for both 
+the query and library spectra (wq and wl). See below: 
+
+.. math::
+
+    w=intensity^x \cdot mz^y
+
+
+Where x and y represent weight factors and can be adjusted with the parameters raW and mzW. 
+Defaults to x=0.5 and y=2 as per MassBank for ESI based mass spectrometry data.
+
+The aligned weighted vectors are then matched using dot product cosine, reverse dot product cosine and the composite dot product.
+See below for dot product cosine equation.
+
+.. math::
+
+    dpc =  \frac{ w_q \cdot w_l } { \sqrt{Σ{w_{q}{}^2} } \cdot \sqrt{Σ{w_{l}{}^2}}}
+
+
+Full details of the matching approaches are described in the msPurity_spectral_matching_vignette_
+
+--------------------------------------------
+Example LC-MS/MS processing workflow
+--------------------------------------------
+
+* Purity assessments
+   +  (mzML files) -> purityA -> (pa)
+* XCMS processing
+   +  (mzML files) -> xcms.xcmsSet -> xcms.merge -> xcms.group -> xcms.retcor -> xcms.group -> (xset)
+* Fragmentation processing
+   + (xset, pa) -> frag4feature -> filterFragSpectra -> averageAllFragSpectra -> createDatabase -> **spectralMatching** -> (sqlite spectral database)
+
+-----------
+Output
+-----------
+
+**Database**
+
+The updated query database (this will have been updated with the annotation results if updateDb argument used)
+
+**matchedResults**
+
+All matched results from the query spectra to the library spectra. Contains the following columns
+
+* dpc - dot product cosine of the match
+* rdpc - reverse dot product cosine of the match
+* cdpc - composite dot product cosine of the match
+* mcount - number of matching peaks
+* allcount - total number of peaks across both query and library spectra
+* mpercent - percentage of matching peaks across both query and library spectra
+* accession -  accession of library match
+* name - name of library match
+* inchikey - inchikey of library match
+* lpid - pid in database of library match
+* qpid - pid in database of query match
+* mid - id of the match
+
+**xcmsMatchedResults**
+
+If the qeury spectra had XCMS based chromotographic peaks tables (e.g c_peak_groups, c_peaks) in the sqlite database - it will
+be possible to summarise the matches for each XCMS grouped feature. The dataframe contains the following columns
+
+* pid - pid in database of query match
+* grpid - grpid of the XCMS grouped feature for query match
+* mz - derived from XCMS grouped feature
+* mzmin - derived from XCMS grouped feature
+* mzmax - derived from XCMS grouped feature
+* rt - derived from XCMS grouped feature
+* rtmin - derived from XCMS grouped feature
+* rtmax - derived from XCMS grouped feature
+* npeaks - derived from XCMS grouped feature
+* grp_name - derived from XCMS grouped feature
+* dpc - dot product cosine of the match
+* rdpc - reverse dot product cosine of the match
+* cdpc - composite dot product cosine of the match
+* mcount - number of matching peaks
+* allcount - total number of peaks across both query and library spectra
+* mpercent - percentage of matching peaks across both query and library spectra
+* accession -  accession of library match
+* name - name of library match
+* inchikey - inchikey of library match
+* lpid - pid in database of library match
+* mid - id of the match
+
+
+.. _spectral_database_schema: https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-datatabase-schema.html
+.. _larger_database: https://github.com/computational-metabolomics/msp2db/releases
+.. _msp2db: https://github.com/computational-metabolomics/msp2db/releases
+.. _msPurity_spectral_matching_vignette: https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-lcmsms-data-processing-and-spectral-matching-vignette.html
+
+    ]]></help>
+
+<expand macro="citations">     </expand>
+</tool>

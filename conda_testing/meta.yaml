@@ -1,4 +1,4 @@
-{% set version="1.9.8" %}
+{% set version="1.9.12" %}
 {% set name="msPurity" %}
 {% set bioc="3.8" %}
 
@@ -7,7 +7,7 @@ package:
   version: '{{ version }}'
 
 source:
-  url: https://github.com/computational-metabolomics/msPurity/archive/39d1abe2cfff3d072ff0eda0b16fbb7d31b2147e.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/60176857e2118ed9458dead5bac5af95b1367f0b.zip
 
 
 build:
@@ -30,6 +30,8 @@ requirements:
     - r-foreach
     - r-ggplot2
     - r-plyr
+    - r-dplyr
+    - r-dbplyr
     - r-rcpp
     - r-reshape2
     - r-rsqlite
@@ -50,6 +52,9 @@ requirements:
     - r-foreach
     - r-ggplot2
     - r-plyr
+    - r-plyr
+    - r-dplyr
+    - r-dbplyr
     - r-rcpp
     - r-reshape2
     - r-rsqlite

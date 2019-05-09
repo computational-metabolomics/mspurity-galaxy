@@ -1,0 +1,275 @@
+<tool id="mspurity_flagremove" name="msPurity.flagRemove" version="0.1.0">
+    <description>Tool to flag and remove XCMS grouped peaks from the xcmsSet object based on various thresholds
+        (e.g. RSD of intensity and retention time).
+    </description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements" />
+
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        flagRemove.R
+                --xset_path=$xset_path
+                --out_dir=.
+
+                #if $sample_flag.sample_flag=='update'
+                    --rsd_i_sample=$sample_flag.rsd_i_sample
+                    --minfrac_sample=$sample_flag.minfrac_sample
+                    --ithres_sample=$sample_flag.ithres_sample
+                #end if
+
+                #if $blank_flag.blank_flag=='update'
+                    --rsd_i_blank=$blank_flag.rsd_i_blank
+                    --minfrac_blank=$blank_flag.minfrac_blank
+                    --ithres_blank=$blank_flag.ithres_blank
+                    --blank_class=$blank_flag.blank_class
+                #end if
+
+                #if $peak_removal.peak_removal=='remove'
+                    --remove_spectra
+                    --minfrac_xcms=$peak_removal.minfrac_xcms
+                    --mzwid=$peak_removal.mzwid
+                    --bw=$peak_removal.bw
+                #end if
+
+                #if $advanced.advanced=='update'
+                    --egauss_thr=$advanced.egauss_thr
+                    --polarity=$advanced.polarity
+                    --grp_rm_ids=$advanced.grp_rm_ids
+                    --xset_name=$advanced.xset_name
+                    $advanced.temp_save.value
+
+                #end if
+                #if $choose_samp.choose_samp=='yes'
+                        --samplelist=$choose_samp.samplelist
+                #end if
+    ]]></command>
+    <inputs>
+        <param type="data" name="xset_path" format='rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata'
+                help="The path to the xcmsSet object saved as an RData file"/>
+        <conditional name="sample_flag">
+            <param name="sample_flag" type="select" label="Change biological sample flag parameters?">
+                <option value="update" >Update biological sample flag parameters</option>
+                <option value="" selected="true">Use default biological sample flag parameters</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="update">
+                <param name="rsd_i_sample" type="text" label="rsd_i_sample" value="NA"
+                    help="Relative Standard Deviation threshold for the sample classes (--rsd_i_sample)"/>
+                <param name="minfrac_sample" type="float" label="minfrac_sample" value="0.5" min="0.0" max="1"
+                    help="minimum fraction of files for features needed for the sample classes (--minfrac_sample)"/>
+                <param name="rsd_rt_sample" type="text" label="rsd_rt_sample" value="NA"
+                    help="Relative standard Deviation threshold for the retention time of the sample
+                     classes (--rsd_rt_sample)"/>
+                <param name="ithres_sample" type="text" label="ithres_sample" value="NA"
+                    help="Intensity threshold for the sample (--ithres_sample)"/>
+            </when>
+        </conditional>
+        <conditional name="blank_flag">
+            <param name="blank_flag" type="select" label="Change blank flag parameters?">
+                <option value="update" >Update blank flag parameters</option>
+                <option value="" selected="true">Use default blank flag parameters</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="update">
+                <param name="blank_class" type="text" label="blank_class" value="blank"
+                help="A string representing the class that will be used for the blank (--blank_class)"/>
+                <param name="rsd_i_blank" type="text" label="rsd_i_blank" value="NA"
+                    help="RSD threshold for the blank (--rsd_i_blank)"/>
+                <param name="minfrac_blank" type="float" label="minfrac_blank" value="0.5" min="0.0" max="1"
+                    help="minimum fraction of files for features needed for the blank (--minfrac_blank)"/>
+                <param name="rsd_rt_blank" type="text" label="rsd_rt_blank" value="NA"
+                    help="RSD threshold for the retention time of the blank (--rsd_rt_blank)"/>
+                <param name="ithres_blank" type="text" label="ithres_blank" value="NA"
+                    help="Intensity threshold for the blank (--ithres_blank)"/>
+                <param name="s2b" type="float" label="s2b" value="10"
+                    help="fold change (sample/blank) needed for sample peak to be allowed. e.g.
+                    if s2b set to 10 and the recorded sample 'intensity' value was 100 and blank was 10.
+                    1000/10 = 100, so sample has fold change higher than the threshold and the peak
+                    is not considered a blank (--s2b)"/>
+            </when>
+        </conditional>
+        <conditional name="peak_removal">
+            <param name="peak_removal" type="select" label="Remove peaks from xcmsSet object?">
+                <option value="remove" >Remove peaks and re-group</option>
+                <option value="" selected="true">Only flag peaks (do not remove and re-group)</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="remove">
+                 <param name="minfrac_xcms" type="float" label="minfrac_xcms" value="0.7" min="0.0" max="1"
+                    help="minfrac for xcms  grouping (--minfrac_xcms)"/>
+                 <param name="mzwid" type="float" label="mzwid" value="0.001"
+                    help="mzwid for xcms  grouping (--minfrac_xcms)"/>
+                <param name="bw" type="float" label="bw" value="5"
+                    help="bw for xcms  grouping(--minfrac_xcms)"/>
+            </when>
+        </conditional>
+        <conditional name="advanced">
+            <param name="advanced" type="select" label="Advanced parameters">
+                <option value="update" >Update advanced and testing parameters</option>
+                <option value="" selected="true">Use default advanced parameters</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="update">
+                <param name="egauss_thr" type="text" label="egauss_thr" value="NA"
+                    help="Threshold for filtering out non gaussian shaped peaks. Note this only works
+                          if the 'verbose columns' and 'fit gauss' was used with xcms (--egauss_thr)"/>
+                <param name="temp_save" type="boolean" label="temp_save" checked="false" truevalue="--temp_save" falsevalue=""
+                    help="Assign True if files for each step saved (for testing purposes) (--temp_save)"/>
+                <param name="polarity" type="select" label="polarity"
+                    help="polarity (just used for naming purpose when files are saved) (--polarity)">
+                    <option value="positive">Positive</option>
+                    <option value="negative" >Negative</option>
+                    <option value="NA" selected="true">NA</option>
+                </param>
+                <param name="grp_rm_ids" type="text" label="grp_rm_ids" value="NA"
+                help="comma seperated list of grouped_xcms peak ids to remove (corresponds to the row from xcms::group output)
+                      e.g '1,20,30,56'
+                 (--grp_rm_ids)"/>
+                <param name="xset_name" type="text" label="xset_name" value="xset"
+                    help="Name of the xcmsSet object within the RData file (--xset_name)"/>
+            </when>
+        </conditional>
+        <conditional name="choose_samp">
+            <param name="choose_samp" type="select" label="Samplelist">
+                        <option value="yes" >Use samplelist</option>
+                        <option value="" selected="true">Don't use samplelist</option>
+            </param>
+            <when value="">
+            </when>
+            <when value="yes">
+                <param name="samplelist" type="data" label="samplelist" format="tsv,tabular"
+                       help="A samplelist can be provided to find an appriopiate blank class (requires a column 'blank' where 'yes' indicates the class should be used as the blank (--samplelist)"/>
+
+            </when>
+        </conditional>
+    </inputs>
+    <outputs>
+        <data name="peaklist_filtered" format="tsv" label="${tool.name} on ${on_string}: peaklist_filtered (tsv)"
+              from_work_dir="peaklist_filtered.tsv" />
+        <data name="removed_peaks" format="tsv" label="${tool.name} on ${on_string}: removed_peaks (tsv)"
+              from_work_dir="removed_peaks.tsv" />
+        <data name="xset_filtered" format="rdata" label="xset_filtered"
+              from_work_dir="xset_filtered.RData"/>
+    </outputs>
+    <tests>
+        <test>
+            <param name="blank_flag.blank_flag" value="update" />
+            <param name="xset_path" value="flagRemove_input.RData"/>
+
+            <param name="blank_flag.blank_flag" value="update" />
+            <conditional name="blank_flag">
+                <param name="blank_flag"  value="update"/>
+                <param name="blank_class" value="KO" />
+            </conditional>
+            <conditional name="peak_removal">
+                <param name="peak_removal"  value="remove"/>
+            </conditional>
+            <output name="peaklist_filtered" file="flagRemove_output.tsv"/>
+        </test>
+    </tests>
+    <help><![CDATA[
+
+=======================================
+Flag & remove peaks from xcmsSet object
+=======================================
+-----------
+Description
+-----------
+
+Tool to flag XCMS grouped peaks based on various criteria (e.g RSD, intensity). The flagged grouped peaks can then be removed
+completely from the xcmsSet object (xset). This means removing the individual peaks associated for each file. Located
+in the **xset@peaks** socket of the xcmsSet object.
+
+Additionally a list of ids of the xcms grouped peaks can be supplied, all peaks associated with these ids can be
+be removed.
+
+**Note**: grouped peak refers to a peak that has been grouped together by xcms::group function
+
+-----------------
+Updated peaklist
+-----------------
+The calculated columns for the update peaklist dataframe include:
+
+* RSD of intensity for grouped peaks across each class
+* RSD of retention time for grouped peaks across each class
+* Coverage across all classes
+* mzmin_full & mzmax_full: the full mzrange of each grouped peak
+* rtmin_full & rtmax_full: the full rtrange of each grouped peak
+* flag for criteria for the blank class (if 1 it means the blank is valid in at least 1 condition) and this grouped peak will be removed
+* flag for criteria for the sample classes (if 1 it means that this grouped peak is valid for this class)
+* all_sample_valid: flag for all samples (if 1 it means that at least 1 sample class is valid, this ignores the blank)
+
+To filter out blank peaks just filter out all peaks where the blank_valid is equal to 1
+This is in addition to the standard output from the xcmsSet peaklist
+
+**flag example**
+
+Dataset consists of 3 classes. Blank, cond1 and cond2. The classes cond1 and cond2 are biological sample classes.
+
+============= ============= ============= ================ ================
+blank_valid   cond1_valid   cond2_valid   all_sample_valid Keep peak?
+============= ============= ============= ================ ================
+0             0             1             1                Yes
+------------- ------------- ------------- ---------------- ----------------
+0             1             1             1                Yes
+------------- ------------- ------------- ---------------- ----------------
+1             0             1             1                No
+------------- ------------- ------------- ---------------- ----------------
+1             0             0             0                No
+------------- ------------- ------------- ---------------- ----------------
+0             0             0             0                No
+============= ============= ============= ================ ================
+
+
+
+-----------------
+Filters for flags
+-----------------
+
+The following filters can be used to determine if a grouped peak gets flagged to keep. If the column all_sample_valid is 0 then
+the grouped peak will be removed
+
+
+* RSD of intensity for each biological sample class
+* minfrac for each biological sample class
+* RSD of retention time for each biological sample class
+* intensity threshold for each biological sample class
+* Blank subtraction. If a blank peak is found where the intensity of any corresponding biological sample class is not greater that the he s2b threshold (sample/blank). Then this grouped peak will be flagged for removal
+
+The blank grouped peaks also have there own filters. If the blank peak passes this criteria and s2b threshold detailed above
+then the peak will be removed.
+
+* RSD of intensity
+* minfrac
+* intensity threshold
+
+Additionally there is a filter for assessing how well the peaks fit the gaussian shape. Note that this can only be performed
+when XCMS has fit_gauss option and verbose columns set to TRUE. Also, these peaks are just removed and not flagged.
+
+
+
+-----------
+Regrouping
+-----------
+The resulting xcmsSet object where all peaks have been removed needs to be regrouped otherwise the individual peaks
+associated with each file will not be correctly linked to the grouped peaks.
+
+This tool will re-group the xcmsSet object and check the newly created re-grouped xcmsSet object to see if any peaks are
+still being flagged. If so the process will be repeated untill the xcmsSet object only contains peaks that match
+the peak criteria.
+
+The output file is an xcmsSet.RData file.
+    ]]></help>
+
+<expand macro="citations" />
+</tool>

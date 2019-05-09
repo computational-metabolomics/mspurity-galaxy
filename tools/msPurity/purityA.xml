@@ -1,0 +1,226 @@
+<tool id="mspurity_puritya" name="msPurity.purityA" version="0.1.0">
+    <description>
+        Assess acquired precursor ion purity of MS/MS spectra
+    </description>
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+    <expand macro="requirements" />
+    <stdio>
+        <exit_code range="1:" />
+    </stdio>
+    <command interpreter="Rscript"><![CDATA[
+        purityA.R
+            --out_dir=.
+            #if $mzML_data.format == "mzML_files"
+                --mzML_files='
+                #for $i in $mzML_data.source
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $mzML_data.source
+                    $i.name,
+                #end for
+                '
+            #elif $mzML_data.format == "library"
+                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+            #end if
+                    #if $offsets.offsets == 'user'
+                --minOffset=$minoffset
+                --maxOffset=$maxoffset
+            #end if
+
+            --iwNorm=$iw_norm
+            --ilim=$ilim
+
+            --cores=\${GALAXY_SLOTS:-4}
+
+            #if $nearest
+                --nearest
+            #end if
+
+            #if $mostIntense
+                --mostIntense
+            #end if
+
+            #if $isotopes.isotopes == "exclude_default"
+                --exclude_isotopes
+            #elif $isotopes.isotopes == "user"
+                --exclude_isotopes
+                --isotope_matrix=$isotopes.im
+            #end if
+
+    ]]></command>
+    <inputs>
+
+        <conditional name="mzML_data">
+            <param name="format" type="select" label="Choose the source for the dataset" >
+                <option value="mzML_files" selected="true">.mzML files to check purity from</option>
+                <option value="library">Library directory name (to be used with dimspy workflows) or path to
+                                        to an individual .mzML file</option>
+            </param>
+            <when value="mzML_files">
+                <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
+                    <validator type="empty_field" />
+                </param>
+            </when>
+            <when value="library">
+                <param name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files
+                                                                 or path to an individual *.mzML">
+                    <validator type="empty_field" />
+                </param>
+            </when>
+        </conditional>
+
+         <param name="mostIntense" type="boolean" checked="true" argument="--mostIntense"
+               label="Use most intense peak within isolation window for precursor?"
+               help="If yes, this will ignore the recorded precursor within the mzML file and use
+               use the most intense peak within the isolation window to calculate the precursor ion purity"/>
+
+        <param name="nearest" type="boolean" checked="true" argument="--nearest"
+               label="Use nearest full scan to determine precursor?"
+               help="If TRUE, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
+                     is of the precursor"/>
+
+
+        <conditional name="offsets">
+            <param name="offsets" type="select" label="offsets" >
+                <option value="auto" selected="true">Uses offsets determined in the mzML file</option>
+                <option value="user">User supplied offset values</option>
+            </param>
+            <when value="user">
+                <expand macro="offsets" />
+            </when>
+	        <when value="auto">
+            </when>
+
+        </conditional>
+
+        <expand macro="general_params" />
+
+
+    </inputs>
+    <outputs>
+        <data name="purityA_output_tsv" format="tsv" label="${tool.name} on ${on_string}: tsv"
+              from_work_dir="purityA_output.tsv" />
+        <data name="purityA_output_rdata" format="rdata" label="${tool.name} on ${on_string}: RData"
+              from_work_dir="purityA_output.RData" />
+    </outputs>
+    <tests>
+       <test>
+           <conditional name="mzML_data">
+               <param name="format" value="mzML_files"/>
+               <param name="source" >
+                    <collection type="list">
+                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+            <output name="purityA_output_tsv" value="purityA_output.tsv" />
+            <output name="purityA_output_rdata" value="purityA_output.RData" ftype="rdata" compare="sim_size"/>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+=============================================================
+Assess precursor ion purity of MS/MS files
+=============================================================
+-----------
+Description
+-----------
+
+**General**
+
+Tool based on the msPurity::purityA R class used to calculate the the precursor ion purity of each MS/MS scan for mzML files.
+
+Data input of mzML files either from:
+
+* A data collection of the mzML files containing MS/MS scans
+* A path to a folder that has mzML files containing MS/MS scans
+
+The precursor ion purity represents the measure of the contribution of a selected precursor
+peak in an isolation window used for fragmentation and can be used as away of assessing the
+spectral quality and level of "contamination" of fragmentation spectra.
+
+The calculation involves dividing the intensity of the selected precursor peak by the total
+intensity of the isolation window and is performed before and after the MS/MS scan of
+interest and interpolated at the recorded time of the MS/MS acquisition.
+
+Additionally, isotopic peaks are annotated and omitted from the calculation,
+low abundance peaks are removed that are thought to have minor contribution to the
+resulting MS/MS spectra and the isolation efficiency of the mass spectrometer can be
+used to normalise the intensities used for the calculation.
+
+The output is an RData file with the purityA S4 class object (referred to as pa for convenience throughout
+the manual). The object contains a slot (pa@puritydf) where the details of the purity
+assessments for each MS/MS scan. The purityA object can then be used for further processing
+including linking the fragmentation spectra to XCMS features, averaging fragmentation,
+database creation and spectral matching (from the created database).
+
+There is also the additional output of the a tsv file of the pa@puritydf data frame.
+
+**Example LC-MS/MS processing workflow**
+
+The purityA object can be used for further processing including linking the fragmentation spectra to XCMS features,
+averaging fragmentation, database creation and spectral matching (from the created database). See below for an example workflow:
+
+* Purity assessments
+    +  (mzML files) -> **purityA** -> (pa)
+* XCMS processing
+    +  (mzML files) -> xcms.xcmsSet -> xcms.merge -> xcms.group -> xcms.retcor -> xcms.group -> (xset)
+* Fragmentation processing
+    + (xset, pa) -> frag4feature -> filterFragSpectra -> averageAllFragSpectra -> createDatabase -> spectralMatching -> (sqlite spectral database)
+
+**Isolation efficiency**
+
+When the isolation efficiency of an MS instrument is known the peak intensities within an isolation window can be normalised for the precursor purity calculation. The isolation efficiency can be estimated by measuring a single precursor across a sliding window. See figure 3 from the original msPurity paper (Lawson et al 2017). This has been experimentally measured  for a Thermo Fisher Q-Exactive Mass spectrometer using 0.5 Da windows and can be set within msPurity by using msPurity::iwNormQE.5() as the input to the iwNormFunc argument.
+
+Other options to model the isolation efficiency the  gaussian isolation window msPurity::iwNormGauss(minOff=-0.5, maxOff = 0.5) or a R-Cosine window msPurity::iwNormRCosine(minOff=-0.5, maxOff=0.5). Where the minOff and maxOff can be altered depending on the isolation window size.
+
+A user can also define their own normalisation function. The only requirement of the function is that given a value between the minOff and maxOff a normalisation value between 0-1 is returned.
+
+**Notes regarding instrument specific isolation window offsets used:**
+
+* The isolation widths offsets will be automatically determined from extracting metadata from the mzML file. However, for some vendors though this is not recorded, in these cases the offsets should be given by the user as an argument (offsets).
+* In the case of Agilent only the "narrow" isolation is supported. This roughly equates to +/- 0.65 Da (depending on the instrument). If the file is detected as originating from an Agilent instrument the isolation widths will automatically be set as +/- 0.65 Da.
+
+
+See Bioconductor documentation for more details about the function used, msPurity::purityA().
+
+-----------
+Outputs
+-----------
+
+* purity_msms: A tsv file of all the precursor ion purity score (and other metrics) of each fragmentation spectra
+* purity_msms_rdata: The purityA object saved as an rdata file
+
+The purity_msms tsv file consists of the following columns:
+
+* pid: unique id for MS/MS scan
+* fileid: unique id for mzML file
+* seqNum: scan number
+* precursorIntensity: precursor intensity value as defined in the mzML file
+* precursorMZ: precursor m/z value as defined in the mzML file
+* precursorRT: precursor RT value as defined in the mzML file
+* precursorScanNum: precursor scan number value as defined in mzML file
+* id: unique id (redundant)
+* filename: mzML filename
+* precursorNearest: MS1 scan nearest to the MS/MS scan
+* aMz: The m/z value in the "precursorNearest" MS1 scan which most closely matches the precursorMZ value provided from the mzML file
+* aPurity: The purity score for aMz
+* apkNm: The number of peaks in the isolation window for aMz
+* iMz: The m/z value in the precursorNearest MS1 scan that is the most intense within the isolation window.
+* iPurity: The purity score for iMz
+* ipkNm: The number of peaks in the isolation window for iMz
+* inPurity: The interpolated purity score (the purity score is calculated at neighbouring MS1 scans and interpolated at the point of the MS/MS acquisition)
+* inpkNm: The interpolated number of peaks in the isolation window
+
+
+    ]]></help>
+<expand macro="citations" />
+</tool>
