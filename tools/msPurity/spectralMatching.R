@@ -226,6 +226,8 @@ sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
                            l_rtrange=c(l_rtrangeMin, l_rtrangeMax),
                            q_rtrange=c(q_rtrangeMin, q_rtrangeMax),
                            
+                           q_accessions = opt$q_accessions,
+                           l_accessions= opt$l_accessions,
                            
                            raW = opt$raW,
                            mzW = opt$mzW,

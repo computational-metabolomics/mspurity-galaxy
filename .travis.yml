@@ -5,11 +5,18 @@ cache:
   - $HOME/miniconda3
 
 env:
-  - TEST=tools/msPurity/spectralMatching.xml
   - TEST=tools/msPurity/purityA.xml
+  - TEST=tools/msPurity/spectralMatching.xml
   - TEST=tools/msPurity/dimsPredictPuritySingle.xml
   - TEST=tools/msPurity/filterFragSpectra.xml
   - TEST=tools/msPurity/createDatabase.xml
+  - TEST=tools/msPurity/averageFragSpectra.xml
+  - TEST=tools/msPurity/combineAnnotations.xml
+  - TEST=tools/msPurity/createMSP.xml
+  - TEST=tools/msPurity/flagRemove.xml
+  - TEST=tools/msPurity/frag4feature.xml
+  - TEST=tools/msPurity/purityX.xml
+
 
 before_install:
  - pip install --upgrade pip setuptools
