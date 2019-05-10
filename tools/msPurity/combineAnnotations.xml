@@ -52,16 +52,16 @@
     </outputs>
     <tests>
         <test>
-            <param name="sm_resultPth" value="db_with_spectral_matching.sqlite" />
+            <param name="sm_resultPth" value="spectralMatching_db_with_spectral_matching.sqlite" />
             <param name="metfrag_resultPth" value="combineAnnotations_input_metfrag.tsv" />
             <param name="sirius_csi_resultPth" value="combineAnnotations_input_sirus_csifingerid.tsv" />
             <param name="probmetab_resultPth" value="combineAnnotations_input_probmetab.tsv" />
-            <output name="combined_annotations_tsv" file="combined_annotations.tsv" ftype="tsv" >
+            <output name="combined_annotations_tsv" file="combineAnnotations_combined_annotations.tsv" ftype="tsv" >
             <assert_contents>
                 <has_n_columns n="32" />
               </assert_contents>
             </output>
-            <output name="combined_annotations_sqlite" file="combined_annotations.sqlite" ftype="sqlite" compare="sim_size"/>
+            <output name="combined_annotations_sqlite" file="combineAnnotations_combined_annotations.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
     </tests>
     <help><![CDATA[
