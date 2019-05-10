@@ -4,11 +4,17 @@ cache:
  directories:
   - $HOME/miniconda3
 
+env:
+  - TEST=tools/msPurity/spectralMatching.xml
+  - TEST=tools/msPurity/purityA.xml
+   
+
+
 before_install:
  - pip install --upgrade pip setuptools
  - pip install planemo
  
 script:
-- planemo lint ${TRAVIS_BUILD_DIR}/tools/msPurity 
-- travis_wait 20 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/tools/msPurity/spectralMatching.xml  
+- planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
+- travis_wait 20 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}${TEST}
 
