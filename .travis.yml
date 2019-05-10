@@ -7,5 +7,5 @@ before_install:
 script:
 
 - planemo lint ${TRAVIS_BUILD_DIR}/tools/msPurity 
-- travis_wait planemo test --conda_auto_install  --conda_auto_init  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --no_cache_galaxy ${TRAVIS_BUILD_DIR}/tools/msPurity  
+- planemo test  --conda_debug --conda_auto_install  --conda_auto_init  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --no_cache_galaxy ${TRAVIS_BUILD_DIR}/tools/msPurity  
 
