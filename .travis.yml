@@ -16,5 +16,5 @@ before_install:
  
 script:
 - planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
-- planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
+- travis_wait 25 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
 
