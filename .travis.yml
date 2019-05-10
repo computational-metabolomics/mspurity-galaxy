@@ -1,11 +1,14 @@
 language: python
 python: 2.7
+cache:
+ directories:
+  - $HOME/miniconda3
 
 before_install:
  - pip install --upgrade pip setuptools
  - pip install planemo
+ 
 script:
-
 - planemo lint ${TRAVIS_BUILD_DIR}/tools/msPurity 
-- travis_wait 30 planemo test  --conda_debug --conda_auto_install  --conda_auto_init  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --no_cache_galaxy ${TRAVIS_BUILD_DIR}/tools/msPurity  
+- travis_wait 20 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/tools/msPurity/spectralMatching.xml  
 
