@@ -7,8 +7,9 @@ cache:
 env:
   - TEST=tools/msPurity/spectralMatching.xml
   - TEST=tools/msPurity/purityA.xml
-   
-
+  - TEST=tools/msPurity/dimsPredictPuritySingle.xml
+  - TEST=tools/msPurity/filterFragSpectra.xml
+  - TEST=tools/msPurity/createDatabase.xml
 
 before_install:
  - pip install --upgrade pip setuptools
@@ -16,5 +17,5 @@ before_install:
  
 script:
 - planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
-- travis_wait 25 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
+- travis_wait 30 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
 
