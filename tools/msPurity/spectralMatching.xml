@@ -22,16 +22,12 @@
 
             #if $Query.q_dbPth_con.q_dbPth_select == 'userdb'
               --q_dbPth=$Query.q_dbPth_con.q_dbPth
-            #elif  $Query.q_dbPth_con.q_dbPth_select == 'msp'
-              --q_msp=$Query.q_dbPth_con.q_msp
             #else
               --q_defaultDb
             #end if
             
             #if $Library.l_dbPth_con.l_dbPth_select == 'userdb'
               --l_dbPth=$Library.l_dbPth_con.l_dbPth
-            #elif $Library.l_dbPth_con.l_dbPth_select == 'msp'
-              --l_msp=$Library.l_dbPth_con.l_msp
             #else
               --l_defaultDb
             #end if
@@ -253,6 +249,7 @@
     <tests>
         <test>
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
+	    <param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
 
             <param name="q_xcmsGroups_bool" value="true" />
