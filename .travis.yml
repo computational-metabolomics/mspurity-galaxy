@@ -4,6 +4,7 @@ cache:
  directories:
   - $HOME/miniconda3
 
+
 env:
   - TEST=tools/msPurity/purityA.xml
   - TEST=tools/msPurity/spectralMatching.xml
@@ -21,6 +22,7 @@ env:
 before_install:
  - pip install --upgrade pip setuptools
  - pip install planemo
+ 
  
 script:
 - planemo lint ${TRAVIS_BUILD_DIR}/${TEST}

@@ -253,6 +253,7 @@
     <tests>
         <test>
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
+            <param name="l_dbPth" value="PR100037.sqlite" />
 
             <param name="q_xcmsGroups_bool" value="true" />
             <param name="l_accessions_bool" value="true" />
