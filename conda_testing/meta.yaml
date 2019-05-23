@@ -18,50 +18,53 @@ build:
 
 requirements:
   host:
-    - 'libnetcdf 4.4.*'
-    - 'r-base >=3.4.1'
-    - 'bioconductor-xcms >=3.0.0'
-    - 'bioconductor-camera >=1.34.0'
+    - 'libnetcdf=4.4.1.1'
+    - 'r-base=3.4.1'
+    - 'bioconductor-xcms=3.0.0'
+    - 'bioconductor-camera=1.34.0'
     - bioconductor-mspuritydata
-    - r-optparse    
-    - r-dbi
-    - r-dosnow
-    - r-fastcluster
-    - r-foreach
-    - r-ggplot2
-    - r-plyr
-    - r-dplyr
-    - r-dbplyr
-    - r-rcpp
-    - r-reshape2
-    - r-rsqlite
-    - r-stringr
+    - 'r-optparse=1.6.0'
+    - 'r-dbi=1.0.0'
+    - 'r-dosnow=1.0.16'
+    - 'r-fastcluster=1.1.25'
+    - 'r-foreach=1.4.4'
+    - 'r-ggplot2=3.1.0'
+    - 'r-plyr=1.8.4'
+    - 'r-dplyr=0.7.6'
+    - 'r-dbplyr=1.2.2'
+    - 'r-rcpp=1.0.0'
+    - 'r-reshape2=1.4.3'
+    - 'r-rsqlite=2.1.1'
+    - 'r-stringr=1.3.1'
+    - 'libgcc-ng 8.2.0'
     - r-uuid
     - r-jsonlite
-    - bioconductor-keggrest
+    - 'bioconductor-keggrest=1.20.2'
+
   run:
-    - 'libnetcdf 4.4.*'
-    - 'r-base >=3.4.1'
-    - 'bioconductor-xcms >=3.0.0'
-    - 'bioconductor-camera >=1.34.0'
+    - 'libnetcdf 4.4.1.1'
+    - 'r-base=3.4.1'
+    - 'bioconductor-xcms=3.0.0'
+    - 'bioconductor-camera=1.34.0'
     - bioconductor-mspuritydata
-    - r-optparse    
-    - r-dbi
-    - r-dosnow
-    - r-fastcluster
-    - r-foreach
-    - r-ggplot2
-    - r-plyr
-    - r-plyr
-    - r-dplyr
-    - r-dbplyr
-    - r-rcpp
-    - r-reshape2
-    - r-rsqlite
-    - r-stringr
+    - 'r-optparse=1.6.0'
+    - 'r-dbi=1.0.0'
+    - 'r-dosnow=1.0.16'
+    - 'r-fastcluster=1.1.25'
+    - 'r-foreach=1.4.4'
+    - 'r-ggplot2=3.1.0'
+    - 'r-plyr=1.8.4'
+    - 'r-dplyr=0.7.6'
+    - 'r-dbplyr=1.2.2'
+    - 'r-rcpp=1.0.0'
+    - 'r-reshape2=1.4.3'
+    - 'r-rsqlite=2.1.1'
+    - 'r-stringr=1.3.1'
+    - 'libgcc-ng 8.2.0'
     - r-uuid
     - r-jsonlite
-    - bioconductor-keggrest
+    - 'bioconductor-keggrest=1.20.2'
+
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
