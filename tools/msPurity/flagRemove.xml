@@ -1,4 +1,4 @@
-<tool id="mspurity_flagremove" name="msPurity.flagRemove" version="0.1.0">
+<tool id="mspurity_flagremove" name="msPurity.flagRemove" version="0.2.0">
     <description>Tool to flag and remove XCMS grouped peaks from the xcmsSet object based on various thresholds
         (e.g. RSD of intensity and retention time).
     </description>
