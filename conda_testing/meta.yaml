@@ -18,6 +18,7 @@ build:
 
 requirements:
   host:
+
     - 'libnetcdf=4.4.1.1'
     - 'r-base=3.4.1'
     - 'bioconductor-xcms=3.0.0'
@@ -31,17 +32,17 @@ requirements:
     - 'r-ggplot2=3.1.0'
     - 'r-plyr=1.8.4'
     - 'r-dplyr=0.7.6'
-    - 'r-dbplyr=1.2.2'
+    - 'r-dbplyr=1.1.0'
     - 'r-rcpp=1.0.0'
     - 'r-reshape2=1.4.3'
     - 'r-rsqlite=2.1.1'
     - 'r-stringr=1.3.1'
-    - 'libgcc-ng 8.2.0'
     - r-uuid
     - r-jsonlite
     - 'bioconductor-keggrest=1.20.2'
 
   run:
+
     - 'libnetcdf 4.4.1.1'
     - 'r-base=3.4.1'
     - 'bioconductor-xcms=3.0.0'
@@ -55,12 +56,11 @@ requirements:
     - 'r-ggplot2=3.1.0'
     - 'r-plyr=1.8.4'
     - 'r-dplyr=0.7.6'
-    - 'r-dbplyr=1.2.2'
+    - 'r-dbplyr=1.1.0'
     - 'r-rcpp=1.0.0'
     - 'r-reshape2=1.4.3'
     - 'r-rsqlite=2.1.1'
     - 'r-stringr=1.3.1'
-    - 'libgcc-ng 8.2.0'
     - r-uuid
     - r-jsonlite
     - 'bioconductor-keggrest=1.20.2'
@@ -71,8 +71,10 @@ requirements:
     - make
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
+    - '$R -e "library(''{{ name }}'');library(dbplyr);"'
+
 about:
   home: 'http://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
   license: 'GPL (>= 2)'
-summary: 'Assess the contribution of the targeted precursor in fragmentation acquired or anticipated isolation windows using a metric called "precursor purity". Also provides simple processing steps (averaging, filtering, blank subtraction, etc) for DI-MS data. Works for both LC-MS(/MS) and DI-MS(/MS) data. Spectral matching of fragmentation spectra can also be run against a SQLite database of library spectra.'
+  summary: 'Assess the contribution of the targeted precursor in fragmentation acquired or anticipated isolation windows using a metric called "precursor purity". Also provides simple processing steps (averaging, filtering, blank subtraction, etc) for DI-MS data. Works for both LC-MS(/MS) and DI-MS(/MS) data. Spectral matching of fragmentation spectra can also be run against a SQLite database of library spectra.'
+
