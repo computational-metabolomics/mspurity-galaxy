@@ -1,12 +1,30 @@
 language: python
 python: 2.7
+cache:
+ directories:
+  - $HOME/miniconda3
+
+
+env:
+  - TEST=tools/msPurity/purityA.xml
+  - TEST=tools/msPurity/spectralMatching.xml
+  - TEST=tools/msPurity/dimsPredictPuritySingle.xml
+  - TEST=tools/msPurity/filterFragSpectra.xml
+  - TEST=tools/msPurity/createDatabase.xml
+  - TEST=tools/msPurity/averageFragSpectra.xml
+  - TEST=tools/msPurity/combineAnnotations.xml
+  - TEST=tools/msPurity/createMSP.xml
+  - TEST=tools/msPurity/flagRemove.xml
+  - TEST=tools/msPurity/frag4feature.xml
+  - TEST=tools/msPurity/purityX.xml
+
 
 before_install:
  - pip install --upgrade pip setuptools
- - pip install planemo==0.48.0
- - sudo apt-get install wget
- - wget https://www.dropbox.com/s/csxj6pairsgd8fe/library_spectra.db?dl=1 -P tools/test-data/
- - mv tools/test-data/library_spectra.db?dl=1 tools/test-data/library_spectra.db
+ - pip install planemo
+ 
+ 
 script:
-- planemo lint ${TRAVIS_BUILD_DIR}/tools/msPurity 
-- planemo test --conda_auto_install  --conda_auto_init  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults --no_cache_galaxy ${TRAVIS_BUILD_DIR}/tools/msPurity  
+- planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
+- travis_wait 30 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
+

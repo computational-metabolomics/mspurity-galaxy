@@ -1,59 +1,80 @@
-{% set version="1.9.7" %}
+{% set version="1.10.0" %}
 {% set name="msPurity" %}
 {% set bioc="3.8" %}
-
 
 package:
   name: 'bioconductor-{{ name|lower}}'
   version: '{{ version }}'
 
 source:
+  url: https://github.com/computational-metabolomics/msPurity/archive/3f9ee9bc7c73ad1ae39cd52184955a9b17fbcb3f.zip
 
-  fn: msPurity-3ea03aa9ec23076e372c489cca4874256d09a71e.zip
-  url: https://github.com/computational-metabolomics/msPurity/archive/3ea03aa9ec23076e372c489cca4874256d09a71e.zip
 
+build:
+  number: 0
+  rpaths:
+    - lib/R/lib/
+    - lib/
 
 requirements:
-  build:
-    - 'libnetcdf 4.4.*'
-    - 'r-base >=3.4.1'
-    - 'bioconductor-xcms >=3.0.0'
-    - 'bioconductor-camera >=1.34.0'
+  host:
+
+    - 'libnetcdf=4.4.1.1'
+    - 'r-base=3.4.1'
+    - 'bioconductor-xcms=3.0.0'
+    - 'bioconductor-camera=1.34.0'
     - bioconductor-mspuritydata
-    - r-optparse    
-    - r-dbi
-    - r-dosnow
-    - r-fastcluster
-    - r-foreach
-    - r-ggplot2
-    - r-plyr
-    - r-rcpp
-    - r-reshape2
-    - r-rsqlite
-    - r-stringr
-    - gcc  # [linux]
-    - llvm  # [osx]
+    - 'r-optparse=1.6.0'
+    - 'r-dbi=1.0.0'
+    - 'r-dosnow=1.0.16'
+    - 'r-fastcluster=1.1.25'
+    - 'r-foreach=1.4.4'
+    - 'r-ggplot2=3.1.0'
+    - 'r-plyr=1.8.4'
+    - 'r-dplyr=0.7.6'
+    - 'r-dbplyr=1.1.0'
+    - 'r-rcpp=1.0.0'
+    - 'r-reshape2=1.4.3'
+    - 'r-rsqlite=2.1.1'
+    - 'r-stringr=1.3.1'
+    - r-uuid
+    - r-jsonlite
+    - 'bioconductor-keggrest=1.20.2'
+
   run:
-    - 'libnetcdf 4.4.*'
-    - 'r-base >=3.4.1'
-    - 'bioconductor-xcms >=3.0.0'
-    - 'bioconductor-camera >=1.34.0'
+
+    - 'libnetcdf 4.4.1.1'
+    - 'r-base=3.4.1'
+    - 'bioconductor-xcms=3.0.0'
+    - 'bioconductor-camera=1.34.0'
     - bioconductor-mspuritydata
-    - r-optparse    
-    - r-dbi
-    - r-dosnow
-    - r-fastcluster
-    - r-foreach
-    - r-ggplot2
-    - r-plyr
-    - r-rcpp
-    - r-reshape2
-    - r-rsqlite
-    - r-stringr
+    - 'r-optparse=1.6.0'
+    - 'r-dbi=1.0.0'
+    - 'r-dosnow=1.0.16'
+    - 'r-fastcluster=1.1.25'
+    - 'r-foreach=1.4.4'
+    - 'r-ggplot2=3.1.0'
+    - 'r-plyr=1.8.4'
+    - 'r-dplyr=0.7.6'
+    - 'r-dbplyr=1.1.0'
+    - 'r-rcpp=1.0.0'
+    - 'r-reshape2=1.4.3'
+    - 'r-rsqlite=2.1.1'
+    - 'r-stringr=1.3.1'
+    - r-uuid
+    - r-jsonlite
+    - 'bioconductor-keggrest=1.20.2'
+
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - make
 test:
   commands:
-    - '$R -e "library(''{{ name }}'')"'
+    - '$R -e "library(''{{ name }}'');library(dbplyr);"'
+
 about:
   home: 'http://bioconductor.org/packages/{{ bioc }}/bioc/html/{{ name }}.html'
   license: 'GPL (>= 2)'
-summary: 'Assess the contribution of the targeted precursor in fragmentation acquired or anticipated isolation windows using a metric called "precursor purity". Also provides simple processing steps (averaging, filtering, blank subtraction, etc) for DI-MS data. Works for both LC-MS(/MS) and DI-MS(/MS) data. Spectral matching of fragmentation spectra can also be run against a SQLite database of library spectra.'
+  summary: 'Assess the contribution of the targeted precursor in fragmentation acquired or anticipated isolation windows using a metric called "precursor purity". Also provides simple processing steps (averaging, filtering, blank subtraction, etc) for DI-MS data. Works for both LC-MS(/MS) and DI-MS(/MS) data. Spectral matching of fragmentation spectra can also be run against a SQLite database of library spectra.'
+

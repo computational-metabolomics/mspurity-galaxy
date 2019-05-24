@@ -1,0 +1,70 @@
+<tool id="submit_to_mogi" name="submit_to_mogi" version="0.0.1">
+    <description>
+        Submit Galaxy datasets to MOGI django database
+    </description>
+
+    <macros>
+        <import>macros.xml</import>
+    </macros>
+
+    <expand macro="requirements">
+
+    </expand>
+
+ <stdio>
+        <exit_code range="1:" />
+    </stdio>
+     <command>
+       #set $galaxy_data_id=$__app__.security.encode_id($mogi_data.id)
+       #set $galaxy_history_id=$__app__.security.encode_id($mogi_data.creating_job.history.id)
+       #set $galaxy_history_name=$mogi_data.creating_job.history.name
+       curl -X POST --insecure $mogi_url/rest/incoming_galaxy_data/ -d galaxy_data_id=$galaxy_data_id
+                    -d galaxy_history_id=$galaxy_history_id -d galaxy_history_name='$galaxy_history_name'
+                    -d galaxy_name=$galaxy_name  -d galaxy_url=$galaxy_url > curl_out.txt;
+      </command>
+    <inputs>
+
+
+        <param type="data" name="mogi_data" label="Data to submit to MOGI" format="sqlite"
+               help="SQLite database to submit to MOGI" />
+
+
+        <param type="text" name="mogi_url" label="MOGI URL"
+               help="URL for MOGI" />
+
+        <param type="text" name="galaxy_name" label="Name of Galaxy instance in MOGI"
+               help="Should be lower cases with no white spaces or non alphnumeric characters" />
+
+         <param type="text" name="galaxy_url" label="Galaxy URL"
+               help="URL of the Galaxy site (not required, but useful for a reference)" />
+    </inputs>
+    <outputs>
+        <data name="curl_out" format="json" label="${tool.name} on ${on_string}: submit to MOGI (json if successful)"
+              from_work_dir="curl_out.txt" />
+    </outputs>
+    <tests>
+        <test>
+            <param name="mogi_data" value="create_sqlite_db_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.sqlite"/>
+            <param name="mogi_url" value="https://www.djangoproject.com/"/>
+            <output name="curl_out" >
+                <assert_contents>
+                    <has_text_matching expression=".*django.*" />
+                </assert_contents>
+            </output>
+        </test>
+    </tests>
+
+    <help><![CDATA[
+=============================================================
+Submit SQLite Database to MOGI
+=============================================================
+
+
+-----------
+Output
+-----------
+* out.json: The JSON request sent to MOGI
+
+  ]]></help>
+<expand macro="citations" />
+</tool>
