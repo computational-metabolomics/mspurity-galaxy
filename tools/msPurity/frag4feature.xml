@@ -1,4 +1,4 @@
-<tool id="mspurity_frag4feature" name="msPurity.frag4feature" version="0.2.0">
+<tool id="mspurity_frag4feature" name="msPurity.frag4feature" version="0.2.1">
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
@@ -72,8 +72,7 @@
                help="If retention time correction has been used in XCMS set this to yes"/>
         <param name="useGroup" type="boolean" checked="false"  argument="--useGroup"
               label="For matching fragmentation to a feature, use the grouped feature range"
-              help="If the MS1 and MS2 are in different files this is option has to be set to
-              true"  />
+              help="For special cases where the MS2 files have no MS1 data or if the MS1 data in the MS2 file is unreliable"  />
 
         <expand macro="fileload" />
 

@@ -1,4 +1,4 @@
-<tool id="mspurity_filterfragspectra" name="msPurity.filterFragSpectra" version="0.2.0">
+<tool id="mspurity_filterfragspectra" name="msPurity.filterFragSpectra" version="0.2.1">
     <description>
       Filter fragmentations spectra associated with an XCMS feature
     </description>
@@ -73,12 +73,18 @@ Filter Fragmentation Spectra
 Description
 -----------
 
-Tool to .
+Flag and filter features based on signal-to-noise ratio, relative abundance, intensity threshold and precursor ion purity of precursor.
 
 
-The data inputs are:
+**Example LC-MS/MS processing workflow**
 
-*
+
+* Purity assessments
+    +  (mzML files) -> purityA -> (pa)
+* XCMS processing
+    +  (mzML files) -> xcms.xcmsSet -> xcms.merge -> xcms.group -> xcms.retcor -> xcms.group -> (xset)
+* Fragmentation processing
+    + (xset, pa) -> frag4feature -> **filterFragSpectra** -> averageAllFragSpectra -> createDatabase -> spectralMatching -> (sqlite spectral database)
 
 See Bioconductor documentation for more details, functions:
 msPurity::filterFragSpectra()
@@ -86,9 +92,9 @@ msPurity::filterFragSpectra()
 -----------
 Outputs
 -----------
-* filter_fragmentation_spectra_rdata
-* peaklist_prec_tsv
-* peaklist_frag_tsv
+* filter_fragmentation_spectra_rdata: RData of the purityA object (pa) with filtered data
+* peaklist_prec_tsv: precursor peaklist
+* peaklist_frag_tsv: fragmentation peaklist
 
     ]]></help>
 

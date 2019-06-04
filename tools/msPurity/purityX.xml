@@ -1,4 +1,4 @@
-<tool id="mspurity_purityx" name="msPurity.purityX" version="0.2.0">
+<tool id="mspurity_purityx" name="msPurity.purityX" version="0.2.1">
         <description>Calculate the anticipated precursor ion purity from a LC-MS XCMS dataset.
     </description>
     <macros>

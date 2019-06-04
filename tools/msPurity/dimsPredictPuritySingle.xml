@@ -1,4 +1,4 @@
-<tool id="mspurity_dimspredictpuritysingle" name="msPurity.dimsPredictPuritySingle" version="0.2.0">
+<tool id="mspurity_dimspredictpuritysingle" name="msPurity.dimsPredictPuritySingle" version="0.2.1">
     <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
     </description>
     <macros>
