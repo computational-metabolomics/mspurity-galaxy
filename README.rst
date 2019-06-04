@@ -48,7 +48,13 @@ Authors, contributors & contacts
 - Jordi Capellades (j.capellades.to@gmail.com) - `Universitat Rovira i Virgili (SP)  <http://www.urv.cat/en/>`_
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
 
+Changes
+-------------------------
+v0.2.1 (all tools):
+- Update msPurity R code version (bug fix for createMSP and xcms3 version check for createDatabase)
 
+v0.2.0 (all tools):
+- Update all tools to be more consistent with msPurity core code
 
 License
 -------
