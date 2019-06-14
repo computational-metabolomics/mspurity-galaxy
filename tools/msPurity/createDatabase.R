@@ -68,10 +68,24 @@ opt<- parse_args(OptionParser(option_list=option_list))
 print(opt)
 
 loadRData <- function(rdata_path, name){
-  #loads an RData file, and returns the named xset object if it is there
-  load(rdata_path)
-  return(get(ls()[ls() == name]))
+#loads an RData file, and returns the named xset object if it is there
+    load(rdata_path)
+    return(get(ls()[ls() %in% name]))
 }
+
+getxcmsSetObject <- function(xobject) {
+    # XCMS 1.x
+    if (class(xobject) == "xcmsSet")
+        return (xobject)
+    # XCMS 3.x
+    if (class(xobject) == "XCMSnExp") {
+        # Get the legacy xcmsSet object
+        suppressWarnings(xset <- as(xobject, 'xcmsSet'))
+        sampclass(xset) <- xset@phenoData$sample_group
+        return (xset)
+    }
+}
+
 
 print(paste('pa', opt$pa))
 print(opt$xset)
@@ -84,8 +98,11 @@ pa <- loadRData(opt$pa, 'pa')
 print(pa@fileList)
 
 
+
 if (opt$xcms_camera_option=='xcms'){
-  xset <- loadRData(opt$xset, 'xset')
+  
+  xset <- loadRData(opt$xset, c('xset','xdata'))
+  xset <- getxcmsSetObject(xset)
   fix <- xset_pa_filename_fix(opt, pa, xset)  
   pa <- fix[[1]]
   xset <- fix[[2]]
