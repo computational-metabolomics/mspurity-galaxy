@@ -6,6 +6,7 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements">
+	<requirement type="package" >libgfortran</requirement>
     </expand>
     <stdio>
         <exit_code range="1:" />
