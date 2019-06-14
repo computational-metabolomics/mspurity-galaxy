@@ -128,9 +128,9 @@ if(is.null(opt$grp_peaklist)){
 
 dbPth <- msPurity::createDatabase(pa,
                                    xset=xset,
-#                                   xsa=xa, 
+                                   xsa=xa, 
                                    outDir=opt$outDir,
-#                                   grpPeaklist=grpPeaklist,
+                                   grpPeaklist=grpPeaklist,
                                    dbName='createDatabase_output.sqlite'
 )
 

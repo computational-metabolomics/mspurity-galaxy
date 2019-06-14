@@ -52,6 +52,7 @@ Changes
 -------------------------
 v0.2.1 (all tools):
 - Update msPurity R code version (bug fix for createMSP and xcms3 version check for createDatabase)
+- createDatabase.xml fix for xcms3 and CAMERA
 
 v0.2.0 (all tools):
 - Update all tools to be more consistent with msPurity core code
