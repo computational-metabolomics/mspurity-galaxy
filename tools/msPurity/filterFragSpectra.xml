@@ -40,7 +40,7 @@
             <option value="mean">mean</option>
             <!-- <option value="mad">mad</option> -->
         </param>
-        <param name="rmp" type="boolean" checked="false" truevalue="--remove_peaks" falsevalue="" 
+        <param name="rmp" type="boolean" checked="false" truevalue="--rmp" falsevalue="" 
                label="Remove peaks that do not meet the filtering criteria. 
                       Otherwise peaks will be flagged instead."
                help="" />
