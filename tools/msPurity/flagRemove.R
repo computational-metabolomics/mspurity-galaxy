@@ -126,7 +126,7 @@ loadRData <- function(rdata_path, name){
     return(get(ls()[ls() %in% name]))
 }
 
-xset <- loadRData(opt$xset_path, c('xset','xdata'))
+xset <- getxcmsSetObject(loadRData(opt$xset_path, c('xset','xdata')))
 
 print(xset)
 if (is.null(opt$samplelist)){
