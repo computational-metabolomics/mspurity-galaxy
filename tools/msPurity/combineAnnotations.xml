@@ -1,4 +1,4 @@
-<tool id="mspurity_combineannotations" name="msPurity.combineAnnotations" version="0.2.1">
+<tool id="mspurity_combineannotations" name="msPurity.combineAnnotations" version="0.2.2">
     <description>
         Combine, score and rank metabolite annotation results
     </description>
@@ -31,11 +31,11 @@
     <inputs>
        <param name="sm_resultPth" type="data" label="Spectral matching result" format="sqlite"
                help="The SQLite database generated from msPurity.spectralMatching"/>
-       <param name="metfrag_resultPth" type="data" label="Metfrag result" format="tsv,tabular"
+       <param name="metfrag_resultPth" type="data" label="Metfrag result" format="tsv,tabular"  optional="true"
                help="The result of the MetFrag analysis (requires a column indicating the XCMS group ID and fragmentation spectra ID)"/>
-       <param name="sirius_csi_resultPth" type="data" label="Sirius CSI:FingerID result" format="tsv,tabular"
+       <param name="sirius_csi_resultPth" type="data" label="Sirius CSI:FingerID result" format="tsv,tabular"   optional="true"
                help="The result of the CSI:FingerID analysis (requires a column indicating the XCMS group ID and fragmentation spectra ID)"/>
-       <param name="probmetab_resultPth" type="data" label="Probmetab result" format="tsv,tabular"
+       <param name="probmetab_resultPth" type="data" label="Probmetab result" format="tsv,tabular"   optional="true"
                help="The result of the Probmetab analysis (requires a column indicating the XCMS group ID and fragmentation spectra ID)"/>
        <param name="sm_weight" type="float" min="0.0" max="1.0" value="0.4" label="Spectral matching weight" help="all weights need to sum to 1" />
        <param name="metfrag_weight" type="float" min="0.0" max="1.0" value="0.25" label="Metfrag weight" help="all weights need to sum to 1" />
