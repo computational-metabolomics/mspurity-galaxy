@@ -47,32 +47,6 @@ summary_output <- msPurity::combineAnnotations(sm_resultPth,
 
 write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
 
-if (!is.null(opt$eic)){
-
-  if (is.null(xset)){
-    xset <- xa@xcmsSet
-  }
-  # previous check should have matched filelists together
-  xset@filepaths <- unname(pa@fileList)
-
-  convert2Raw <- function(x, xset){
-    sid <- unique(x$sample)
-    # for each file get list of peaks
-    x$rt_raw <- xset@rt$raw[[sid]][match(x$rt, xset@rt$corrected[[sid]])]
-    x$rtmin_raw <- xset@rt$raw[[sid]][match(x$rtmin, xset@rt$corrected[[sid]])]
-    x$rtmax_raw <- xset@rt$raw[[sid]][match(x$rtmax, xset@rt$corrected[[sid]])]
-    return(x)
-
-  }
-
-  xset@peaks <- as.matrix(plyr::ddply(data.frame(xset@peaks), ~ sample, convert2Raw, xset=xset))
-
-  # Saves the EICS into the previously created database
-  px <- msPurity::purityX(xset, saveEIC = TRUE,
-                          cores=1, sqlitePth=db_pth,
-                          rtrawColumns = TRUE)
-
-}
 
 closeAllConnections()
 

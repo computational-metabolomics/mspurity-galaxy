@@ -26,9 +26,7 @@
             #if $create_new_database:
               --create_new_database
             #end if
-            #if $eic
-                --eic
-            #end if
+
 
     ]]></command>
     <inputs>
@@ -48,10 +46,6 @@
                help="A copy will be made of the input SQLite spectral matching database and the results will be added to this copy.
                      When False, the input SQLite database will be updated the results. Use False
                      if you want to reduce storage space being used."/>
-       <param name="eic" type="boolean" label="Include EIC data?"
-               help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
-                     the database. Note, this will take considerable time for large datasets and
-                     the resulting SQLite database can be large"/>
     </inputs>
     <outputs>
         <data name="combined_annotations_sqlite" from_work_dir="combined_annotations.sqlite" format="sqlite" label="${tool.name} on ${on_string}: sqlite" />
