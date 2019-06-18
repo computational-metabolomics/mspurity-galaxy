@@ -156,10 +156,10 @@ if (!is.null(opt$eic)){
   }
 
   xset@peaks <- as.matrix(plyr::ddply(data.frame(xset@peaks), ~ sample, convert2Raw, xset=xset))
-
+  closeAllConnections()
   # Saves the EICS into the previously created database
   px <- msPurity::purityX(xset, saveEIC = TRUE,
-                           cores=2, sqlitePth=dbPth,
+                           cores=1, sqlitePth=dbPth,
                            rtrawColumns = TRUE)
 
 }
