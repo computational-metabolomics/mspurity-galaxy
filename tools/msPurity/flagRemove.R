@@ -71,11 +71,9 @@ option_list <- list(
               help="Assign True if files for each step saved (for testing purposes) [default = %default]"
   ),
 
-  make_option("--samplelist",  type="character", help="Sample list to determine the blank class"),
+  make_option("--samplelist",  type="character", help="Sample list to determine the blank class")
 
-  make_option("--xset_name",  default="xset",
-              help="Name of the xcmsSet object within the RData file [default = %default]"
-  )
+
 
 
 
@@ -108,13 +106,28 @@ if (is.null(opt$remove_spectra)){
 
 print(opt)
 
-loadRData <- function(rdata_path, xset_name){
-#loads an RData file, and returns the named xset object if it is there
-    load(rdata_path)
-    return(get(ls()[ls() == xset_name]))
+getxcmsSetObject <- function(xobject) {
+    # XCMS 1.x
+    if (class(xobject) == "xcmsSet")
+        return (xobject)
+    # XCMS 3.x
+    if (class(xobject) == "XCMSnExp") {
+        # Get the legacy xcmsSet object
+        suppressWarnings(xset <- as(xobject, 'xcmsSet'))
+        sampclass(xset) <- xset@phenoData$sample_group
+        return (xset)
+    }
 }
 
-xset<-loadRData(opt$xset_path, opt$xset_name)
+
+loadRData <- function(rdata_path, name){
+#loads an RData file, and returns the named xset object if it is there
+    load(rdata_path)
+    return(get(ls()[ls() %in% name]))
+}
+
+xset <- getxcmsSetObject(loadRData(opt$xset_path, c('xset','xdata')))
+
 print(xset)
 if (is.null(opt$samplelist)){
     blank_class <- opt$blank_class

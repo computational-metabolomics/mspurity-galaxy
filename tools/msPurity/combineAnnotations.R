@@ -13,7 +13,8 @@ option_list <- list(
   make_option(c("-cw","--sirius_csi_weight"),type="numeric"),
   make_option(c("-pw","--probmetab_weight"),type="numeric"),
   make_option("--create_new_database", action="store_true"),
-  make_option(c("-o","--outdir"),type="character", default=".")
+  make_option(c("-o","--outdir"),type="character", default="."),
+  make_option("--eic", action="store_true")
 )
 opt <- parse_args(OptionParser(option_list=option_list))
 
@@ -45,3 +46,7 @@ summary_output <- msPurity::combineAnnotations(sm_resultPth,
                              weights = weights)
 
 write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
+
+
+closeAllConnections()
+

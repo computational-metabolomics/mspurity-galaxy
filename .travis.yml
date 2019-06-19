@@ -12,7 +12,6 @@ env:
   - TEST=tools/msPurity/filterFragSpectra.xml
   - TEST=tools/msPurity/createDatabase.xml
   - TEST=tools/msPurity/averageFragSpectra.xml
-  - TEST=tools/msPurity/combineAnnotations.xml
   - TEST=tools/msPurity/createMSP.xml
   - TEST=tools/msPurity/flagRemove.xml
   - TEST=tools/msPurity/frag4feature.xml
