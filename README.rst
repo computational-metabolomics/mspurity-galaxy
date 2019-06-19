@@ -50,10 +50,11 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
-v0.2.2 (createDatabase, flagRemove, createAnnotation)
+v0.2.2 (createDatabase, flagRemove, combineAnnotation)
 - createDatabase.xml fix for xcms3 and CAMERA
 - flagRemove xcms3 fix
-- Made sirius, probmetab and metfrag optional
+- combineAnnotation Made sirius, probmetab and metfrag optional
+- combineAnnotation fix column sirius
 
 v0.2.1 (all tools):
 - Update msPurity R code version (bug fix for createMSP and xcms3 version check for createDatabase)
