@@ -79,6 +79,24 @@
            <param name="pa" value="averageFragSpectra_output_all.RData"/>
            <output name="createDatabase_output_sqlite" value="createDatabase_output.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
+        <test>
+            <conditional name="file_load_conditional">
+                <param name="file_load_select" value="yes"/>
+                <param name="input" >
+                    <collection type="list">
+                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
+                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
+                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
+                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
+                    </collection>
+                </param>
+            </conditional>
+	         <param name="camera_xcms" value="xcms"/>
+	         <param name="eic" value="true"/>
+           <param name="xset_xa" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+           <param name="pa" value="averageFragSpectra_output_all.RData"/>
+           <output name="createDatabase_output_sqlite" value="createDatabase_output_eic.sqlite" ftype="sqlite" compare="sim_size"/>
+        </test>
     </tests>
 
     <help><![CDATA[
