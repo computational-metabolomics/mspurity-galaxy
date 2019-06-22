@@ -243,3 +243,48 @@ sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
 
 write.table(sm$matchedResults, 'matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
 write.table(sm$xcmsMatchedResults, 'xcms_matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
+
+
+# Add extra details from library spectra in resulting database
+# First get all the ids from the l_s_peak_meta from the query database
+if(updateDb){
+  message('Adding extra details to database')
+  q_con <- DBI::dbConnect(RSQLite::SQLite(),sm$q_dbPth)
+  if (DBI::dbExistsTable(q_con, "l_s_peak_meta")){
+    l_s_peak_meta <- DBI::dbGetQuery(q_con, 'SELECT  * FROM l_s_peak_meta')
+    colnames(l_s_peak_meta)[1] <- 'pid'
+  }
+  
+  l_con <- DBI::dbConnect(RSQLite::SQLite(),l_dbPth)
+  if (DBI::dbExistsTable(q_con, "s_peaks")){
+    l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM s_peaks WHERE pid in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
+    
+  }else if(DBI::dbExistsTable(q_con, "library_spectra")){
+    l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM library_spectra 
+                                                WHERE library_spectra_meta_id in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
+  }else{
+    l_s_peaks = NULL
+  }
+  
+  if (DBI::dbExistsTable(q_con, "source")){
+    l_source <- DBI::dbGetQuery(q_con, 'SELECT  * FROM source')
+  }else if (DBI::dbExistsTable(q_con, "library_spectra_source")) {
+    l_source <- DBI::dbGetQuery(q_con, 'library_spectra_source')
+  }else{
+    l_source = NULL
+  }
+  
+  if (!is.null(l_s_peaks)){
+    DBI::dbWriteTable(q_con, name='l_s_peaks', value=l_s_peaks, row.names=FALSE, append=TRUE)
+  }
+  
+  if (!is.null(l_source)){
+    DBI::dbWriteTable(q_con, name='l_source', value=l_source, row.names=FALSE, append=TRUE)
+  }
+  
+}
+
+
+
+
+

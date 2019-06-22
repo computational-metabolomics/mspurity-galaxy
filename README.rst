@@ -50,6 +50,9 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v0.2.2 (spectralMatching)
+- spectralMatching - Extra details from matched library spectra is now added to the database
+
 v0.2.3 (createDatabase)
 - createDatabase.xml fix for EIC creation
 
