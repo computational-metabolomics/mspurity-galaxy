@@ -50,6 +50,9 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v0.2.3 (createDatabase)
+- createDatabase.xml fix for EIC creation
+
 v0.2.2 (createDatabase, flagRemove, combineAnnotation)
 - createDatabase.xml fix for xcms3 and CAMERA
 - flagRemove xcms3 fix
