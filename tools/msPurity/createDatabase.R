@@ -5,8 +5,6 @@ library(CAMERA)
 print(sessionInfo())
 print('CREATING DATABASE')
 
-
-
 xset_pa_filename_fix <- function(opt, pa, xset){
 
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)){
@@ -156,11 +154,15 @@ if (!is.null(opt$eic)){
   }
 
   xset@peaks <- as.matrix(plyr::ddply(data.frame(xset@peaks), ~ sample, convert2Raw, xset=xset))
-  closeAllConnections()
+  
   # Saves the EICS into the previously created database
-  px <- msPurity::purityX(xset, saveEIC = TRUE,
-                           cores=1, sqlitePth=dbPth,
-                           rtrawColumns = TRUE)
+  xgroups <-  as.numeric(as.character(unique(pa@grped_df$grpid)))
+  px <- msPurity::purityX(xset, 
+                          saveEIC = TRUE,
+                          cores=1,
+                          sqlitePth=dbPth,
+                          rtrawColumns = TRUE, 
+                          xgroups = xgroups)
 
 }
 
