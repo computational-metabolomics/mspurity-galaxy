@@ -50,6 +50,9 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v0.2.4 (all tools)
+- bioconductor-mspurity v1.11.2 now used. Fixes EIC problems for MS/MS data
+
 v0.2.2 (spectralMatching)
 - spectralMatching - Extra details from matched library spectra is now added to the database
 

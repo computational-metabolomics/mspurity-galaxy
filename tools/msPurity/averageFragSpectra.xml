@@ -1,4 +1,4 @@
-<tool id="mspurity_averagefragspectra" name="msPurity.averageFragSpectra" version="0.2.1">
+<tool id="mspurity_averagefragspectra" name="msPurity.averageFragSpectra" version="0.2.4">
     <description>
         Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
     </description>
