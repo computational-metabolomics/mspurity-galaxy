@@ -1,4 +1,4 @@
-<tool id="mspurity_createdatabase" name="msPurity.createDatabase" version="0.2.3">
+<tool id="mspurity_createdatabase" name="msPurity.createDatabase" version="0.2.4">
     <description>
         Create and SQLite database of an LC-MS(/MS) experiment
     </description>

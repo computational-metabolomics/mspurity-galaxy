@@ -1,4 +1,4 @@
-<tool id="mspurity_combineannotations" name="msPurity.combineAnnotations" version="0.2.2">
+<tool id="mspurity_combineannotations" name="msPurity.combineAnnotations" version="0.2.4">
     <description>
         Combine, score and rank metabolite annotation results
     </description>

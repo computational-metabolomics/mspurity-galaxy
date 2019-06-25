@@ -1,4 +1,4 @@
-<tool id="mspurity_filterfragspectra" name="msPurity.filterFragSpectra" version="0.2.1">
+<tool id="mspurity_filterfragspectra" name="msPurity.filterFragSpectra" version="0.2.4">
     <description>
       Filter fragmentations spectra associated with an XCMS feature
     </description>
