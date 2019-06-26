@@ -8,76 +8,76 @@ option_list <- list(
   make_option(c("-o", "--outDir"), type="character"),
   make_option("--q_dbPth", type="character"),
   make_option("--l_dbPth", type="character"),
-  
+
   make_option("--q_msp", type="character", default=NA),
   make_option("--l_msp", type="character", default=NA),
-  
+
   make_option("--q_defaultDb", action="store_true"),
   make_option("--l_defaultDb", action="store_true"),
-  
+
   make_option("--q_ppmPrec", type="double"),
   make_option("--l_ppmPrec", type="double"),
-  
+
   make_option("--q_ppmProd", type="double"),
   make_option("--l_ppmProd", type="double"),
-  
+
   make_option("--q_raThres", type="double", default=NA),
   make_option("--l_raThres", type="double", default=NA),
-  
+
   make_option("--q_polarity", type="character", default=NA),
   make_option("--l_polarity", type="character", default=NA),
 
   make_option("--q_purity", type="double", default=NA),
   make_option("--l_purity", type="double", default=NA),
-  
+
   make_option("--q_xcmsGroups", type="character", default=NA),
   make_option("--l_xcmsGroups", type="character", default=NA),
-  
+
   make_option("--q_pids", type="character", default=NA),
   make_option("--l_pids", type="character", default=NA),
-  
+
   make_option("--q_rtrangeMin", type="double", default=NA),
   make_option("--l_rtrangeMin", type="double", default=NA),
-  
+
   make_option("--q_rtrangeMax", type="double", default=NA),
   make_option("--l_rtrangeMax", type="double", default=NA),
-  
+
   make_option("--q_accessions", type="character", default=NA),
   make_option("--l_accessions", type="character", default=NA),
-  
+
   make_option("--q_sources", type="character", default=NA),
   make_option("--l_sources", type="character", default=NA),
-  
+
   make_option("--q_sourcesUser", type="character", default=NA),
   make_option("--l_sourcesUser", type="character", default=NA),
-  
+
   make_option("--q_instrumentTypes", type="character", default=NA),
   make_option("--l_instrumentTypes", type="character", default=NA),
-  
+
   make_option("--q_instrumentTypesUser", type="character", default=NA),
   make_option("--l_instrumentTypesUser", type="character", default=NA),
-  
+
   make_option("--q_instruments", type="character", default=NA),
   make_option("--l_instruments", type="character", default=NA),
-  
+
   make_option("--q_spectraTypes", type="character", default=NA),
   make_option("--l_spectraTypes", type="character", default=NA),
-  
+
   make_option("--q_spectraFilter", action="store_true"),
   make_option("--l_spectraFilter", action="store_true"),
-  
+
   make_option("--usePrecursors", action="store_true"),
-  
+
   make_option("--mzW", type="double"),
   make_option("--raW", type="double"),
-  
+
   make_option("--rttol", type="double", default=NA),
-  
+
   make_option("--updateDb", action="store_true"),
   make_option("--copyDb", action="store_true"),
   make_option("--cores", default=1)
-  
-  
+
+
 )
 
 # store options
@@ -93,7 +93,7 @@ extractMultiple <- function(optParam){
      param <- NA
   }
   return(param)
-  
+
 }
 
 if(!is.null(opt$q_defaultDb)){
@@ -192,48 +192,48 @@ if(!is.null(opt$q_rtrangeMin)){
 
 sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
                            l_dbPth = l_dbPth,
-                           
+
                            q_purity =  opt$q_purity,
                            l_purity =  opt$l_purity,
-                           
+
                            q_ppmProd =  opt$q_ppmProd,
                            l_ppmProd =  opt$l_ppmProd,
-                           
+
                            q_ppmPrec =  opt$q_ppmPrec,
                            l_ppmPrec =  opt$l_ppmPrec,
-    
+
                            q_raThres =  opt$q_raThres,
                            l_raThres =  opt$l_raThres,
-                           
+
                            q_pol =  q_polarity,
                            l_pol =  l_polarity,
-                           
+
                            q_xcmsGroups = q_xcmsGroups,
                            l_xcmsGroups = l_xcmsGroups,
-                           
+
                            q_pids = q_pids,
                            l_pids = l_pids,
-                           
+
                            q_sources = q_sources,
                            l_sources = l_sources,
-                           
+
                            q_instrumentTypes = q_instrumentTypes,
                            l_instrumentTypes = l_instrumentTypes,
-                           
+
                            q_spectraFilter= q_spectraFilter,
                            l_spectraFilter= l_spectraFilter,
-                           
+
                            l_rtrange=c(l_rtrangeMin, l_rtrangeMax),
                            q_rtrange=c(q_rtrangeMin, q_rtrangeMax),
-                           
+
                            q_accessions = opt$q_accessions,
                            l_accessions= opt$l_accessions,
-                           
+
                            raW = opt$raW,
                            mzW = opt$mzW,
                            rttol=opt$rttol,
                            cores=opt$cores,
-                           
+
                            copyDb=copyDb,
                            updateDb=updateDb,
                            outPth = "db_with_spectral_matching.sqlite"
@@ -254,34 +254,34 @@ if(updateDb){
     l_s_peak_meta <- DBI::dbGetQuery(q_con, 'SELECT  * FROM l_s_peak_meta')
     colnames(l_s_peak_meta)[1] <- 'pid'
   }
-  
+
   l_con <- DBI::dbConnect(RSQLite::SQLite(),l_dbPth)
-  if (DBI::dbExistsTable(q_con, "s_peaks")){
+  if (DBI::dbExistsTable(l_con, "s_peaks")){
     l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM s_peaks WHERE pid in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
-    
-  }else if(DBI::dbExistsTable(q_con, "library_spectra")){
-    l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM library_spectra 
+
+  }else if(DBI::dbExistsTable(l_con, "library_spectra")){
+    l_s_peaks <- DBI::dbGetQuery(l_con, sprintf("SELECT  * FROM library_spectra
                                                 WHERE library_spectra_meta_id in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
   }else{
     l_s_peaks = NULL
   }
-  
-  if (DBI::dbExistsTable(q_con, "source")){
-    l_source <- DBI::dbGetQuery(q_con, 'SELECT  * FROM source')
-  }else if (DBI::dbExistsTable(q_con, "library_spectra_source")) {
-    l_source <- DBI::dbGetQuery(q_con, 'library_spectra_source')
+
+  if (DBI::dbExistsTable(l_con, "source")){
+    l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM source')
+  }else if (DBI::dbExistsTable(l_con, "library_spectra_source")) {
+    l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM library_spectra_source')
   }else{
     l_source = NULL
   }
-  
+
   if (!is.null(l_s_peaks)){
     DBI::dbWriteTable(q_con, name='l_s_peaks', value=l_s_peaks, row.names=FALSE, append=TRUE)
   }
-  
+
   if (!is.null(l_source)){
     DBI::dbWriteTable(q_con, name='l_source', value=l_source, row.names=FALSE, append=TRUE)
   }
-  
+
 }
 
 
