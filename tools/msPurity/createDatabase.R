@@ -154,15 +154,16 @@ if (!is.null(opt$eic)){
   }
 
   xset@peaks <- as.matrix(plyr::ddply(data.frame(xset@peaks), ~ sample, convert2Raw, xset=xset))
-  
+
   # Saves the EICS into the previously created database
   xgroups <-  as.numeric(as.character(unique(pa@grped_df$grpid)))
-  px <- msPurity::purityX(xset, 
+  px <- msPurity::purityX(xset,
                           saveEIC = TRUE,
                           cores=1,
                           sqlitePth=dbPth,
-                          rtrawColumns = TRUE, 
-                          xgroups = xgroups)
+                          rtrawColumns = TRUE,
+                          xgroups = xgroups
+                          )
 
 }
 
