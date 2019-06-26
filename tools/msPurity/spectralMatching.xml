@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <tool id="mspurity_spectralmatching" name="msPurity.spectralMatching" version="0.2.3">
+=======
+<tool id="mspurity_spectralmatching" name="msPurity.spectralMatching" version="0.2.4">
+>>>>>>> e88b86572887104d69c450100e8deb2e8a4d6b8d
     <description>
         Perform spectral matching to MS/MS spectral libraries
     </description>

@@ -2,7 +2,7 @@
 <macros>
     <xml name="requirements">
         <requirements>
-           <requirement type="package" version="1.11.1" >bioconductor-mspurity</requirement>
+           <requirement type="package" version="1.11.2" >bioconductor-mspurity</requirement>
             <yield />
         </requirements>
     </xml>
