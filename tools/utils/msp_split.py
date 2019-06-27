@@ -6,8 +6,8 @@ import re
 import csv
 import math
 
-def msp_split(i, o, n):
-    spec_total = lcount('NAME', i)
+def msp_split(i, o, x, n):
+    spec_total = lcount(x, i)
     spec_lim = math.ceil(spec_total/float(n))
     spec_c = 0
     filelist = []
@@ -25,12 +25,12 @@ def msp_split(i, o, n):
                     if not line:
                         break  # end of file
 
-                    if re.match('^NAME:.*$', line, re.IGNORECASE):
+                    if re.match('^{}.*$'.format(x), line, re.IGNORECASE):
                         header = line
                         spec_c += 1
                     else:
                         msp_out.write(line)
-                spec_c = 1 
+                spec_c = 1
 
     return filelist
 
@@ -46,19 +46,21 @@ def main():
                                 )
 
     p.add_argument('-i', dest='i', help='msp file', required=True)
+    p.add_argument('-x', dest='x', help='name', default='RECORD_TITLE:')
     p.add_argument('-o', dest='o', help='out dir', required=True)
     p.add_argument('-n', dest='n',)
 
 
-    args = p.parse_args() 
+    args = p.parse_args()
 
     if not os.path.exists(args.o):
         os.makedirs(args.o)
     print('in file', args.i)
     print('out dir', args.o)
+    print('Name of starting value in MSP', args.x)
     print('nm files', args.n)
 
-    msp_split(args.i, args.o, int(args.n))
+    msp_split(args.i, args.o, args.x, int(args.n))
 
 
 if __name__ == '__main__':

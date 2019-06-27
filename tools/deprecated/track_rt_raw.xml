@@ -1,14 +1,8 @@
-<tool id="track_rt_raw" name="track_rt_raw" version="0.0.9">
+<tool id="track_rt_raw" name="track_rt_raw" version="0.0.10">
     <description>Track the raw retention time in the peak slot of XCMSset objects.
     </description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
-
-    <expand macro="requirements">
-    </expand>
-
-
+     <requirement type="package">r-optparse</requirement>
+     <requirement type="package" version="1.48.0" >bioconductor-xcms</requirement>
     <stdio>
         <exit_code range="1:" />
     </stdio>
@@ -38,7 +32,7 @@
     </outputs>
     <tests>
        <test>
-         <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
+         <param name="xset" value="xset.RData"/>
          <param name="extract_peaks" value="True"/>
          <output name="xset_extract_peaks" value="xset_peaks.tsv"/>
        </test>

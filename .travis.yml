@@ -16,6 +16,8 @@ env:
   - TEST=tools/msPurity/flagRemove.xml
   - TEST=tools/msPurity/frag4feature.xml
   - TEST=tools/msPurity/purityX.xml
+  - TEST=tools/utils/msp_split.xml
+  - TEST=tools/utils/submit_to_mogi.xml
 
 
 before_install:

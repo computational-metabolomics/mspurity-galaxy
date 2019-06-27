@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
 <macros>
+    <token name="@TOOL_VERSION@">1.11.3</token>
+    <token name="@GALAXY_TOOL_VERSION@">0.2.5</token>
+
     <xml name="requirements">
         <requirements>
-           <requirement type="package" version="1.11.2" >bioconductor-mspurity</requirement>
+           <requirement type="package" version="@TOOL_VERSION@" >bioconductor-mspurity</requirement>
             <yield />
         </requirements>
     </xml>
+
+
     <xml name="offsets">
         <param name="minoffset" type="float" label="minoffset" value="0.5" argument='--minoffset'
                help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
@@ -96,7 +101,7 @@
             </when>
         </conditional>
     </xml>
-    
+
 
     <xml name="sm_input" token_ql='Query' token_dblabel="SQLite database"  token_ql_shrt="Q"
          token_user="True" token_mspuritydatalib="False" token_msp="False" token_help="">
@@ -105,28 +110,28 @@
                 <option value="userdb" selected="@USER@" >SQLite database of (LC)-MS/MS data</option>
                 <option value="msPurityData"  selected="@MSPURITYDATALIB@" >Prepared database of MassBank, HMDB, LipidBlast and GNPS</option>
                 <option value="msp" >MSP file (SQLite database will be created using using msp2db)</option>
-            </param>    
+            </param>
             <when value="userdb">
                <param type="data" name="@QL_SHRT@_dbPth" label="@QL@ SQLite database" format="sqlite" help=""/>
             </when>
             <when value="msp">
               <param type="data" name="@QL_SHRT@_msp" label="@QL@ MSP file" format="msp" help=""/>
             </when>
-            
+
             <when value="msPurityData">
             </when>
         </conditional>
     </xml>
-    
-    
+
+
     <xml name="filters" token_ql="Query" token_polarity_positive="false" token_ql_shrt="Q"
          token_sources_select="false" token_instrument_types_select="false">
-      
+
         <section name="@QL_SHRT@_filters" title="Filters" expanded="False">
-            
+
             <param name="@QL_SHRT@_ppmPrec" type="float" value="5" label="ppm error of the precursor for spectra"/>
             <param name="@QL_SHRT@_ppmProd" type="float" value="10" label="ppm error of the product for spectra"/>
-              
+
             <conditional name="@QL_SHRT@_raThres_cond">
                 <param name="@QL_SHRT@_raThres_bool" type="boolean" label="Filter on relative abundance threshold?"/>
                 <when value="true">
@@ -135,7 +140,7 @@
                 <when value="false">
                 </when>
             </conditional>
-            
+
             <conditional name="@QL_SHRT@_polarity_cond">
                 <param name="@QL_SHRT@_polarity_bool" type="boolean" label="Filter on polarity?" help="" />
                 <when value="true">
@@ -148,7 +153,7 @@
                 <when value="false">
                 </when>
             </conditional>
-                                                              
+
             <conditional name="@QL_SHRT@_purity_cond">
                 <param name="@QL_SHRT@_purity_bool" type="boolean" label="Filter on precursor ion purity?"/>
                 <when value="true">
@@ -158,35 +163,35 @@
                 <when value="false">
                 </when>
             </conditional>
-            
+
             <conditional name="@QL_SHRT@_xcmsGroups_cond">
                 <param name="@QL_SHRT@_xcmsGroups_bool" type="boolean" label="Filter on XCMS groups ids?"/>
                 <when value="true">
                     <param name="@QL_SHRT@_xcmsGroups" type="text" value=""
-                          label="XCMS group ids of spectra" 
+                          label="XCMS group ids of spectra"
                           help="comma seperated list of grpids (correspond to column 'grpid in c_peak_group'))
                                 e.g '12,27,30'" />
                 </when>
                 <when value="false">
                 </when>
             </conditional>
-            
-            
+
+
             <conditional name="@QL_SHRT@_pids_cond">
                 <param name="@QL_SHRT@_pids_bool" type="boolean" label="Filter on pids?"/>
                 <when value="true">
                     <param name="@QL_SHRT@_pids" type="text" value=""
-                          label="pids of spectra (correspond to column 'pid; in s_peak_meta)" 
+                          label="pids of spectra (correspond to column 'pid; in s_peak_meta)"
                           help="comma seperated list of pids (correspond to column 'pid; in s_peak_meta))
                                 e.g '3001,5561'" />
                 </when>
                 <when value="false">
                 </when>
             </conditional>
-            
-            
+
+
             <conditional name="@QL_SHRT@_rtrange_cond">
-                <param name="@QL_SHRT@_rtrange_bool" type="boolean" 
+                <param name="@QL_SHRT@_rtrange_bool" type="boolean"
                        label="Filter on retention time range?"
                        help="Filter the spectra between two points of retention time range"/>
                 <when value="true">
@@ -198,32 +203,32 @@
                 <when value="false">
                 </when>
             </conditional>
-            
-            
-            
+
+
+
             <conditional name="@QL_SHRT@_accessions_cond">
-                <param name="@QL_SHRT@_accessions_bool" type="boolean" 
+                <param name="@QL_SHRT@_accessions_bool" type="boolean"
                        label="Filter on accessions?"
                        help="Filter on unique accessions IDs (e.g. from MassBank and MoNA)"/>
                 <when value="true">
                     <param name="@QL_SHRT@_accessions" type="text" value=""
-                          label="Spectra accessions" 
+                          label="Spectra accessions"
                           help="Comma seperated list of accessions))
                                 e.g 'AC000001,BS001003,LIT00001'" />
                 </when>
                 <when value="false">
                 </when>
             </conditional>
-            
-            
+
+
             <conditional name="@QL_SHRT@_sources_cond">
-                <param name="@QL_SHRT@_sources_bool" type="boolean" 
+                <param name="@QL_SHRT@_sources_bool" type="boolean"
                        label="Filter on sources?" help="" value="@SOURCES_SELECT@" />
                 <when value="true">
                     <param name="@QL_SHRT@_sources" type="select" multiple="true"
-                       help="@QL_SHRT@ The default internal SQLite database of library (reference) spectra 
-                       contains fragmentation spectra from MassBank, LipidBlast and GNPS. A copy is 
-                       available from here: 
+                       help="@QL_SHRT@ The default internal SQLite database of library (reference) spectra
+                       contains fragmentation spectra from MassBank, LipidBlast and GNPS. A copy is
+                       available from here:
                        https://bioconductor.org/packages/release/data/experiment/html/msPurityData.html" >
                         <option value="massbank" selected="true">MassBank from MoNa</option>
                         <option value="gnps" selected="true">GNPS</option>
@@ -239,7 +244,7 @@
                 </when>
             </conditional>
             <conditional name="@QL_SHRT@_instrumentTypes_cond">
-                <param name="@QL_SHRT@_instrumentTypes_bool" type="boolean" 
+                <param name="@QL_SHRT@_instrumentTypes_bool" type="boolean"
                        value="@INSTRUMENT_TYPES_SELECT@"
                        label="Filter on instrument type?" help="" />
                 <when value="true">
@@ -278,7 +283,7 @@
                         <option value="none">None</option>
                   </param>
                   <param name="@QL_SHRT@_instrumentTypesUser" type="text" value=""
-                         help="Types of the instruments to be included in the search. Use a comma to 
+                         help="Types of the instruments to be included in the search. Use a comma to
                                separate the instrument types or leave empty to ignore filter."/>
                 </when>
                 <when value="false">
@@ -288,17 +293,17 @@
                 <param name="@QL_SHRT@_instruments_bool" type="boolean" label="Filter on instrument name?" help="" />
                 <when value="true">
                     <param name="@QL_SHRT@_instruments" type="text" value=""
-                         help="Known instrument names to filter on. Use a comma to 
+                         help="Known instrument names to filter on. Use a comma to
                                separate the instrument types or leave empty to ignore filter."/>
                 </when>
                 <when value="false">
                 </when>
             </conditional>
-            
-            
+
+
 
             <conditional name="@QL_SHRT@_spectraTypes_cond">
-                <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?" 
+                <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?"
                 help="" />
                 <when value="true">
                     <param name="@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
@@ -314,14 +319,14 @@
             </conditional>
 
            <param name="@QL_SHRT@_spectraFilter" type="boolean" checked="true"
-                  label="Ignore any peaks flagged in the spectra in previous stages?" 
+                  label="Ignore any peaks flagged in the spectra in previous stages?"
                           help="" />
-            
+
         </section>
     </xml>
-    
 
-    
+
+
 
     <xml name="citations">
         <citations>
