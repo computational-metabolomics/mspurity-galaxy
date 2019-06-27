@@ -50,7 +50,7 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
-v1.11.4-galaxy0.2.5:
+v1.11.3-galaxy0.2.5:
   - Clean up of the versioning to be in line with IUC
   - All tools updated with the same versioning
   - Bump to msPurity v1.11.4 to so EIC is calculated for all features
