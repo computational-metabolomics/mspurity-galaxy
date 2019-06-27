@@ -6,6 +6,14 @@ Warning
 ------
 Proceed with caution these tools are in active development so tools may change! Stable release to Galaxy toolshed coming soon. Currently these tools will only work when the 'tomnl' conda channel is being used with Galaxy.
 
+Version v1.11.3-galaxy0.2.5
+------
+NOTE: bioconductor-mspurity v1.11.3 only available on 'tomnl' conda channel - to be updated to bioconda soon.
+
+  - msPurity
+     - bioconductor-mspurity v1.11.3  
+  - Galaxy tools 
+     - v0.2.5
 
 About
 ------
@@ -53,7 +61,7 @@ Changes
 v1.11.3-galaxy0.2.5:
   - Clean up of the versioning to be in line with IUC
   - All tools updated with the same versioning
-  - Bump to msPurity v1.11.4 to so EIC is calculated for all features
+  - Bump to msPurity v1.11.3 to so EIC is calculated for all features
 
 v0.2.5 (spectralMatching):
   - spectralMatching - Extra details from matched library spectra is now added to the database (fix)
