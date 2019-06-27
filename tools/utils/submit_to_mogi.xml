@@ -59,5 +59,9 @@ Output
 * out.json: The JSON request sent to MOGI
 
   ]]></help>
-<expand macro="citations" />
+
+ <citations>
+           <!-- <citation type="doi">10.1021/acs.analchem.6b04358</citation> -->
+ </citations>
+
 </tool>
