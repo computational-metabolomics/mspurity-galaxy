@@ -7,11 +7,11 @@ package:
   version: '{{ version }}'
 
 source:
-  url: https://github.com/computational-metabolomics/msPurity/archive/cd5ccc879cc38493b87d2f12749bb11030c6cca8.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/d9561db91a91d88e1fc9f23c372c5993ed8a9957.zip
 
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/

@@ -50,6 +50,11 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.11.4-galaxy0.2.5
+- Clean up of the versioning to be in line with IUC
+- All tools updated with the same versioning
+- Bump to msPurity v1.11.4 to so EIC is calculated for all features
+
 v0.2.5 (spectralMatching)
 - spectralMatching - Extra details from matched library spectra is now added to the database (fix)
 
