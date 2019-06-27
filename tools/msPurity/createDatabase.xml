@@ -79,6 +79,7 @@
            <param name="pa" value="averageFragSpectra_output_all.RData"/>
            <output name="createDatabase_output_sqlite" value="createDatabase_output.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
+
         <test>
             <conditional name="file_load_conditional">
                 <param name="file_load_select" value="yes"/>
