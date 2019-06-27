@@ -1,4 +1,4 @@
-<tool id="mspurity_puritya" name="msPurity.purityA" version="0.2.4">
+<tool id="mspurity_puritya" name="msPurity.purityA" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
     <description>
         Assess acquired precursor ion purity of MS/MS spectra
     </description>

@@ -1,18 +1,17 @@
-<tool id="msp_split" name="msp_split" version="0.0.1">
+<tool id="msp_split" name="msp_split" version="0.0.2">
     <description>Slit MSP file into n number of files</description>
-    <macros>
-        <import>macros.xml</import>
-    </macros>
-        
+
     <stdio>
         <exit_code range="1:" />
     </stdio>
-    <command interpreter="python"><![CDATA[  msp_split.py -i $in_msp -o 'spec_out' -n $n  ]]></command>
+    <command interpreter="python"><![CDATA[  msp_split.py -i $in_msp -o 'spec_out' -n $n -x $x ]]></command>
 
     <inputs>
         <param name="in_msp" type="data" label="Input MSP file" format="txt,msp" help='MSP file (must have NAME: as the first element in each spectra entry'/>
         <param name="n" type="integer" label="Number of new files" value="2"
                help="Number of new MSP files to split the original MSP file into"/>
+        <param name="x" type="text" label="Starting parameter for each spectra" value="RECORD_TITLE:"
+               help="Parameter in the MSP file that indicates the start of a each spectra"/>
     </inputs>
     <outputs>
         <collection name="multiple" type="list" label="${tool.name} on ${on_string}: multi msp files">
@@ -35,7 +34,7 @@ msp split
 Split a MSP file into n MSP files. Where the the spectra will be divided between n files.
 
     ]]></help>
-    
+
 <expand macro="citations" />
-    
+
 </tool>

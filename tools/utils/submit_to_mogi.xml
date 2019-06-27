@@ -1,17 +1,10 @@
-<tool id="submit_to_mogi" name="submit_to_mogi" version="0.0.1">
+<tool id="submit_to_mogi" name="submit_to_mogi" version="0.0.2">
     <description>
         Submit Galaxy datasets to MOGI django database
     </description>
 
-    <macros>
-        <import>macros.xml</import>
-    </macros>
 
-    <expand macro="requirements">
-
-    </expand>
-
- <stdio>
+    <stdio>
         <exit_code range="1:" />
     </stdio>
      <command>
@@ -44,7 +37,7 @@
     </outputs>
     <tests>
         <test>
-            <param name="mogi_data" value="create_sqlite_db_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.sqlite"/>
+            <param name="mogi_data" value="input.msp"/>
             <param name="mogi_url" value="https://www.djangoproject.com/"/>
             <output name="curl_out" >
                 <assert_contents>
