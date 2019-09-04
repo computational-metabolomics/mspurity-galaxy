@@ -63,7 +63,9 @@ if (round(!sum(unlist(weights),0)==1)){
 
 if (opt$compoundDbType=='local_config'){
   # load in compound config
-  source("dbconfig.R")
+  # Soure local function taken from workflow4metabolomics
+  source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+  source_local("dbconfig.R")
 }else{
   compoundDbType = opt$compoundDbType
   compoundDbName = NA

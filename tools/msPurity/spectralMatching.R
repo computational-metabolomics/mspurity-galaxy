@@ -3,7 +3,8 @@ library(msPurityData)
 library(optparse)
 print(sessionInfo())
 # load in library spectra config
-source("dbconfig.R")
+source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+source_local("dbconfig.R")
 
 option_list <- list(
   make_option(c("-o", "--outDir"), type="character"),
@@ -105,21 +106,21 @@ extractMultiple <- function(optParam){
 
 if(!is.null(opt$q_defaultDb)){
   q_dbPth <- system.file("extdata", "library_spectra", "library_spectra.db", package="msPurityData")
-}else if (!is.null(opt$q_dbPth)){
+  q_dbType <- 'sqlite'
+}else if (!opt$q_dbType=='local_config'){
+  q_dbType <- opt$q_dbType
   q_dbPth <- opt$q_dbPth
-}else{
-  message('No query database available')
-  exit()
 }
 
 if(!is.null(opt$l_defaultDb)){
   l_dbPth <- system.file("extdata", "library_spectra", "library_spectra.db", package="msPurityData")
-}else if (!is.null(opt$l_dbPth)){
+  l_dbType <- 'sqlite'
+}else if (!opt$l_dbType=='local_config'){
+  l_dbType <- opt$l_dbType
   l_dbPth <- opt$l_dbPth
-}else{
-  message('No library database available')
-  exit()
 }
+
+
 
 
 q_polarity <- extractMultiple(opt$q_polarity)
@@ -195,21 +196,6 @@ if(!is.null(opt$q_rtrangeMin)){
   q_rtrangeMin <- NA
 }
 
-if (opt$q_dbType=='local_config'){
-  q_dbTypeM <- q_dbType
-  q_dbPthM <- q_dbPth
-}else{
-  q_dbTypeM <- opt$q_dbType
-  q_dbPthM <- opt$q_dbPth
-}
-
-if (opt$l_dbType=='local_config'){
-  q_dbTypeM <- l_dbType
-  q_dbPthM <- q_dbPth
-}else{
-  q_dbTypeM <- opt$q_dbType
-  q_dbPthM <- opt$q_dbPth
-}
 
 
 sm <- msPurity::spectralMatching(
@@ -258,16 +244,16 @@ sm <- msPurity::spectralMatching(
                            updateDb=updateDb,
                            outPth = "db_with_spectral_matching.sqlite",
 
-                           q_dbPth = q_dbPthM,
-                           q_dbType = q_dbTypeM,
+                           q_dbPth = q_dbPth,
+                           q_dbType = q_dbType,
                            q_dbName = q_dbName,
                            q_dbHost = q_dbHost,
                            q_dbUser = q_dbUser,
                            q_dbPass = q_dbPass,
                            q_dbPort = q_dbPort,
 
-                           l_dbType = l_dbTypeM,
-                           l_dbPth = l_dbPthM,
+                           l_dbPth = l_dbPth,
+                           l_dbType = l_dbType,
                            l_dbName = l_dbName,
                            l_dbHost = l_dbHost,
                            l_dbUser = l_dbUser,
