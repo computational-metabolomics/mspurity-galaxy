@@ -37,7 +37,7 @@
             <param name="level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
                 <option value="intra" selected="true">within a MS data file</option>
                 <option value="inter">across MS data files</option>
-                <option value="all">within and accross MS data files (ignoring intra and inter relationships)</option>
+                <option value="all">within and across MS data files (ignoring intra and inter relationships)</option>
             </param>
             <when value="intra">
                 <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
@@ -53,11 +53,6 @@
             </when>
         </conditional>
 
-        <param name="av_level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
-            <option value="intra" selected="true">within a MS data file</option>
-            <option value="inter">accross MS data files</option>
-            <option value="all">within and accross MS data files (ignoring intra and inter relationships)</option>
-        </param>
         <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
         <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
         <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
