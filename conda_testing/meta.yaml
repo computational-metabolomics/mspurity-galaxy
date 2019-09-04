@@ -1,4 +1,4 @@
-{% set version="1.11.3" %}
+{% set version="1.11.4" %}
 {% set name="msPurity" %}
 {% set bioc="3.8" %}
 
@@ -7,7 +7,7 @@ package:
   version: '{{ version }}'
 
 source:
-  url: https://github.com/computational-metabolomics/msPurity/archive/ea484f8d0f3dc892cc8dd1d545af66e150223a70.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/5940cad3b8c6459e4631c940190db761878f5e7c.zip
 
 
 build:
@@ -39,7 +39,8 @@ requirements:
     - r-rsqlite
     - r-stringr
     - r-uuid
-    - r-jsonlite
+    - r-rpostgres
+    - r-rmysql
 
 
   run:
@@ -64,7 +65,9 @@ requirements:
     - r-rsqlite
     - r-stringr
     - r-uuid
-    - r-jsonlite
+    - r-rpostgres
+    - r-rmysql
+
 
   build:
     - {{ compiler('c') }}

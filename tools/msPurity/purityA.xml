@@ -51,6 +51,8 @@
                 --isotope_matrix=$isotopes.im
             #end if
 
+            --ppmInterp "$ppmInterp"
+
     ]]></command>
     <inputs>
 
@@ -83,6 +85,11 @@
                label="Use nearest full scan to determine precursor?"
                help="If TRUE, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
                      is of the precursor"/>
+
+        <param name="ppmInterp" type="float" label="ppmInterp" value="7" argument='--ppmInterp'
+               help="Set the ppm tolerance for the precursor ion purity interpolation.
+               i.e. the ppm tolerence between the precursor ion found in the neighbouring scans. The closest match
+               within the window will be used for the interpolation"/>
 
 
         <conditional name="offsets">

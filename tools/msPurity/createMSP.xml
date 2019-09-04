@@ -16,7 +16,8 @@
     #if $metadata_cond.metadata_select == "true"
         --metadata "$metadata_cond.metadata"
         --metadata_cols "$metadata_cond.metadata_cols"
-        --adduct_split "$metadata_cond.adduct_split"
+        --metadata_cols_filter "$metadata_cond.metadata_cols_filter"
+
     #end if
 
     #if $xcms_group_cond.xcms_group_select == "true"
@@ -24,9 +25,11 @@
     #end if
 
     $filter
+    $adduct_split
 
     --msp_schema "$msp_schema"
     --intensity_ra "$intensity_ra"
+    --include_adducts "$include_adducts"
 
     --out_dir '.'
     ]]></command>
@@ -51,14 +54,16 @@
             <param name="metadata_select" type="boolean" label="Use additional metadata?" />
 	    <when value="true">
                 <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular"
-                help="Metadata for each grouped XCMS feature, the data will be added to the MSP metadata.
-                Using the MassBank format e.g. https://github.com/MassBank/MassBank-data/blob/master/MetaboLights/ML003001.txt "/>
+                help="Metadata for each grouped XCMS feature, e.g. could be the adduct calculated from CAMERA "/>
 
-                <param name="metadata_cols" type="text" label="Metadata columns for name" value="CH$NAME, MS$FOCUSED_ION: PRECURSOR_TYPE" help="Comma separated string of column names where the corresponding values in the metadata will be used for the MSP spectra name"/>
-                <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?" help="If either 'adduct' or 'MS$FOCUSED_ION: PRECURSOR_TYPE'
-                    column is in metadata then each adduct will have it's own MSP spectra.
-                    (Useful, if the MSP file will be used for further annotation)"  />
-            </when>
+                <param name="metadata_cols_filter" type="text" label="Metadata columns to use" value=""
+                help="Comma separated string of column names where the corresponding values in the metadata will be used"/>
+
+                <param name="metadata_cols" type="text" label="Metadata columns for MSP spectra name" value=""
+                help="Comma separated string of column names where the corresponding values in the metadata will be used
+                      for MSP spectra name"/>
+
+                </when>
             <when value="false">
             </when>
         </conditional>
@@ -87,57 +92,47 @@
 
         </param>
 
-        <param name="filter" type="boolean" checked="true" truevalue="--filter" falsevalue="" label="Filter peaks that have been flagged in prior processing steps"   help="" />
+        <param name="filter" type="boolean" checked="true" truevalue="--filter" falsevalue=""
+        label="Filter peaks that have been flagged in prior processing steps"   help="" />
+
+
+       <param name="include_adducts" type="select" label="Always include the following adduct descriptions in the MSP file"
+        help="Additional adducts to include, can be useful for downstream processing" multiple="true"
+             argument="--include_adducts">
+            <option value="[M+H]+">[M+H]+</option>
+            <option value="[M+Na]+">[M+Na]+</option>
+            <option value="[M+NH4]+">[M+NH4]+</option>
+            <option value="[M+K]+" >[M+K]+</option>
+            <option value="[M+CH3OH+H]+">[M+CH3OH+H]+</option>
+            <option value="[M+ACN+H]+">[M+ACN+H]+</option>
+            <option value="[M+ACN+Na]+">[M+ACN+Na]+</option>
+            <option value="[M+2ACN+H]+">[M+2ACN+H]+</option>
+            <option value="[M-H]-">[M-H]-</option>
+            <option value="[M+HCOO]-" >[M+HCOO]-</option>
+            <option value="[M+CH3COO]-" >[M+CH3COO]-</option>
+            <option value="[M-H+CH3COOH]-" >[M-H+CH3COOH]-</option>
+        </param>
+        <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
+        help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""  />
 
     </inputs>
     <outputs>
         <data name="createMSP_output" format="msp" from_work_dir="lcmsms_spectra.msp" label="${tool.name} on ${on_string}: msp"/>
     </outputs>
     <tests>
+
         <test>
-            <param name="method" value="all"/>
-            <param name="rdata_input" value="frag4feature_output.RData"/>
-            <output name="createMSP_output" file="createMSP_output_scans_all.msp"/>
-        </test>
-        <test>
-            <param name="method" value="av_all"/>
-            <param name="rdata_input" value="averageFragSpectra_output_all.RData"/>
-            <output name="createMSP_output" file="createMSP_output_av_all.msp"/>
-        </test>
-        <test>
+            <!-- 3) Test all average with metadata -->
             <param name="method" value="av_all"/>
             <param name="rdata_input" value="averageFragSpectra_output_all.RData"/>
             <param name="metadata_cond|metadata_select" value="true"/>
             <param name="metadata_cond|metadata" value="createMSP_input_metadata.tsv"/>
-            <param name="metadata_cond|metadata_cols" value="AC$CHROMATOGRAPHY: COLUMN_NAME, AC$MASS_SPECTROMETRY: ION_MODE, AC$MASS_SPECTROMETRY: MS_TYPE, CH$LINK: INCHIKEY, CH$LINK: PUBCHEM	CH$NAME
-"/>
             <param name="xcms_group_cond|xcms_group_select" value="true"/>
             <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
             <param name="metadata_cond|adduct_split" value="true"/>
             <output name="createMSP_output" file="createMSP_output_av_all_metadata.msp"/>
         </test>
-        <test>
-            <param name="method" value="av_all"/>
-            <param name="rdata_input" value="averageFragSpectra_output_all.RData"/>
-            <param name="xcms_group_cond|xcms_group_select" value="true"/>
-            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
-            <output name="createMSP_output" file="createMSP_output_av_all_and_all_xcms.msp"/>
-        </test>
-        <test>
-            <param name="method" value="av_intra"/>
-            <param name="rdata_input" value="averageFragSpectra_output_intra.RData"/>
-            <output name="createMSP_output" file="createMSP_output_av_intra.msp"/>
-        </test>
-        <test>
-            <param name="method" value="av_inter"/>
-            <param name="rdata_input" value="averageFragSpectra_output_inter.RData"/>
-            <output name="createMSP_output" file="createMSP_output_av_inter.msp"/>
-        </test>
-        <test>
-            <param name="method" value="max"/>
-            <param name="rdata_input" value="frag4feature_output.RData"/>
-            <output name="createMSP_output" file="createMSP_output_max.msp"/>
-        </test>
+
     </tests>
 	<help><![CDATA[
 ------------------------------

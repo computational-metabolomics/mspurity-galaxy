@@ -11,8 +11,8 @@ Version v1.11.3-galaxy0.2.5
 NOTE: bioconductor-mspurity v1.11.3 only available on 'tomnl' conda channel - to be updated to bioconda soon.
 
   - msPurity
-     - bioconductor-mspurity v1.11.3  
-  - Galaxy tools 
+     - bioconductor-mspurity v1.11.3
+  - Galaxy tools
      - v0.2.5
 
 About
@@ -58,6 +58,12 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.11.4-galaxy0.2.6:
+  - Added ppmInterp parameter to purityA
+  - Complete update of combineAnnotation tool to use either sqlite, postgres or mysql database
+  - Update of spectralMatching tool to use either sqlite, postgres or mysql database
+  - Added include_adducts parameter to createMSP
+
 v1.11.3-galaxy0.2.5:
   - Clean up of the versioning to be in line with IUC
   - All tools updated with the same versioning

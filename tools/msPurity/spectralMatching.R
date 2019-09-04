@@ -2,12 +2,19 @@ library(msPurity)
 library(msPurityData)
 library(optparse)
 print(sessionInfo())
-
+# load in library spectra config
+source("dbconfig.R")
 
 option_list <- list(
   make_option(c("-o", "--outDir"), type="character"),
   make_option("--q_dbPth", type="character"),
   make_option("--l_dbPth", type="character"),
+
+  make_option("--q_dbType", type="character", default=NA),
+  make_option("--l_dbType", type="character", default=NA),
+
+  make_option("--q_dbHost", type="character", default=NA),
+  make_option("--l_dbHost", type="character", default=NA),
 
   make_option("--q_msp", type="character", default=NA),
   make_option("--l_msp", type="character", default=NA),
@@ -188,11 +195,24 @@ if(!is.null(opt$q_rtrangeMin)){
   q_rtrangeMin <- NA
 }
 
+if (opt$q_dbType=='local_config'){
+  q_dbTypeM <- q_dbType
+  q_dbPthM <- q_dbPth
+}else{
+  q_dbTypeM <- opt$q_dbType
+  q_dbPthM <- opt$q_dbPth
+}
+
+if (opt$l_dbType=='local_config'){
+  q_dbTypeM <- l_dbType
+  q_dbPthM <- q_dbPth
+}else{
+  q_dbTypeM <- opt$q_dbType
+  q_dbPthM <- opt$q_dbPth
+}
 
 
-sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
-                           l_dbPth = l_dbPth,
-
+sm <- msPurity::spectralMatching(
                            q_purity =  opt$q_purity,
                            l_purity =  opt$l_purity,
 
@@ -236,7 +256,24 @@ sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
 
                            copyDb=copyDb,
                            updateDb=updateDb,
-                           outPth = "db_with_spectral_matching.sqlite"
+                           outPth = "db_with_spectral_matching.sqlite",
+
+                           q_dbPth = q_dbPthM,
+                           q_dbType = q_dbTypeM,
+                           q_dbName = q_dbName,
+                           q_dbHost = q_dbHost,
+                           q_dbUser = q_dbUser,
+                           q_dbPass = q_dbPass,
+                           q_dbPort = q_dbPort,
+
+                           l_dbType = l_dbTypeM,
+                           l_dbPth = l_dbPthM,
+                           l_dbName = l_dbName,
+                           l_dbHost = l_dbHost,
+                           l_dbUser = l_dbUser,
+                           l_dbPass = l_dbPass,
+                           l_dbPort = l_dbPort
+
                            )
 
 

@@ -36,7 +36,7 @@
         <conditional name="av">
             <param name="level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
                 <option value="intra" selected="true">within a MS data file</option>
-                <option value="inter">accross MS data files</option>
+                <option value="inter">across MS data files</option>
                 <option value="all">within and accross MS data files (ignoring intra and inter relationships)</option>
             </param>
             <when value="intra">

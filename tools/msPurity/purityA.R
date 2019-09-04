@@ -15,7 +15,8 @@ option_list <- list(
   make_option("--mostIntense", action="store_true"),
   make_option("--plotP", action="store_true"),
   make_option("--nearest", action="store_true"),
-  make_option("--cores", default=4)
+  make_option("--cores", default=4),
+  make_option("--ppmInterp", default=7)
 )
 
 opt <- parse_args(OptionParser(option_list=option_list))
@@ -97,7 +98,8 @@ pa <- msPurity::purityA(filepaths,
                         ilim = opt$ilim,
                         mzRback = "pwiz",
                         isotopes = isotopes,
-                        im = im)
+                        im = im,
+                        ppmInterp = opt$ppmInterp)
 
 
 if (!is.null(opt$galaxy_names)){
