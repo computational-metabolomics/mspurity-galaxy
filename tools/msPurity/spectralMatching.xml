@@ -23,24 +23,12 @@
               --q_defaultDb
             #else if $Query.q_dbPth_con.q_dbPth_select == 'sqlite'
               --q_dbPth=$Query.q_dbPth_con.q_dbPth
-            #else
-              --q_dbPort=$Query.q_dbPth_con.q_dbPort
-              --q_dbHost=$Query.q_dbPth_con.q_dbHost
-              --q_dbUser=$Query.q_dbPth_con.q_dbUser
-              --q_dbName=$Query.q_dbPth_con.q_dbName
-              --q_dbPass=$Query.q_dbPth_con.q_dbPass
             #end if
 
             #if $Library.l_dbPth_con.l_dbPth_select == 'msPurityData'
               --l_defaultDb
             #else if $Library.l_dbPth_con.l_dbPth_select == 'userdb_sqlite'
               --l_dbPth=$Library.l_dbPth_con.l_dbPth
-            #else
-              --l_dbPort=$Library.q_dbPth_con.q_dbPort
-              --l_dbHost=$Library.q_dbPth_con.q_dbHost
-              --l_dbUser=$Library.q_dbPth_con.q_dbUser
-              --l_dbName=$Library.q_dbPth_con.q_dbName
-              --l_dbPass=$Library.q_dbPth_con.q_dbPass
             #end if
 
             --l_dbType=$Library.l_dbPth_con.l_dbPth_select

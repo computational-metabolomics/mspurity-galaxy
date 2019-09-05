@@ -33,25 +33,13 @@
         <param name="pa" type="data" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature tool)"/>
 
-        <conditional name="av">
-            <param name="level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
-                <option value="intra" selected="true">within a MS data file</option>
-                <option value="inter">across MS data files</option>
-                <option value="all">within and across MS data files (ignoring intra and inter relationships)</option>
-            </param>
-            <when value="intra">
-                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
-                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
-            </when>
-            <when value="inter">
-                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
-                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
-            </when>
-            <when value="all">
-                <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
-                <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
-            </when>
-        </conditional>
+
+        <param name="av_level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
+            <option value="intra" selected="true">within a MS data file</option>
+            <option value="inter">across MS data files</option>
+            <option value="all">within and across MS data files (ignoring intra and inter relationships)</option>
+        </param>
+
 
         <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
         <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />

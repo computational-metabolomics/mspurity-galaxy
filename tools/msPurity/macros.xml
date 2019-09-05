@@ -115,7 +115,6 @@
                <param type="data" name="@QL_SHRT@_dbPth" label="@QL@ SQLite database" format="sqlite" help=""/>
             </when>
             <when value="local_config">
-              <param type="text" name="@QL_SHRT@_dbHost" label="@QL@ Database host" help=""/>
             </when>
             <when value="msPurityData">
             </when>

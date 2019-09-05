@@ -31,11 +31,20 @@ if (is.null(opt$metadata)){
   if(!opt$metadata_cols_filter==''){
      metadata_cols_filter <- strsplit(opt$metadata_cols_filter, ',')[[1]]
 
-     metadata <- metadata[,metadata_cols_filter]
+     metadata <- metadata[,metadata_cols_filter, drop=FALSE]
+     print(metadata)
+
+     if (!"grpid" %in% colnames(metadata)){
+       metadata$grpid <- 1:nrow(metadata)
+     }
+
+     print(metadata)
 
   }
 
 }
+
+
 
 if (is.null(opt$metadata_cols) || opt$metadata_cols==''){
     metadata_cols <- NULL

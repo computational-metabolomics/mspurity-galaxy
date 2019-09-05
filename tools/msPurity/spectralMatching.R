@@ -14,9 +14,6 @@ option_list <- list(
   make_option("--q_dbType", type="character", default=NA),
   make_option("--l_dbType", type="character", default=NA),
 
-  make_option("--q_dbHost", type="character", default=NA),
-  make_option("--l_dbHost", type="character", default=NA),
-
   make_option("--q_msp", type="character", default=NA),
   make_option("--l_msp", type="character", default=NA),
 
