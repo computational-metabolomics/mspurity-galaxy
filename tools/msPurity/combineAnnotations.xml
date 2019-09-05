@@ -43,9 +43,7 @@
 
             --compoundDbType=$compoundDbTypeCond.compoundDbType
 
-            #if $compoundDbTypeCond.compoundDbType== 'local_config'
-              --compoundDbHost=$compoundDbTypeCond.compoundDbHost
-            #else
+            #if $compoundDbTypeCond.compoundDbType== 'sqlite'
               --compoundDbPth=$compoundDbTypeCond.compoundDbPth
             #end if
 
@@ -87,13 +85,12 @@
       <conditional name="compoundDbTypeCond">
             <param name="compoundDbType" type="select" label="compoundDbType" help="Database type for compound database to be used full database available on request - contact t.n.lawson@bham.ac.uk)." >
                 <option value="sqlite" selected="true">SQLite</option>
-                <option value="local_config"  >Locally configured MySQL or Postgres database</option>
+                <option value="local_config"  >Locally configured MySQL, Postgres or SQLite database</option>
             </param>
             <when value="sqlite">
                <param type="data" name="compoundDbPth" label="SQLite compound database pth" format="sqlite" help=""/>
             </when>
             <when value="local_config">
-              <param type="text" name="compoundDbHost" label="Compound database host" help=""/>
             </when>
             <when value="msPurityData">
             </when>
