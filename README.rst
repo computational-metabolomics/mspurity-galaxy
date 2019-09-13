@@ -59,6 +59,7 @@ Authors, contributors & contacts
 Changes
 -------------------------
 v1.11.4-galaxy0.2.5:
+  - submitted to test toolshed (20190913)
   - Added ppmInterp parameter to purityA
   - Complete update of combineAnnotation tool to use either sqlite, postgres or mysql database
   - Update of spectralMatching tool to use either sqlite, postgres or mysql database

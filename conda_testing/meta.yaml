@@ -7,7 +7,7 @@ package:
   version: '{{ version }}'
 
 source:
-  url: https://github.com/computational-metabolomics/msPurity/archive/8db971368dc24b53d4acf4e6a282e99f4e5f1bfe.zip
+  url: https://github.com/computational-metabolomics/msPurity/archive/ac176862746e339e962c444d9b2a024784ae6ccf.zip
 
 
 build:
