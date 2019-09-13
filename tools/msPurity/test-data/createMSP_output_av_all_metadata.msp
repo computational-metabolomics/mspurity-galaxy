@@ -1,4 +1,4 @@
-RECORD_TITLE:  |  MZ:112.0508 | RT:67.5 | grpid:12 | file:NA
+RECORD_TITLE: MZ:112.0508 | RT:67.5 | grpid:12 | file:NA | adduct:[M+NH4]+
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050766766484
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.47903
 isotope [4][M]+
@@ -10,13 +10,13 @@ CH$LINK: INCHIKEY VACCAVUAMIDAGB-UHFFFAOYSA-N
 CH$LINK: PUBCHEM CID:5328
 CH$NAME Unknown
 XCMS groupid (grpid): 12
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.1 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.4 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100
 126.53768157959	2499.31469726562	0.5
 
-RECORD_TITLE:  |  MZ:112.0508 | RT:67.5 | grpid:12 | file:NA
+RECORD_TITLE: MZ:112.0508 | RT:67.5 | grpid:12 | file:NA | adduct:[M+H+NH3]+
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050766766484
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.47903
 isotope [4][M]+
@@ -28,7 +28,7 @@ CH$LINK: INCHIKEY VACCAVUAMIDAGB-UHFFFAOYSA-N
 CH$LINK: PUBCHEM CID:5328
 CH$NAME Unknown
 XCMS groupid (grpid): 12
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.1 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.4 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100

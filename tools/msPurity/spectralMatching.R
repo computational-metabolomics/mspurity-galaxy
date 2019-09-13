@@ -2,12 +2,17 @@ library(msPurity)
 library(msPurityData)
 library(optparse)
 print(sessionInfo())
-
+# load in library spectra config
+source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
+source_local("dbconfig.R")
 
 option_list <- list(
   make_option(c("-o", "--outDir"), type="character"),
   make_option("--q_dbPth", type="character"),
   make_option("--l_dbPth", type="character"),
+
+  make_option("--q_dbType", type="character", default=NA),
+  make_option("--l_dbType", type="character", default=NA),
 
   make_option("--q_msp", type="character", default=NA),
   make_option("--l_msp", type="character", default=NA),
@@ -98,21 +103,21 @@ extractMultiple <- function(optParam){
 
 if(!is.null(opt$q_defaultDb)){
   q_dbPth <- system.file("extdata", "library_spectra", "library_spectra.db", package="msPurityData")
-}else if (!is.null(opt$q_dbPth)){
+  q_dbType <- 'sqlite'
+}else if (!opt$q_dbType=='local_config'){
+  q_dbType <- opt$q_dbType
   q_dbPth <- opt$q_dbPth
-}else{
-  message('No query database available')
-  exit()
 }
 
 if(!is.null(opt$l_defaultDb)){
   l_dbPth <- system.file("extdata", "library_spectra", "library_spectra.db", package="msPurityData")
-}else if (!is.null(opt$l_dbPth)){
+  l_dbType <- 'sqlite'
+}else if (!opt$l_dbType=='local_config'){
+  l_dbType <- opt$l_dbType
   l_dbPth <- opt$l_dbPth
-}else{
-  message('No library database available')
-  exit()
 }
+
+
 
 
 q_polarity <- extractMultiple(opt$q_polarity)
@@ -190,9 +195,7 @@ if(!is.null(opt$q_rtrangeMin)){
 
 
 
-sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
-                           l_dbPth = l_dbPth,
-
+sm <- msPurity::spectralMatching(
                            q_purity =  opt$q_purity,
                            l_purity =  opt$l_purity,
 
@@ -236,7 +239,24 @@ sm <- msPurity::spectralMatching(q_dbPth = q_dbPth,
 
                            copyDb=copyDb,
                            updateDb=updateDb,
-                           outPth = "db_with_spectral_matching.sqlite"
+                           outPth = "db_with_spectral_matching.sqlite",
+
+                           q_dbPth = q_dbPth,
+                           q_dbType = q_dbType,
+                           q_dbName = q_dbName,
+                           q_dbHost = q_dbHost,
+                           q_dbUser = q_dbUser,
+                           q_dbPass = q_dbPass,
+                           q_dbPort = q_dbPort,
+
+                           l_dbPth = l_dbPth,
+                           l_dbType = l_dbType,
+                           l_dbName = l_dbName,
+                           l_dbHost = l_dbHost,
+                           l_dbUser = l_dbUser,
+                           l_dbPass = l_dbPass,
+                           l_dbPort = l_dbPort
+
                            )
 
 
