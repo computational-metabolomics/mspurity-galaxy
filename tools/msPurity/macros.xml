@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">1.11.4</token>
-    <token name="@GALAXY_TOOL_VERSION@">0.2.5</token>
+    <token name="@GALAXY_TOOL_VERSION@">0.2.6</token>
 
     <xml name="requirements">
         <requirements>
@@ -108,7 +108,7 @@
         <conditional name="@QL_SHRT@_dbPth_con">
             <param name="@QL_SHRT@_dbPth_select" type="select" label="Input" help="@HELP@" >
                 <option value="sqlite" selected="@USER@" >SQLite database of (LC)-MS/MS data</option>
-                <option value="local_config" selected="@USER@" >Locally configured MySQL or Postgres database</option>
+                <option value="local_config" selected="@USER@" >Locally configured SQLite, MySQL or PostgreSQL database</option>
                 <option value="msPurityData"  selected="@MSPURITYDATALIB@" >Prepared database of MassBank, HMDB, LipidBlast and GNPS</option>
             </param>
             <when value="sqlite">
