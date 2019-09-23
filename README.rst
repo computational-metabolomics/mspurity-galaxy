@@ -58,6 +58,13 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.11.4-galaxy0.2.6:
+  - submitted to test toolshed (xx)
+  - Bug fix for createAnnotation database local path
+  - Update of instrument types for spectral matching
+  - Update of split_msp tool to handle different MSP types
+
+
 v1.11.4-galaxy0.2.5:
   - submitted to test toolshed (20190913)
   - Added ppmInterp parameter to purityA
