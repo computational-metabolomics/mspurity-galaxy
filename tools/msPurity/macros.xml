@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">1.11.4</token>
-    <token name="@GALAXY_TOOL_VERSION@">0.2.5</token>
+    <token name="@GALAXY_TOOL_VERSION@">0.2.6</token>
 
     <xml name="requirements">
         <requirements>
@@ -108,7 +108,7 @@
         <conditional name="@QL_SHRT@_dbPth_con">
             <param name="@QL_SHRT@_dbPth_select" type="select" label="Input" help="@HELP@" >
                 <option value="sqlite" selected="@USER@" >SQLite database of (LC)-MS/MS data</option>
-                <option value="local_config" selected="@USER@" >Locally configured MySQL or Postgres database</option>
+                <option value="local_config" selected="@USER@" >Locally configured SQLite, MySQL or PostgreSQL database</option>
                 <option value="msPurityData"  selected="@MSPURITYDATALIB@" >Prepared database of MassBank, HMDB, LipidBlast and GNPS</option>
             </param>
             <when value="sqlite">
@@ -248,36 +248,59 @@
                 <when value="true">
                     <param name="@QL_SHRT@_instrumentTypes" type="select" multiple="true"
                        help="" >
-                        <option value="APCI-ITFT">APCI-ITFT</option>
-                        <option value="CE-ESI-TOF" selected="true">CE-ESI-TOF</option>
+                        <option value="APCI-ITFT" selected="true" >APCI-ITFT</option>
+                        <option value="APCI-ITTOF" selected="true" >APCI-ITTOF</option>
+                        <option value="CE-ESI-TOF" selected="true" >CE-ESI-TOF</option>
                         <option value="CI-B">CI-B</option>
                         <option value="EI-B">EI-B</option>
                         <option value="EI-EBEB">EI-EBEB</option>
-                        <option value="ESI-ITFT" selected="true">ESI-ITFT</option>
-                        <option value="ESI-ITTOF" selected="true">ESI-ITTOF</option>
-                        <option value="ESI-QTOF" selected="true">ESI-QTOF</option>
+                        <option value="ESI-ITFT" selected="true" >ESI-ITFT</option>
+                        <option value="ESI-ITTOF" selected="true" >ESI-ITTOF</option>
+                        <option value="ESI-QFT" selected="true" >ESI-QFT</option>
+                        <option value="ESI-QTOF" selected="true" >ESI-QTOF</option>
+                        <option value="ESI-TOF" selected="true" >ESI-TOF</option>
                         <option value="FAB-B">FAB-B</option>
-                        <option value="FAB-BE-MS">FAB-BE-MS</option>
+                        <option value="FAB-BE">FAB-BE</option>
                         <option value="FAB-EB">FAB-EB</option>
                         <option value="FAB-EBEB">FAB-EBEB</option>
+                        <option value="FAB-EBEB">FD-B</option>
                         <option value="FI-B">FI-B</option>
+                        <option value="Flow-injection QqQ/MS">Flow-injection QqQ/MS</option>
                         <option value="GC-EI-Q">GC-EI-Q</option>
                         <option value="GC-EI-QQ">GC-EI-QQ</option>
                         <option value="GC-EI-TOF">GC-EI-TOF</option>
-                        <option value="LC-APCI-QTOF">LC-APCI-QTOF</option>
+                        <option value="GC-MS">GC-MS</option>
+                        <option value="Hybrid FT">Hybrid FT</option>
+                        <option value="in source CID" selected="true" >in source CID</option>
+                        <option value="In-silico QTOF" selected="true" >In-silico QTOF</option>
+                        <option value="Ion trap" selected="true" >Ion trap</option>
+                        <option value="LC-APCI-ITFT" selected="true" >LC-APCI-ITFT</option>
+                        <option value="LC-APCI-QTOF" selected="true" >LC-APCI-QTOF</option>
+                        <option value="LC-APCI-Q" selected="true">LC-APCI-Q</option>
                         <option value="LC-APPI-QQ">LC-APPI-QQ</option>
                         <option value="LC-ESI-IT" selected="true">LC-ESI-IT</option>
                         <option value="LC-ESI-ITFT" selected="true">LC-ESI-ITFT</option>
                         <option value="LC-ESI-ITTOF" selected="true">LC-ESI-ITTOF</option>
-                        <option value="LC-ESI-Q">LC-ESI-Q</option>
-                        <option value="LC-ESI-QFT" selected="true" >LC-ESI-QFT</option>
+                        <option value="LC-ESI-Q" selected="true">LC-ESI-Q</option>
+                        <option value="LC-ESI-QFT" selected="true">LC-ESI-QFT</option>
                         <option value="LC-ESI-QIT" selected="true">LC-ESI-QIT</option>
                         <option value="LC-ESI-QQ" selected="true">LC-ESI-QQ</option>
                         <option value="LC-ESI-QTOF" selected="true">LC-ESI-QTOF</option>
                         <option value="LC-ESI-TOF" selected="true">LC-ESI-TOF</option>
-                        <option value="MALDI-QIT">MALDI-QIT</option>
-                        <option value="MALDI-TOF">MALDI-TOF</option>
-                        <option value="ALDI-TOFTOF">ALDI-TOFTOF</option>
+                        <option value="LC-Q-TOF/MS" selected="true">LC-Q-TOF/MS</option>
+                        <option value="LC-QTOF" selected="true">LC-QTOF</option>
+                        <option value="Linear Ion Trap" selected="true">Linear Ion Trap</option>
+                        <option value="LIT" selected="true">LIT</option>
+                        <option value="MALDI-QIT" selected="true">MALDI-QIT</option>
+                        <option value="MALDI-TOF" selected="true">MALDI-TOF</option>
+                        <option value="MALDI-TOFTOF" selected="true">MALDI-TOFTOF</option>
+                        <option value="orbitrap" selected="true">orbitrap</option>
+                        <option value="QIT" selected="true">QIT</option>
+                        <option value="QIT-FT" selected="true">QIT-FT</option>
+                        <option value="QIT-TOF" selected="true">QIT-TOF</option>
+                        <option value="QqQ" selected="true">QqQ</option>
+                        <option value="Q-TOF" selected="true">Q-TOF</option>
+                        <option value="Quattro_QQQ" selected="true">Quattro_QQQ</option>
                         <option value="none">None</option>
                   </param>
                   <param name="@QL_SHRT@_instrumentTypesUser" type="text" value=""

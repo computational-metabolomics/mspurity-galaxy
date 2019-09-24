@@ -6,14 +6,14 @@ Warning
 ------
 Proceed with caution these tools are in active development so tools may change! Stable release to Galaxy toolshed coming soon. Currently these tools will only work when the 'tomnl' conda channel is being used with Galaxy.
 
-Version v1.11.4-galaxy0.2.5
+Version v1.11.4+galaxy0.2.6
 ------
 NOTE: bioconductor-mspurity v1.11.4 only available on 'tomnl' conda channel - to be updated to bioconda soon.
 
   - msPurity
      - bioconductor-mspurity v1.11.4
   - Galaxy tools
-     - v0.2.5
+     - v0.2.6
 
 About
 ------
@@ -58,6 +58,13 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.11.4-galaxy0.2.6:
+  - submitted to test toolshed (xx)
+  - Bug fix for createAnnotation database local path
+  - Update of instrument types for spectral matching
+  - Update of split_msp tool to handle different MSP types
+
+
 v1.11.4-galaxy0.2.5:
   - submitted to test toolshed (20190913)
   - Added ppmInterp parameter to purityA

@@ -67,7 +67,7 @@ if (opt$compoundDbType=='local_config'){
   source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
   source_local("dbconfig.R")
 }else{
-  compoundDbType = opt$compoundDbType
+  compoundDbType = compoundDbType
   compoundDbName = NA
   compoundDbHost = NA
   compoundDbPort = NA
@@ -79,7 +79,7 @@ if (opt$compoundDbType=='local_config'){
 
 summary_output <- msPurity::combineAnnotations(
                             sm_resultPth = sm_resultPth,
-                            compoundDbPth = opt$compoundDbPth,
+                            compoundDbPth = compoundDbPth,
                             metfrag_resultPth = opt$metfrag_resultPth,
                             sirius_csi_resultPth = opt$sirius_csi_resultPth,
                             probmetab_resultPth = opt$probmetab_resultPth,

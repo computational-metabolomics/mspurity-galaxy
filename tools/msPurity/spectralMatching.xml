@@ -174,7 +174,7 @@
         <expand macro="sm_input" ql='Query' ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
                 help="Query SQLite database - in the standard XCMS msPurity workflow - the output
                       of msPurity.createDatabase should be used here. However any SQLite database
-                      following the schema of xxx can be used as input"/>
+                      following the schema of as https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
         <expand macro="filters" ql="Query" ql_shrt="q"/>
     </section>
 
@@ -182,7 +182,7 @@
         <expand macro="sm_input" ql='Library' ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
                 help="Library SQLite database - in the standard XCMS msPurity workflow - a default
                       database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite
-                      database following the schema of xxx can be used as input"/>
+                      database following the schema of https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
         <expand macro="filters" ql="Library"  ql_shrt="l"/>
     </section>
 
