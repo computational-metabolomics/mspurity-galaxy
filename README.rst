@@ -59,7 +59,7 @@ Authors, contributors & contacts
 Changes
 -------------------------
 v1.11.4-galaxy0.2.6:
-  - submitted to test toolshed (xx)
+  - submitted to test toolshed (20190924)
   - Bug fix for createAnnotation database local path
   - Update of instrument types for spectral matching
   - Update of split_msp tool to handle different MSP types
