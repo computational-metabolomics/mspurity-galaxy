@@ -103,30 +103,30 @@
 
             #if $Query.q_filters.q_sources_cond.q_sources_bool
               --q_sources=$Query.q_filters.q_sources_cond.q_sources
-              --q_sourcesUser=$Query.q_filters.q_sources_cond.q_sourcesUser
+              --q_sourcesUser="$Query.q_filters.q_sources_cond.q_sourcesUser"
             #end if
 
             #if $Library.l_filters.l_sources_cond.l_sources_bool
               --l_sources=$Library.l_filters.l_sources_cond.l_sources
-              --l_sourcesUser=$Library.l_filters.l_sources_cond.l_sourcesUser
+              --l_sourcesUser="$Library.l_filters.l_sources_cond.l_sourcesUser"
             #end if
 
             #if $Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes_bool
-              --q_instrumentTypes=$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes
-              --q_instrumentTypesUser=$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser
+              --q_instrumentTypes="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes"
+              --q_instrumentTypesUser="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser"
             #end if
 
             #if $Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes_bool
-              --l_instrumentTypes=$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes
-              --l_instrumentTypesUser=$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser
+              --l_instrumentTypes="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes"
+              --l_instrumentTypesUser="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser"
             #end if
 
             #if $Query.q_filters.q_instruments_cond.q_instruments_bool
-              --q_instruments=$Query.q_filters.q_instruments_cond.q_instruments
+              --q_instruments="$Query.q_filters.q_instruments_cond.q_instruments"
             #end if
 
             #if $Library.l_filters.l_instruments_cond.l_instruments_bool
-              --l_instruments=$Library.l_filters.l_instruments_cond.l_instruments
+              --l_instruments="$Library.l_filters.l_instruments_cond.l_instruments"
             #end if
 
             #if $Query.q_filters.q_spectraTypes_cond.q_spectraTypes_bool
@@ -251,6 +251,8 @@
     </outputs>
     <tests>
         <test>
+
+
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
 	    <param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
@@ -263,6 +265,23 @@
             <output name="matches" file="spectralMatching_xcms_matched_results.tsv" />
             <output name="sqlite_results" value="spectralMatching_db_with_spectral_matching.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
+        <test>
+            <param name="l_instrumentTypes_bool" value="true" />
+            <param name="q_dbPth" value="createDatabase_output.sqlite" />
+	    <param name="l_dbPth_select" value="userdb" />
+            <param name="l_dbPth" value="PR100037.sqlite" />
+
+            <param name="q_xcmsGroups_bool" value="true" />
+            <param name="l_accessions_bool" value="true" />
+            <param name="q_xcmsGroups" value="14" />
+            <param name="l_accessions" value="PR100037" />
+
+            <output name="xcms_matches" file="spectralMatching_matched_results_instrumentTypes.tsv" />
+            <output name="matches" file="spectralMatching_xcms_matched_results_instrumentTypes.tsv" />
+            <output name="sqlite_results" value="spectralMatching_db_with_spectral_matching_instrumentTypes.sqlite" ftype="sqlite" compare="sim_size"/>
+        </test>
+
+
     </tests>
 
 
