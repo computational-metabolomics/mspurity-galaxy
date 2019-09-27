@@ -58,6 +58,10 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.11.4-galaxy0.2.7
+  - submitted to test toolshed (20190927)
+  - Bug fix for spectralMatching choice of instrument types
+
 v1.11.4-galaxy0.2.6:
   - submitted to test toolshed (20190924)
   - Bug fix for createAnnotation database local path
