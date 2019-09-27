@@ -51,7 +51,7 @@ Galaxy
 Authors, contributors & contacts
 -------------------------
 
-- Thomas N. Lawson (tnl495@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
+- Thomas N. Lawson (t.n.lawson@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Jordi Capellades (j.capellades.to@gmail.com) - `Universitat Rovira i Virgili (SP)  <http://www.urv.cat/en/>`_
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
@@ -118,7 +118,7 @@ Released under the GNU General Public License v3.0 (see `LICENSE file <https://g
    :target: https://github.com/computational-metabolomics/mspurity-galaxy
 
 .. |Bioconda| image:: https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat&maxAge=3600
-   :target: http://bioconda.github.io/recipes/mspurity/README.html
+   :target: http://bioconda.github.io/recipes/bioconductor-mspurity/README.html
 
 .. |License| image:: https://img.shields.io/badge/License-GPL%20v3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0.html
