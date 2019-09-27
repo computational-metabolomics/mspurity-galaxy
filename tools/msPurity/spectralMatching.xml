@@ -251,6 +251,8 @@
     </outputs>
     <tests>
         <test>
+
+
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
 	    <param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
@@ -263,6 +265,23 @@
             <output name="matches" file="spectralMatching_xcms_matched_results.tsv" />
             <output name="sqlite_results" value="spectralMatching_db_with_spectral_matching.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
+        <test>
+            <param name="l_instrumentTypes_bool" value="true" />
+            <param name="q_dbPth" value="createDatabase_output.sqlite" />
+	    <param name="l_dbPth_select" value="userdb" />
+            <param name="l_dbPth" value="PR100037.sqlite" />
+
+            <param name="q_xcmsGroups_bool" value="true" />
+            <param name="l_accessions_bool" value="true" />
+            <param name="q_xcmsGroups" value="14" />
+            <param name="l_accessions" value="PR100037" />
+
+            <output name="xcms_matches" file="spectralMatching_matched_results_instrumentTypes.tsv" />
+            <output name="matches" file="spectralMatching_xcms_matched_results_instrumentTypes.tsv" />
+            <output name="sqlite_results" value="spectralMatching_db_with_spectral_matching_instrumentTypes.sqlite" ftype="sqlite" compare="sim_size"/>
+        </test>
+
+
     </tests>
 
 
