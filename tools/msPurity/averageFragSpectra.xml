@@ -1,23 +1,22 @@
-<tool id="mspurity_averagefragspectra" name="msPurity.averageFragSpectra" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
+<tool id="mspurity_averagefragspectra" name="Average fragmentation spectra with msPurity" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
     <description>
-        Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
+        - average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
     </description>
 
     <macros>
         <import>macros.xml</import>
     </macros>
 
-    <expand macro="requirements">
-    </expand>
+    <expand macro="requirements"/>
 
  <stdio>
         <exit_code range="1:" />
     </stdio>
     <command interpreter="Rscript"><![CDATA[
         averageFragSpectra.R
-            --out_rdata="$averageFragSpectra_output_rdata"
-            --out_peaklist="$averageFragSpectra_output_tsv"
-            --pa="$pa"
+            --out_rdata=$averageFragSpectra_output_rdata
+            --out_peaklist=$averageFragSpectra_output_tsv
+            --pa='$pa'
             --av_level=$av_level
             --cores=\${GALAXY_SLOTS:-4}
             --minfrac=$minfrac

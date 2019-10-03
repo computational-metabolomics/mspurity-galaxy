@@ -92,8 +92,8 @@
             </when>
             <when value="local_config">
             </when>
-            <when value="msPurityData">
-            </when>
+            <!-- <when value="msPurityData">
+            </when> -->
         </conditional>
 
     </inputs>
