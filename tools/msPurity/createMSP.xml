@@ -5,31 +5,28 @@
     </macros>
     <expand macro="requirements">
     </expand>
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript" ><![CDATA[
-    createMSP.R
-    --rdata_input "$rdata_input"
+    <command detect_errors="exit_code"><![CDATA[
+    Rscript '$__tool_directory__/createMSP.R'
+    --rdata_input "'rdata_input'
     --method "$method"
 
     #if $metadata_cond.metadata_select == "true"
-        --metadata "$metadata_cond.metadata"
-        --metadata_cols "$metadata_cond.metadata_cols"
-        --metadata_cols_filter "$metadata_cond.metadata_cols_filter"
+        --metadata '$metadata_cond.metadata'
+        --metadata_cols '$metadata_cond.metadata_cols'
+        --metadata_cols_filter '$metadata_cond.metadata_cols_filter'
 
     #end if
 
     #if $xcms_group_cond.xcms_group_select == "true"
-        --xcms_groupids "$xcms_group_cond.xcms_groupids"
+        --xcms_groupids '$xcms_group_cond.xcms_groupids'
     #end if
 
     $filter
     $adduct_split
 
-    --msp_schema "$msp_schema"
-    --intensity_ra "$intensity_ra"
-    --include_adducts "$include_adducts"
+    --msp_schema $msp_schema
+    --intensity_ra $intensity_ra
+    --include_adducts $include_adducts
 
     --out_dir '.'
     ]]></command>

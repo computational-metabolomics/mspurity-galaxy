@@ -1,7 +1,5 @@
 <tool id="mspurity_combineannotations" name="msPurity.combineAnnotations" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
-    <description>
-        Combine, score and rank metabolite annotation results
-    </description>
+    <description>Combine, score and rank metabolite annotation results</description>
 
     <macros>
         <import>macros.xml</import>
@@ -10,23 +8,20 @@
     <expand macro="requirements">
     </expand>
 
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        combineAnnotations.R
-            --sm_resultPth="$sm_resultPth"
-            --metfrag_resultPth="$metfrag_resultPth"
-            --sirius_csi_resultPth="$sirius_csi_resultPth"
-            --probmetab_resultPth="$probmetab_resultPth"
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/combineAnnotations.R'
+            --sm_resultPth='$sm_resultPth'
+            --metfrag_resultPth='$metfrag_resultPth'
+            --sirius_csi_resultPth='$sirius_csi_resultPth'
+            --probmetab_resultPth='$probmetab_resultPth'
 
-            --ms1_lookup_resultPth=$ms1_lookup_resultPth
+            --ms1_lookup_resultPth='$ms1_lookup_resultPth'
 
             #if $ms1_lookup_checkAdducts:
               --ms1_lookup_checkAdducts
             #end if
 
-            --ms1_lookup_keepAdducts="$ms1_lookup_keepAdducts"
+            --ms1_lookup_keepAdducts='$ms1_lookup_keepAdducts'
             --ms1_lookup_dbSource=$ms1_lookup_dbSource
 
             --sm_weight=$sm_weight
@@ -92,8 +87,6 @@
             </when>
             <when value="local_config">
             </when>
-            <!-- <when value="msPurityData">
-            </when> -->
         </conditional>
 
     </inputs>

@@ -7,234 +7,212 @@
         <import>macros.xml</import>
     </macros>
 
-    <expand macro="requirements">
-    </expand>
+    <expand macro="requirements"/>
 
-
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        spectralMatching.R
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/spectralMatching.R'
             --outDir=.
             --cores=\${GALAXY_SLOTS:-4}
 
             #if $Query.q_dbPth_con.q_dbPth_select == 'msPurityData'
               --q_defaultDb
             #else if $Query.q_dbPth_con.q_dbPth_select == 'sqlite'
-              --q_dbPth=$Query.q_dbPth_con.q_dbPth
+              --q_dbPth='$Query.q_dbPth_con.q_dbPth'
             #end if
 
             #if $Library.l_dbPth_con.l_dbPth_select == 'msPurityData'
               --l_defaultDb
             #else if $Library.l_dbPth_con.l_dbPth_select == 'userdb_sqlite'
-              --l_dbPth=$Library.l_dbPth_con.l_dbPth
+              --l_dbPth='$Library.l_dbPth_con.l_dbPth'
             #end if
 
-            --l_dbType=$Library.l_dbPth_con.l_dbPth_select
-            --q_dbType=$Query.q_dbPth_con.q_dbPth_select
+            --l_dbType='$Library.l_dbPth_con.l_dbPth_select'
+            --q_dbType='$Query.q_dbPth_con.q_dbPth_select'
 
 
-            --q_ppmPrec=$Query.q_filters.q_ppmPrec
-            --l_ppmPrec=$Library.l_filters.l_ppmPrec
+            --q_ppmPrec='$Query.q_filters.q_ppmPrec'
+            --l_ppmPrec='$Library.l_filters.l_ppmPrec'
 
-            --q_ppmProd=$Query.q_filters.q_ppmProd
-            --l_ppmProd=$Library.l_filters.l_ppmProd
+            --q_ppmProd='$Query.q_filters.q_ppmProd'
+            --l_ppmProd='$Library.l_filters.l_ppmProd'
 
 
-            #if $Query.q_filters.q_raThres_cond.q_raThres_bool
-              --q_raThres=$Query.q_filters.q_raThres_cond.q_raThres
+            #if '$Query.q_filters.q_raThres_cond.q_raThres_bool'
+              --q_raThres='$Query.q_filters.q_raThres_cond.q_raThres'
             #end if
 
-            #if $Library.l_filters.l_raThres_cond.l_raThres_bool
-              --l_raThres=$Library.l_filters.l_raThres_cond.l_raThres
+            #if '$Library.l_filters.l_raThres_cond.l_raThres_bool'
+              --l_raThres='$Library.l_filters.l_raThres_cond.l_raThres'
             #end if
 
-            #if $Query.q_filters.q_polarity_cond.q_polarity_bool
-              --q_polarity=$Query.q_filters.q_polarity_cond.q_polarity
+            #if '$Query.q_filters.q_polarity_cond.q_polarity_bool'
+              --q_polarity='$Query.q_filters.q_polarity_cond.q_polarity'
             #end if
 
-            #if $Library.l_filters.l_polarity_cond.l_polarity_bool
-              --l_polarity=$Library.l_filters.l_polarity_cond.l_polarity
+            #if '$Library.l_filters.l_polarity_cond.l_polarity_bool'
+              --l_polarity='$Library.l_filters.l_polarity_cond.l_polarity'
             #end if
 
-            #if $Query.q_filters.q_purity_cond.q_purity_bool
-              --q_purity=$Query.q_filters.q_purity_cond.q_purity
+            #if '$Query.q_filters.q_purity_cond.q_purity_bool'
+              --q_purity='$Query.q_filters.q_purity_cond.q_purity'
             #end if
 
-            #if $Library.l_filters.l_purity_cond.l_purity_bool
-              --l_purity=$Library.l_filters.l_purity_cond.l_purity
+            #if '$Library.l_filters.l_purity_cond.l_purity_bool'
+              --l_purity='$Library.l_filters.l_purity_cond.l_purity'
             #end if
 
-            #if $Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups_bool
-              --q_xcmsGroups=$Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups
+            #if '$Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups_bool'
+              --q_xcmsGroups='$Query.q_filters.q_xcmsGroups_cond.q_xcmsGroups'
             #end if
 
-            #if $Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups_bool
-              --l_xcmsGroups=$Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups
+            #if '$Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups_bool'
+              --l_xcmsGroups='$Library.l_filters.l_xcmsGroups_cond.l_xcmsGroups'
             #end if
 
-            #if $Query.q_filters.q_pids_cond.q_pids_bool
-              --q_pids=$Query.q_filters.q_pids_cond.q_pids
+            #if '$Query.q_filters.q_pids_cond.q_pids_bool'
+              --q_pids='$Query.q_filters.q_pids_cond.q_pids'
             #end if
 
-            #if $Library.l_filters.l_pids_cond.l_pids_bool
-              --l_pids=$Library.l_filters.l_pids_cond.l_pids
+            #if '$Library.l_filters.l_pids_cond.l_pids_bool'
+              --l_pids='$Library.l_filters.l_pids_cond.l_pids'
             #end if
 
-            #if $Query.q_filters.q_rtrange_cond.q_rtrange_bool
-              --q_rtrangeMin=$Query.q_filters.q_rtrange_cond.q_rtrangeMin
-              --q_rtrangeMax=$Query.q_filters.q_rtrange_cond.q_rtrangeMax
+            #if '$Query.q_filters.q_rtrange_cond.q_rtrange_bool'
+              --q_rtrangeMin='$Query.q_filters.q_rtrange_cond.q_rtrangeMin'
+              --q_rtrangeMax='$Query.q_filters.q_rtrange_cond.q_rtrangeMax'
             #end if
 
-            #if $Library.l_filters.l_rtrange_cond.l_rtrange_bool
-              --l_rtrangeMin=$Library.l_filters.l_rtrange_cond.l_rtrangeMin
-              --l_rtrangeMax=$Library.l_filters.l_rtrange_cond.l_rtrangeMax
+            #if '$Library.l_filters.l_rtrange_cond.l_rtrange_bool'
+              --l_rtrangeMin='$Library.l_filters.l_rtrange_cond.l_rtrangeMin'
+              --l_rtrangeMax='$Library.l_filters.l_rtrange_cond.l_rtrangeMax'
             #end if
 
-            #if $Query.q_filters.q_accessions_cond.q_accessions_bool
-              --q_accessions=$Query.q_filters.q_accessions_cond.q_accessions
+            #if '$Query.q_filters.q_accessions_cond.q_accessions_bool'
+              --q_accessions='$Query.q_filters.q_accessions_cond.q_accessions'
             #end if
 
-            #if $Library.l_filters.l_accessions_cond.l_accessions_bool
-              --l_accessions=$Library.l_filters.l_accessions_cond.l_accessions
+            #if '$Library.l_filters.l_accessions_cond.l_accessions_bool'
+              --l_accessions='$Library.l_filters.l_accessions_cond.l_accessions'
             #end if
 
 
-            #if $Query.q_filters.q_sources_cond.q_sources_bool
-              --q_sources=$Query.q_filters.q_sources_cond.q_sources
-              --q_sourcesUser="$Query.q_filters.q_sources_cond.q_sourcesUser"
+            #if '$Query.q_filters.q_sources_cond.q_sources_bool'
+              --q_sources='$Query.q_filters.q_sources_cond.q_sources'
+              --q_sourcesUser='$Query.q_filters.q_sources_cond.q_sourcesUser'
             #end if
 
-            #if $Library.l_filters.l_sources_cond.l_sources_bool
-              --l_sources=$Library.l_filters.l_sources_cond.l_sources
-              --l_sourcesUser="$Library.l_filters.l_sources_cond.l_sourcesUser"
+            #if '$Library.l_filters.l_sources_cond.l_sources_bool'
+              --l_sources='$Library.l_filters.l_sources_cond.l_sources'
+              --l_sourcesUser='$Library.l_filters.l_sources_cond.l_sourcesUser'
             #end if
 
-            #if $Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes_bool
-              --q_instrumentTypes="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes"
-              --q_instrumentTypesUser="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser"
+            #if '$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes_bool'
+              --q_instrumentTypes='$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes'
+              --q_instrumentTypesUser='$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser'
             #end if
 
-            #if $Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes_bool
-              --l_instrumentTypes="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes"
-              --l_instrumentTypesUser="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser"
+            #if '$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes_bool'
+              --l_instrumentTypes='$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes'
+              --l_instrumentTypesUser='$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser'
             #end if
 
-            #if $Query.q_filters.q_instruments_cond.q_instruments_bool
-              --q_instruments="$Query.q_filters.q_instruments_cond.q_instruments"
+            #if '$Query.q_filters.q_instruments_cond.q_instruments_bool'
+              --q_instruments='$Query.q_filters.q_instruments_cond.q_instruments'
             #end if
 
-            #if $Library.l_filters.l_instruments_cond.l_instruments_bool
-              --l_instruments="$Library.l_filters.l_instruments_cond.l_instruments"
+            #if '$Library.l_filters.l_instruments_cond.l_instruments_bool'
+              --l_instruments='$Library.l_filters.l_instruments_cond.l_instruments'
             #end if
 
-            #if $Query.q_filters.q_spectraTypes_cond.q_spectraTypes_bool
-              --q_spectraTypes=$Query.q_filters.q_spectraTypes_cond.q_spectraTypes
+            #if '$Query.q_filters.q_spectraTypes_cond.q_spectraTypes_bool'
+              --q_spectraTypes='$Query.q_filters.q_spectraTypes_cond.q_spectraTypes'
             #end if
 
-            #if $Library.l_filters.l_spectraTypes_cond.l_spectraTypes_bool
-              --l_spectraTypes=$Library.l_filters.l_spectraTypes_cond.l_spectraTypes
+            #if '$Library.l_filters.l_spectraTypes_cond.l_spectraTypes_bool'
+              --l_spectraTypes='$Library.l_filters.l_spectraTypes_cond.l_spectraTypes'
             #end if
 
-            #if $Query.q_filters.q_spectraFilter
+            #if '$Query.q_filters.q_spectraFilter'
               --q_spectraFilter
             #end if
 
-            #if $Library.l_filters.l_spectraFilter
+            #if '$Library.l_filters.l_spectraFilter'
               --l_spectraFilter
             #end if
 
-            #if $General.rttol_cond.rttol_bool
-              --rttol=$General.rttol_cond.rttol
+            #if '$General.rttol_cond.rttol_bool'
+              --rttol='$General.rttol_cond.rttol'
             #end if
 
             --raW=$General.raW
             --mzW=$General.mzW
 
-            #if $General.updateDb_cond.updateDb
+            #if '$General.updateDb_cond.updateDb'
               --updateDb
-              #if $General.updateDb_cond.copyDb
+              #if '$General.updateDb_cond.copyDb'
                  --copyDb
               #end if
             #end if
 
-            #if $General.usePrecursors
+            #if '$General.usePrecursors'
                  --usePrecursors
             #end if
-
-
 
     ]]></command>
     <inputs>
 
+      <section name="Query" title="Query spectra input and filters" expanded="True">
+          <expand macro="sm_input" ql='Query' ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
+                  help="Query SQLite database - in the standard XCMS msPurity workflow - the output
+                        of msPurity.createDatabase should be used here. However any SQLite database
+                        following the schema of as https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
+          <expand macro="filters" ql="Query" ql_shrt="q"/>
+      </section>
 
+      <section name="Library" title="Library spectra input and filters" expanded="True">
+          <expand macro="sm_input" ql='Library' ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
+                  help="Library SQLite database - in the standard XCMS msPurity workflow - a default
+                        database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite
+                        database following the schema of https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
+          <expand macro="filters" ql="Library"  ql_shrt="l"/>
+      </section>
 
-    <section name="Query" title="Query spectra input and filters" expanded="True">
-        <expand macro="sm_input" ql='Query' ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
-                help="Query SQLite database - in the standard XCMS msPurity workflow - the output
-                      of msPurity.createDatabase should be used here. However any SQLite database
-                      following the schema of as https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
-        <expand macro="filters" ql="Query" ql_shrt="q"/>
-    </section>
-
-    <section name="Library" title="Library spectra input and filters" expanded="True">
-        <expand macro="sm_input" ql='Library' ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
-                help="Library SQLite database - in the standard XCMS msPurity workflow - a default
-                      database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite
-                      database following the schema of https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
-        <expand macro="filters" ql="Library"  ql_shrt="l"/>
-    </section>
-
-    <section name="General" title="General arguments" expanded="False">
+      <section name="General" title="General arguments" expanded="False">
         <conditional name="rttol_cond">
                 <param name="rttol_bool" type="boolean" label="Filter on retention time match?"
-                       help="" />
+                      help="" />
                 <when value="true">
                     <param name="rttol" type="float" value="30" min="0"
-                           label="Retention time tolerance (seconds)"
-                           help="Retention time tolerance in seconds to match precursors"/>
+                          label="Retention time tolerance (seconds)"
+                          help="Retention time tolerance in seconds to match precursors"/>
                 </when>
                 <when value="false">
                 </when>
         </conditional>
-
-
         <param name="usePrecursors" type="boolean" checked="true" label="Filter on matching precursors?"
-                  help="If True, spectra will be filtered by similarity of precursors based on
-                        the library and query ppm defined tolerance" />
-
+                    help="If True, spectra will be filtered by similarity of precursors based on
+                          the library and query ppm defined tolerance" />
         <param name="raW" label="Weighting for relative abundance"
-               type="float" value="0.5"
-               help="Relative abundance weight for spectra (default to 0.5 as determined by
-                     massbank for ESI data)"/>
-
+                type="float" value="0.5"
+                help="Relative abundance weight for spectra (default to 0.5 as determined by
+                      massbank for ESI data)"/>
         <param name="mzW" label="Weighting for mz"
-               type="float" value="2"
-               help="mz weight for spectra (default to 2 as determined by massbank for ESI data)"/>
-
+                type="float" min="0" value="2"
+                help="mz weight for spectra (default to 2 as determined by massbank for ESI data)"/>
         <conditional name="updateDb_cond">
-                <param name="updateDb" type="boolean" checked="true"
-                       label="Update database with results?" help="" />
-                <when value="true">
-                    <param name="copyDb" type="boolean" checked="true"
-                           label="Make a copy of the database?"
-                           help="A copy will be made of the input SQLite target database and the
-                                 results will be added to this copy.  When False, the input SQLite
-                                 database will be updated  with the matching results. Use False if
-                                 you want to reduce storage space being used."/>
-                </when>
-                <when value="false">
-                </when>
-        </conditional>
-
-
-
+                  <param name="updateDb" type="boolean" checked="true"
+                        label="Update database with results?" help="" />
+                  <when value="true">
+                      <param name="copyDb" type="boolean" checked="true"
+                            label="Make a copy of the database?"
+                            help="A copy will be made of the input SQLite target database and the
+                                  results will be added to this copy.  When False, the input SQLite
+                                  database will be updated  with the matching results. Use False if
+                                  you want to reduce storage space being used."/>
+                  </when>
+                  <when value="false"/>
+          </conditional>
         </section>
-
-
-
-
     </inputs>
 
     <outputs>

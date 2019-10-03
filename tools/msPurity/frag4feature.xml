@@ -7,25 +7,21 @@
         <import>macros.xml</import>
     </macros>
 
-    <expand macro="requirements">
-    </expand>
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        frag4feature.R
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/frag4feature.R'
             --out_dir=.
-            --xset=$xset
-            --pa=$pa
+            --xset='$xset'
+            --pa='$pa'
             --cores=\${GALAXY_SLOTS:-4}
             #if $file_load_conditional.file_load_select=="yes"
                 --mzML_files='
-                #for $i in $file_load_conditional.input
+                #for $i in '$file_load_conditional.input'
                     $i,
                 #end for
                 '
                 --galaxy_names='
-                #for $i in $file_load_conditional.input
+                #for $i in '$file_load_conditional.input'
                     $i.name,
                 #end for
                 '
