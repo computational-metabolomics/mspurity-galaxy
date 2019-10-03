@@ -35,7 +35,7 @@
             #end if
             #if $file_load_conditional.file_load_select == 'yes'
                 --galaxy_files='
-                #for $i in '$file_load_conditional.input'
+                #for $i in $file_load_conditional.input
                     $i,
                 #end for
                 '

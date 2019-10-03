@@ -11,12 +11,12 @@
             --out_dir=.
             #if $mzML_data.format == "mzML_files"
                 --mzML_files='
-                #for $i in '$mzML_data.source'
+                #for $i in $mzML_data.source
                     $i,
                 #end for
                 '
                 --galaxy_names='
-                #for $i in '$mzML_data.source'
+                #for $i in $mzML_data.source
                     $i.name,
                 #end for
                 '

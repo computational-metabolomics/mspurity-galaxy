@@ -7,7 +7,7 @@
     </expand>
     <command detect_errors="exit_code"><![CDATA[
     Rscript '$__tool_directory__/createMSP.R'
-    --rdata_input "'rdata_input'
+    --rdata_input '$rdata_input'
     --method "$method"
 
     #if $metadata_cond.metadata_select == "true"

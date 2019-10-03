@@ -16,12 +16,12 @@
             --cores=\${GALAXY_SLOTS:-4}
             #if $file_load_conditional.file_load_select=="yes"
                 --mzML_files='
-                #for $i in '$file_load_conditional.input'
+                #for $i in $file_load_conditional.input
                     $i,
                 #end for
                 '
                 --galaxy_names='
-                #for $i in '$file_load_conditional.input'
+                #for $i in $file_load_conditional.input
                     $i.name,
                 #end for
                 '
