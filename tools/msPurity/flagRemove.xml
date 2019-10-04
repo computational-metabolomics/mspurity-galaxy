@@ -2,13 +2,10 @@
     <description>Tool to flag and remove XCMS grouped peaks from the xcmsSet object based on various thresholds
         (e.g. RSD of intensity and retention time).
     </description>
-
     <macros>
         <import>macros.xml</import>
     </macros>
-
     <expand macro="requirements" />
-
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/flagRemove.R'
                 --xset_path='$xset_path'

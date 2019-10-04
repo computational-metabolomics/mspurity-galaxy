@@ -67,7 +67,8 @@ if (opt$compoundDbType=='local_config'){
   source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
   source_local("dbconfig.R")
 }else{
-  compoundDbType = compoundDbType
+  compoundDbPth = opt$compoundDbPth
+  compoundDbType = opt$compoundDbType
   compoundDbName = NA
   compoundDbHost = NA
   compoundDbPort = NA

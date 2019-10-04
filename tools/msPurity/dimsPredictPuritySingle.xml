@@ -4,7 +4,6 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/dimsPredictPuritySingle.R'
             #if $mzML_data.format == "mzML_file"
