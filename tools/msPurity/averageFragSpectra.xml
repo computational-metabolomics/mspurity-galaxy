@@ -2,18 +2,11 @@
     <description>
         Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
     </description>
-
     <macros>
         <import>macros.xml</import>
     </macros>
-
-    <expand macro="requirements">
-    </expand>
-
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
+    <expand macro="requirements" />
+    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         averageFragSpectra.R
             --out_rdata="$averageFragSpectra_output_rdata"
             --out_peaklist="$averageFragSpectra_output_tsv"

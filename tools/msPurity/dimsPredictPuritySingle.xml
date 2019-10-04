@@ -5,11 +5,7 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
+    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         dimsPredictPuritySingle.R
             #if $mzML_data.format == "mzML_file"
                 --mzML_file $mzML_data.source

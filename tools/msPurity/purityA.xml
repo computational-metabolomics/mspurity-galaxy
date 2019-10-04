@@ -6,10 +6,7 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
+    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         purityA.R
             --out_dir=.
             #if $mzML_data.format == "mzML_files"

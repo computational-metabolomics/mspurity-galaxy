@@ -2,18 +2,11 @@
     <description>
         Combine, score and rank metabolite annotation results
     </description>
-
     <macros>
         <import>macros.xml</import>
     </macros>
-
-    <expand macro="requirements">
-    </expand>
-
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
+    <expand macro="requirements" />
+    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         combineAnnotations.R
             --sm_resultPth="$sm_resultPth"
             --metfrag_resultPth="$metfrag_resultPth"

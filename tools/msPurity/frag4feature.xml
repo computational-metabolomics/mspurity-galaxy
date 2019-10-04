@@ -2,17 +2,11 @@
     <description>
         Assign fragmentation spectra to XCMS features using msPurity
     </description>
-
     <macros>
         <import>macros.xml</import>
     </macros>
-
-    <expand macro="requirements">
-    </expand>
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
+    <expand macro="requirements" />
+    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         frag4feature.R
             --out_dir=.
             --xset=$xset
