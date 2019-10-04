@@ -5,9 +5,9 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
-        purityX.R
-            --xset_path=$xset
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/purityX.R'
+            --xset_path='$xset'
             --out_dir=.
             --minOffset=$minoffset
             --maxOffset=$maxoffset
@@ -15,7 +15,7 @@
             --purityType=$purityType
             --cores=\${GALAXY_SLOTS:-4}
             #if $xgroups.xgroups == "choose"
-                --xgroups=$xgroups.xgroups_value
+                --xgroups='$xgroups.xgroups_value'
             #end if
             --camera_xcms=$camera_xcms
             #if $camera_xcms == "camera"
@@ -29,7 +29,7 @@
                 --exclude_isotopes
             #elif $isotopes.isotopes == "user"
                 --exclude_isotopes
-                --isotope_matrix=$isotopes.im
+                --isotope_matrix='$isotopes.im'
             #end if
             #if $file_load_conditional.file_load_select == 'yes'
                 --galaxy_files='
@@ -77,9 +77,9 @@
             <when value="all">
             </when>
             <when value="choose">
-                                <param name="class" type="text" label="Choose class"
-               help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
-                i.e. xset@phenoData). An average will across all the choosen classes." />
+                <param name="class" type="text" label="Choose class"
+                    help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
+                    i.e. xset@phenoData). An average will across all the choosen classes." />
             </when>
         </conditional>
 
@@ -102,12 +102,11 @@
                 <option value="choose">Choose XCMS grouped features to calculate precursor ion purity</option>
                 <option value="all" selected="true">Calculate precursor ion purity for all XCMS grouped features</option>
             </param>
-            <when value="all">
-            </when>
             <when value="choose">
-                                <param name="xgroups_value" type="text" label="xgroup ids"
-               help="Comma separated string of xcms groups to perform prediction on eg. 1,2,3,4"  />
+                <param name="xgroups_value" type="text" label="xgroup ids"
+                    help="Comma separated string of xcms groups to perform prediction on eg. 1,2,3,4"  />
             </when>
+            <when value="all"/>
         </conditional>
 
 

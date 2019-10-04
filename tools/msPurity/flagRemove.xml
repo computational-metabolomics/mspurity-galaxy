@@ -6,41 +6,41 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
-        flagRemove.R
-                --xset_path=$xset_path
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/flagRemove.R'
+                --xset_path='$xset_path'
                 --out_dir=.
 
                 #if $sample_flag.sample_flag=='update'
-                    --rsd_i_sample=$sample_flag.rsd_i_sample
-                    --minfrac_sample=$sample_flag.minfrac_sample
-                    --ithres_sample=$sample_flag.ithres_sample
+                    --rsd_i_sample='$sample_flag.rsd_i_sample'
+                    --minfrac_sample='$sample_flag.minfrac_sample'
+                    --ithres_sample='$sample_flag.ithres_sample'
                 #end if
 
                 #if $blank_flag.blank_flag=='update'
-                    --rsd_i_blank=$blank_flag.rsd_i_blank
-                    --minfrac_blank=$blank_flag.minfrac_blank
-                    --ithres_blank=$blank_flag.ithres_blank
-                    --blank_class=$blank_flag.blank_class
+                    --rsd_i_blank='$blank_flag.rsd_i_blank'
+                    --minfrac_blank='$blank_flag.minfrac_blank'
+                    --ithres_blank='$blank_flag.ithres_blank'
+                    --blank_class='$blank_flag.blank_class'
                 #end if
 
                 #if $peak_removal.peak_removal=='remove'
                     --remove_spectra
-                    --minfrac_xcms=$peak_removal.minfrac_xcms
-                    --mzwid=$peak_removal.mzwid
-                    --bw=$peak_removal.bw
+                    --minfrac_xcms='$peak_removal.minfrac_xcms'
+                    --mzwid='$peak_removal.mzwid'
+                    --bw='$peak_removal.bw'
                 #end if
 
                 #if $advanced.advanced=='update'
-                    --egauss_thr=$advanced.egauss_thr
-                    --polarity=$advanced.polarity
-                    --grp_rm_ids=$advanced.grp_rm_ids
-                    --xset_name=$advanced.xset_name
-                    $advanced.temp_save.value
+                    --egauss_thr='$advanced.egauss_thr'
+                    --polarity='$advanced.polarity'
+                    --grp_rm_ids='$advanced.grp_rm_ids'
+                    --xset_name='$advanced.xset_name'
+                    '$advanced.temp_save.value'
 
                 #end if
                 #if $choose_samp.choose_samp=='yes'
-                        --samplelist=$choose_samp.samplelist
+                        --samplelist='$choose_samp.samplelist'
                 #end if
     ]]></command>
     <inputs>

@@ -1,18 +1,17 @@
 <tool id="mspurity_dimspredictpuritysingle" name="msPurity.dimsPredictPuritySingle" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
-    <description>Calculate the anticipated precursor ion purity from a DIMS dataset.
-    </description>
+    <description>Calculate the anticipated precursor ion purity from a DIMS dataset.</description>
     <macros>
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
-        dimsPredictPuritySingle.R
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/dimsPredictPuritySingle.R'
             #if $mzML_data.format == "mzML_file"
-                --mzML_file $mzML_data.source
+                --mzML_file '$mzML_data.source'
             #elif $mzML_data.format == "library"
-                --mzML_file $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
+                --mzML_file '$__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source'
             #end if
-            --peaks_file=$peaks_file
+            --peaks_file='$peaks_file'
             --out_dir=.
             --minOffset=$minoffset
             --maxOffset=$maxoffset
@@ -67,7 +66,7 @@
         <expand macro="general_params" />
 
 
-        <param name="ppm" type="float" label="ppm" value="10"
+        <param name="ppm" type="float" label="ppm" min="0" value="10"
                     help="ppm tolerance to compare between mz values"/>
 
         <param name="minoffset" type="float" label="minoffset" value="0.5"
@@ -86,7 +85,7 @@
             <when value="no_dimspy">
             </when>
             <when value="dimspy">
-                <param name="file_num" type="integer" label="File number" value="1"
+                <param name="file_num" type="integer" label="File number" min="0" value="1"
                     help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
                           purity metric (order based on column order). This file will then be looked for in the
                           library folder to calculate the metric.

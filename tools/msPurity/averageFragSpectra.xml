@@ -1,16 +1,14 @@
 <tool id="mspurity_averagefragspectra" name="msPurity.averageFragSpectra" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
-    <description>
-        Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
-    </description>
+    <description>Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)</description>
     <macros>
         <import>macros.xml</import>
     </macros>
-    <expand macro="requirements" />
-    <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
-        averageFragSpectra.R
-            --out_rdata="$averageFragSpectra_output_rdata"
-            --out_peaklist="$averageFragSpectra_output_tsv"
-            --pa="$pa"
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/averageFragSpectra.R'
+            --out_rdata=$averageFragSpectra_output_rdata
+            --out_peaklist=$averageFragSpectra_output_tsv
+            --pa='$pa'
             --av_level=$av_level
             --cores=\${GALAXY_SLOTS:-4}
             --minfrac=$minfrac
@@ -34,11 +32,11 @@
         </param>
 
 
-        <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
+        <param name="snr" type="float" min="0.0" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
         <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
         <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
-        <param name="minnum" type="integer" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
-        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
+        <param name="minnum" type="integer" min="1" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
+        <param name="ppm" type="float" min="0.0" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
         <param name="sumi" type="boolean" checked="false" truevalue="--sumi" falsevalue="" label="Sum intensities across (averaged) scans?"   help="" />
         <param name="av" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
             <option value="median" selected="true">median</option>
