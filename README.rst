@@ -55,7 +55,7 @@ Authors, contributors & contacts
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Jordi Capellades (j.capellades.to@gmail.com) - `Universitat Rovira i Virgili (SP)  <http://www.urv.cat/en/>`_
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
-- Simon Bray (sbray1371@gmail.com) - `University of Freiburg (Germany) <https://www.uni-freiburg.de/>`_
+- Simon Bray (sbray@informatik.uni-freiburg.de) - `University of Freiburg (Germany) <https://www.uni-freiburg.de/>`_
 
 Changes
 -------------------------
