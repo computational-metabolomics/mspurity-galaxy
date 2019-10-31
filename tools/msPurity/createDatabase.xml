@@ -3,9 +3,7 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-    <expand macro="requirements">
-	      <requirement type="package" >libgfortran</requirement>
-    </expand>
+    <expand macro="requirements" />
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/createDatabase.R'
             --outDir=.
@@ -48,7 +46,7 @@
                      the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>
         <expand macro="grp_peaklist" />
-          <expand macro="fileload" />
+        <expand macro="fileload" />
     </inputs>
     <outputs>
         <data name="createDatabase_output_sqlite" format="sqlite"

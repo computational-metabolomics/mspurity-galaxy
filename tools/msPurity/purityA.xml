@@ -9,25 +9,19 @@
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/purityA.R'
             --out_dir=.
-            #if $mzML_data.format == "mzML_file"
-                --mzML_files='$mzML_data.source'
-                --galaxy_names='$mzML_data.source.name'
-
-            #elif $mzML_data.format == "mzML_files"
-                --mzML_files='
-                #for $i in $mzML_data.source
+            
+            --mzML_files='
+                #for $i in $source
                     $i,
                 #end for
                 '
-                --galaxy_names='
-                #for $i in $mzML_data.source
+            --galaxy_names='
+                #for $i in $source
                     $i.name,
                 #end for
                 '
-            #elif $mzML_data.format == "library"
-                --mzML_files '$__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source'
-            #end if
-                    #if $offsets.offsets == 'user'
+            
+            #if $offsets.offsets == 'user'
                 --minOffset=$minoffset
                 --maxOffset=$maxoffset
             #end if
@@ -56,33 +50,9 @@
 
     ]]></command>
     <inputs>
-
-        <conditional name="mzML_data">
-            <param name="format" type="select" label="Choose the source for the dataset" >
-                <option value="mzML_file" selected="true">.mzML single file</option>
-                <option value="mzML_files" selected="true">.mzML files (data collection)</option>
-                <option value="library">Library directory name (to be used with dimspy workflows) or path to
-                                        to an individual .mzML file</option>
-            </param>
-            <when value="mzML_file">
-                <param name="source" type="data" format="mzml" label="*.mzML file" >
+        <param name="source" type="data" multiple="true" format="mzml" label="*.mzML file" >
                     <validator type="empty_field" />
-                </param>
-            </when>
-            <when value="mzML_files">
-                <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
-                    <validator type="empty_field" />
-                </param>
-            </when>
-            <when value="library">
-                <param name="source" type="text"
-                       size="40" label="Library directory containing *.mzml files
-                                                                 or path to an individual *.mzML">
-                    <validator type="empty_field" />
-                </param>
-            </when>
-        </conditional>
-
+        </param>
         <param name="mostIntense" type="boolean" checked="true" argument="--mostIntense"
                label="Use most intense peak within isolation window for precursor?"
                help="If yes, this will ignore the recorded precursor within the mzML file and use
@@ -122,17 +92,7 @@
     </outputs>
     <tests>
        <test>
-           <conditional name="mzML_data">
-               <param name="format" value="mzML_files"/>
-               <param name="source" >
-                    <collection type="list">
-                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
-                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
-                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
-                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
-                    </collection>
-                </param>
-            </conditional>
+            <param name="source" value="LCMSMS_2.mzML,LCMSMS_1.mzML,LCMS_2.mzML,LCMS_1.mzML" ftype="mzml" />
             <output name="purityA_output_tsv" value="purityA_output.tsv" />
             <output name="purityA_output_rdata" value="purityA_output.RData" ftype="rdata" compare="sim_size"/>
         </test>
