@@ -9,7 +9,11 @@
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/purityA.R'
             --out_dir=.
-            #if $mzML_data.format == "mzML_files"
+            #if $mzML_data.format == "mzML_file"
+                --mzML_files='$mzML_data.source'
+                --galaxy_names='$mzML_data.source.name'
+
+            #elif $mzML_data.format == "mzML_files"
                 --mzML_files='
                 #for $i in $mzML_data.source
                     $i,
@@ -55,10 +59,16 @@
 
         <conditional name="mzML_data">
             <param name="format" type="select" label="Choose the source for the dataset" >
-                <option value="mzML_files" selected="true">.mzML files to check purity from</option>
+                <option value="mzML_file" selected="true">.mzML single file</option>
+                <option value="mzML_files" selected="true">.mzML files (data collection)</option>
                 <option value="library">Library directory name (to be used with dimspy workflows) or path to
                                         to an individual .mzML file</option>
             </param>
+            <when value="mzML_file">
+                <param name="source" type="data" format="mzml" label="*.mzML file" >
+                    <validator type="empty_field" />
+                </param>
+            </when>
             <when value="mzML_files">
                 <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
                     <validator type="empty_field" />

@@ -10,6 +10,19 @@
                 --mzML_file '$mzML_data.source'
             #elif $mzML_data.format == "library"
                 --mzML_file '$__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source'
+            #elif $mzML_data.format == "mzML_data_collection"
+                --mzML_files='
+                #for $i in $mzML_data.source
+                    $i,
+                #end for
+                '
+                --galaxy_names='
+                #for $i in $mzML_data.source
+                    $i.name,
+                #end for
+                '
+                --mzML_filename=' $mzML_data.mzML_filename'
+
             #end if
             --peaks_file='$peaks_file'
             --out_dir=.
@@ -37,45 +50,54 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="peaks_file" format="tsv, tabular"
+        <param argument="--peaks_file"  type="data" format="tsv, tabular"
                 help="tsv or tabular file with one column containing the mz values (column header should be either
                       mz)"/>
 
         <conditional name="mzML_data">
             <param name="format" type="select" label="Choose the source for the dataset" >
-                <option value="mzML_file" selected="true">.mzML files to check purity from</option>
+                <option value="mzML_file" selected="true">A single .mzML files to check purity from</option>
                 <option value="library">Library directory name (to be used with dimspy workflows) or path to
                                         to an individual .mzML file</option>
+                <option value="mzML_data_collection" selected="true">A data collection of .mzML files</option>
             </param>
             <when value="mzML_file">
-                <param name="source" type="data" format="mzml" label="Single *.mzML" argument="--mzML_file" >
+                <param argument="--mzML_file" name="source" type="data" format="mzml" label="Single *.mzML"  >
                     <validator type="empty_field" />
                 </param>
             </when>
+            <when value="mzML_data_collection">
+                <param argument="--mzML_files" name="source" type="data_collection" 
+                label="Data collection containing *.mzml files" >
+                    <validator type="empty_field" />
+                </param>
+                <param argument="--mzML_filename" type="text" label="Name of file to to calculate purity from" help=""/>
+            </when>
+
             <when value="library">
-                <param name="source" type="text"
-                       size="40" label="Library directory containing *.mzml files
-                                                                 or path to an individual *.mzML"
-                       argument="--mzML_file">
+                <param  argument="--mzML_file" name="source" type="text"
+                       size="40" label="Library directory containing *.mzml files (dimspy input only)
+                                                                 or path to an individual .mzML file">
                     <validator type="empty_field" />
                 </param>
             </when>
+
         </conditional>
 
         <expand macro="offsets" />
         <expand macro="general_params" />
 
 
-        <param name="ppm" type="float" label="ppm" min="0" value="10"
+        <param argument="--ppm" type="float" label="ppm" min="0" value="10"
                     help="ppm tolerance to compare between mz values"/>
 
-        <param name="minoffset" type="float" label="minoffset" value="0.5"
+        <param argument="--minoffset" type="float" label="minoffset" value="0.5"
                     help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
                     100.0 then the range would be from 999.5 to 100.0"/>
 
-        <param name="remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
+        <param argument="--remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
 
-        <param name="sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
+        <param argument="--sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
 
         <conditional name="dimspy_usage">
             <param name="usage" type="select" label="dimspy peak matrix text file usage?">
@@ -85,7 +107,7 @@
             <when value="no_dimspy">
             </when>
             <when value="dimspy">
-                <param name="file_num" type="integer" label="File number" min="0" value="1"
+                <param argument="--file_num" type="integer" label="File number" min="0" value="1"
                     help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
                           purity metric (order based on column order). This file will then be looked for in the
                           library folder to calculate the metric.

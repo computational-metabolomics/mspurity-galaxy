@@ -4,6 +4,9 @@ print(sessionInfo())
 
 option_list <- list(
   make_option(c("--mzML_file"), type="character"),
+  make_option(c("--mzML_files"), type="character"),
+  make_option(c("--mzML_filename"), type="character", default=''),
+  make_option(c("--mzML_galaxy_names"), type="character", default=''),
   make_option(c("--peaks_file"), type="character"),
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--minOffset", default=0.5),
@@ -25,48 +28,71 @@ opt<- parse_args(OptionParser(option_list=option_list))
 print(sessionInfo())
 print(opt)
 
+print(opt$mzML_files)
+print(opt$mzML_galaxy_names)
+
+str_to_vec <- function(x){
+    print(x)
+    x <- trimws(strsplit(x, ',')[[1]])
+    return(x[x != ""])
+}
+
+find_mzml_file <- function(mzML_files, galaxy_names, mzML_filename){
+    mzML_filename <- trimws(mzML_filename)
+    mzML_files <- str_to_vec(mzML_files)
+    galaxy_names <- str_to_vec(galaxy_names)
+    if (mzML_filename %in% galaxy_names){
+        return(mzML_files[galaxy_names==mzML_filename])
+    }else{
+        stop(paste("mzML file not found - ", mzML_filename))
+    }
+}
+
+
 if (is.null(opt$dimspy)){
-
-  df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
-  filename = NA
-  mzml_file <- opt$mzML_file
+    df <- read.table(opt$peaks_file, header = TRUE, sep='\t')
+    if (file.exists(opt$mzML_file)){
+        mzML_file <- opt$mzML_file
+    }else if (!is.null(opt$mzML_files)){
+        mzML_file <- find_mzml_file(opt$mzML_files, opt$mzML_galaxy_names, 
+                                    opt$mzML_filename)
+    }else{
+        mzML_file <- file.path(opt$mzML_file, filename)    
+    }	
 }else{
-  indf <- read.table(opt$peaks_file,
-                     header = TRUE, sep='\t', stringsAsFactors = FALSE)
-  
-
-  if (file.exists(opt$mzML_file)){
-     mzml_file <- opt$mzML_file
-  }else{
-     
-     filename = colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
-     print(filename)
-     # check if the data file is mzML or RAW (can only use mzML currently) so
-     # we expect an mzML file of the same name in the same folder
-     indf$i <- indf[,colnames(indf)==filename]
-     indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
-
-     filename = sub("raw", "mzML", filename, ignore.case = TRUE)
-     print(filename)
-
-     mzml_file <- file.path(opt$mzML_file, filename)
-
-  }	
-  
-  df <- indf[4:nrow(indf),]
-  if ('blank_flag' %in% colnames(df)){
-      df <- df[df$blank_flag==1,]
-  }
-  colnames(df)[colnames(df)=='m.z'] <- 'mz'
-
-  if ('nan' %in% df$mz){
-    df[df$mz=='nan',]$mz <- NA
-  }
-  df$mz <- as.numeric(df$mz)
-	
-
-
-
+    indf <- read.table(opt$peaks_file,
+                       header = TRUE, sep='\t', stringsAsFactors = FALSE)
+    
+    filename <- colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
+    print(filename)
+    # check if the data file is mzML or RAW (can only use mzML currently) so
+    # we expect an mzML file of the same name in the same folder
+    indf$i <- indf[,colnames(indf)==filename]
+    indf[,colnames(indf)==filename] <- as.numeric(indf[,colnames(indf)==filename])
+    
+    filename = sub("raw", "mzML", filename, ignore.case = TRUE)
+    print(filename)
+    
+    
+    if (file.exists(opt$mzML_file)){
+        mzML_file <- opt$mzML_file
+    }else if (!is.null(opt$mzML_files)){
+        mzML_file <- find_mzml_file(opt$mzML_files, opt$mzML_galaxy_names, filename)
+    }else{
+        mzML_file <- file.path(opt$mzML_file, filename)    
+    }	
+    
+    # Update the dimspy output with the correct information 
+    df <- indf[4:nrow(indf),]
+    if ('blank_flag' %in% colnames(df)){
+        df <- df[df$blank_flag==1,]
+    }
+    colnames(df)[colnames(df)=='m.z'] <- 'mz'
+    
+    if ('nan' %in% df$mz){
+        df[df$mz=='nan',]$mz <- NA
+    }
+    df$mz <- as.numeric(df$mz)
 }
 
 if (!is.null(opt$remove_nas)){
@@ -86,8 +112,6 @@ if (is.null(opt$exclude_isotopes)){
     isotopes <- TRUE
 }
 
-
-
 if (is.null(opt$sim)){
     sim=FALSE
 }else{
@@ -96,8 +120,6 @@ if (is.null(opt$sim)){
 
 minOffset = as.numeric(opt$minOffset)
 maxOffset = as.numeric(opt$maxOffset)
-
-
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE
@@ -115,9 +137,9 @@ if (opt$iwNorm=='none'){
 
 print('FIRST ROWS OF PEAK FILE')
 print(head(df))
-print(mzml_file)
+print(mzML_file)
 predicted <- msPurity::dimsPredictPuritySingle(df$mz,
-                                     filepth=mzml_file,
+                                     filepth=mzML_file,
                                      minOffset=minOffset,
                                      maxOffset=maxOffset,
                                      ppm=opt$ppm,
@@ -133,4 +155,9 @@ predicted <- cbind(df, predicted)
 
 print(head(predicted))
 print(file.path(opt$out_dir, 'dimsPredictPuritySingle_output.tsv'))
-write.table(predicted, file.path(opt$out_dir, 'dimsPredictPuritySingle_output.tsv'), row.names=FALSE, sep='\t')
+
+write.table(predicted, 
+            file.path(opt$out_dir, 'dimsPredictPuritySingle_output.tsv'),
+            row.names=FALSE, sep='\t')
+
+
