@@ -6,19 +6,7 @@ cache:
 
 
 env:
-  - TEST=tools/msPurity/purityA.xml
-  - TEST=tools/msPurity/spectralMatching.xml
-  - TEST=tools/msPurity/dimsPredictPuritySingle.xml
-  - TEST=tools/msPurity/filterFragSpectra.xml
-  - TEST=tools/msPurity/createDatabase.xml
-  - TEST=tools/msPurity/averageFragSpectra.xml
-  - TEST=tools/msPurity/createMSP.xml
-  - TEST=tools/msPurity/flagRemove.xml
-  - TEST=tools/msPurity/frag4feature.xml
-  - TEST=tools/msPurity/purityX.xml
   - TEST=tools/msPurity/combineAnnotations.xml
-  - TEST=tools/utils/msp_split/msp_split.xml
-  - TEST=tools/utils/submit_to_mogi.xml
 
 
 before_install:
@@ -28,5 +16,5 @@ before_install:
  
 script:
 - planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
-- travis_wait 30 planemo test  --conda_debug  --conda_ensure_channels iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
+- planemo test  --conda_debug  --conda_ensure_channels iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
 
