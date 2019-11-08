@@ -6,6 +6,12 @@
     <xml name="requirements">
         <requirements>
            <requirement type="package" version="@TOOL_VERSION@" >bioconductor-mspurity</requirement>
+           <requirement type="package" version="1.42.0" >bioconductor-camera</requirement>
+           <requirement type="package" version="3.8.0" >bioconductor-xcms</requirement>
+           <requirement type="package" version="1.14.0" >bioconductor-mspuritydata</requirement>
+           <requirement type="package" >r-optparse</requirement>
+           <requirement type="package" >r-rpostgres</requirement>
+           <requirement type="package" >r-rmysql</requirement>
             <yield />
         </requirements>
     </xml>

@@ -90,6 +90,104 @@ opt<- parse_args(OptionParser(option_list=option_list))
 
 print(opt)
 
+# check if the sqlite databases have any spectra
+checkSPeakMeta <- function(dbPth, nme){
+    if(is.null(dbPth)){
+        return(TRUE)
+    }else if ((file.exists(dbPth)) & (file.info(dbPth)$size>0)){
+        con <- DBI::dbConnect(RSQLite::SQLite(), dbPth)
+        if (DBI::dbExistsTable(con, "s_peak_meta")){
+            spm <- DBI::dbGetQuery(con, 'SELECT  * FROM s_peak_meta ORDER BY ROWID ASC LIMIT 1')
+            return(TRUE)
+        }else if(DBI::dbExistsTable(con, "library_spectra_meta")){
+            spm <- DBI::dbGetQuery(con, 'SELECT  * FROM library_spectra_meta ORDER BY ROWID ASC LIMIT 1')
+            return(TRUE)
+        }else{
+            print(paste("No spectra available for ",nme))
+            return(FALSE)
+        }
+    }else{
+        print(paste("file empty or does not exist for", nme))
+        return(FALSE)
+    }
+
+        
+}
+
+
+addQueryNameColumn <- function(sm){
+    if (is.null(sm$matchedResults) || length(sm$matchedResults)==1 || nrow(sm$matchedResults)==0){
+        return(sm)
+    }
+
+    con <- DBI::dbConnect(RSQLite::SQLite(),sm$q_dbPth)
+    if (DBI::dbExistsTable(con, "s_peak_meta")){
+        spm <- DBI::dbGetQuery(con, 'SELECT  pid, name AS query_entry_name FROM s_peak_meta')
+    }else if(DBI::dbExistsTable(con, "library_spectra_meta")){
+        spm <- DBI::dbGetQuery(con, 'SELECT  id AS pid, name  AS query_entry_name FROM library_spectra_meta')
+    }
+    print(sm$matchedResults)
+    if ('pid' %in% colnames(sm$matchedResults)){
+        sm$matchedResults <- merge(sm$matchedResults, spm, by.x='pid', by.y='pid')    
+    }else{
+        sm$matchedResults <- merge(sm$matchedResults, spm, by.x='qpid', by.y='pid')
+    }
+    
+    print(sm$xcmsMatchedResults)
+    if (is.null(sm$xcmsMatchedResults) || length(sm$xcmsMatchedResults)==1 || nrow(sm$xcmsMatchedResults)==0){
+        return(sm)
+    }else{
+        if ('pid' %in% colnames(sm$xcmsMatchedResults)){
+            sm$xcmsMatchedResults<- merge(sm$xcmsMatchedResults, spm, by.x='pid', by.y='pid')    
+        }else{
+            sm$xcmsMatchedResults <- merge(sm$xcmsMatchedResults, spm, by.x='qpid', by.y='pid')
+        }
+    }
+    
+    return(sm)
+    
+}
+
+
+updateDbF <- function(q_con, l_con){
+    message('Adding extra details to database')
+    q_con <- DBI::dbConnect(RSQLite::SQLite(),sm$q_dbPth)
+    if (DBI::dbExistsTable(q_con, "l_s_peak_meta")){
+        l_s_peak_meta <- DBI::dbGetQuery(q_con, 'SELECT  * FROM l_s_peak_meta')
+        colnames(l_s_peak_meta)[1] <- 'pid'
+    }
+    
+    l_con <- DBI::dbConnect(RSQLite::SQLite(),l_dbPth)
+    if (DBI::dbExistsTable(l_con, "s_peaks")){
+        l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM s_peaks WHERE pid in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
+        
+    }else if(DBI::dbExistsTable(l_con, "library_spectra")){
+        l_s_peaks <- DBI::dbGetQuery(l_con, sprintf("SELECT  * FROM library_spectra
+                                                WHERE library_spectra_meta_id in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
+    }else{
+        l_s_peaks = NULL
+    }
+    
+    if (DBI::dbExistsTable(l_con, "source")){
+        l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM source')
+    }else if (DBI::dbExistsTable(l_con, "library_spectra_source")) {
+        l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM library_spectra_source')
+    }else{
+        l_source = NULL
+    }
+    
+    if (!is.null(l_s_peaks)){
+        DBI::dbWriteTable(q_con, name='l_s_peaks', value=l_s_peaks, row.names=FALSE, append=TRUE)
+    }
+    
+    if (!is.null(l_source)){
+        DBI::dbWriteTable(q_con, name='l_source', value=l_source, row.names=FALSE, append=TRUE)
+    }
+    
+    
+}
+
+
 extractMultiple <- function(optParam){
   if (!is.na(optParam)){
      param <- trimws(strsplit(optParam, ',')[[1]])
@@ -116,8 +214,6 @@ if(!is.null(opt$l_defaultDb)){
   l_dbType <- opt$l_dbType
   l_dbPth <- opt$l_dbPth
 }
-
-
 
 
 q_polarity <- extractMultiple(opt$q_polarity)
@@ -193,118 +289,80 @@ if(!is.null(opt$q_rtrangeMin)){
   q_rtrangeMin <- NA
 }
 
+q_check <- checkSPeakMeta(opt$q_dbPth, 'query')
+l_check <- checkSPeakMeta(opt$l_dbPth, 'library')
 
-
-sm <- msPurity::spectralMatching(
-                           q_purity =  opt$q_purity,
-                           l_purity =  opt$l_purity,
-
-                           q_ppmProd =  opt$q_ppmProd,
-                           l_ppmProd =  opt$l_ppmProd,
-
-                           q_ppmPrec =  opt$q_ppmPrec,
-                           l_ppmPrec =  opt$l_ppmPrec,
-
-                           q_raThres =  opt$q_raThres,
-                           l_raThres =  opt$l_raThres,
-
-                           q_pol =  q_polarity,
-                           l_pol =  l_polarity,
-
-                           q_xcmsGroups = q_xcmsGroups,
-                           l_xcmsGroups = l_xcmsGroups,
-
-                           q_pids = q_pids,
-                           l_pids = l_pids,
-
-                           q_sources = q_sources,
-                           l_sources = l_sources,
-
-                           q_instrumentTypes = q_instrumentTypes,
-                           l_instrumentTypes = l_instrumentTypes,
-
-                           q_spectraFilter= q_spectraFilter,
-                           l_spectraFilter= l_spectraFilter,
-
-                           l_rtrange=c(l_rtrangeMin, l_rtrangeMax),
-                           q_rtrange=c(q_rtrangeMin, q_rtrangeMax),
-
-                           q_accessions = opt$q_accessions,
-                           l_accessions= opt$l_accessions,
-
-                           raW = opt$raW,
-                           mzW = opt$mzW,
-                           rttol=opt$rttol,
-                           cores=opt$cores,
-
-                           copyDb=copyDb,
-                           updateDb=updateDb,
-                           outPth = "db_with_spectral_matching.sqlite",
-
-                           q_dbPth = q_dbPth,
-                           q_dbType = q_dbType,
-                           q_dbName = q_dbName,
-                           q_dbHost = q_dbHost,
-                           q_dbUser = q_dbUser,
-                           q_dbPass = q_dbPass,
-                           q_dbPort = q_dbPort,
-
-                           l_dbPth = l_dbPth,
-                           l_dbType = l_dbType,
-                           l_dbName = l_dbName,
-                           l_dbHost = l_dbHost,
-                           l_dbUser = l_dbUser,
-                           l_dbPass = l_dbPass,
-                           l_dbPort = l_dbPort
-
-                           )
-
-
-
-write.table(sm$matchedResults, 'matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
-write.table(sm$xcmsMatchedResults, 'xcms_matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
-
-
-# Add extra details from library spectra in resulting database
-# First get all the ids from the l_s_peak_meta from the query database
-if(updateDb){
-  message('Adding extra details to database')
-  q_con <- DBI::dbConnect(RSQLite::SQLite(),sm$q_dbPth)
-  if (DBI::dbExistsTable(q_con, "l_s_peak_meta")){
-    l_s_peak_meta <- DBI::dbGetQuery(q_con, 'SELECT  * FROM l_s_peak_meta')
-    colnames(l_s_peak_meta)[1] <- 'pid'
-  }
-
-  l_con <- DBI::dbConnect(RSQLite::SQLite(),l_dbPth)
-  if (DBI::dbExistsTable(l_con, "s_peaks")){
-    l_s_peaks <- DBI::dbGetQuery(q_con, sprintf("SELECT  * FROM s_peaks WHERE pid in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
-
-  }else if(DBI::dbExistsTable(l_con, "library_spectra")){
-    l_s_peaks <- DBI::dbGetQuery(l_con, sprintf("SELECT  * FROM library_spectra
-                                                WHERE library_spectra_meta_id in (%s)", paste(unique(l_s_peak_meta$pid), collapse=',')))
-  }else{
-    l_s_peaks = NULL
-  }
-
-  if (DBI::dbExistsTable(l_con, "source")){
-    l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM source')
-  }else if (DBI::dbExistsTable(l_con, "library_spectra_source")) {
-    l_source <- DBI::dbGetQuery(l_con, 'SELECT  * FROM library_spectra_source')
-  }else{
-    l_source = NULL
-  }
-
-  if (!is.null(l_s_peaks)){
-    DBI::dbWriteTable(q_con, name='l_s_peaks', value=l_s_peaks, row.names=FALSE, append=TRUE)
-  }
-
-  if (!is.null(l_source)){
-    DBI::dbWriteTable(q_con, name='l_source', value=l_source, row.names=FALSE, append=TRUE)
-  }
-
+if (q_check && l_check){
+    sm <- msPurity::spectralMatching(
+        q_purity =  opt$q_purity,
+        l_purity =  opt$l_purity,
+        
+        q_ppmProd =  opt$q_ppmProd,
+        l_ppmProd =  opt$l_ppmProd,
+        
+        q_ppmPrec =  opt$q_ppmPrec,
+        l_ppmPrec =  opt$l_ppmPrec,
+        
+        q_raThres =  opt$q_raThres,
+        l_raThres =  opt$l_raThres,
+        
+        q_pol =  q_polarity,
+        l_pol =  l_polarity,
+        
+        q_xcmsGroups = q_xcmsGroups,
+        l_xcmsGroups = l_xcmsGroups,
+        
+        q_pids = q_pids,
+        l_pids = l_pids,
+        
+        q_sources = q_sources,
+        l_sources = l_sources,
+        
+        q_instrumentTypes = q_instrumentTypes,
+        l_instrumentTypes = l_instrumentTypes,
+        
+        q_spectraFilter= q_spectraFilter,
+        l_spectraFilter= l_spectraFilter,
+        
+        l_rtrange=c(l_rtrangeMin, l_rtrangeMax),
+        q_rtrange=c(q_rtrangeMin, q_rtrangeMax),
+        
+        q_accessions = opt$q_accessions,
+        l_accessions= opt$l_accessions,
+        
+        raW = opt$raW,
+        mzW = opt$mzW,
+        rttol=opt$rttol,
+        cores=opt$cores,
+        
+        copyDb=copyDb,
+        updateDb=updateDb,
+        outPth = "db_with_spectral_matching.sqlite",
+        
+        q_dbPth = q_dbPth,
+        q_dbType = q_dbType,
+        q_dbName = q_dbName,
+        q_dbHost = q_dbHost,
+        q_dbUser = q_dbUser,
+        q_dbPass = q_dbPass,
+        q_dbPort = q_dbPort,
+        
+        l_dbPth = l_dbPth,
+        l_dbType = l_dbType,
+        l_dbName = l_dbName,
+        l_dbHost = l_dbHost,
+        l_dbUser = l_dbUser,
+        l_dbPass = l_dbPass,
+        l_dbPort = l_dbPort
+        
+    )
+    
+    sm <- addQueryNameColumn(sm)
+    # Get name of the query results (and merged with the data frames)
+    write.table(sm$matchedResults, 'matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
+    write.table(sm$xcmsMatchedResults, 'xcms_matched_results.tsv', sep = '\t', row.names = FALSE, col.names = TRUE)
+    
+    if(updateDb){
+        updateDbF(q_con, l_con)
+    }
 }
-
-
-
-
-
