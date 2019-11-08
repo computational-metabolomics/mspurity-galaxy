@@ -2,7 +2,7 @@ RECORD_TITLE: MZ:112.0508 | RT:67.5 | grpid:12 | file:NA | adduct:NA
 MS$FOCUSED_ION: PRECURSOR_M/Z 112.050766766484
 AC$CHROMATOGRAPHY: RETENTION_TIME 67.47903
 XCMS groupid (grpid): 12
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.3 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.12.0
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100
