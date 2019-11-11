@@ -59,7 +59,13 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.0-galaxy0
+  - Updates for Bioconductor stable msPurity v1.12.0 release 
+  - Additional columns added for spectral matching (for msnpy use case)
+  - Merge of v1.11.4-galaxy1
+
 v1.11.4-galaxy1
+  - Not submitted to toolshed
   - Update to follow IUC guidelines for Galaxy tool development
 
 v1.11.4-galaxy0.2.7
