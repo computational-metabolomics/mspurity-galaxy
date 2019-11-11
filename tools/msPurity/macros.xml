@@ -9,9 +9,9 @@
            <requirement type="package" version="1.42.0" >bioconductor-camera</requirement>
            <requirement type="package" version="3.8.0" >bioconductor-xcms</requirement>
            <requirement type="package" version="1.14.0" >bioconductor-mspuritydata</requirement>
-           <requirement type="package" >r-optparse</requirement>
-           <requirement type="package" >r-rpostgres</requirement>
-           <requirement type="package" >r-rmysql</requirement>
+           <requirement type="package" version="1.6.4">r-optparse</requirement>
+           <requirement type="package" version="1.1.1">r-rpostgres</requirement>
+           <requirement type="package" version="0.10.17">r-rmysql</requirement>
             <yield />
         </requirements>
     </xml>
