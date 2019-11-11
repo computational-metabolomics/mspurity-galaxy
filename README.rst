@@ -2,18 +2,14 @@ msPurity for Galaxy
 ========================
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
-Warning
-------
-Proceed with caution these tools are in active development so tools may change! Stable release to Galaxy toolshed coming soon. Currently these tools will only work when the 'tomnl' conda channel is being used with Galaxy.
 
-Version v1.11.4+galaxy1
+Version v1.12.0+galaxy0
 ------
-NOTE: bioconductor-mspurity v1.11.4 only available on 'tomnl' conda channel - to be updated to bioconda soon.
 
   - msPurity
-     - bioconductor-mspurity v1.11.4
+     - bioconductor-mspurity v1.12.0
   - Galaxy tools
-     - v1
+     - v0
 
 About
 ------
