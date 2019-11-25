@@ -1,21 +1,14 @@
 <tool id="mspurity_createdatabase" name="msPurity.createDatabase" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
-    <description>
-        Create and SQLite database of an LC-MS(/MS) experiment
-    </description>
+    <description>Create and SQLite database of an LC-MS(/MS) experiment</description>
     <macros>
         <import>macros.xml</import>
     </macros>
-    <expand macro="requirements">
-	<requirement type="package" >libgfortran</requirement>
-    </expand>
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        createDatabase.R
+    <expand macro="requirements" />
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/createDatabase.R'
             --outDir=.
-            --xset_xa=$xset_xa
-	          --pa=$pa
+            --xset_xa='$xset_xa'
+	          --pa='$pa'
             --xcms_camera_option=$camera_xcms
             --cores=\${GALAXY_SLOTS:-4}
             #if $file_load_conditional.file_load_select=="yes"
@@ -36,24 +29,24 @@
             #end if
 
             #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
-                --grp_peaklist=$grp_peaklist
+                --grp_peaklist='$grp_peaklist'
             #end if
 
     ]]></command>
     <inputs>
-        <param type="data" name="xset_xa" label="xcmsSet or CAMERA object"
+        <param argument="--xset_xa" type="data"  label="xcmsSet or CAMERA object"
                help="Either xcmsSet object saved as 'xset' or CAMERA 'xa' object in an RData file.
                      Please specify which to use below"
                format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <expand macro="camera_xcms" />
-        <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
+        <param argument="--pa" type="data" label="purityA object (frag4feature output)" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
-      	<param name="eic" type="boolean" label="Include EIC data?"
+      	<param argument="--eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
                      the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>
         <expand macro="grp_peaklist" />
-          <expand macro="fileload" />
+        <expand macro="fileload" />
     </inputs>
     <outputs>
         <data name="createDatabase_output_sqlite" format="sqlite"

@@ -14,15 +14,15 @@ option_list <- list(
   make_option("--ms1_lookup_keepAdducts", type="character", default=NA),
   make_option("--ms1_lookup_dbSource", type="character", default="hmdb"),
 
-  make_option(c("-sw","--sm_weight"),type="numeric"),
-  make_option(c("-mw","--metfrag_weight"),type="numeric"),
-  make_option(c("-cw","--sirius_csi_weight"),type="numeric"),
-  make_option(c("-pw","--probmetab_weight"),type="numeric"),
-  make_option(c("-lw","--ms1_lookup_weight"),type="numeric"),
-  make_option(c("-bw","--biosim_weight"),type="numeric"),
+  make_option("--sm_weight", type="numeric"),
+  make_option("--metfrag_weight", type="numeric"),
+  make_option("--sirius_csi_weight", type="numeric"),
+  make_option("--probmetab_weight", type="numeric"),
+  make_option("--ms1_lookup_weight", type="numeric"),
+  make_option("--biosim_weight", type="numeric"),
 
   make_option("--create_new_database", action="store_true"),
-  make_option(c("-o","--outdir"),type="character", default="."),
+  make_option("--outdir", type="character", default="."),
 
   make_option("--compoundDbType", type="character", default="sqlite"),
   make_option("--compoundDbPth", type="character", default=NA),
@@ -67,7 +67,8 @@ if (opt$compoundDbType=='local_config'){
   source_local <- function(fname){ argv <- commandArgs(trailingOnly=FALSE); base_dir <- dirname(substring(argv[grep("--file=", argv)], 8)); source(paste(base_dir, fname, sep="/")) }
   source_local("dbconfig.R")
 }else{
-  compoundDbType = compoundDbType
+  compoundDbPth = opt$compoundDbPth
+  compoundDbType = opt$compoundDbType
   compoundDbName = NA
   compoundDbHost = NA
   compoundDbPort = NA

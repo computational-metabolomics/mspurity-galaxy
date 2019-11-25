@@ -2,18 +2,14 @@ msPurity for Galaxy
 ========================
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
-Warning
-------
-Proceed with caution these tools are in active development so tools may change! Stable release to Galaxy toolshed coming soon. Currently these tools will only work when the 'tomnl' conda channel is being used with Galaxy.
 
-Version v1.11.4+galaxy0.2.7
+Version v1.12.0+galaxy0
 ------
-NOTE: bioconductor-mspurity v1.11.4 only available on 'tomnl' conda channel - to be updated to bioconda soon.
 
   - msPurity
-     - bioconductor-mspurity v1.11.4
+     - bioconductor-mspurity v1.12.0
   - Galaxy tools
-     - v0.2.7
+     - v0
 
 About
 ------
@@ -55,9 +51,19 @@ Authors, contributors & contacts
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Jordi Capellades (j.capellades.to@gmail.com) - `Universitat Rovira i Virgili (SP)  <http://www.urv.cat/en/>`_
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
+- Simon Bray (sbray@informatik.uni-freiburg.de) - `University of Freiburg (Germany) <https://www.uni-freiburg.de/>`_
 
 Changes
 -------------------------
+v1.12.0-galaxy0
+  - Updates for Bioconductor stable msPurity v1.12.0 release 
+  - Additional columns added for spectral matching (for msnpy use case)
+  - Merge of v1.11.4-galaxy1
+
+v1.11.4-galaxy1
+  - Not submitted to toolshed
+  - Update to follow IUC guidelines for Galaxy tool development
+
 v1.11.4-galaxy0.2.7
   - submitted to test toolshed (20190927)
   - Bug fix for spectralMatching choice of instrument types

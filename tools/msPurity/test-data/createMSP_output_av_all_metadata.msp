@@ -10,7 +10,7 @@ CH$LINK: INCHIKEY VACCAVUAMIDAGB-UHFFFAOYSA-N
 CH$LINK: PUBCHEM CID:5328
 CH$NAME Unknown
 XCMS groupid (grpid): 12
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.4 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.12.0 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100
@@ -28,7 +28,7 @@ CH$LINK: INCHIKEY VACCAVUAMIDAGB-UHFFFAOYSA-N
 CH$LINK: PUBCHEM CID:5328
 CH$NAME Unknown
 XCMS groupid (grpid): 12
-COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.11.4 
+COMMENT: Exported from msPurity purityA object using function createMSP, using method 'av_all' msPurity version:1.12.0 
 PK$NUM_PEAK: 2
 PK$PEAK: m/z int. rel.int.
 112.050884246826	502873.46875	100

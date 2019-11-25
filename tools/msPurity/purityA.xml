@@ -6,27 +6,22 @@
         <import>macros.xml</import>
     </macros>
     <expand macro="requirements" />
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        purityA.R
-            --out_dir=.
-            #if $mzML_data.format == "mzML_files"
-                --mzML_files='
-                #for $i in $mzML_data.source
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/purityA.R'
+            --out_dir='.'
+            
+            --mzML_files='
+                #for $i in $source
                     $i,
                 #end for
                 '
-                --galaxy_names='
-                #for $i in $mzML_data.source
+            --galaxy_names='
+                #for $i in $source
                     $i.name,
                 #end for
                 '
-            #elif $mzML_data.format == "library"
-                --mzML_files $__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source
-            #end if
-                    #if $offsets.offsets == 'user'
+            
+            #if $offsets.offsets == 'user'
                 --minOffset=$minoffset
                 --maxOffset=$maxoffset
             #end if
@@ -48,49 +43,30 @@
                 --exclude_isotopes
             #elif $isotopes.isotopes == "user"
                 --exclude_isotopes
-                --isotope_matrix=$isotopes.im
+                --isotope_matrix='$isotopes.im'
             #end if
 
-            --ppmInterp "$ppmInterp"
+            --ppmInterp $ppmInterp
 
     ]]></command>
     <inputs>
-
-        <conditional name="mzML_data">
-            <param name="format" type="select" label="Choose the source for the dataset" >
-                <option value="mzML_files" selected="true">.mzML files to check purity from</option>
-                <option value="library">Library directory name (to be used with dimspy workflows) or path to
-                                        to an individual .mzML file</option>
-            </param>
-            <when value="mzML_files">
-                <param name="source" type="data_collection" format="mzml" label="*.mzML files" >
+        <param name="source" type="data" multiple="true" format="mzml" label="*.mzML file" >
                     <validator type="empty_field" />
-                </param>
-            </when>
-            <when value="library">
-                <param name="source" type="text"
-                       size="40" label="Library directory containing *.mzml files
-                                                                 or path to an individual *.mzML">
-                    <validator type="empty_field" />
-                </param>
-            </when>
-        </conditional>
-
-         <param name="mostIntense" type="boolean" checked="true" argument="--mostIntense"
+        </param>
+        <param argument="--mostIntense" type="boolean" checked="true"
                label="Use most intense peak within isolation window for precursor?"
                help="If yes, this will ignore the recorded precursor within the mzML file and use
                use the most intense peak within the isolation window to calculate the precursor ion purity"/>
 
-        <param name="nearest" type="boolean" checked="true" argument="--nearest"
+        <param argument="--nearest" type="boolean" checked="true" 
                label="Use nearest full scan to determine precursor?"
                help="If TRUE, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
                      is of the precursor"/>
 
-        <param name="ppmInterp" type="float" label="Interpolation PPM" value="7" argument='--ppmInterp'
+        <param argument="--ppmInterp" type="float" label="Interpolation PPM" min="0" value="7"
                help="Set the ppm tolerance for the precursor ion purity interpolation.
                i.e. the ppm tolerence between the precursor ion found in the neighbouring scans. The closest match
                within the window will be used for the interpolation"/>
-
 
         <conditional name="offsets">
             <param name="offsets" type="select" label="offsets" >
@@ -100,13 +76,11 @@
             <when value="user">
                 <expand macro="offsets" />
             </when>
-	        <when value="auto">
-            </when>
+	        <when value="auto"/>
 
         </conditional>
 
         <expand macro="general_params" />
-
 
     </inputs>
     <outputs>
@@ -117,17 +91,7 @@
     </outputs>
     <tests>
        <test>
-           <conditional name="mzML_data">
-               <param name="format" value="mzML_files"/>
-               <param name="source" >
-                    <collection type="list">
-                        <element name="LCMSMS_2.mzML" value="LCMSMS_2.mzML"/>
-                        <element name="LCMSMS_1.mzML" value="LCMSMS_1.mzML"/>
-                        <element name="LCMS_2.mzML" value="LCMS_2.mzML"/>
-                        <element name="LCMS_1.mzML" value="LCMS_1.mzML"/>
-                    </collection>
-                </param>
-            </conditional>
+            <param name="source" value="LCMSMS_2.mzML,LCMSMS_1.mzML,LCMS_2.mzML,LCMS_1.mzML" ftype="mzml" />
             <output name="purityA_output_tsv" value="purityA_output.tsv" />
             <output name="purityA_output_rdata" value="purityA_output.RData" ftype="rdata" compare="sim_size"/>
         </test>

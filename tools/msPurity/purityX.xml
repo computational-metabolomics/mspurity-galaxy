@@ -4,23 +4,18 @@
     <macros>
         <import>macros.xml</import>
     </macros>
-
     <expand macro="requirements" />
-
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        purityX.R
-            --xset_path=$xset
-            --out_dir=.
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/purityX.R'
+            --xset_path='$xset'
+            --out_dir='.'
             --minOffset=$minoffset
             --maxOffset=$maxoffset
             --singleFile=$singleFile
             --purityType=$purityType
             --cores=\${GALAXY_SLOTS:-4}
             #if $xgroups.xgroups == "choose"
-                --xgroups=$xgroups.xgroups_value
+                --xgroups='$xgroups.xgroups_value'
             #end if
             --camera_xcms=$camera_xcms
             #if $camera_xcms == "camera"
@@ -34,7 +29,7 @@
                 --exclude_isotopes
             #elif $isotopes.isotopes == "user"
                 --exclude_isotopes
-                --isotope_matrix=$isotopes.im
+                --isotope_matrix='$isotopes.im'
             #end if
             #if $file_load_conditional.file_load_select == 'yes'
                 --galaxy_files='
@@ -66,11 +61,11 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset" format="rdata"
+        <param argument="--xset" type="data" format="rdata"
                 help="xcmsSet object saved as an RData file"/>
         <expand macro="offsets" />
         <expand macro="general_params" />
-        <param name="singleFile" type="integer" label="singleFile" value="0"
+        <param argument="--singleFile" type="integer" label="singleFile" value="0"
                     help="If just a single file for purity is to be calculated (rather than the grouped XCMS peaks).
                     Uses the index of the files in xcmsSet object. If zero this is ignored"/>
 
@@ -82,9 +77,9 @@
             <when value="all">
             </when>
             <when value="choose">
-                                <param name="class" type="text" label="Choose class"
-               help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
-                i.e. xset@phenoData). An average will across all the choosen classes." />
+                <param argument="--class" type="text" label="Choose class"
+                    help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
+                    i.e. xset@phenoData). An average will across all the choosen classes." />
             </when>
         </conditional>
 
@@ -96,7 +91,7 @@
             <when value="none">
             </when>
             <when value="choose">
-                                <param name="ignore_files" type="text" label="ignore files"
+               <param argument="--ignore_files" type="text" label="ignore files"
                help="Comma separated string of filenames to ignore (do not include the directory) eg. blank1.mzML,blank2.mzML,sample4.mzML"  />
             </when>
         </conditional>
@@ -107,16 +102,15 @@
                 <option value="choose">Choose XCMS grouped features to calculate precursor ion purity</option>
                 <option value="all" selected="true">Calculate precursor ion purity for all XCMS grouped features</option>
             </param>
-            <when value="all">
-            </when>
             <when value="choose">
-                                <param name="xgroups_value" type="text" label="xgroup ids"
-               help="Comma separated string of xcms groups to perform prediction on eg. 1,2,3,4"  />
+                <param name="xgroups_value" type="text" label="xgroup ids"
+                    help="Comma separated string of xcms groups to perform prediction on eg. 1,2,3,4"  />
             </when>
+            <when value="all"/>
         </conditional>
 
 
-        <param name="purityType" type="select" label="Method of averaging purity"
+        <param argument="--purityType" type="select" label="Method of averaging purity"
                help="Area and average used for the purity predictions. FWHM='Full width half maximum', FW='Full width'">
                 <option value="purityFWHMmedian" selected="true" >FWHM median</option>
                 <option value="purityFWHMmean" >FWHM mean</option>
@@ -126,7 +120,7 @@
 
         <expand macro="camera_xcms" />
 
-        <param name="raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
+        <param argument="--raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
                help="Only applicable when using retention time correction with obiwarp. When obiwarp is used
                      the retention time correction tracking is slightly different to the other correction methods. To ensure
                      correct tracking with obiwarp an additional tool (track_rt_raw) should be performed prior to

@@ -2,20 +2,12 @@
     <description>
         Perform spectral matching to MS/MS spectral libraries
     </description>
-
     <macros>
         <import>macros.xml</import>
     </macros>
-
-    <expand macro="requirements">
-    </expand>
-
-
-    <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        spectralMatching.R
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/spectralMatching.R'
             --outDir=.
             --cores=\${GALAXY_SLOTS:-4}
 
@@ -103,30 +95,30 @@
 
             #if $Query.q_filters.q_sources_cond.q_sources_bool
               --q_sources=$Query.q_filters.q_sources_cond.q_sources
-              --q_sourcesUser="$Query.q_filters.q_sources_cond.q_sourcesUser"
+              --q_sourcesUser='$Query.q_filters.q_sources_cond.q_sourcesUser'
             #end if
 
             #if $Library.l_filters.l_sources_cond.l_sources_bool
               --l_sources=$Library.l_filters.l_sources_cond.l_sources
-              --l_sourcesUser="$Library.l_filters.l_sources_cond.l_sourcesUser"
+              --l_sourcesUser='$Library.l_filters.l_sources_cond.l_sourcesUser'
             #end if
 
             #if $Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes_bool
-              --q_instrumentTypes="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes"
-              --q_instrumentTypesUser="$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser"
+              --q_instrumentTypes='$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypes'
+              --q_instrumentTypesUser='$Query.q_filters.q_instrumentTypes_cond.q_instrumentTypesUser'
             #end if
 
             #if $Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes_bool
-              --l_instrumentTypes="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes"
-              --l_instrumentTypesUser="$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser"
+              --l_instrumentTypes='$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypes'
+              --l_instrumentTypesUser='$Library.l_filters.l_instrumentTypes_cond.l_instrumentTypesUser'
             #end if
 
             #if $Query.q_filters.q_instruments_cond.q_instruments_bool
-              --q_instruments="$Query.q_filters.q_instruments_cond.q_instruments"
+              --q_instruments=$Query.q_filters.q_instruments_cond.q_instruments
             #end if
 
             #if $Library.l_filters.l_instruments_cond.l_instruments_bool
-              --l_instruments="$Library.l_filters.l_instruments_cond.l_instruments"
+              --l_instruments='$Library.l_filters.l_instruments_cond.l_instruments'
             #end if
 
             #if $Query.q_filters.q_spectraTypes_cond.q_spectraTypes_bool
@@ -163,100 +155,74 @@
                  --usePrecursors
             #end if
 
-
-
     ]]></command>
     <inputs>
-
-
-
-    <section name="Query" title="Query spectra input and filters" expanded="True">
-        <expand macro="sm_input" ql='Query' ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
+        <section name="Query" title="Query spectra input and filters" expanded="True">
+            <expand macro="sm_input" ql="Query" ql_shrt = "q" user="True" mspuritydatalib="False" msp="False"
                 help="Query SQLite database - in the standard XCMS msPurity workflow - the output
-                      of msPurity.createDatabase should be used here. However any SQLite database
-                      following the schema of as https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
-        <expand macro="filters" ql="Query" ql_shrt="q"/>
-    </section>
-
-    <section name="Library" title="Library spectra input and filters" expanded="True">
-        <expand macro="sm_input" ql='Library' ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
-                help="Library SQLite database - in the standard XCMS msPurity workflow - a default
-                      database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite
-                      database following the schema of https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
-        <expand macro="filters" ql="Library"  ql_shrt="l"/>
-    </section>
-
-    <section name="General" title="General arguments" expanded="False">
-        <conditional name="rttol_cond">
-                <param name="rttol_bool" type="boolean" label="Filter on retention time match?"
-                       help="" />
-                <when value="true">
-                    <param name="rttol" type="float" value="30" min="0"
-                           label="Retention time tolerance (seconds)"
-                           help="Retention time tolerance in seconds to match precursors"/>
-                </when>
-                <when value="false">
-                </when>
-        </conditional>
-
-
-        <param name="usePrecursors" type="boolean" checked="true" label="Filter on matching precursors?"
-                  help="If True, spectra will be filtered by similarity of precursors based on
-                        the library and query ppm defined tolerance" />
-
-        <param name="raW" label="Weighting for relative abundance"
-               type="float" value="0.5"
-               help="Relative abundance weight for spectra (default to 0.5 as determined by
-                     massbank for ESI data)"/>
-
-        <param name="mzW" label="Weighting for mz"
-               type="float" value="2"
-               help="mz weight for spectra (default to 2 as determined by massbank for ESI data)"/>
-
-        <conditional name="updateDb_cond">
-                <param name="updateDb" type="boolean" checked="true"
-                       label="Update database with results?" help="" />
-                <when value="true">
-                    <param name="copyDb" type="boolean" checked="true"
-                           label="Make a copy of the database?"
-                           help="A copy will be made of the input SQLite target database and the
-                                 results will be added to this copy.  When False, the input SQLite
-                                 database will be updated  with the matching results. Use False if
-                                 you want to reduce storage space being used."/>
-                </when>
-                <when value="false">
-                </when>
-        </conditional>
-
-
-
+                    of msPurity.createDatabase should be used here. However any SQLite database
+                    following the schema of as https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
+            <expand macro="filters" ql="Query" ql_shrt="q"/>
         </section>
-
-
-
-
+        <section name="Library" title="Library spectra input and filters" expanded="True">
+            <expand macro="sm_input" ql="Library" ql_shrt = "l" user="False" mspuritydatalib="True" msp="False"
+                help="Library SQLite database - in the standard XCMS msPurity workflow - a default
+                    database of MassBank, HMDB, LipidBlast and GNPS is used. However any SQLite
+                    database following the schema of https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html can be used as input"/>
+            <expand macro="filters" ql="Library"  ql_shrt="l"/>
+        </section>
+        <section name="General" title="General arguments" expanded="False">
+            <conditional name="rttol_cond">
+                <param name="rttol_bool" type="boolean" label="Filter on retention time match?"
+                    help="" />
+                    <when value="true">
+                        <param name="rttol" type="float" value="30" min="0"
+                            label="Retention time tolerance (seconds)"
+                            help="Retention time tolerance in seconds to match precursors"/>
+                    </when>
+                    <when value="false"/>
+            </conditional>
+            <param name="usePrecursors" type="boolean" checked="true" label="Filter on matching precursors?"
+                help="If True, spectra will be filtered by similarity of precursors based on
+                    the library and query ppm defined tolerance" />
+            <param name="raW" label="Weighting for relative abundance" type="float" value="0.5"
+                help="Relative abundance weight for spectra (default to 0.5 as determined by
+                    massbank for ESI data)"/>
+            <param name="mzW" label="Weighting for mz" type="float" min="0" value="2"
+                help="mz weight for spectra (default to 2 as determined by massbank for ESI data)"/>
+            <conditional name="updateDb_cond">
+                <param name="updateDb" type="boolean" checked="true"
+                    label="Update database with results?" help="" />
+                    <when value="true">
+                        <param name="copyDb" type="boolean" checked="true"
+                            label="Make a copy of the database?"
+                            help="A copy will be made of the input SQLite target database and the
+                                results will be added to this copy.  When False, the input SQLite
+                                database will be updated  with the matching results. Use False if
+                                you want to reduce storage space being used."/>
+                    </when>
+                    <when value="false"/>
+            </conditional>
+        </section>
     </inputs>
 
     <outputs>
         <data name="sqlite_results" format="sqlite" label="${tool.name} on ${on_string}: SQLite results"
-              from_work_dir="db_with_spectral_matching.sqlite" >
+            from_work_dir="db_with_spectral_matching.sqlite" >
             <filter>create_new_database is True</filter>
         </data>
         <data name="matches" format="tsv" label="${tool.name} on ${on_string}: matches"
-              from_work_dir="matched_results.tsv" >
+            from_work_dir="matched_results.tsv" >
             <filter>spectra_type_q == "scans"</filter>
         </data>
         <data name="xcms_matches" format="tsv" label="${tool.name} on ${on_string}: XCMS matches"
-              from_work_dir="xcms_matched_results.tsv" />
+            from_work_dir="xcms_matched_results.tsv" />
     </outputs>
     <tests>
         <test>
-
-
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
-	    <param name="l_dbPth_select" value="userdb" />
+	        <param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
-
             <param name="q_xcmsGroups_bool" value="true" />
             <param name="l_accessions_bool" value="true" />
             <param name="q_xcmsGroups" value="14" />
@@ -268,23 +234,17 @@
         <test>
             <param name="l_instrumentTypes_bool" value="true" />
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
-	    <param name="l_dbPth_select" value="userdb" />
+	    	<param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
-
             <param name="q_xcmsGroups_bool" value="true" />
             <param name="l_accessions_bool" value="true" />
             <param name="q_xcmsGroups" value="14" />
             <param name="l_accessions" value="PR100037" />
-
             <output name="xcms_matches" file="spectralMatching_matched_results_instrumentTypes.tsv" />
             <output name="matches" file="spectralMatching_xcms_matched_results_instrumentTypes.tsv" />
             <output name="sqlite_results" value="spectralMatching_db_with_spectral_matching_instrumentTypes.sqlite" ftype="sqlite" compare="sim_size"/>
         </test>
-
-
     </tests>
-
-
 
     <help><![CDATA[
 
@@ -407,5 +367,5 @@ for all MS/MS spectra irrespective of if they are linked to XCMS MS1 features.
 
     ]]></help>
 
-<expand macro="citations">     </expand>
+	<expand macro="citations">     </expand>
 </tool>

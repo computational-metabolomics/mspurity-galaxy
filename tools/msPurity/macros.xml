@@ -1,40 +1,46 @@
 <?xml version="1.0"?>
 <macros>
-    <token name="@TOOL_VERSION@">1.11.4</token>
-    <token name="@GALAXY_TOOL_VERSION@">0.2.7</token>
+    <token name="@TOOL_VERSION@">1.12.0</token>
+    <token name="@GALAXY_TOOL_VERSION@">0</token>
 
     <xml name="requirements">
         <requirements>
            <requirement type="package" version="@TOOL_VERSION@" >bioconductor-mspurity</requirement>
+           <requirement type="package" version="1.42.0" >bioconductor-camera</requirement>
+           <requirement type="package" version="3.8.0" >bioconductor-xcms</requirement>
+           <requirement type="package" version="1.14.0" >bioconductor-mspuritydata</requirement>
+           <requirement type="package" version="1.6.4">r-optparse</requirement>
+           <requirement type="package" version="1.1.1">r-rpostgres</requirement>
+           <requirement type="package" version="0.10.17">r-rmysql</requirement>
             <yield />
         </requirements>
     </xml>
 
 
     <xml name="offsets">
-        <param name="minoffset" type="float" label="minoffset" value="0.5" argument='--minoffset'
+        <param argument="--minoffset" type="float" label="minoffset" value="0.5"
                help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
                100.0 then the range would be from 999.5 to 100.0"/>
-        <param name="maxoffset" type="float" label="maxoffset" value="0.5" argument='--maxoffset'
+        <param argument="--maxoffset" type="float" label="maxoffset" value="0.5"
                help="Offset to the 'right' for the precursor range  e.g. if precursor of interest is
                100.0 then the range would be from 100.0 to 100.5"/>
     </xml>
     <xml name="general_params">
-        <param name="ilim" type="float" value="0.05" argument='--ilim'
+        <param argument="--ilim" type="float" value="0.05" 
                label="Threshold to remove peaks below x % of the relative intensity of
                precursor of interest"
                help="All peaks less than this percentage of the precursor ion of interest will be
                removed from the purity calculation, default is 5\% (0.05).
                Essentially a noise filter to remove peaks that are thought to have either none or
                very limited impact on the resulting fragmentation spectra."/>
-        <param name="iw_norm" type="select" label="Normalisation for isolation efficiency">
+        <param argument="--iw_norm" type="select" label="Normalisation for isolation efficiency">
                 <option value="gauss" >Gaussian</option>
                 <option value="rcosine" >Raised cosine</option>
                 <option value="QE5"> Calculated from Q-Exactive for +/- 0.5 Da windows </option>
                 <option value="none" selected="true" >No normalisation</option>
         </param>
         <conditional name="isotopes">
-            <param name="isotopes" type="select" label="Handling of isotopic peaks" >
+            <param argument="--isotopes" type="select" label="Handling of isotopic peaks" >
                 <option value="keep" >Keep isotopes in precursor ion purity calculation</option>
                 <option value="exclude_default" selected="true" >Exclude C12/C13 isotopes in precursor ion purity calculation</option>
                 <option value="user" >Exclude a user supplied list of isotopes in purity calculation</option>
@@ -44,7 +50,7 @@
             <when value="exclude_default">
             </when>
             <when value="user">
-                <param name="im" type="data" format="tabular" label="Isotope matrix" help="
+                <param argument="--im" type="data" format="tabular" label="Isotope matrix" help="
                  tabular file composing of columns:
                   ['isotope_id', 'mass diff', 'abundance of isotope', 'ppm tol for mz', 'abundance buffer',
                                   'charge', 'relative atomic mass (int)', 'xflag'].
@@ -58,7 +64,7 @@
 
 
     <xml name="camera_xcms">
-            <param name="camera_xcms" type="select" label="Use CAMERA object or XCMS object from RData?"
+            <param argument="--camera_xcms" type="select" label="Use CAMERA object or XCMS object from RData?"
                help="Within the RData file there should be either an XCMS object called xset or a CAMERA object called
                       xa (or both). The XCMS object is nested within the CAMERA object so either can be used">
                 <option value="xcms" selected="true" >XCMS (xset)</option>
@@ -95,24 +101,23 @@
             <when value="no">
             </when>
             <when value="yes">
-                <param type="data" name="grp_peaklist" label="grouped peaklist"
+                <param argument="--grp_peaklist" type="data" label="grouped peaklist"
                     help="User supplied grouped peaklist to add to the database (if additional columns required e.g.
                           CAMERA annotations" format="tsv,tabular"/>
             </when>
         </conditional>
     </xml>
 
-
     <xml name="sm_input" token_ql='Query' token_dblabel="SQLite database"  token_ql_shrt="Q"
          token_user="True" token_mspuritydatalib="False" token_msp="False" token_help="">
         <conditional name="@QL_SHRT@_dbPth_con">
-            <param name="@QL_SHRT@_dbPth_select" type="select" label="Input" help="@HELP@" >
+            <param argument="--@QL_SHRT@_dbPth_select" type="select" label="Input" help="@HELP@" >
                 <option value="sqlite" selected="@USER@" >SQLite database of (LC)-MS/MS data</option>
                 <option value="local_config" selected="@USER@" >Locally configured SQLite, MySQL or PostgreSQL database</option>
                 <option value="msPurityData"  selected="@MSPURITYDATALIB@" >Prepared database of MassBank, HMDB, LipidBlast and GNPS</option>
             </param>
             <when value="sqlite">
-               <param type="data" name="@QL_SHRT@_dbPth" label="@QL@ SQLite database" format="sqlite" help=""/>
+               <param argument="--@QL_SHRT@_dbPth" type="data" label="@QL@ SQLite database" format="sqlite" help=""/>
             </when>
             <when value="local_config">
             </when>
@@ -127,13 +132,13 @@
 
         <section name="@QL_SHRT@_filters" title="Filters" expanded="False">
 
-            <param name="@QL_SHRT@_ppmPrec" type="float" value="5" label="ppm error of the precursor for spectra"/>
-            <param name="@QL_SHRT@_ppmProd" type="float" value="10" label="ppm error of the product for spectra"/>
+            <param argument="--@QL_SHRT@_ppmPrec" type="float" value="5" label="ppm error of the precursor for spectra"/>
+            <param argument="--@QL_SHRT@_ppmProd" type="float" value="10" label="ppm error of the product for spectra"/>
 
             <conditional name="@QL_SHRT@_raThres_cond">
                 <param name="@QL_SHRT@_raThres_bool" type="boolean" label="Filter on relative abundance threshold?"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_raThres" type="float" value = '2' label="Relative abundance threshold"/>
+                    <param argument="--@QL_SHRT@_raThres" type="float" value = '2' label="Relative abundance threshold"/>
                 </when>
                 <when value="false">
                 </when>
@@ -142,7 +147,7 @@
             <conditional name="@QL_SHRT@_polarity_cond">
                 <param name="@QL_SHRT@_polarity_bool" type="boolean" label="Filter on polarity?" help="" />
                 <when value="true">
-                    <param name="@QL_SHRT@_polarity" type="select" label="Polarity" multiple="true" >
+                    <param argument="--@QL_SHRT@_polarity" type="select" label="Polarity" multiple="true" >
                       <option value="positive" selected="@POLARITY_POSITIVE@">Positive</option>
                       <option value="negative" >Negative</option>
                       <option value="NA" >NA</option>
@@ -155,7 +160,7 @@
             <conditional name="@QL_SHRT@_purity_cond">
                 <param name="@QL_SHRT@_purity_bool" type="boolean" label="Filter on precursor ion purity?"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_purity" type="float" min="0" max="1" value="0.6"
+                    <param argument="--@QL_SHRT@_purity" type="float" min="0" max="1" value="0.6"
                            label="Precursor ion purity threshold"/>
                 </when>
                 <when value="false">
@@ -165,7 +170,7 @@
             <conditional name="@QL_SHRT@_xcmsGroups_cond">
                 <param name="@QL_SHRT@_xcmsGroups_bool" type="boolean" label="Filter on XCMS groups ids?"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_xcmsGroups" type="text" value=""
+                    <param argument="--@QL_SHRT@_xcmsGroups" type="text" value=""
                           label="XCMS group ids of spectra"
                           help="comma seperated list of grpids (correspond to column 'grpid in c_peak_group'))
                                 e.g '12,27,30'" />
@@ -178,7 +183,7 @@
             <conditional name="@QL_SHRT@_pids_cond">
                 <param name="@QL_SHRT@_pids_bool" type="boolean" label="Filter on pids?"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_pids" type="text" value=""
+                    <param argument="--@QL_SHRT@_pids" type="text" value=""
                           label="pids of spectra (correspond to column 'pid; in s_peak_meta)"
                           help="comma seperated list of pids (correspond to column 'pid; in s_peak_meta))
                                 e.g '3001,5561'" />
@@ -193,9 +198,9 @@
                        label="Filter on retention time range?"
                        help="Filter the spectra between two points of retention time range"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_rtrangeMin" label="Minimum retention time range (seconds)"
+                    <param argument="--@QL_SHRT@_rtrangeMin" label="Minimum retention time range (seconds)"
                            type="float" value="0" help=""/>
-                    <param name="@QL_SHRT@_rtrangeMax" label="Maximum retention time range (seconds)"
+                    <param argument="--@QL_SHRT@_rtrangeMax" label="Maximum retention time range (seconds)"
                            type="float" value="3000" help=""/>
                 </when>
                 <when value="false">
@@ -209,7 +214,7 @@
                        label="Filter on accessions?"
                        help="Filter on unique accessions IDs (e.g. from MassBank and MoNA)"/>
                 <when value="true">
-                    <param name="@QL_SHRT@_accessions" type="text" value=""
+                    <param argument="--@QL_SHRT@_accessions" type="text" value=""
                           label="Spectra accessions"
                           help="Comma seperated list of accessions))
                                 e.g 'AC000001,BS001003,LIT00001'" />
@@ -223,7 +228,7 @@
                 <param name="@QL_SHRT@_sources_bool" type="boolean"
                        label="Filter on sources?" help="" value="@SOURCES_SELECT@" />
                 <when value="true">
-                    <param name="@QL_SHRT@_sources" type="select" multiple="true"
+                    <param argument="--@QL_SHRT@_sources" type="select" multiple="true"
                        help="@QL_SHRT@ The default internal SQLite database of library (reference) spectra
                        contains fragmentation spectra from MassBank, LipidBlast and GNPS. A copy is
                        available from here:
@@ -246,7 +251,7 @@
                        value="@INSTRUMENT_TYPES_SELECT@"
                        label="Filter on instrument type?" help="" />
                 <when value="true">
-                    <param name="@QL_SHRT@_instrumentTypes" type="select" multiple="true"
+                    <param argument="--@QL_SHRT@_instrumentTypes" type="select" multiple="true"
                        help="" >
                         <option value="APCI-ITFT" selected="true" >APCI-ITFT</option>
                         <option value="APCI-ITTOF" selected="true" >APCI-ITTOF</option>
@@ -303,7 +308,7 @@
                         <option value="Quattro_QQQ" selected="true">Quattro_QQQ</option>
                         <option value="none">None</option>
                   </param>
-                  <param name="@QL_SHRT@_instrumentTypesUser" type="text" value=""
+                  <param argument="--@QL_SHRT@_instrumentTypesUser" type="text" value=""
                          help="Types of the instruments to be included in the search. Use a comma to
                                separate the instrument types or leave empty to ignore filter."/>
                 </when>
@@ -313,7 +318,7 @@
             <conditional name="@QL_SHRT@_instruments_cond">
                 <param name="@QL_SHRT@_instruments_bool" type="boolean" label="Filter on instrument name?" help="" />
                 <when value="true">
-                    <param name="@QL_SHRT@_instruments" type="text" value=""
+                    <param argument="--@QL_SHRT@_instruments" type="text" value=""
                          help="Known instrument names to filter on. Use a comma to
                                separate the instrument types or leave empty to ignore filter."/>
                 </when>
@@ -327,7 +332,7 @@
                 <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?"
                 help="" />
                 <when value="true">
-                    <param name="@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
+                    <param argument="--@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
                         <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
                         <option value="av_inter">Averaged inter spectra</option>
                         <option value="av_intra">Averaged intra spectra </option>
@@ -339,7 +344,7 @@
                 </when>
             </conditional>
 
-           <param name="@QL_SHRT@_spectraFilter" type="boolean" checked="true"
+           <param argument="--@QL_SHRT@_spectraFilter" type="boolean" checked="true"
                   label="Ignore any peaks flagged in the spectra in previous stages?"
                           help="" />
 

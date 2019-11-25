@@ -7,6 +7,7 @@ cache:
 
 env:
   - TEST=tools/msPurity/purityA.xml
+  - TEST=tools/msPurity/combineAnnotations.xml
   - TEST=tools/msPurity/spectralMatching.xml
   - TEST=tools/msPurity/dimsPredictPuritySingle.xml
   - TEST=tools/msPurity/filterFragSpectra.xml
@@ -27,5 +28,5 @@ before_install:
  
 script:
 - planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
-- travis_wait 30 planemo test  --conda_debug  --conda_ensure_channels tomnl,iuc,bioconda,conda-forge,defaults  ${TRAVIS_BUILD_DIR}/${TEST}
+- planemo test  --conda_debug  ${TRAVIS_BUILD_DIR}/${TEST}
 

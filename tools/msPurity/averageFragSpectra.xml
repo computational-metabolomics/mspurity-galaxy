@@ -1,23 +1,14 @@
 <tool id="mspurity_averagefragspectra" name="msPurity.averageFragSpectra" version="@TOOL_VERSION@+galaxy@GALAXY_TOOL_VERSION@">
-    <description>
-        Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)
-    </description>
-
+    <description>Average and filter LC-MS/MS fragmentation spectra (Inter, Intra or All)</description>
     <macros>
         <import>macros.xml</import>
     </macros>
-
-    <expand macro="requirements">
-    </expand>
-
- <stdio>
-        <exit_code range="1:" />
-    </stdio>
-    <command interpreter="Rscript"><![CDATA[
-        averageFragSpectra.R
-            --out_rdata="$averageFragSpectra_output_rdata"
-            --out_peaklist="$averageFragSpectra_output_tsv"
-            --pa="$pa"
+    <expand macro="requirements"/>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript '$__tool_directory__/averageFragSpectra.R'
+            --out_rdata='$averageFragSpectra_output_rdata'
+            --out_peaklist='$averageFragSpectra_output_tsv'
+            --pa='$pa'
             --av_level=$av_level
             --cores=\${GALAXY_SLOTS:-4}
             --minfrac=$minfrac
@@ -30,29 +21,29 @@
             $rmp
     ]]></command>
     <inputs>
-        <param name="pa" type="data" label="purityA object" format="rdata"
+        <param argument="--pa" type="data" label="purityA object" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature tool)"/>
 
 
-        <param name="av_level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
+        <param argument="--av_level" type="select" label="Average and filter fragmentation spectra for each XCMS feature" help="">
             <option value="intra" selected="true">within a MS data file</option>
             <option value="inter">across MS data files</option>
             <option value="all">within and across MS data files (ignoring intra and inter relationships)</option>
         </param>
 
 
-        <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
-        <param name="ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
-        <param name="minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
-        <param name="minnum" type="integer" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
-        <param name="ppm" type="float" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
-        <param name="sumi" type="boolean" checked="false" truevalue="--sumi" falsevalue="" label="Sum intensities across (averaged) scans?"   help="" />
-        <param name="av" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
+        <param argument="--snr" type="float" min="0.0" value="0.0" label="Signal-to-noise threshold after averaging or summing" help="" />
+        <param argument="--ra" type="float" min="0.0" max="1.0" value="0.0" label="Relative abundance threshold after averaging or summing" help="" />
+        <param argument="--minfrac" type="float" min="0.0" max="1.0" value="0.5" label="Minimum fraction (i.e. percentage) of (averaged) scans a fragment peak has to be present in." help="" />
+        <param argument="--minnum" type="integer" min="1" value="1" label="Minimum number of (averaged) fragmentation scans for a fragmentation event (precursor)." help="" />
+        <param argument="--ppm" type="float" min="0.0" value="5.0" label="Ppm error tolerance" help="Maximum tolerated m/z deviation in parts per million." />
+        <param argument="--sumi" type="boolean" checked="false" truevalue="--sumi" falsevalue="" label="Sum intensities across (averaged) scans?"   help="" />
+        <param argument="--av" type="select" label="Function to calculate the average intensity, m/z and SNR values across (averaged) scans after filtering." help="This is ignored for intensities when intensities are summed." >
             <option value="median" selected="true">median</option>
             <option value="mean">mean</option>
         </param>
 
-        <param name="rmp" type="boolean" checked="true" truevalue="--rmp" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
+        <param argument="--rmp" type="boolean" checked="true" truevalue="--rmp" falsevalue="" label="Remove peaks that do not meet the filtering criteria. Otherwise peaks will be flagged instead."
            help="" />
     </inputs>
     <outputs>
