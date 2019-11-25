@@ -34,7 +34,7 @@
             --compoundDbType=$compoundDbTypeCond.compoundDbType
 
             #if $compoundDbTypeCond.compoundDbType== 'sqlite'
-              --compoundDbPth=$compoundDbTypeCond.compoundDbPth
+              --compoundDbPth='$compoundDbTypeCond.compoundDbPth'
             #end if
 
 
@@ -42,43 +42,43 @@
     <inputs>
 
 
-      <param name="sm_resultPth" type="data" label="Spectral matching result" format="sqlite"
+      <param argument="--sm_resultPth" type="data" label="Spectral matching result" format="sqlite"
                help="The SQLite database generated from msPurity.spectralMatching"/>
-      <param name="metfrag_resultPth" type="data" label="Metfrag result" format="tsv,tabular"  optional="true"
+      <param argument="--metfrag_resultPth" type="data" label="Metfrag result" format="tsv,tabular"  optional="true"
                help="The result of the MetFrag analysis (requires a column indicating the XCMS group ID)"/>
-      <param name="sirius_csi_resultPth" type="data" label="Sirius CSI:FingerID result" format="tsv,tabular"   optional="true"
+      <param argument="--sirius_csi_resultPth" type="data" label="Sirius CSI:FingerID result" format="tsv,tabular"   optional="true"
              help="The result of the CSI:FingerID analysis (requires a column indicating the XCMS group ID)"/>
-      <param name="probmetab_resultPth" type="data" label="Probmetab result" format="tsv,tabular"   optional="true"
+      <param argument="--probmetab_resultPth" type="data" label="Probmetab result" format="tsv,tabular"   optional="true"
                help="The result of the Probmetab analysis (requires a column indicating the XCMS group ID)"/>
-      <param name="ms1_lookup_resultPth" type="data" label="MS1 Lookup result" format="tsv,tabular"   optional="true"
+      <param argument="--ms1_lookup_resultPth" type="data" label="MS1 Lookup result" format="tsv,tabular"   optional="true"
              help="The result of the a generic MS1 lookup annotation software (e.g. BEAMS can be used)"/>
-      <param name="ms1_lookup_keepAdducts" type="text" label="MS1 lookup adducts to keep" optional="true"
+      <param argument="--ms1_lookup_keepAdducts" type="text" label="MS1 lookup adducts to keep" optional="true"
              help="Provide a list of adducts that should be used from the MS1 lookup (e.g. [M+H]+, [M+Na]+"/>
-      <param name="ms1_lookup_checkAdducts" type="boolean" label="MS1 lookup check adducts to CAMERA"
+      <param argument="--ms1_lookup_checkAdducts" type="boolean" label="MS1 lookup check adducts to CAMERA"
              help="Check if adducts match to those found in CAMERA (requires the database to have been created with CAMERA object"/>
-      <param name="ms1_lookup_dbSource" type="select" label="MS1 lookup database source" help="Which database was used for the MS1 lookup" >
+      <param argument="--ms1_lookup_dbSource" type="select" label="MS1 lookup database source" help="Which database was used for the MS1 lookup" >
                 <option value="hmdb" selected="true">hmdb</option>
                 <option value="pubchem">pubchem</option>
                 <option value="kegg">kegg</option>
       </param>
-      <param name="sm_weight" type="float" min="0.0" max="1.0" value="0.3" label="Spectral matching weight" help="all weights need to sum to 1" />
-      <param name="metfrag_weight" type="float" min="0.0" max="1.0" value="0.2" label="Metfrag weight" help="all weights need to sum to 1" />
-      <param name="sirius_csi_weight" type="float" min="0.0" max="1.0" value="0.2" label="Sirius CSI:FingerID weight" help="all weights need to sum to 1" />
-      <param name="probmetab_weight" type="float" min="0.0" max="1.0" value="0.0" label="Probmetab weight" help="all weights need to sum to 1" />
-      <param name="ms1_lookup_weight" type="float" min="0.0" max="1.0" value="0.05" label="MS1 Lookup weight" help="all weights need to sum to 1" />
-      <param name="biosim_weight" type="float" min="0.0" max="1.0" value="0.25" label="Biological similarity weight" help="all weights need to sum to 1" />
-      <param name="create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
+      <param argument="--sm_weight" type="float" min="0.0" max="1.0" value="0.3" label="Spectral matching weight" help="all weights need to sum to 1" />
+      <param argument="--metfrag_weight" type="float" min="0.0" max="1.0" value="0.2" label="Metfrag weight" help="all weights need to sum to 1" />
+      <param argument="--sirius_csi_weight" type="float" min="0.0" max="1.0" value="0.2" label="Sirius CSI:FingerID weight" help="all weights need to sum to 1" />
+      <param argument="--probmetab_weight" type="float" min="0.0" max="1.0" value="0.0" label="Probmetab weight" help="all weights need to sum to 1" />
+      <param argument="--ms1_lookup_weight" type="float" min="0.0" max="1.0" value="0.05" label="MS1 Lookup weight" help="all weights need to sum to 1" />
+      <param argument="--biosim_weight" type="float" min="0.0" max="1.0" value="0.25" label="Biological similarity weight" help="all weights need to sum to 1" />
+      <param argument="--create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
                help="A copy will be made of the input SQLite spectral matching database and the results will be added to this copy.
                      When False, the input SQLite database will be updated the results. Use False
                      if you want to reduce storage space being used."/>
 
       <conditional name="compoundDbTypeCond">
-            <param name="compoundDbType" type="select" label="compoundDbType" help="Database type for compound database to be used full database available on request - contact t.n.lawson@bham.ac.uk)." >
+            <param argument="--compoundDbType" type="select" label="compoundDbType" help="Database type for compound database to be used full database available on request - contact t.n.lawson@bham.ac.uk)." >
                 <option value="sqlite" selected="true">SQLite</option>
                 <option value="local_config"  >Locally configured MySQL, Postgres or SQLite database</option>
             </param>
             <when value="sqlite">
-               <param type="data" name="compoundDbPth" label="SQLite compound database pth" format="sqlite" help=""/>
+               <param argument="--compoundDbPth" type="data" label="SQLite compound database pth" format="sqlite" help=""/>
             </when>
             <when value="local_config">
             </when>

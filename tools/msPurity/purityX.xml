@@ -8,7 +8,7 @@
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/purityX.R'
             --xset_path='$xset'
-            --out_dir=.
+            --out_dir='.'
             --minOffset=$minoffset
             --maxOffset=$maxoffset
             --singleFile=$singleFile
@@ -61,11 +61,11 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset" format="rdata"
+        <param argument="--xset" type="data" format="rdata"
                 help="xcmsSet object saved as an RData file"/>
         <expand macro="offsets" />
         <expand macro="general_params" />
-        <param name="singleFile" type="integer" label="singleFile" value="0"
+        <param argument="--singleFile" type="integer" label="singleFile" value="0"
                     help="If just a single file for purity is to be calculated (rather than the grouped XCMS peaks).
                     Uses the index of the files in xcmsSet object. If zero this is ignored"/>
 
@@ -77,7 +77,7 @@
             <when value="all">
             </when>
             <when value="choose">
-                <param name="class" type="text" label="Choose class"
+                <param argument="--class" type="text" label="Choose class"
                     help="Comma separated string of classes (found in the phenoData slot of xcmsSet object
                     i.e. xset@phenoData). An average will across all the choosen classes." />
             </when>
@@ -91,7 +91,7 @@
             <when value="none">
             </when>
             <when value="choose">
-                                <param name="ignore_files" type="text" label="ignore files"
+               <param argument="--ignore_files" type="text" label="ignore files"
                help="Comma separated string of filenames to ignore (do not include the directory) eg. blank1.mzML,blank2.mzML,sample4.mzML"  />
             </when>
         </conditional>
@@ -110,7 +110,7 @@
         </conditional>
 
 
-        <param name="purityType" type="select" label="Method of averaging purity"
+        <param argument="--purityType" type="select" label="Method of averaging purity"
                help="Area and average used for the purity predictions. FWHM='Full width half maximum', FW='Full width'">
                 <option value="purityFWHMmedian" selected="true" >FWHM median</option>
                 <option value="purityFWHMmean" >FWHM mean</option>
@@ -120,7 +120,7 @@
 
         <expand macro="camera_xcms" />
 
-        <param name="raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
+        <param argument="--raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
                help="Only applicable when using retention time correction with obiwarp. When obiwarp is used
                      the retention time correction tracking is slightly different to the other correction methods. To ensure
                      correct tracking with obiwarp an additional tool (track_rt_raw) should be performed prior to

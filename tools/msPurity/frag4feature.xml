@@ -41,30 +41,30 @@
     ]]></command>
     <inputs>
 
-        <param type="data" name="xset" label="xcmsSet object" argument="--xset"
+        <param argument="--xset" type="data"  label="xcmsSet object" 
                help="grouped xcmsSet object saved as 'xset' in an RData file"
                format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
-        <param type="data" name="pa" label="purityA object" format="rdata" argument="--pa"
+        <param argument="--pa" type="data" label="purityA object" format="rdata"
                help="purityA object generated from msPurity_purityA.
                Contains details of fragmentation spectra and precursor ion purity results
                (output from purityA tool)"/>
-        <param name="ppm" type="float" argument="--ppm" value="10"
+        <param argument="--ppm" type="float" value="10"
                label="ppm error tolerance between precursor mz and XCMS feature mz"
                help="Fragmentation will be ignored if the precursor mz value is not within
                the ppm error tolerance to the XCMS feature mz"/>
-        <param name="plim" type="float" label="Precursor ion purity threshold"
-               value="0" max="1" min="0" argument="--plim"
+        <param argument="--plim" type="float" label="Precursor ion purity threshold"
+               value="0" max="1" min="0" 
                help="Fragmentation will be ignore if the precursor ion purity is less than the
                threshold (further filtering on the precursor ion purity can be done at the averaging
                stage if required)."/>
-        <param name="intense" type="boolean" checked="true"  argument="--intense"
+        <param argument="--intense" type="boolean" checked="true"  
                label="Should the most intense precursor be used within the isolation window?"
                help="If TRUE the most intense precursor will be used. If FALSE the precursor
                closest to the center of the isolation window will be used"/>
-        <param name="convert2RawRT" type="boolean" checked="false"  argument="--convert2RawRT"
+        <param  argument="--convert2RawRT" type="boolean" checked="false" 
                label="Was retention time correction used?"
                help="If retention time correction has been used in XCMS set this to yes"/>
-        <param name="useGroup" type="boolean" checked="false"  argument="--useGroup"
+        <param argument="--useGroup" type="boolean" checked="false"  
               label="For matching fragmentation to a feature, use the grouped feature range"
               help="For special cases where the MS2 files have no MS1 data or if the MS1 data in the MS2 file is unreliable"  />
 

@@ -44,50 +44,50 @@
                 #end if
     ]]></command>
     <inputs>
-        <param type="data" name="xset_path" format='rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata'
+        <param argument="--xset_path" type="data" format='rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata'
                 help="The path to the xcmsSet object saved as an RData file"/>
         <conditional name="sample_flag">
-            <param name="sample_flag" type="select" label="Change biological sample flag parameters?">
+            <param argument="sample_flag" type="select" label="Change biological sample flag parameters?">
                 <option value="update" >Update biological sample flag parameters</option>
                 <option value="" selected="true">Use default biological sample flag parameters</option>
             </param>
             <when value="">
             </when>
             <when value="update">
-                <param name="rsd_i_sample" type="text" label="rsd_i_sample" value="NA"
-                    help="Relative Standard Deviation threshold for the sample classes (--rsd_i_sample)"/>
-                <param name="minfrac_sample" type="float" label="minfrac_sample" value="0.5" min="0.0" max="1"
-                    help="minimum fraction of files for features needed for the sample classes (--minfrac_sample)"/>
-                <param name="rsd_rt_sample" type="text" label="rsd_rt_sample" value="NA"
+                <param argument="--rsd_i_sample" type="text" label="rsd_i_sample" value="NA"
+                    help="Relative Standard Deviation threshold for the sample classes"/>
+                <param argument="--minfrac_sample" type="float" label="minfrac_sample" value="0.5" min="0.0" max="1"
+                    help="minimum fraction of files for features needed for the sample classes"/>
+                <param argument="--rsd_rt_sample" type="text" label="rsd_rt_sample" value="NA"
                     help="Relative standard Deviation threshold for the retention time of the sample
-                     classes (--rsd_rt_sample)"/>
-                <param name="ithres_sample" type="text" label="ithres_sample" value="NA"
-                    help="Intensity threshold for the sample (--ithres_sample)"/>
+                     classes"/>
+                <param argument="--ithres_sample" type="text" label="ithres_sample" value="NA"
+                    help="Intensity threshold for the sample"/>
             </when>
         </conditional>
         <conditional name="blank_flag">
-            <param name="blank_flag" type="select" label="Change blank flag parameters?">
+            <param argument="blank_flag" type="select" label="Change blank flag parameters?">
                 <option value="update" >Update blank flag parameters</option>
                 <option value="" selected="true">Use default blank flag parameters</option>
             </param>
             <when value="">
             </when>
             <when value="update">
-                <param name="blank_class" type="text" label="blank_class" value="blank"
-                help="A string representing the class that will be used for the blank (--blank_class)"/>
-                <param name="rsd_i_blank" type="text" label="rsd_i_blank" value="NA"
-                    help="RSD threshold for the blank (--rsd_i_blank)"/>
-                <param name="minfrac_blank" type="float" label="minfrac_blank" value="0.5" min="0.0" max="1"
-                    help="minimum fraction of files for features needed for the blank (--minfrac_blank)"/>
-                <param name="rsd_rt_blank" type="text" label="rsd_rt_blank" value="NA"
-                    help="RSD threshold for the retention time of the blank (--rsd_rt_blank)"/>
-                <param name="ithres_blank" type="text" label="ithres_blank" value="NA"
-                    help="Intensity threshold for the blank (--ithres_blank)"/>
-                <param name="s2b" type="float" label="s2b" value="10"
+                <param argument="--blank_class" type="text" label="blank_class" value="blank"
+                help="A string representing the class that will be used for the blank"/>
+                <param argument="--rsd_i_blank" type="text" label="rsd_i_blank" value="NA"
+                    help="RSD threshold for the blank"/>
+                <param argument="--minfrac_blank" type="float" label="minfrac_blank" value="0.5" min="0.0" max="1"
+                    help="minimum fraction of files for features needed for the blank"/>
+                <param argument="--rsd_rt_blank" type="text" label="rsd_rt_blank" value="NA"
+                    help="RSD threshold for the retention time of the blank"/>
+                <param argument="--ithres_blank" type="text" label="ithres_blank" value="NA"
+                    help="Intensity threshold for the blank"/>
+                <param argument="--s2b" type="float" label="s2b" value="10"
                     help="fold change (sample/blank) needed for sample peak to be allowed. e.g.
                     if s2b set to 10 and the recorded sample 'intensity' value was 100 and blank was 10.
                     1000/10 = 100, so sample has fold change higher than the threshold and the peak
-                    is not considered a blank (--s2b)"/>
+                    is not considered a blank"/>
             </when>
         </conditional>
         <conditional name="peak_removal">
@@ -98,12 +98,12 @@
             <when value="">
             </when>
             <when value="remove">
-                 <param name="minfrac_xcms" type="float" label="minfrac_xcms" value="0.7" min="0.0" max="1"
-                    help="minfrac for xcms  grouping (--minfrac_xcms)"/>
-                 <param name="mzwid" type="float" label="mzwid" value="0.001"
-                    help="mzwid for xcms  grouping (--minfrac_xcms)"/>
-                <param name="bw" type="float" label="bw" value="5"
-                    help="bw for xcms  grouping(--minfrac_xcms)"/>
+                 <param argument="--minfrac_xcms" type="float" label="minfrac_xcms" value="0.7" min="0.0" max="1"
+                    help="minfrac for xcms  grouping"/>
+                 <param argument="--mzwid" type="float" label="mzwid" value="0.001"
+                    help="mzwid for xcms  grouping"/>
+                <param argument="--bw" type="float" label="bw" value="5"
+                    help="bw for xcms  grouping"/>
             </when>
         </conditional>
         <conditional name="advanced">
@@ -114,23 +114,22 @@
             <when value="">
             </when>
             <when value="update">
-                <param name="egauss_thr" type="text" label="egauss_thr" value="NA"
+                <param argument="--egauss_thr" type="text" label="egauss_thr" value="NA"
                     help="Threshold for filtering out non gaussian shaped peaks. Note this only works
-                          if the 'verbose columns' and 'fit gauss' was used with xcms (--egauss_thr)"/>
-                <param name="temp_save" type="boolean" label="temp_save" checked="false" truevalue="--temp_save" falsevalue=""
-                    help="Assign True if files for each step saved (for testing purposes) (--temp_save)"/>
-                <param name="polarity" type="select" label="polarity"
-                    help="polarity (just used for naming purpose when files are saved) (--polarity)">
+                          if the 'verbose columns' and 'fit gauss' was used with xcms"/>
+                <param argument="--temp_save" type="boolean" label="temp_save" checked="false" truevalue="--temp_save" falsevalue=""
+                    help="Assign True if files for each step saved (for testing purposes)"/>
+                <param argument="--polarity" type="select" label="polarity"
+                    help="polarity (just used for naming purpose when files are saved)">
                     <option value="positive">Positive</option>
                     <option value="negative" >Negative</option>
                     <option value="NA" selected="true">NA</option>
                 </param>
-                <param name="grp_rm_ids" type="text" label="grp_rm_ids" value="NA"
+                <param argument="--grp_rm_ids" type="text" label="grp_rm_ids" value="NA"
                 help="comma seperated list of grouped_xcms peak ids to remove (corresponds to the row from xcms::group output)
-                      e.g '1,20,30,56'
-                 (--grp_rm_ids)"/>
-                <param name="xset_name" type="text" label="xset_name" value="xset"
-                    help="Name of the xcmsSet object within the RData file (--xset_name)"/>
+                      e.g '1,20,30,56'"/>
+                <param argument="--xset_name" type="text" label="xset_name" value="xset"
+                    help="Name of the xcmsSet object within the RData file"/>
             </when>
         </conditional>
         <conditional name="choose_samp">
@@ -141,8 +140,10 @@
             <when value="">
             </when>
             <when value="yes">
-                <param name="samplelist" type="data" label="samplelist" format="tsv,tabular"
-                       help="A samplelist can be provided to find an appriopiate blank class (requires a column 'blank' where 'yes' indicates the class should be used as the blank (--samplelist)"/>
+                <param argument="--samplelist" type="data" label="samplelist" format="tsv,tabular"
+                       help="A samplelist can be provided to find
+                       an appriopiate blank class (requires a column 'blank' where 'yes' indicates the
+                       class should be used as the blank) "/>
 
             </when>
         </conditional>

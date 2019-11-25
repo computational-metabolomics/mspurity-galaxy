@@ -8,7 +8,7 @@
     <expand macro="requirements" />
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/purityA.R'
-            --out_dir=.
+            --out_dir='.'
             
             --mzML_files='
                 #for $i in $source
@@ -53,21 +53,20 @@
         <param name="source" type="data" multiple="true" format="mzml" label="*.mzML file" >
                     <validator type="empty_field" />
         </param>
-        <param name="mostIntense" type="boolean" checked="true" argument="--mostIntense"
+        <param argument="--mostIntense" type="boolean" checked="true"
                label="Use most intense peak within isolation window for precursor?"
                help="If yes, this will ignore the recorded precursor within the mzML file and use
                use the most intense peak within the isolation window to calculate the precursor ion purity"/>
 
-        <param name="nearest" type="boolean" checked="true" argument="--nearest"
+        <param argument="--nearest" type="boolean" checked="true" 
                label="Use nearest full scan to determine precursor?"
                help="If TRUE, this will use the neareset full scan to the fragmentation scan to determine what the m/z value
                      is of the precursor"/>
 
-        <param name="ppmInterp" type="float" label="Interpolation PPM" min="0" value="7" argument='--ppmInterp'
+        <param argument="--ppmInterp" type="float" label="Interpolation PPM" min="0" value="7"
                help="Set the ppm tolerance for the precursor ion purity interpolation.
                i.e. the ppm tolerence between the precursor ion found in the neighbouring scans. The closest match
                within the window will be used for the interpolation"/>
-
 
         <conditional name="offsets">
             <param name="offsets" type="select" label="offsets" >

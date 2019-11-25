@@ -6,11 +6,11 @@
     <expand macro="requirements" />
     <command detect_errors="exit_code"><![CDATA[
         Rscript '$__tool_directory__/dimsPredictPuritySingle.R'
-            #if $mzML_data.format == "mzML_file"
+            #if $mzML_data.format == 'mzML_file'
                 --mzML_file '$mzML_data.source'
-            #elif $mzML_data.format == "library"
+            #elif $mzML_data.format == 'library'
                 --mzML_file '$__app__.config.user_library_import_dir/$__user_email__/$mzML_data.source'
-            #elif $mzML_data.format == "mzML_data_collection"
+            #elif $mzML_data.format == 'mzML_data_collection'
                 --mzML_files='
                 #for $i in $mzML_data.source
                     $i,
@@ -25,9 +25,9 @@
 
             #end if
             --peaks_file='$peaks_file'
-            --out_dir=.
-            --minOffset=$minoffset
-            --maxOffset=$maxoffset
+            --out_dir='.'
+            --minoffset=$minoffset
+            --maxoffset=$maxoffset
             --ppm=$ppm
             --iwNorm=$iw_norm
             --ilim=$ilim
@@ -39,13 +39,13 @@
             #end if
             #if $dimspy_usage.usage == "dimspy"
                 --dimspy
-                --file_num_dimspy $dimspy_usage.file_num
+                --file_num_dimspy $dimspy_usage.file_num_dimspy
             #end if
             #if $isotopes.isotopes == "exclude_default":
                 --exclude_isotopes
             #elif $isotopes.isotopes == "user"
                 --exclude_isotopes
-                --isotope_matrix = $isotopes.im
+                --isotope_matrix = '$isotopes.im'
             #end if
     ]]></command>
     <inputs>
@@ -84,21 +84,13 @@
 
         </conditional>
 
-        <expand macro="offsets" />
         <expand macro="general_params" />
-
+        <expand macro="offsets" />
 
         <param argument="--ppm" type="float" label="ppm" min="0" value="10"
                     help="ppm tolerance to compare between mz values"/>
-
-        <param argument="--minoffset" type="float" label="minoffset" value="0.5"
-                    help="Offset to the 'left' for the precursor range e.g. if precursor of interest is
-                    100.0 then the range would be from 999.5 to 100.0"/>
-
         <param argument="--remove_NAs" type="boolean" label="Remove rows where mz value is NA or NaN?" help=""/>
-
         <param argument="--sim" type="boolean" label="SIM-Stitch experiment?" help=""/>
-
         <conditional name="dimspy_usage">
             <param name="usage" type="select" label="dimspy peak matrix text file usage?">
                 <option value="no_dimspy" selected="true">dimspy not used to prepare the mz text file</option>
@@ -107,7 +99,7 @@
             <when value="no_dimspy">
             </when>
             <when value="dimspy">
-                <param argument="--file_num" type="integer" label="File number" min="0" value="1"
+                <param argument="--file_num_dimspy" type="integer" label="File number" min="0" value="1"
                     help="Choose the file number from the dimspy matrix to use to calculate the precursor ion
                           purity metric (order based on column order). This file will then be looked for in the
                           library folder to calculate the metric.
@@ -126,6 +118,7 @@
             <param name="mzML_data|source" value="dimsPredictPuritySingle_full_scan.mzML" />
             <param name="remove_NAs" value="True" />
             <param name="dimspy_usage|usage" value="dimspy" />
+            <param name="dimspy_usage|file_num_dimspy" value="1" />
             <param name="peaks_file" value="dimsPredictPuritySingle_input_dimspy_peakmatrix.tsv" />
             <output name="dimsPredictPuritySingle_output" value="dimsPredictPuritySingle_output.tsv" />
         </test>

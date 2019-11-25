@@ -9,8 +9,8 @@ option_list <- list(
   make_option(c("--mzML_galaxy_names"), type="character", default=''),
   make_option(c("--peaks_file"), type="character"),
   make_option(c("-o", "--out_dir"), type="character"),
-  make_option("--minOffset", default=0.5),
-  make_option("--maxOffset", default=0.5),
+  make_option("--minoffset", default=0.5),
+  make_option("--maxoffset", default=0.5),
   make_option("--ilim", default=0.05),
   make_option("--ppm", default=4),
   make_option("--dimspy", action="store_true"),
@@ -118,8 +118,8 @@ if (is.null(opt$sim)){
     sim=TRUE
 }
 
-minOffset = as.numeric(opt$minOffset)
-maxOffset = as.numeric(opt$maxOffset)
+minOffset = as.numeric(opt$minoffset)
+maxOffset = as.numeric(opt$maxoffset)
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE

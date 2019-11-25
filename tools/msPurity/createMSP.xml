@@ -8,7 +8,7 @@
     <command detect_errors="exit_code"><![CDATA[
     Rscript '$__tool_directory__/createMSP.R'
     --rdata_input '$rdata_input'
-    --method "$method"
+    --method '$method'
 
     #if $metadata_cond.metadata_select == "true"
         --metadata '$metadata_cond.metadata'
@@ -31,15 +31,15 @@
     --out_dir '.'
     ]]></command>
     <inputs>
-        <param name="rdata_input" type="data" format="rdata" label="msPurity purityA dataset" argument="--purity_dataset"
+        <param argument="--rdata_input" type="data" format="rdata" label="msPurity purityA dataset"
         help="RData file containing the purityA object following frag4feature and/or averageFragmentation"/>
-        <param name="method" type="select" label="How to choose fragmentation spectra (if precursor was fragmented in >1 scans per XCMS group feature)"
+        <param argument="--method" type="select" label="How to choose fragmentation spectra (if precursor was fragmented in >1 scans per XCMS group feature)"
         help="'Average all' will use the averaged MS/MS spectra of the XCMS grouped feature, ignoring inter and intra file relationships,
              'Average' (intra)' will use the intra file (within file) averaged MS/MS spectra of the XCMS grouped feature,
              'Average (inter)' will use the inter file (across file) MS/MS averaged spectra,
              'All scans' will export all matching MS/MS spectra to XCMS grouped features,
              'Max intensity' will choose the most MS/MS spectra with the most intense precursor ion for each XCMS grouped feature"
-             argument="--method">
+             >
             <option value="av_all" selected="true">Average (all)</option>
             <option value="av_intra">Average (intra)</option>
             <option value="av_inter">Average (inter)</option>
@@ -50,13 +50,13 @@
         <conditional name="metadata_cond">
             <param name="metadata_select" type="boolean" label="Use additional metadata?" />
 	    <when value="true">
-                <param type="data" name="metadata" label="Metadata for each feature" format="tsv,tabular"
+                <param argument="--metadata" type="data" label="Metadata for each feature" format="tsv,tabular"
                 help="Metadata for each grouped XCMS feature, e.g. could be the adduct calculated from CAMERA "/>
 
-                <param name="metadata_cols_filter" type="text" label="Metadata columns to use" value=""
+                <param argument="--metadata_cols_filter" type="text" label="Metadata columns to use" value=""
                 help="Comma separated string of column names where the corresponding values in the metadata will be used"/>
 
-                <param name="metadata_cols" type="text" label="Metadata columns for MSP spectra name" value=""
+                <param argument="--metadata_cols" type="text" label="Metadata columns for MSP spectra name" value=""
                 help="Comma separated string of column names where the corresponding values in the metadata will be used
                       for MSP spectra name"/>
 
@@ -68,34 +68,31 @@
         <conditional name="xcms_group_cond">
             <param name="xcms_group_select" type="boolean" label="Select XCMS groups?" help="if set to no, all XCMS group features will be used" />
             <when value="true">
-                <param name="xcms_groupids" type="text" label="XCMS peak group ids" value=""
+                <param argument="--xcms_groupids" type="text" label="XCMS peak group ids" value=""
                 help="Comma separated string of XCMS group ids to export MSP spectra for. If blank all XCMS peak groups will be used"/>
             </when>
             <when value="false">
             </when>
         </conditional>
 
-        <param name="intensity_ra" type="select" label="Include intensity, relative abundanace or both in the MSP file"
-             argument="--intensity_ra">
+        <param argument="--intensity_ra" type="select" label="Include intensity, relative abundanace or both in the MSP file">
             <option value="intensity_ra" selected="true">Both intensity and relative abundance</option>
             <option value="intensity">Intensity only</option>
             <option value="ra">Relative abundance only</option>
         </param>
 
-        <param name="msp_schema" type="select" label="MSP schema to use for files"
-             argument="--msp_schema">
+        <param argument="--msp_schema" type="select" label="MSP schema to use for files">
             <option value="massbank" selected="true">MassBank (Europe)</option>
             <option value="mona">MoNA</option>
 
         </param>
 
-        <param name="filter" type="boolean" checked="true" truevalue="--filter" falsevalue=""
+        <param argument="--filter" type="boolean" checked="true" truevalue="--filter" falsevalue=""
         label="Filter peaks that have been flagged in prior processing steps"   help="" />
 
 
-       <param name="include_adducts" type="select" label="Always include the following adduct descriptions in the MSP file"
-        help="Additional adducts to include, can be useful for downstream processing" multiple="true"
-             argument="--include_adducts">
+       <param argument="--include_adducts" type="select" label="Always include the following adduct descriptions in the MSP file"
+        help="Additional adducts to include, can be useful for downstream processing" multiple="true">
             <option value="[M+H]+">[M+H]+</option>
             <option value="[M+Na]+">[M+Na]+</option>
             <option value="[M+NH4]+">[M+NH4]+</option>
@@ -109,7 +106,7 @@
             <option value="[M+CH3COO]-" >[M+CH3COO]-</option>
             <option value="[M-H+CH3COOH]-" >[M-H+CH3COOH]-</option>
         </param>
-        <param name="adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
+        <param argument="--adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
         help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""  />
 
     </inputs>

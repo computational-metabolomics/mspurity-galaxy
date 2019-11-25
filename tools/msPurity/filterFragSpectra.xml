@@ -8,10 +8,10 @@
     <expand macro="requirements" />
     <command detect_errors="exit_code" interpreter="Rscript"><![CDATA[
         filterFragSpectra.R
-            --out_rdata=$filterFragSpectra_output_rdata
-            --out_peaklist_prec=$filterFragSpectra_output_prec_tsv
-            --out_peaklist_frag=$filterFragSpectra_output_frag_tsv
-            --pa="$pa"
+            --out_rdata='$filterFragSpectra_output_rdata'
+            --out_peaklist_prec='$filterFragSpectra_output_prec_tsv'
+            --out_peaklist_frag='$filterFragSpectra_output_frag_tsv'
+            --pa='$pa'
             --ilim=$ilim
             --plim=$plim
             --ra=$ra
@@ -20,23 +20,23 @@
             $rmp
     ]]></command>
     <inputs>
-        <param name="pa" type="data"
+        <param argument="--pa" type="data"
                label="purityA object with fragmentation linked to XCMS features" format="rdata"
                help="purityA object saved as 'pa' in a RData file where fragmentation has
                      been linked to XCMS features(output from frag4feature tool)"/>
-        <param name="plim" type="float" value="0.5" help=""
+        <param argument="--plim" type="float" value="0.5" help=""
                label="Miniumum precursor ion purity of the associated precursor for
                      fragmentation spectra scan"  />
-        <param name="ilim" type="float" value="0.0" label="Peak instensity threshold" help="" />
-        <param name="ra" type="float" min="0.0" max="1.0" value="0.0"
+        <param argument="--ilim" type="float" value="0.0" label="Peak instensity threshold" help="" />
+        <param argument="--ra" type="float" min="0.0" max="1.0" value="0.0"
                label="Relative abundance threshold" help="" />
-        <param name="snr" type="float" value="0.0" label="Signal-to-noise threshold" help="" />
-        <param name="snmeth" type="select" label="Function to calculate noise." help="" >
+        <param argument="--snr" type="float" value="0.0" label="Signal-to-noise threshold" help="" />
+        <param argument="--snmeth" type="select" label="Function to calculate noise." help="" >
             <option value="median" selected="true">median</option>
             <option value="mean">mean</option>
             <!-- <option value="mad">mad</option> -->
         </param>
-        <param name="rmp" type="boolean" checked="false" truevalue="--rmp" falsevalue=""
+        <param argument="--rmp" type="boolean" checked="false" truevalue="--rmp" falsevalue=""
                label="Remove peaks that do not meet the filtering criteria.
                       Otherwise peaks will be flagged instead."
                help="" />

@@ -29,19 +29,19 @@
             #end if
 
             #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
-                --grp_peaklist=$grp_peaklist
+                --grp_peaklist='$grp_peaklist'
             #end if
 
     ]]></command>
     <inputs>
-        <param type="data" name="xset_xa" label="xcmsSet or CAMERA object"
+        <param argument="--xset_xa" type="data"  label="xcmsSet or CAMERA object"
                help="Either xcmsSet object saved as 'xset' or CAMERA 'xa' object in an RData file.
                      Please specify which to use below"
                format="rdata.xcms.raw,rdata.xcms.group,rdata.xcms.retcor,rdata.xcms.fillpeaks,rdata.camera.quick,rdata.camera.positive,rdata.camera.negative,rdata"/>
         <expand macro="camera_xcms" />
-        <param type="data" name="pa" label="purityA object (frag4feature output)" format="rdata"
+        <param argument="--pa" type="data" label="purityA object (frag4feature output)" format="rdata"
                help="purityA object saved as 'pa' in a RData file (output from frag4feature)"/>
-      	<param name="eic" type="boolean" label="Include EIC data?"
+      	<param argument="--eic" type="boolean" label="Include EIC data?"
                help="The Extracted Ion Chromatogram can be calculated for each peak and stored in
                      the database. Note, this will take considerable time for large datasets and
                      the resulting SQLite database can be large"/>

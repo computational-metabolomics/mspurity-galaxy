@@ -144,14 +144,18 @@ if (length(pa)>0){
   } else{
     colnames(av_spectra)[1] <- 'grpid'
     av_spectra$grpid <- names(pa@av_spectra)[av_spectra$grpid]
+    
+    if((length(pa@av_intra_params)>0) || (length(pa@av_inter_params)>0) ){
+        # Add some extra info (only required if av_intra or av_inter performed)
+        colnames(av_spectra)[2] <- 'fileid'
+        av_spectra$avid <- 1:nrow(av_spectra)
+        
+        filenames <- sapply(av_spectra$fileid, function(x) names(pa@fileList)[as.integer(x)])
+        # filenames_galaxy <- sapply(av_spectra$fileid, function(x) basename(pa@fileList[as.integer(x)]))
+        
+        av_spectra = as.data.frame(append(av_spectra, list(filename = filenames), after=2))
+    }
 
-    colnames(av_spectra)[2] <- 'fileid'
-    av_spectra$avid <- 1:nrow(av_spectra)
-
-    filenames <- sapply(av_spectra$fileid, function(x) names(pa@fileList)[as.integer(x)])
-    # filenames_galaxy <- sapply(av_spectra$fileid, function(x) basename(pa@fileList[as.integer(x)]))
-
-    av_spectra = as.data.frame(append(av_spectra, list(filename = filenames), after=2))
 
     print(head(av_spectra))
     write.table(av_spectra, opt$out_peaklist, row.names=FALSE, sep='\t')
