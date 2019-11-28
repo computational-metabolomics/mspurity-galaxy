@@ -39,8 +39,8 @@ if (opt$iwNorm=='none'){
     if (is.null(opt$minOffset) || is.null(opt$maxOffset)){
       print('User has to define offsets if using R-cosine normalisation')
     }else{
-    iwNormFun = msPurity::iwNormRcosine(minOff=-as.numeric(opt$minOffset), 
-                                      maxOff=as.numeric(opt$maxOffset)
+      iwNormFun = msPurity::iwNormRcosine(minOff=-as.numeric(opt$minOffset), 
+                                          maxOff=as.numeric(opt$maxOffset))
     }
 }else if (opt$iwNorm=='QE5'){
     iwNorm = TRUE
