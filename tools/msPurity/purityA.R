@@ -28,7 +28,7 @@ if (opt$iwNorm=='none'){
     iwNormFun = NULL
 }else if (opt$iwNorm=='gauss'){
     iwNorm = TRUE
-    if (is.null(opt$minOffset) || is.null(opt$maxOffset){
+    if (is.null(opt$minOffset) || is.null(opt$maxOffset)){
       print('User has to define offsets if using Gaussian normalisation')
     }else{
       iwNormFun = msPurity::iwNormGauss(minOff=-as.numeric(opt$minOffset), 
@@ -36,7 +36,7 @@ if (opt$iwNorm=='none'){
     }
 }else if (opt$iwNorm=='rcosine'){
     iwNorm = TRUE
-    if (is.null(opt$minOffset) || is.null(opt$maxOffset){
+    if (is.null(opt$minOffset) || is.null(opt$maxOffset)){
       print('User has to define offsets if using R-cosine normalisation')
     }else{
     iwNormFun = msPurity::iwNormRcosine(minOff=-as.numeric(opt$minOffset), 
