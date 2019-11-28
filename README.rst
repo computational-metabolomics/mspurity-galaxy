@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.12.0+galaxy0
+Version v1.12.0+galaxy1
 ------
 
   - msPurity
      - bioconductor-mspurity v1.12.0
   - Galaxy tools
-     - v0
+     - v1
 
 About
 ------
@@ -55,6 +55,12 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.0-galaxy1
+  - Bug fix (offsets were not being automatically selected for purityA) thanks jsaintvanne
+  - Exit script without error for flagRemove
+  - Username updated in Toolshed yaml
+
+
 v1.12.0-galaxy0
   - Updates for Bioconductor stable msPurity v1.12.0 release 
   - Additional columns added for spectral matching (for msnpy use case)

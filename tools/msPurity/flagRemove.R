@@ -138,7 +138,7 @@ if (is.null(opt$samplelist)){
     chosen_blank <- samplelist_blank[samplelist_blank %in% xset@phenoData$class]
     if (length(chosen_blank)>1){
         print('ERROR: only 1 blank is currently allowed to be used with this tool')
-        exit()
+        quit()
     }
     blank_class <- as.character(chosen_blank)
     print(blank_class)
