@@ -6,9 +6,9 @@ option_list <- list(
   make_option(c("-o", "--out_dir"), type="character"),
   make_option("--mzML_files", type="character"),
   make_option("--galaxy_names", type="character"),
-  make_option("--minOffset", default=0.5),
-  make_option("--maxOffset", default=0.5),
-  make_option("--ilim", default=0.05),
+  make_option("--minOffset", type="numeric"),
+  make_option("--maxOffset", type="numeric"),
+  make_option("--ilim", type="numeric"),
   make_option("--iwNorm", default="none", type="character"),
   make_option("--exclude_isotopes", action="store_true"),
   make_option("--isotope_matrix", type="character"),
@@ -22,18 +22,26 @@ option_list <- list(
 opt <- parse_args(OptionParser(option_list=option_list))
 print(opt)
 
-minOffset = as.numeric(opt$minOffset)
-maxOffset = as.numeric(opt$maxOffset)
 
 if (opt$iwNorm=='none'){
     iwNorm = FALSE
     iwNormFun = NULL
 }else if (opt$iwNorm=='gauss'){
     iwNorm = TRUE
-    iwNormFun = msPurity::iwNormGauss(minOff=-minOffset, maxOff=maxOffset)
+    if (is.null(opt$minOffset) || is.null(opt$maxOffset)){
+      print('User has to define offsets if using Gaussian normalisation')
+    }else{
+      iwNormFun = msPurity::iwNormGauss(minOff=-as.numeric(opt$minOffset), 
+                                      maxOff=as.numeric(opt$maxOffset))
+    }
 }else if (opt$iwNorm=='rcosine'){
     iwNorm = TRUE
-    iwNormFun = msPurity::iwNormRcosine(minOff=-minOffset, maxOff=maxOffset)
+    if (is.null(opt$minOffset) || is.null(opt$maxOffset)){
+      print('User has to define offsets if using R-cosine normalisation')
+    }else{
+      iwNormFun = msPurity::iwNormRcosine(minOff=-as.numeric(opt$minOffset), 
+                                          maxOff=as.numeric(opt$maxOffset))
+    }
 }else if (opt$iwNorm=='QE5'){
     iwNorm = TRUE
     iwNormFun = msPurity::iwNormQE.5()

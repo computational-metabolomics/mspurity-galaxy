@@ -138,7 +138,7 @@ if (is.null(opt$samplelist)){
     chosen_blank <- samplelist_blank[samplelist_blank %in% xset@phenoData$class]
     if (length(chosen_blank)>1){
         print('ERROR: only 1 blank is currently allowed to be used with this tool')
-        exit()
+        quit()
     }
     blank_class <- as.character(chosen_blank)
     print(blank_class)
@@ -171,7 +171,7 @@ if (is.null(opt$multilist)){
     grp_peaklist <- ffrm_out[[2]]
     removed_peaks <- ffrm_out[[3]]
 
-    save.image(file=file.path(opt$out_dir, 'xset_filtered.RData'))
+    save.image(file=file.path(opt$out_dir, 'xset_filtered.RData'), version=2)
 
     # grpid needed for mspurity ID needed for deconrank... (will clean up at some up)
     peak_pth <- file.path(opt$out_dir, 'peaklist_filtered.tsv')
