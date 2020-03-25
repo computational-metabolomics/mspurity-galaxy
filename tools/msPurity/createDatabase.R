@@ -115,10 +115,10 @@ if (opt$xcms_camera_option=='xcms'){
 
 
 
-if(is.null(opt$grp_peaklist)){
+if(is.null(opt$grpPeaklist)){
   grpPeaklist = NA
 }else{
-  grpPeaklist = opt$grp_peaklist
+  grpPeaklist = opt$grpPeaklist
 }
 
 
