@@ -25,8 +25,8 @@
             --probmetab_weight=$probmetab_weight
             --ms1_lookup_weight=$ms1_lookup_weight
             --biosim_weight=$biosim_weight
-
-
+                  
+            
             #if $create_new_database:
               --create_new_database
             #end if
@@ -35,6 +35,10 @@
 
             #if $compoundDbTypeCond.compoundDbType== 'sqlite'
               --compoundDbPth='$compoundDbTypeCond.compoundDbPth'
+            #end if
+
+            #if $summaryOutput:
+              --summaryOutput
             #end if
 
 
@@ -67,6 +71,7 @@
       <param argument="--probmetab_weight" type="float" min="0.0" max="1.0" value="0.0" label="Probmetab weight" help="all weights need to sum to 1" />
       <param argument="--ms1_lookup_weight" type="float" min="0.0" max="1.0" value="0.05" label="MS1 Lookup weight" help="all weights need to sum to 1" />
       <param argument="--biosim_weight" type="float" min="0.0" max="1.0" value="0.25" label="Biological similarity weight" help="all weights need to sum to 1" />
+      <param argument="--summaryOutput" type="boolean" checked="true" label="Create summary output" help="Create tab separated file of all annotations and features"/>
       <param argument="--create_new_database" type="boolean" checked="true" label="Create a new database for the results?"
                help="A copy will be made of the input SQLite spectral matching database and the results will be added to this copy.
                      When False, the input SQLite database will be updated the results. Use False
