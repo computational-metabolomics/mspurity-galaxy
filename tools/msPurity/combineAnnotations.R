@@ -20,7 +20,9 @@ option_list <- list(
   make_option("--probmetab_weight", type="numeric"),
   make_option("--ms1_lookup_weight", type="numeric"),
   make_option("--biosim_weight", type="numeric"),
-
+  
+  make_option("--summaryOutput", action="store_true"),
+  
   make_option("--create_new_database", action="store_true"),
   make_option("--outdir", type="character", default="."),
 
@@ -61,6 +63,11 @@ if (round(!sum(unlist(weights),0)==1)){
   stop(paste0('The weights should sum to 1 not ', sum(unlist(weights))))
 }
 
+
+if (is.null(opt$summaryOutput)){
+  summaryOutput = FALSE
+}
+
 if (opt$compoundDbType=='local_config'){
   # load in compound config
   # Soure local function taken from workflow4metabolomics
@@ -94,7 +101,12 @@ summary_output <- msPurity::combineAnnotations(
                             compoundDbPort = compoundDbPort,
                             compoundDbUser = compoundDbUser,
                             compoundDbPass = compoundDbPass,
-                            weights = weights)
+                            weights = weights,
+                            summaryOutput = summaryOutput)
+if (summaryOutput){
+  write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
+}
+
 
 write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
 
