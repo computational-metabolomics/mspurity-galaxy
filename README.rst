@@ -3,11 +3,11 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.12.1+galaxy0
+Version v1.12.2+galaxy0
 ------
 
   - msPurity
-     - bioconductor-mspurity v1.12.1
+     - bioconductor-mspurity v1.12.2
   - Galaxy tools
      - v0
 
@@ -55,6 +55,14 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.2-galaxy0
+  - Update to version v1.12.2 of `msPurity <https://github.com/computational-metabolomics/msPurity/pull/71>`_
+  - Optional summary output for combineAnnotations (for very large output)
+  - Extra column added to flagRemove output
+  - Hide probmetab input 
+  - Make dimsPredictPuritySingle more compatible with "simple workflow inputs"
+
+
 v1.12.1-galaxy0
   - Update to version v1.12.1 of `msPurity <https://github.com/computational-metabolomics/msPurity/pull/71>`_
 
