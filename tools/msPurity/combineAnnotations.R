@@ -58,11 +58,14 @@ weights <-list('sm'=opt$sm_weight,
                'biosim'=opt$biosim_weight
                )
 print(weights)
-if (round(!sum(unlist(weights),0)==1)){
 
-  stop(paste0('The weights should sum to 1 not ', sum(unlist(weights))))
+if (is.null(opt$probmetab_resultPth)){
+  opt$probmetab_resultPth = NA
 }
 
+if (round(!sum(unlist(weights),0)==1)){
+  stop(paste0('The weights should sum to 1 not ', sum(unlist(weights))))
+}
 
 if (is.null(opt$summaryOutput)){
   summaryOutput = FALSE
@@ -82,8 +85,6 @@ if (opt$compoundDbType=='local_config'){
   compoundDbUser = NA
   compoundDbPass = NA
 }
-
-
 
 summary_output <- msPurity::combineAnnotations(
                             sm_resultPth = sm_resultPth,
