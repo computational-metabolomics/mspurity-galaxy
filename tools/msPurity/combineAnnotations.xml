@@ -57,7 +57,7 @@
       <param argument="--sirius_csi_resultPth" type="data" label="Sirius CSI:FingerID result" format="tsv,tabular"   optional="true"
              help="The result of the CSI:FingerID analysis (requires a column indicating the XCMS group ID)"/>
       <conditional name="probmetabCond">
-            <param type="select" label="Use probmetab data" help="The result of the Probmetab analysis" >
+            <param name="probmetabChoice" type="select" label="Use probmetab data" help="The result of the Probmetab analysis" >
                 <option value="no_probmetab" selected="true" >Do not include probmetab results</option>
                 <option value="probmetab" >Include probmetab results</option>
             </param>
