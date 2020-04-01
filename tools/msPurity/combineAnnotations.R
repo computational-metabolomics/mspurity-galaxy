@@ -69,6 +69,8 @@ if (round(!sum(unlist(weights),0)==1)){
 
 if (is.null(opt$summaryOutput)){
   summaryOutput = FALSE
+}else{
+ summaryOutput = TRUE
 }
 
 if (opt$compoundDbType=='local_config'){
