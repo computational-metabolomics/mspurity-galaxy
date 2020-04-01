@@ -29,7 +29,7 @@
             #end if
 
             #if $grp_peaklist_opt.grp_peaklist_opt=="yes"
-                --grp_peaklist='$grp_peaklist'
+                --grpPeaklist='$grp_peaklist'
             #end if
 
     ]]></command>
