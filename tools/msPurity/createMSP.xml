@@ -27,7 +27,7 @@
     --msp_schema $msp_schema
     --intensity_ra $intensity_ra
     --include_adducts $include_adducts
-
+    --include_adducts_custom $include_adducts_custom
     --out_dir '.'
     ]]></command>
     <inputs>
@@ -106,6 +106,10 @@
             <option value="[M+CH3COO]-" >[M+CH3COO]-</option>
             <option value="[M-H+CH3COOH]-" >[M-H+CH3COOH]-</option>
         </param>
+        <param argument="--include_adducts_custom" type="text" label="Always include the following custom adducts"
+        help="Additional custom adducts to include, should be comma separated"/>
+
+	    
         <param argument="--adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
         help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""  />
 
