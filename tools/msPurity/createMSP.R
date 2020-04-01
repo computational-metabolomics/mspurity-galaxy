@@ -15,6 +15,7 @@ option_list <- list(
   make_option("--intensity_ra",type="character"),
   make_option("--include_adducts",type="character"),
   make_option("--msp_schema",type="character"),
+  make_option("--include_adducts_custom",type="character"),
   make_option("--out_dir",type="character", default=".")
 )
 opt <- parse_args(OptionParser(option_list=option_list))
@@ -73,10 +74,14 @@ if (opt$include_adducts=='None'){
   include_adducts <- gsub("__ob__", "[", include_adducts)
   include_adducts <- gsub("__cb__", "]", include_adducts)
   include_adducts <- trimws(include_adducts)
-
   include_adducts <- gsub(",", " ", include_adducts)
 
 }
+
+include_adducts_all <- c(include_adducts_custom, include_adducts)
+
+
+
 
 
 if(is.null(opt$filter)){
@@ -96,7 +101,7 @@ msPurity::createMSP(pa,
                     xcms_groupids = xcms_groupids,
                     filter = filter,
                     intensity_ra=opt$intensity_ra,
-                    include_adducts=include_adducts,
+                    include_adducts=include_adducts_all,
                     msp_schema=opt$msp_schema)
 
 print('msp created')
