@@ -20,7 +20,9 @@ option_list <- list(
   make_option("--probmetab_weight", type="numeric"),
   make_option("--ms1_lookup_weight", type="numeric"),
   make_option("--biosim_weight", type="numeric"),
-
+  
+  make_option("--summaryOutput", action="store_true"),
+  
   make_option("--create_new_database", action="store_true"),
   make_option("--outdir", type="character", default="."),
 
@@ -56,9 +58,19 @@ weights <-list('sm'=opt$sm_weight,
                'biosim'=opt$biosim_weight
                )
 print(weights)
-if (round(!sum(unlist(weights),0)==1)){
 
+if (is.null(opt$probmetab_resultPth)){
+  opt$probmetab_resultPth = NA
+}
+
+if (round(!sum(unlist(weights),0)==1)){
   stop(paste0('The weights should sum to 1 not ', sum(unlist(weights))))
+}
+
+if (is.null(opt$summaryOutput)){
+  summaryOutput = FALSE
+}else{
+ summaryOutput = TRUE
 }
 
 if (opt$compoundDbType=='local_config'){
@@ -76,8 +88,6 @@ if (opt$compoundDbType=='local_config'){
   compoundDbPass = NA
 }
 
-
-
 summary_output <- msPurity::combineAnnotations(
                             sm_resultPth = sm_resultPth,
                             compoundDbPth = compoundDbPth,
@@ -94,7 +104,12 @@ summary_output <- msPurity::combineAnnotations(
                             compoundDbPort = compoundDbPort,
                             compoundDbUser = compoundDbUser,
                             compoundDbPass = compoundDbPass,
-                            weights = weights)
+                            weights = weights,
+                            summaryOutput = summaryOutput)
+if (summaryOutput){
+  write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
+}
+
 
 write.table(summary_output, file.path(opt$outdir, 'combined_annotations.tsv'), sep = '\t', row.names = FALSE)
 
