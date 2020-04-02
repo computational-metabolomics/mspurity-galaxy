@@ -149,9 +149,9 @@
         </conditional>
     </inputs>
     <outputs>
-        <data name="peaklist_filtered" format="tsv" label="${tool.name} on ${on_string}: peaklist_filtered (tsv)"
+        <data name="peaklist_filtered" format="tabular" label="${tool.name} on ${on_string}: peaklist_filtered (tsv)"
               from_work_dir="peaklist_filtered.tsv" />
-        <data name="removed_peaks" format="tsv" label="${tool.name} on ${on_string}: removed_peaks (tsv)"
+        <data name="removed_peaks" format="tabular" label="${tool.name} on ${on_string}: removed_peaks (tsv)"
               from_work_dir="removed_peaks.tsv" />
         <data name="xset_filtered" format="rdata" label="xset_filtered"
               from_work_dir="xset_filtered.RData"/>
