@@ -110,11 +110,12 @@
             <option value="[M-H+CH3COOH]-" >[M-H+CH3COOH]-</option>
         </param>
         <param argument="--include_adducts_custom" type="text" label="Always include the following custom adducts"
-        help="Additional custom adducts to include, should be comma separated"/>
-
+		help="Additional custom adducts to include, should be comma separated"  optional="true">
+               <expand macro="text-adduct-regex-validator"/>
+        </param>
 	    
         <param argument="--adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
-        help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""  />
+		help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""/>
 
     </inputs>
     <outputs>
