@@ -17,7 +17,7 @@
     </xml>
 
     <xml name="text-adduct-regex-validator">
-	    <validator type="regex" message="Value may include alphanumeric characters, white space, commas, +, -, [ or ] ">[A-Za-z0-9, /+/-/[/]]+</validator>
+	    <validator type="regex" message="Value may include alphanumeric characters, white space, commas, +, -, [ or ] ">[A-Za-z0-9,\[\] \+\-]+</validator>
     </xml>
 
     <xml name="offsets">
