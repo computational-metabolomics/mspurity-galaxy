@@ -15,7 +15,7 @@ option_list <- list(
   make_option("--intensity_ra",type="character"),
   make_option("--include_adducts",type="character"),
   make_option("--msp_schema",type="character"),
-  make_option("--include_adducts_custom",type="character"),
+  make_option("--include_adducts_custom",type="character", default=""),
   make_option("--out_dir",type="character", default=".")
 )
 opt <- parse_args(OptionParser(option_list=option_list))
@@ -71,14 +71,16 @@ if (opt$include_adducts=='None'){
   include_adducts <- ''
 }else{
   include_adducts <- opt$include_adducts
-  include_adducts <- gsub("__ob__", "[", include_adducts)
-  include_adducts <- gsub("__cb__", "]", include_adducts)
-  include_adducts <- trimws(include_adducts)
-  include_adducts <- gsub(",", " ", include_adducts)
-
 }
 
-include_adducts_all <- c(include_adducts_custom, include_adducts)
+
+include_adducts_all <- paste(include_adducts_custom, include_adducts, sep=",")
+
+include_adducts_all <- gsub("__ob__", "[", include_adducts_all)
+include_adducts_all <- gsub("__cb__", "]", include_adducts_all)
+include_adducts_all <- trimws(include_adducts_all)
+include_adducts_all <- gsub(",", " ", include_adducts_all
+
 
 
 
