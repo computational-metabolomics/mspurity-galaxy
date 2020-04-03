@@ -67,6 +67,17 @@ if (is.null(opt$xcms_groupids)){
   xcms_groupids <- trimws(strsplit(opt$xcms_groupids, ',')[[1]])
 }
 
+
+
+
+
+if (is.null(opt$include_adducts_custom)){
+  include_adducts_custom <- ''
+}else{
+  include_adducts_custom <- opt$include_adducts_custom
+}
+
+
 if (opt$include_adducts=='None'){
   include_adducts <- ''
 }else{
@@ -74,15 +85,12 @@ if (opt$include_adducts=='None'){
 }
 
 
-include_adducts_all <- paste(include_adducts_custom, include_adducts, sep=",")
+include_adducts_all <- paste(include_adducts_custom, ',', include_adducts, sep="")
 
 include_adducts_all <- gsub("__ob__", "[", include_adducts_all)
 include_adducts_all <- gsub("__cb__", "]", include_adducts_all)
 include_adducts_all <- trimws(include_adducts_all)
-include_adducts_all <- gsub(",", " ", include_adducts_all
-
-
-
+include_adducts_all <- gsub(",", " ", include_adducts_all)
 
 
 
