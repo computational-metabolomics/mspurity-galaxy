@@ -27,7 +27,10 @@
     --msp_schema $msp_schema
     --intensity_ra $intensity_ra
     --include_adducts $include_adducts
-    --include_adducts_custom $include_adducts_custom
+    #if $include_adducts_custom
+    	--include_adducts_custom $include_adducts_custom
+    #end if
+
     --out_dir '.'
     ]]></command>
     <inputs>
