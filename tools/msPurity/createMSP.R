@@ -84,8 +84,10 @@ if (opt$include_adducts=='None'){
   include_adducts <- opt$include_adducts
 }
 
-
 include_adducts_all <- paste(include_adducts_custom, ',', include_adducts, sep="")
+
+include_adducts_all <- gsub("^,", "", include_adducts_all)
+include_adducts_all <- gsub(",$", "", include_adducts_all)
 
 include_adducts_all <- gsub("__ob__", "[", include_adducts_all)
 include_adducts_all <- gsub("__cb__", "]", include_adducts_all)
