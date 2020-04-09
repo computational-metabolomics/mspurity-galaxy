@@ -55,6 +55,12 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.2-galaxy1
+  - grpPeaklist reference incorrect in createDatabase.xml
+  - Add custom adduct handling for createMSP
+  - Change output of flagRemove to tabular
+
+
 v1.12.2-galaxy0
   - Update to version v1.12.2 of `msPurity <https://github.com/computational-metabolomics/msPurity/pull/71>`_
   - Optional summary output for combineAnnotations (for very large output)
