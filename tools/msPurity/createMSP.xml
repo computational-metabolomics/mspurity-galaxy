@@ -27,6 +27,9 @@
     --msp_schema $msp_schema
     --intensity_ra $intensity_ra
     --include_adducts $include_adducts
+    #if $include_adducts_custom
+    	--include_adducts_custom "$include_adducts_custom"
+    #end if
 
     --out_dir '.'
     ]]></command>
@@ -106,8 +109,13 @@
             <option value="[M+CH3COO]-" >[M+CH3COO]-</option>
             <option value="[M-H+CH3COOH]-" >[M-H+CH3COOH]-</option>
         </param>
+        <param argument="--include_adducts_custom" type="text" label="Always include the following custom adducts"
+		help="Additional custom adducts to include, should be comma separated"  optional="true">
+               <expand macro="text-adduct-regex-validator"/>
+        </param>
+	    
         <param argument="--adduct_split" type="boolean" checked="true" label="Create MSP spectra for each adduct?"
-        help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""  />
+		help="Useful if the MSP file will be used for further annotation" truevalue="--adduct_split" falsevalue=""/>
 
     </inputs>
     <outputs>
@@ -116,7 +124,7 @@
     <tests>
 
         <test>
-            <!-- 3) Test all average with metadata -->
+            <!-- Test all average with metadata -->
             <param name="method" value="av_all"/>
             <param name="rdata_input" value="averageFragSpectra_output_all.RData"/>
             <param name="metadata_cond|metadata_select" value="true"/>
@@ -126,6 +134,21 @@
             <param name="metadata_cond|adduct_split" value="true"/>
             <output name="createMSP_output" file="createMSP_output_av_all_metadata.msp"/>
         </test>
+
+        <test>
+            <!-- Test custom adducts average with metadata -->
+            <param name="method" value="av_all"/>
+            <param name="rdata_input" value="averageFragSpectra_output_all.RData"/>
+            <param name="metadata_cond|metadata_select" value="true"/>
+            <param name="metadata_cond|metadata" value="createMSP_input_metadata.tsv"/>
+            <param name="xcms_group_cond|xcms_group_select" value="true"/>
+            <param name="xcms_group_cond|xcms_groupids" value="8,12"/>
+	    <param name="metadata_cond|adduct_split" value="true"/>
+	    <param name="include_adducts_custom" value="[M+]+,[M-H]-,[M+TEST SPACE+]+"/>
+            <output name="createMSP_output" file="createMSP_output_av_all_metadata_custom_adducts.msp"/>
+        </test>
+
+
 
     </tests>
 	<help><![CDATA[
