@@ -9,7 +9,7 @@ Version v1.12.2+galaxy1
   - msPurity
      - bioconductor-mspurity v1.12.2
   - Galaxy tools
-     - v1
+     - v2
 
 About
 ------
@@ -55,6 +55,11 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.2-galaxy2
+  - Bug fix for using custom library sqlite database from Galaxy UI
+  - Bug fix for "allfrag" for createDatabase
+
+
 v1.12.2-galaxy1
   - grpPeaklist reference incorrect in createDatabase.xml
   - Add custom adduct handling for createMSP
