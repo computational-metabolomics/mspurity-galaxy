@@ -3,7 +3,7 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.12.2+galaxy1
+Version v1.12.2+galaxy2
 ------
 
   - msPurity
