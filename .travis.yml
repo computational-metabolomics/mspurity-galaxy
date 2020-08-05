@@ -27,6 +27,6 @@ before_install:
  
  
 script:
-- planemo lint ${TRAVIS_BUILD_DIR}/${TEST} --galaxy_python_version 3.7
+- planemo lint ${TRAVIS_BUILD_DIR}/${TEST} 
 - planemo test  --conda_debug  ${TRAVIS_BUILD_DIR}/${TEST} --galaxy_python_version 3.7
 
