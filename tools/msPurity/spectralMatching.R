@@ -292,6 +292,7 @@ if(!is.null(opt$q_rtrangeMin)){
 q_check <- checkSPeakMeta(opt$q_dbPth, 'query')
 l_check <- checkSPeakMeta(opt$l_dbPth, 'library')
 
+
 if (q_check && l_check){
     sm <- msPurity::spectralMatching(
         q_purity =  opt$q_purity,

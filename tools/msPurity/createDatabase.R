@@ -94,7 +94,11 @@ pa <- loadRData(opt$pa, 'pa')
 
 print(pa@fileList)
 
-
+# Missing list element causes failures (should be updated
+# in msPurity R package for future releases)
+if (!exists('allfrag', where=pa@filter_frag_params)){
+    pa@filter_frag_params$allfrag <- FALSE
+}
 
 if (opt$xcms_camera_option=='xcms'){
 

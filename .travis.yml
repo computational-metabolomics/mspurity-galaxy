@@ -1,5 +1,5 @@
 language: python
-python: 2.7
+python: 3.7
 cache:
  directories:
   - $HOME/miniconda3
@@ -27,6 +27,6 @@ before_install:
  
  
 script:
-- planemo lint ${TRAVIS_BUILD_DIR}/${TEST}
-- planemo test  --conda_debug  ${TRAVIS_BUILD_DIR}/${TEST}
+- planemo lint ${TRAVIS_BUILD_DIR}/${TEST} 
+- planemo test  --conda_debug  ${TRAVIS_BUILD_DIR}/${TEST} --galaxy_python_version 3.7
 

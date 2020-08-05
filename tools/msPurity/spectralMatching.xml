@@ -19,7 +19,7 @@
 
             #if $Library.l_dbPth_con.l_dbPth_select == 'msPurityData'
               --l_defaultDb
-            #else if $Library.l_dbPth_con.l_dbPth_select == 'userdb_sqlite'
+            #else if $Library.l_dbPth_con.l_dbPth_select == 'sqlite'
               --l_dbPth=$Library.l_dbPth_con.l_dbPth
             #end if
 
