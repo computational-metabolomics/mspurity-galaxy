@@ -9,7 +9,7 @@ Version v1.12.2+galaxy2
   - msPurity
      - bioconductor-mspurity v1.12.2
   - Galaxy tools
-     - v2
+     - v3
 
 About
 ------
