@@ -7,7 +7,7 @@ Version v1.12.2+galaxy2
 ------
 
   - msPurity
-     - bioconductor-mspurity v1.12.2
+     - bioconductor-mspurity v1.12.3
   - Galaxy tools
      - v3
 
@@ -55,6 +55,9 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.12.2-galaxy3
+  - Bug fix reference to offsets in conditional #41
+
 v1.12.2-galaxy2
   - Bug fix for using custom library sqlite database from Galaxy UI
   - Bug fix for "allfrag" for createDatabase
