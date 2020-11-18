@@ -210,8 +210,6 @@
                 </when>
             </conditional>
 
-
-
             <conditional name="@QL_SHRT@_accessions_cond">
                 <param name="@QL_SHRT@_accessions_bool" type="boolean"
                        label="Filter on accessions?"
@@ -225,7 +223,6 @@
                 <when value="false">
                 </when>
             </conditional>
-
 
             <conditional name="@QL_SHRT@_sources_cond">
                 <param name="@QL_SHRT@_sources_bool" type="boolean"
@@ -249,6 +246,7 @@
                 <when value="false">
                 </when>
             </conditional>
+		
             <conditional name="@QL_SHRT@_instrumentTypes_cond">
                 <param name="@QL_SHRT@_instrumentTypes_bool" type="boolean"
                        value="@INSTRUMENT_TYPES_SELECT@"
@@ -329,8 +327,6 @@
                 </when>
             </conditional>
 
-
-
             <conditional name="@QL_SHRT@_spectraTypes_cond">
                 <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?"
                 help="" />
@@ -353,9 +349,6 @@
 
         </section>
     </xml>
-
-
-
 
     <xml name="citations">
         <citations>
