@@ -337,8 +337,8 @@
                 <when value="true">
                     <param argument="--@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
                         <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
-                        <option value="av_inter">Averaged inter spectra</option>
-                        <option value="av_intra">Averaged intra spectra </option>
+                        <option value="inter">Averaged inter spectra</option>
+                        <option value="intra">Averaged intra spectra </option>
                         <option value="scans">All individual scans</option>
                         <option value="NA">Not applicable/defined</option>
                     </param>
