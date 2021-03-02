@@ -4,7 +4,7 @@ msPurity for Galaxy
 
 
 Version v1.16.2+galaxy0
-------
+------------------------
 
   - msPurity
      - bioconductor-mspurity v1.16.2
@@ -35,17 +35,17 @@ Use the following links for more details of the msPurity R package:
 
 
 Dependencies
-------
+------------------
 Dependencies for these Galaxy tools should be handled by CONDA. The most recent version of the msPurity R package can found on channel  `tomnl <https://anaconda.org/tomnl/bioconductor-mspurity>`_ on `anaconda <https://anaconda.org/tomnl/bioconductor-mspurity>`_. Warning this will be a different version of the package compared to the BICONDA bioconductor-mspurity.
 
 
 Galaxy
-------
+------------------
 `Galaxy <https://galaxyproject.org>`_ is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
 
 
 Authors, contributors & contacts
--------------------------
+-------------------------------------
 
 - Thomas N. Lawson (t.n.lawson@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
