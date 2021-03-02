@@ -215,6 +215,8 @@ if(!is.null(opt$l_defaultDb)){
   l_dbPth <- opt$l_dbPth
 }
 
+q_spectraTypes <- extractMultiple(opt$q_spectraTypes)
+l_spectraTypes <- extractMultiple(opt$l_spectraTypes)
 
 q_polarity <- extractMultiple(opt$q_polarity)
 l_polarity <- extractMultiple(opt$l_polarity)
@@ -309,10 +311,13 @@ if (q_check && l_check){
         
         q_pol =  q_polarity,
         l_pol =  l_polarity,
-        
+      
+        q_spectraFilter= q_spectraFilter,
+        l_spectraFilter= l_spectraFilter,
+
         q_xcmsGroups = q_xcmsGroups,
         l_xcmsGroups = l_xcmsGroups,
-        
+              
         q_pids = q_pids,
         l_pids = l_pids,
         
