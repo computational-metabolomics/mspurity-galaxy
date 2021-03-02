@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.12.2+galaxy3
+Version v1.16.2+galaxy0
 ------
 
   - msPurity
-     - bioconductor-mspurity v1.12.2
+     - bioconductor-mspurity v1.16.2
   - Galaxy tools
-     - v3
+     - v0
 
 About
 ------
@@ -55,6 +55,11 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.16.2-galaxy0
+  - Version bump
+  - Fix for intra spectral matching 
+  - Fix for typo https://github.com/computational-metabolomics/mspurity-galaxy/pull/43
+
 v1.12.2-galaxy3
   - Bug fix reference to offsets in conditional #41
 
