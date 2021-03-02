@@ -360,10 +360,10 @@ without the XCMS details. This table is useful to observe spectral matching resu
 for all MS/MS spectra irrespective of if they are linked to XCMS MS1 features.
 
 
-.. _spectral_database_schema: https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-datatabase-schema.html
+.. _spectral_database_schema: https://www.bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-spectral-database-vignette.html
 .. _larger_database: https://github.com/computational-metabolomics/msp2db/releases
 .. _msp2db: https://github.com/computational-metabolomics/msp2db/releases
-.. _msPurity_spectral_matching_vignette: https://bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-lcmsms-data-processing-and-spectral-matching-vignette.html
+.. _msPurity_spectral_matching_vignette: https://www.bioconductor.org/packages/release/bioc/vignettes/msPurity/inst/doc/msPurity-lcmsms-data-processing-and-spectral-matching-vignette.html
 
     ]]></help>
 

@@ -6,6 +6,7 @@ description: "[Metabolomics][LC-MS][DIMS][MS/MS] msPurity -  R package for precu
 auto_tool_repositories:
   name_template: "{{ tool_id }}"
   description_template: "[Metabolomics][LC-MS][DIMS][MS/MS] msPurity - {{ tool_name }} {{description}}"
+  long_description_template: "[Metabolomics][LC-MS][DIMS][MS/MS] msPurity - {{ tool_name }} {{description}}"
 suite:
   name: "suite_mspurity"
   description: "wrapper for msPurity R package"
