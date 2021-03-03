@@ -57,8 +57,9 @@ Changes
 -------------------------
 v1.16.2-galaxy0
   - Version bump
-  - Fix for intra spectral matching 
+  - Fix for intra spectral matching
   - Fix for typo https://github.com/computational-metabolomics/mspurity-galaxy/pull/43
+  - Lint fixes
 
 v1.12.2-galaxy3
   - Bug fix reference to offsets in conditional #41
@@ -78,7 +79,7 @@ v1.12.2-galaxy0
   - Update to version v1.12.2 of `msPurity <https://github.com/computational-metabolomics/msPurity/pull/71>`_
   - Optional summary output for combineAnnotations (for very large output)
   - Extra column added to flagRemove output
-  - Hide probmetab input 
+  - Hide probmetab input
   - Make dimsPredictPuritySingle more compatible with "simple workflow inputs"
 
 
@@ -91,7 +92,7 @@ v1.12.0-galaxy1
   - Username updated in Toolshed yaml
 
 v1.12.0-galaxy0
-  - Updates for Bioconductor stable msPurity v1.12.0 release 
+  - Updates for Bioconductor stable msPurity v1.12.0 release
   - Additional columns added for spectral matching (for msnpy use case)
   - Merge of v1.11.4-galaxy1
 

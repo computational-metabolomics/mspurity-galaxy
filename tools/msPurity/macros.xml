@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <macros>
-    <token name="@TOOL_VERSION@">1.12.2</token>
-    <token name="@GALAXY_TOOL_VERSION@">3</token>
+    <token name="@TOOL_VERSION@">1.16.2</token>
+    <token name="@GALAXY_TOOL_VERSION@">0</token>
 
     <xml name="requirements">
         <requirements>
            <requirement type="package" version="@TOOL_VERSION@" >bioconductor-mspurity</requirement>
-           <requirement type="package" version="1.42.0" >bioconductor-camera</requirement>
-           <requirement type="package" version="3.8.0" >bioconductor-xcms</requirement>
-           <requirement type="package" version="1.14.0" >bioconductor-mspuritydata</requirement>
-           <requirement type="package" version="1.6.4">r-optparse</requirement>
-           <requirement type="package" version="1.1.1">r-rpostgres</requirement>
-           <requirement type="package" version="0.10.17">r-rmysql</requirement>
+           <requirement type="package" version="1.46.0" >bioconductor-camera</requirement>
+           <requirement type="package" version="3.12.0" >bioconductor-xcms</requirement>
+           <requirement type="package" version="1.16.0" >bioconductor-mspuritydata</requirement>
+           <requirement type="package" version="1.6.6">r-optparse</requirement>
+           <requirement type="package" >r-rpostgres</requirement>
+           <requirement type="package" >r-rmysql</requirement>
             <yield />
         </requirements>
     </xml>
@@ -29,7 +29,7 @@
                100.0 then the range would be from 100.0 to 100.5"/>
     </xml>
     <xml name="general_params">
-        <param argument="--ilim" type="float" value="0.05" 
+        <param argument="--ilim" type="float" value="0.05"
                label="Threshold to remove peaks below x % of the relative intensity of
                precursor of interest"
                help="All peaks less than this percentage of the precursor ion of interest will be

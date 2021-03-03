@@ -330,8 +330,8 @@ if (q_check && l_check) {
         q_instrumentTypes = q_instrumentTypes,
         l_instrumentTypes = l_instrumentTypes,
 
-        q_spectraFilter = q_spectraFilter,
-        l_spectraFilter = l_spectraFilter,
+        q_spectraTypes = q_spectraTypes,
+        l_spectraTypes = l_spectraTypes,
 
         l_rtrange = c(l_rtrangeMin, l_rtrangeMax),
         q_rtrange = c(q_rtrangeMin, q_rtrangeMax),

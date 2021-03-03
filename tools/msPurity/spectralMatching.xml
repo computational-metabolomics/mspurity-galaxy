@@ -221,6 +221,8 @@
     <tests>
         <test>
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
+            <param name="q_spectraTypes_bool" value="true" />
+            <param name="q_spectraTypes" value="inter,av_all" />
 	        <param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
             <param name="q_xcmsGroups_bool" value="true" />
@@ -234,6 +236,8 @@
         <test>
             <param name="l_instrumentTypes_bool" value="true" />
             <param name="q_dbPth" value="createDatabase_output.sqlite" />
+            <param name="q_spectraTypes_bool" value="true" />
+            <param name="q_spectraTypes" value="inter,av_all" />
 	    	<param name="l_dbPth_select" value="userdb" />
             <param name="l_dbPth" value="PR100037.sqlite" />
             <param name="q_xcmsGroups_bool" value="true" />
