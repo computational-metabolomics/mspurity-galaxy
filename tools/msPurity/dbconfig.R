@@ -1,9 +1,9 @@
-compoundDbType <- 'mysql'
+compoundDbType <- "mysql"
 compoundDbPth <- NA
-compoundDbName <- 'metab_compound'
-compoundDbPort <- '3306'
-compoundDbUser <- 'metab_compound'
-compoundDbPass <- 'metab_compound'
+compoundDbName <- "metab_compound"
+compoundDbPort <- "3306"
+compoundDbUser <- "metab_compound"
+compoundDbPass <- "metab_compound"
 
 q_dbPth <- NA
 q_dbType <- NA
