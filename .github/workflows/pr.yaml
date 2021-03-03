@@ -12,6 +12,8 @@ jobs:
   # - a file containing the list of changed repositories
   # which are needed in subsequent steps.
   setup:
+    key: ${{ runner.os }}-mycache-v1-${{ hashFiles(...) }}
+
     name: Setup cache and determine changed repositories
     runs-on: ubuntu-latest
     strategy:
