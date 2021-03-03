@@ -193,11 +193,12 @@ jobs:
       with:
         path: ${{ env.R_LIBS_USER }}
         key: r_cache_${{ matrix.r-version }}
-    - name: Install non-R lintr dependencies (TL added libicu-dev)
-      run: sudo apt-get install libcurl4-openssl-dev libicu-dev
+    - name: Install non-R lintr dependencies
+      run: sudo apt-get install libcurl4-openssl-dev
     - name: Install lintr
       run: |
         install.packages('remotes')
+        remotes::install_cran('stringi')
         remotes::install_cran("lintr")
       shell: Rscript {0}
     - name: lintr
