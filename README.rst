@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.12.2+galaxy3
-------
+Version v1.16.2+galaxy0
+------------------------
 
   - msPurity
-     - bioconductor-mspurity v1.12.2
+     - bioconductor-mspurity v1.16.2
   - Galaxy tools
-     - v3
+     - v0
 
 About
 ------
@@ -35,17 +35,17 @@ Use the following links for more details of the msPurity R package:
 
 
 Dependencies
-------
-Dependencies for these Galaxy tools should be handled by CONDA. The most recent version of the msPurity R package can found on channel  `tomnl <https://anaconda.org/tomnl/bioconductor-mspurity>`_ on `anaconda <https://anaconda.org/tomnl/bioconductor-mspurity>`_. Warning this will be a different version of the package compared to the BICONDA bioconductor-mspurity.
+------------------
+Dependencies for these Galaxy tools should be handled by CONDA.
 
 
 Galaxy
-------
+------------------
 `Galaxy <https://galaxyproject.org>`_ is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses.
 
 
 Authors, contributors & contacts
--------------------------
+-------------------------------------
 
 - Thomas N. Lawson (t.n.lawson@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
 - Ralf J. M. Weber (r.j.weber@bham.ac.uk) - `University of Birmingham (UK) <http://www.birmingham.ac.uk/index.aspx>`_
@@ -55,6 +55,12 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.16.2-galaxy0
+  - Version bump
+  - Fix for intra spectral matching
+  - Fix for typo https://github.com/computational-metabolomics/mspurity-galaxy/pull/43
+  - Lint fixes
+
 v1.12.2-galaxy3
   - Bug fix reference to offsets in conditional #41
 
@@ -73,7 +79,7 @@ v1.12.2-galaxy0
   - Update to version v1.12.2 of `msPurity <https://github.com/computational-metabolomics/msPurity/pull/71>`_
   - Optional summary output for combineAnnotations (for very large output)
   - Extra column added to flagRemove output
-  - Hide probmetab input 
+  - Hide probmetab input
   - Make dimsPredictPuritySingle more compatible with "simple workflow inputs"
 
 
@@ -86,7 +92,7 @@ v1.12.0-galaxy1
   - Username updated in Toolshed yaml
 
 v1.12.0-galaxy0
-  - Updates for Bioconductor stable msPurity v1.12.0 release 
+  - Updates for Bioconductor stable msPurity v1.12.0 release
   - Additional columns added for spectral matching (for msnpy use case)
   - Merge of v1.11.4-galaxy1
 
