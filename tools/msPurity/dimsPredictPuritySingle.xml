@@ -63,13 +63,11 @@
             </param>
             <when value="mzML_file">
                 <param argument="--mzML_file" name="source" type="data" format="mzml" label="Single *.mzML"  >
-                    <validator type="empty_field" />
                 </param>
             </when>
             <when value="mzML_data_collection">
                 <param argument="--mzML_files" name="source" type="data_collection" 
                 label="Data collection containing *.mzml files" >
-                    <validator type="empty_field" />
                 </param>
                 <param argument="--mzML_filename" type="text" label="Name of file to to calculate purity from" help=""/>
             </when>
@@ -78,7 +76,6 @@
                 <param  argument="--mzML_file" name="source" type="text"
                        size="40" label="Library directory containing *.mzml files (dimspy input only)
                                                                  or path to an individual .mzML file">
-                    <validator type="empty_field" />
                 </param>
             </when>
 
