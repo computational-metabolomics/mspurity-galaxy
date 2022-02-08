@@ -18,6 +18,7 @@
             --snr=$snr
             --snmeth=$snmeth
             $rmp
+            $allfrag
     ]]></command>
     <inputs>
         <param argument="--pa" type="data"
@@ -39,6 +40,9 @@
         <param argument="--rmp" type="boolean" checked="false" truevalue="--rmp" falsevalue=""
                label="Remove peaks that do not meet the filtering criteria.
                       Otherwise peaks will be flagged instead."
+               help="" />
+        <param argument="--allfrag" type="boolean" checked="false" truevalue="--allfrag" falsevalue=""
+               label="Perform filtering on all fragmentation spectra (not just those aligned to XCMS features)"
                help="" />
     </inputs>
     <outputs>
