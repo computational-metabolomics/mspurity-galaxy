@@ -17,7 +17,7 @@ option_list <- list(
   make_option("--snr", default = 0.0),
 
   make_option("--rmp", action = "store_true"),
-  make_option("--snmeth", default = "median", type = "character")
+  make_option("--snmeth", default = "median", type = "character"),
   make_option("--allfrag", action = "store_true")
 )
 
