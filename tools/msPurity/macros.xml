@@ -271,7 +271,7 @@
                         <option value="FAB-BE">FAB-BE</option>
                         <option value="FAB-EB">FAB-EB</option>
                         <option value="FAB-EBEB">FAB-EBEB</option>
-                        <option value="FAB-EBEB">FD-B</option>
+                        <option value="FD-B">FD-B</option>
                         <option value="FI-B">FI-B</option>
                         <option value="Flow-injection QqQ/MS">Flow-injection QqQ/MS</option>
                         <option value="GC-EI-Q">GC-EI-Q</option>
