@@ -18,6 +18,7 @@ option_list <- list(
 
   make_option("--rmp", action = "store_true"),
   make_option("--snmeth", default = "median", type = "character")
+  make_option("--allfrag", action = "store_true")
 )
 
 opt <- parse_args(OptionParser(option_list = option_list))
@@ -39,12 +40,19 @@ if (is.null(opt$rmp)) {
   opt$rmp <- TRUE
 }
 
+if (is.null(opt$allfrag)) {
+  opt$allfrag <- FALSE
+}else{
+  opt$allfrag <- TRUE
+}
+
 pa <- filterFragSpectra(pa,
                         ilim = opt$ilim,
                         plim = opt$plim,
                         ra = opt$ra,
                         snr = opt$snr,
                         rmp = opt$rmp,
+                        allfrag = opt$allfrag,
                         snmeth = opt$snmeth)
 
 print(pa)
