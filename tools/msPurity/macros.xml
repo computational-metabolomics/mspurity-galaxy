@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <macros>
     <token name="@TOOL_VERSION@">1.16.2</token>
-    <token name="@GALAXY_TOOL_VERSION@">0</token>
+    <token name="@GALAXY_TOOL_VERSION@">1</token>
 
     <xml name="requirements">
         <requirements>
@@ -339,7 +339,7 @@
                         <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
                         <option value="inter">Averaged inter spectra</option>
                         <option value="intra">Averaged intra spectra </option>
-                        <option value="scans">All individual scans</option>
+                        <option value="scan">All individual scans</option>
                         <option value="NA">Not applicable/defined</option>
                     </param>
                 </when>
