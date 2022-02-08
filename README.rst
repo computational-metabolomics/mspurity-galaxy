@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Build Status (Travis)| |Git| |Bioconda| |License|
 
 
-Version v1.16.2+galaxy0
+Version v1.16.2+galaxy1
 ------------------------
 
   - msPurity
      - bioconductor-mspurity v1.16.2
   - Galaxy tools
-     - v0
+     - v1
 
 About
 ------
@@ -32,8 +32,6 @@ Use the following links for more details of the msPurity R package:
 * Conda (dev and testing): https://anaconda.org/tomnl/bioconductor-mspurity
 
 
-
-
 Dependencies
 ------------------
 Dependencies for these Galaxy tools should be handled by CONDA.
@@ -53,8 +51,13 @@ Authors, contributors & contacts
 - Julien Saint-Vanne (jsaintvanne) - `ABiMS (France) <http://abims.sb-roscoff.fr/>`_
 - Simon Bray (sbray@informatik.uni-freiburg.de) - `University of Freiburg (Germany) <https://www.uni-freiburg.de/>`_
 
+
 Changes
 -------------------------
+v1.16.2-galaxy1
+  - Fix for "scan" option for spectral matching
+  - Add allfrag option for filterFragSpectra
+
 v1.16.2-galaxy0
   - Version bump
   - Fix for intra spectral matching
