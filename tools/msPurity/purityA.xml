@@ -51,7 +51,6 @@
     ]]></command>
     <inputs>
         <param name="source" type="data" multiple="true" format="mzml" label="*.mzML file" >
-                    <validator type="empty_field" />
         </param>
         <param argument="--mostIntense" type="boolean" checked="true"
                label="Use most intense peak within isolation window for precursor?"
