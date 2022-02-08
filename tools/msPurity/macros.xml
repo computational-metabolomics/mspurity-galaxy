@@ -333,13 +333,14 @@
 
             <conditional name="@QL_SHRT@_spectraTypes_cond">
                 <param name="@QL_SHRT@_spectraTypes_bool" type="boolean" label="Filter on spectral type?"
-                help="" />
+                help="Note that when using 'scan' spectra types the spectraFilter option may need to be FALSE 
+		      if 'allfrag' was not selecting when performing filterFragSpectra or if no filtering was performed at all" />
                 <when value="true">
                     <param argument="--@QL_SHRT@_spectraTypes" type="select" multiple="true"  label="Spectra type" >
                         <option value="av_all" selected="true">Averaged all spectra ignoring inter-intra relationships </option>
                         <option value="inter">Averaged inter spectra</option>
                         <option value="intra">Averaged intra spectra </option>
-                        <option value="scan">All individual scans</option>
+                        <option value="scan">All individual scans (may need to set spectraFilter to false with this option)</option>
                         <option value="NA">Not applicable/defined</option>
                     </param>
                 </when>
