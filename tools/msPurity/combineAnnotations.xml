@@ -115,7 +115,7 @@
             <param name="metfrag_resultPth" value="combineAnnotations_input_metfrag.tsv" />
 	    <param name="sirius_csi_resultPth" value="combineAnnotations_input_sirus_csifingerid.tsv" />
              <param name="compoundDbTypeCond|compoundDbPth" value="metab_compound_subset.sqlite" />
-            <param name="beams_resultPth" value="combineAnnotations_input_beams.tsv" />
+            <param name="ms1_lookup_resultPth" value="combineAnnotations_input_beams.tsv" />
             <param name="compoundDbTypeCond|compoundDbPth" value="metab_compound_subset.sqlite" />
             <output name="combined_annotations_tsv" file="combineAnnotations_combined_annotations.tsv" ftype="tsv" />
             <output name="combined_annotations_sqlite" file="combineAnnotations_combined_annotations.sqlite" ftype="sqlite" compare="sim_size"/>

@@ -158,10 +158,8 @@
     </outputs>
     <tests>
         <test>
-            <param name="blank_flag.blank_flag" value="update" />
+            
             <param name="xset_path" value="flagRemove_input.RData"/>
-
-            <param name="blank_flag.blank_flag" value="update" />
             <conditional name="blank_flag">
                 <param name="blank_flag"  value="update"/>
                 <param name="blank_class" value="KO" />
