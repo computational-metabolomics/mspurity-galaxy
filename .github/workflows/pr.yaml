@@ -187,7 +187,7 @@ jobs:
       with:
         name: Workflow artifacts
         path: ../workflow_artifacts/
-    - uses: r-lib/actions/setup-r@master
+    - uses: r-lib/actions/setup-r@main
       with:
         r-version: ${{ matrix.r-version }}
     - name: Cache R packages
@@ -340,7 +340,7 @@ jobs:
     needs: test
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -387,7 +387,7 @@ jobs:
     needs: [lint,flake8,lintr,combine_outputs]
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'computational-metabolomics'
     steps:

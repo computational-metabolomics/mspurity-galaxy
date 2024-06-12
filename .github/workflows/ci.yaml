@@ -40,6 +40,7 @@ jobs:
     - name: Install Planemo
       run: pip install planemo
     - name: Fake a planemo run to update cache
+      continue-on-error: true
       run: |
         touch tool.xml
         PIP_QUIET=2 planemo test --galaxy_python_version ${{ matrix.python-version }} --no_conda_auto_init --galaxy_branch $GALAXY_RELEASE
