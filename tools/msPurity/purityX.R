@@ -183,7 +183,9 @@ ppLCMS <- msPurity::purityX(
 dfp <- ppLCMS@predictions
 
 # to make compatable with deconrank
-colnames(dfp)[colnames(dfp) == "grpid"] <- "peakID"
+# (keep grpid for other compatibility)
+dfp <- data.frame("peakID"=dfp$grpid, dfp)
+
 colnames(dfp)[colnames(dfp) == "median"] <- "medianPurity"
 colnames(dfp)[colnames(dfp) == "mean"] <- "meanPurity"
 colnames(dfp)[colnames(dfp) == "sd"] <- "sdPurity"
