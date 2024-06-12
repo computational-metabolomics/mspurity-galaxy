@@ -58,6 +58,7 @@ jobs:
     - name: Install Planemo and flake8
       run: pip install planemo flake8 flake8-import-order
     - name: Fake a Planemo run to update cache
+      continue-on-error: true
       if: steps.cache-pip.outputs.cache-hit != 'true' || steps.cache-planemo.outputs.cache-hit != 'true'
       run: |
         touch tool.xml
