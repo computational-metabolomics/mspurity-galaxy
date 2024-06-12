@@ -2,7 +2,7 @@ name: Galaxy Tool Linting and Tests for push and PR
 on: [push, pull_request]
 env:
   GALAXY_REPO: https://github.com/galaxyproject/galaxy
-  GALAXY_RELEASE: release_20.09
+  GALAXY_RELEASE: release_24.0
 jobs:
   # the setup job does two things:
   # 1. cache the pip cache and .planemo
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     - name: Print github context properties
       run: |
@@ -100,7 +100,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     # checkout the repository
     # and use it as the current working directory
@@ -139,7 +139,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     # checkout the repository to master
     # and use it as the current working directory
@@ -175,7 +175,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        r-version: [4.0.1]
+        r-version: [4.4.0]
     steps:
     # checkout the repository to master
     # and use it as the current working directory

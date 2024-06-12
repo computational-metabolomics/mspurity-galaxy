@@ -6,7 +6,7 @@ on:
   repository_dispatch:
     types: [run-all-tool-tests-command]
 env:
-  GALAXY_RELEASE: release_20.09
+  GALAXY_RELEASE: release_24.0
 jobs:
   setup:
     name: Setup cache
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     - name: Add reaction
       if: ${{ github.event.client_payload.slash_command.command == 'run-all-tool-tests' }}
@@ -52,7 +52,7 @@ jobs:
       fail-fast: false
       matrix:
         chunk: [0,1,2,3]
-        python-version: [3.7]
+        python-version: [3.11]
     services:
       postgres:
         image: postgres:11
