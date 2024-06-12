@@ -1,15 +1,15 @@
 msPurity for Galaxy
 ========================
-|Build Status (Travis)| |Git| |Bioconda| |License|
+|Git| |Bioconda| |License|
 
 
-Version v1.16.2+galaxy1
+Version v1.16.2+galaxy2
 ------------------------
 
   - msPurity
      - bioconductor-mspurity v1.16.2
   - Galaxy tools
-     - v1
+     - v2
 
 About
 ------
@@ -54,6 +54,13 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.16.2-galaxy2 
+  - Fix for purityX galaxy tool (https://github.com/computational-metabolomics/mspurity-galaxy/issues/53) 
+  - Cleanup of xml based on updated lint requirements
+  - Fix combineAnnotation tests
+  - Cleanup of repository folders
+  - github actions temp update (lintr removed)
+
 v1.16.2-galaxy1
   - Fix for "scan" option for spectral matching
   - Add allfrag option for filterFragSpectra

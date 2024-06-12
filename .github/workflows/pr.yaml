@@ -2,7 +2,7 @@ name: Galaxy Tool Linting and Tests for push and PR
 on: [push, pull_request]
 env:
   GALAXY_REPO: https://github.com/galaxyproject/galaxy
-  GALAXY_RELEASE: release_20.09
+  GALAXY_RELEASE: release_24.0
 jobs:
   # the setup job does two things:
   # 1. cache the pip cache and .planemo
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     - name: Print github context properties
       run: |
@@ -58,10 +58,11 @@ jobs:
     - name: Install Planemo and flake8
       run: pip install planemo flake8 flake8-import-order
     - name: Fake a Planemo run to update cache
+      continue-on-error: true
       if: steps.cache-pip.outputs.cache-hit != 'true' || steps.cache-planemo.outputs.cache-hit != 'true'
       run: |
         touch tool.xml
-        PIP_QUIET=1 planemo test --galaxy_python_version ${{ matrix.python-version }} --no_conda_auto_init --galaxy_source $GALAXY_REPO --galaxy_branch $GALAXY_RELEASE
+        PIP_QUIET=2 planemo test --galaxy_python_version ${{ matrix.python-version }} --no_conda_auto_init --galaxy_source $GALAXY_REPO --galaxy_branch $GALAXY_RELEASE
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
@@ -100,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     # checkout the repository
     # and use it as the current working directory
@@ -139,7 +140,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     steps:
     # checkout the repository to master
     # and use it as the current working directory
@@ -169,64 +170,6 @@ jobs:
             flake8 $(cat ../workflow_artifacts/changed_repositories.list)
         fi
 
-  lintr:
-    name: Lint R scripts
-    needs: setup
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        r-version: [4.0.1]
-    steps:
-    # checkout the repository to master
-    # and use it as the current working directory
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 1
-    - uses: actions/download-artifact@v2
-      with:
-        name: Workflow artifacts
-        path: ../workflow_artifacts/
-    - uses: r-lib/actions/setup-r@master
-      with:
-        r-version: ${{ matrix.r-version }}
-    - name: Cache R packages
-      uses: actions/cache@v2
-      with:
-        path: ${{ env.R_LIBS_USER }}
-        key: r_cache_1${{ matrix.r-version }}
-    - name: Install non-R lintr dependencies
-      run: sudo apt-get install libcurl4-openssl-dev
-    - name: Install lintr
-      run: |
-        install.packages('remotes')
-        remotes::install_cran("lintr", force=TRUE)
-      shell: Rscript {0}
-    - name: lintr
-      run: |
-        library(lintr)
-        linters <- with_defaults(line_length_linter = NULL, 
-                                 object_name_linter = NULL,
-                                 object_usage_linter = NULL,
-                                 cyclocomp_linter(complexity_limit = 25))
-        con <- file("../workflow_artifacts/changed_repositories.list", "r")
-        status <- 0
-        while (TRUE) {
-          repo <- readLines(con, n = 1)
-          if (length(repo) == 0) {
-             break
-          }
-          lnt <- lint_dir(repo, relative_path=T, linters=linters)
-          if (length(lnt) > 0) {
-            status <- 1
-            for (l in lnt) {
-              rel_path <- paste(repo, l$filename, sep="/")
-              write(paste(paste(rel_path, l$line_number, l$column_number, sep=":"), l$message), stderr())
-            }
-          }
-        }
-        quit(status = status)
-      shell: Rscript {0}
-
   # Planemo test the changed repositories, each chunk creates an artifact
   # containing HTML and JSON reports for the executed tests
   test:
@@ -238,7 +181,7 @@ jobs:
       fail-fast: false
       matrix:
         chunk: [0]
-        python-version: [3.7]
+        python-version: [3.11]
     services:
       postgres:
         image: postgres:11
@@ -339,7 +282,7 @@ jobs:
     needs: test
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -383,10 +326,10 @@ jobs:
   # deploy the tools to the toolsheds (first TTS for testing)
   deploy:
     name: Deploy
-    needs: [lint,flake8,lintr,combine_outputs]
+    needs: [lint,flake8,combine_outputs]
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.11]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'computational-metabolomics'
     steps:

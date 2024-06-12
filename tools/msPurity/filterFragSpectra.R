@@ -9,13 +9,10 @@ option_list <- list(
   make_option("--out_peaklist_prec", type = "character"),
   make_option("--out_peaklist_frag", type = "character"),
   make_option("--pa", type = "character"),
-
   make_option("--ilim", default = 0.0),
   make_option("--plim", default = 0.0),
-
   make_option("--ra", default = 0.0),
   make_option("--snr", default = 0.0),
-
   make_option("--rmp", action = "store_true"),
   make_option("--snmeth", default = "median", type = "character"),
   make_option("--allfrag", action = "store_true")
@@ -26,9 +23,9 @@ print(opt)
 
 
 loadRData <- function(rdata_path, name) {
-    #loads an RData file, and returns the named xset object if it is there
-    load(rdata_path)
-    return(get(ls()[ls() %in% name]))
+  # loads an RData file, and returns the named xset object if it is there
+  load(rdata_path)
+  return(get(ls()[ls() %in% name]))
 }
 
 # Requires
@@ -36,24 +33,25 @@ pa <- loadRData(opt$pa, "pa")
 
 if (is.null(opt$rmp)) {
   opt$rmp <- FALSE
-}else{
+} else {
   opt$rmp <- TRUE
 }
 
 if (is.null(opt$allfrag)) {
   opt$allfrag <- FALSE
-}else{
+} else {
   opt$allfrag <- TRUE
 }
 
 pa <- filterFragSpectra(pa,
-                        ilim = opt$ilim,
-                        plim = opt$plim,
-                        ra = opt$ra,
-                        snr = opt$snr,
-                        rmp = opt$rmp,
-                        allfrag = opt$allfrag,
-                        snmeth = opt$snmeth)
+  ilim = opt$ilim,
+  plim = opt$plim,
+  ra = opt$ra,
+  snr = opt$snr,
+  rmp = opt$rmp,
+  allfrag = opt$allfrag,
+  snmeth = opt$snmeth
+)
 
 print(pa)
 save(pa, file = opt$out_rdata)
@@ -82,11 +80,9 @@ setid <- function(grpinfo_i, msms) {
 
 
 if (length(pa) > 0) {
-
   if (length(pa@grped_ms2) == 0) {
     message("No spectra available")
   } else {
-
     # get group ids
     grpids <- unique(as.character(pa@grped_df$grpid))
 
@@ -94,7 +90,7 @@ if (length(pa) > 0) {
     df_fragments <- plyr::adply(grpids, 1, msmsgrp, pa = pa)
     df_fragments <- merge(df_fragments, pa@puritydf[, c("pid", "acquisitionNum", "precursorScanNum")], by = "pid")
     df_fragments <- df_fragments[order(df_fragments$grpid, df_fragments$pid, df_fragments$mz), ]
-    #select and reorder columns
+    # select and reorder columns
     df_fragments <- df_fragments[, c("grpid", "pid", "precursorScanNum", "acquisitionNum", "fileid", "mz", "i", "snr", "ra", "purity_pass_flag", "intensity_pass_flag", "ra_pass_flag", "snr_pass_flag", "pass_flag")]
 
     pa@grped_df$filename <- sapply(pa@grped_df$fileid, function(x) names(pa@fileList)[as.integer(x)])

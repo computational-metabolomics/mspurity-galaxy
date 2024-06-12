@@ -26,59 +26,58 @@ load(opt$rdata_input)
 
 if (is.null(opt$metadata)) {
   metadata <- NULL
-}else{
-  metadata <- read.table(opt$metadata,  header = TRUE, sep = "\t",
-                         stringsAsFactors = FALSE, check.names = FALSE)
+} else {
+  metadata <- read.table(opt$metadata,
+    header = TRUE, sep = "\t",
+    stringsAsFactors = FALSE, check.names = FALSE
+  )
 
   if (!opt$metadata_cols_filter == "") {
-     metadata_cols_filter <- strsplit(opt$metadata_cols_filter, ",")[[1]]
+    metadata_cols_filter <- strsplit(opt$metadata_cols_filter, ",")[[1]]
 
-     metadata <- metadata[, metadata_cols_filter, drop = FALSE]
-     print(metadata)
+    metadata <- metadata[, metadata_cols_filter, drop = FALSE]
+    print(metadata)
 
-     if (!"grpid" %in% colnames(metadata)) {
-       metadata$grpid <- seq_len(nrow(metadata))
-     }
+    if (!"grpid" %in% colnames(metadata)) {
+      metadata$grpid <- seq_len(nrow(metadata))
+    }
 
-     print(metadata)
-
+    print(metadata)
   }
-
 }
 
 
 
 if (is.null(opt$metadata_cols) || opt$metadata_cols == "") {
-    metadata_cols <- NULL
-}else{
-    metadata_cols <- opt$metadata_cols
-
+  metadata_cols <- NULL
+} else {
+  metadata_cols <- opt$metadata_cols
 }
 
 
 if (is.null(opt$adduct_split)) {
   adduct_split <- FALSE
-}else{
+} else {
   adduct_split <- TRUE
 }
 
 if (is.null(opt$xcms_groupids)) {
   xcms_groupids <- NULL
-}else{
+} else {
   xcms_groupids <- trimws(strsplit(opt$xcms_groupids, ",")[[1]])
 }
 
 
 if (is.null(opt$include_adducts_custom)) {
   include_adducts_custom <- ""
-}else{
+} else {
   include_adducts_custom <- opt$include_adducts_custom
 }
 
 
 if (opt$include_adducts == "None") {
   include_adducts <- ""
-}else{
+} else {
   include_adducts <- opt$include_adducts
 }
 
@@ -96,22 +95,23 @@ include_adducts_all <- gsub(",", " ", include_adducts_all)
 
 if (is.null(opt$filter)) {
   filter <- FALSE
-}else{
+} else {
   filter <- TRUE
 }
 
 
 
 msPurity::createMSP(pa,
-                    msp_file_pth = file.path(opt$out_dir, "lcmsms_spectra.msp"),
-                    metadata = metadata,
-                    metadata_cols = metadata_cols,
-                    method = opt$method,
-                    adduct_split = adduct_split,
-                    xcms_groupids = xcms_groupids,
-                    filter = filter,
-                    intensity_ra = opt$intensity_ra,
-                    include_adducts = include_adducts_all,
-                    msp_schema = opt$msp_schema)
+  msp_file_pth = file.path(opt$out_dir, "lcmsms_spectra.msp"),
+  metadata = metadata,
+  metadata_cols = metadata_cols,
+  method = opt$method,
+  adduct_split = adduct_split,
+  xcms_groupids = xcms_groupids,
+  filter = filter,
+  intensity_ra = opt$intensity_ra,
+  include_adducts = include_adducts_all,
+  msp_schema = opt$msp_schema
+)
 
 print("msp created")
