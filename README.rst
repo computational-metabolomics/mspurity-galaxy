@@ -59,6 +59,7 @@ v1.16.2-galaxy2
   - Cleanup of xml based on updated lint requirements
   - Fix combineAnnotation tests
   - Cleanup of repository folders
+  - github actions temp update (lintr removed)
 
 v1.16.2-galaxy1
   - Fix for "scan" option for spectral matching
