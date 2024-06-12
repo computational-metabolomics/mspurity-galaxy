@@ -68,6 +68,22 @@ loadRData <- function(rdata_path, xset_name) {
     return(get(ls()[ls() == xset_name]))
 }
 
+
+
+
+getxcmsSetObject <- function(xobject) {
+    # XCMS 1.x
+    if (class(xobject) == "xcmsSet")
+        return(xobject)
+    # XCMS 3.x
+    if (class(xobject) == "XCMSnExp") {
+        # Get the legacy xcmsSet object
+        suppressWarnings(xset <- as(xobject, "xcmsSet"))
+        sampclass(xset) <- xset@phenoData$sample_group
+        return(xset)
+    }
+}
+
 target_obj <- loadRData(opt$xset_path, opt$rdata_name)
 
 if (opt$camera_xcms == "camera") {
@@ -75,6 +91,8 @@ if (opt$camera_xcms == "camera") {
 }else{
     xset <- target_obj
 }
+
+xset <- getxcmsSetObject(xset)
 
 print(xset)
 
