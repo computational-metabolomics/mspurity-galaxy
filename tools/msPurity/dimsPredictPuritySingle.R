@@ -3,23 +3,23 @@ library(optparse)
 print(sessionInfo())
 
 option_list <- list(
-  make_option(c("--mzML_file"), type = "character"),
-  make_option(c("--mzML_files"), type = "character"),
-  make_option(c("--mzML_filename"), type = "character", default = ""),
-  make_option(c("--mzML_galaxy_names"), type = "character", default = ""),
-  make_option(c("--peaks_file"), type = "character"),
-  make_option(c("-o", "--out_dir"), type = "character"),
-  make_option("--minoffset", default = 0.5),
-  make_option("--maxoffset", default = 0.5),
-  make_option("--ilim", default = 0.05),
-  make_option("--ppm", default = 4),
-  make_option("--dimspy", action = "store_true"),
-  make_option("--sim", action = "store_true"),
-  make_option("--remove_nas", action = "store_true"),
-  make_option("--iwNorm", default = "none", type = "character"),
-  make_option("--file_num_dimspy", default = 1),
-  make_option("--exclude_isotopes", action = "store_true"),
-  make_option("--isotope_matrix", type = "character")
+    make_option(c("--mzML_file"), type = "character"),
+    make_option(c("--mzML_files"), type = "character"),
+    make_option(c("--mzML_filename"), type = "character", default = ""),
+    make_option(c("--mzML_galaxy_names"), type = "character", default = ""),
+    make_option(c("--peaks_file"), type = "character"),
+    make_option(c("-o", "--out_dir"), type = "character"),
+    make_option("--minoffset", default = 0.5),
+    make_option("--maxoffset", default = 0.5),
+    make_option("--ilim", default = 0.05),
+    make_option("--ppm", default = 4),
+    make_option("--dimspy", action = "store_true"),
+    make_option("--sim", action = "store_true"),
+    make_option("--remove_nas", action = "store_true"),
+    make_option("--iwNorm", default = "none", type = "character"),
+    make_option("--file_num_dimspy", default = 1),
+    make_option("--exclude_isotopes", action = "store_true"),
+    make_option("--isotope_matrix", type = "character")
 )
 
 # store options
@@ -43,7 +43,7 @@ find_mzml_file <- function(mzML_files, galaxy_names, mzML_filename) {
     galaxy_names <- str_to_vec(galaxy_names)
     if (mzML_filename %in% galaxy_names) {
         return(mzML_files[galaxy_names == mzML_filename])
-    }else{
+    } else {
         stop(paste("mzML file not found - ", mzML_filename))
     }
 }
@@ -53,15 +53,18 @@ if (is.null(opt$dimspy)) {
     df <- read.table(opt$peaks_file, header = TRUE, sep = "\t")
     if (file.exists(opt$mzML_file)) {
         mzML_file <- opt$mzML_file
-    }else if (!is.null(opt$mzML_files)) {
-        mzML_file <- find_mzml_file(opt$mzML_files, opt$mzML_galaxy_names,
-                                    opt$mzML_filename)
-    }else{
+    } else if (!is.null(opt$mzML_files)) {
+        mzML_file <- find_mzml_file(
+            opt$mzML_files, opt$mzML_galaxy_names,
+            opt$mzML_filename
+        )
+    } else {
         mzML_file <- file.path(opt$mzML_file, filename)
     }
-}else{
+} else {
     indf <- read.table(opt$peaks_file,
-                       header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+        header = TRUE, sep = "\t", stringsAsFactors = FALSE
+    )
 
     filename <- colnames(indf)[8:ncol(indf)][opt$file_num_dimspy]
     print(filename)
@@ -75,9 +78,9 @@ if (is.null(opt$dimspy)) {
 
     if (file.exists(opt$mzML_file)) {
         mzML_file <- opt$mzML_file
-    }else if (!is.null(opt$mzML_files)) {
+    } else if (!is.null(opt$mzML_files)) {
         mzML_file <- find_mzml_file(opt$mzML_files, opt$mzML_galaxy_names, filename)
-    }else{
+    } else {
         mzML_file <- file.path(opt$mzML_file, filename)
     }
 
@@ -95,25 +98,26 @@ if (is.null(opt$dimspy)) {
 }
 
 if (!is.null(opt$remove_nas)) {
-  df <- df[!is.na(df$mz), ]
+    df <- df[!is.na(df$mz), ]
 }
 
 if (is.null(opt$isotope_matrix)) {
     im <- NULL
-}else{
+} else {
     im <- read.table(opt$isotope_matrix,
-                     header = TRUE, sep = "\t", stringsAsFactors = FALSE)
+        header = TRUE, sep = "\t", stringsAsFactors = FALSE
+    )
 }
 
 if (is.null(opt$exclude_isotopes)) {
     isotopes <- FALSE
-}else{
+} else {
     isotopes <- TRUE
 }
 
 if (is.null(opt$sim)) {
     sim <- FALSE
-}else{
+} else {
     sim <- TRUE
 }
 
@@ -123,13 +127,13 @@ maxOffset <- as.numeric(opt$maxoffset)
 if (opt$iwNorm == "none") {
     iwNorm <- FALSE
     iwNormFun <- NULL
-}else if (opt$iwNorm == "gauss") {
+} else if (opt$iwNorm == "gauss") {
     iwNorm <- TRUE
     iwNormFun <- msPurity::iwNormGauss(minOff = -minOffset, maxOff = maxOffset)
-}else if (opt$iwNorm == "rcosine") {
+} else if (opt$iwNorm == "rcosine") {
     iwNorm <- TRUE
     iwNormFun <- msPurity::iwNormRcosine(minOff = -minOffset, maxOff = maxOffset)
-}else if (opt$iwNorm == "QE5") {
+} else if (opt$iwNorm == "QE5") {
     iwNorm <- TRUE
     iwNormFun <- msPurity::iwNormQE.5()
 }
@@ -138,23 +142,24 @@ print("FIRST ROWS OF PEAK FILE")
 print(head(df))
 print(mzML_file)
 predicted <- msPurity::dimsPredictPuritySingle(df$mz,
-                                     filepth = mzML_file,
-                                     minOffset = minOffset,
-                                     maxOffset = maxOffset,
-                                     ppm = opt$ppm,
-                                     mzML = TRUE,
-                                     sim = sim,
-                                     ilim = opt$ilim,
-                                     isotopes = isotopes,
-                                     im = im,
-                                     iwNorm = iwNorm,
-                                     iwNormFun = iwNormFun
-                                     )
+    filepth = mzML_file,
+    minOffset = minOffset,
+    maxOffset = maxOffset,
+    ppm = opt$ppm,
+    mzML = TRUE,
+    sim = sim,
+    ilim = opt$ilim,
+    isotopes = isotopes,
+    im = im,
+    iwNorm = iwNorm,
+    iwNormFun = iwNormFun
+)
 predicted <- cbind(df, predicted)
 
 print(head(predicted))
 print(file.path(opt$out_dir, "dimsPredictPuritySingle_output.tsv"))
 
 write.table(predicted,
-            file.path(opt$out_dir, "dimsPredictPuritySingle_output.tsv"),
-            row.names = FALSE, sep = "\t")
+    file.path(opt$out_dir, "dimsPredictPuritySingle_output.tsv"),
+    row.names = FALSE, sep = "\t"
+)

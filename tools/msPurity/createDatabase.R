@@ -6,7 +6,6 @@ print(sessionInfo())
 print("CREATING DATABASE")
 
 xset_pa_filename_fix <- function(opt, pa, xset) {
-
   if (!is.null(opt$mzML_files) && !is.null(opt$galaxy_names)) {
     # NOTE: Relies on the pa@fileList having the names of files given as 'names' of the variables
     # needs to be done due to Galaxy moving the files around and screwing up any links to files
@@ -18,7 +17,7 @@ xset_pa_filename_fix <- function(opt, pa, xset) {
     galaxy_names <- galaxy_names[galaxy_names != ""]
 
     nsave <- names(pa@fileList)
-    old_filenames  <- basename(pa@fileList)
+    old_filenames <- basename(pa@fileList)
     pa@fileList <- filepaths[match(names(pa@fileList), galaxy_names)]
     names(pa@fileList) <- nsave
 
@@ -27,12 +26,12 @@ xset_pa_filename_fix <- function(opt, pa, xset) {
   }
 
 
- if (!all(basename(pa@fileList) == basename(xset@filepaths))) {
+  if (!all(basename(pa@fileList) == basename(xset@filepaths))) {
     if (!all(names(pa@fileList) == basename(xset@filepaths))) {
-       print("FILELISTS DO NOT MATCH")
-       message("FILELISTS DO NOT MATCH")
-       quit(status = 1)
-    }else{
+      print("FILELISTS DO NOT MATCH")
+      message("FILELISTS DO NOT MATCH")
+      quit(status = 1)
+    } else {
       xset@filepaths <- unname(pa@fileList)
     }
   }
@@ -64,22 +63,23 @@ opt <- parse_args(OptionParser(option_list = option_list))
 print(opt)
 
 loadRData <- function(rdata_path, name) {
-#loads an RData file, and returns the named xset object if it is there
-    load(rdata_path)
-    return(get(ls()[ls() %in% name]))
+  # loads an RData file, and returns the named xset object if it is there
+  load(rdata_path)
+  return(get(ls()[ls() %in% name]))
 }
 
 getxcmsSetObject <- function(xobject) {
-    # XCMS 1.x
-    if (class(xobject) == "xcmsSet")
-        return(xobject)
-    # XCMS 3.x
-    if (class(xobject) == "XCMSnExp") {
-        # Get the legacy xcmsSet object
-        suppressWarnings(xset <- as(xobject, "xcmsSet"))
-        xcms::sampclass(xset) <- xset@phenoData$sample_group
-        return(xset)
-    }
+  # XCMS 1.x
+  if (class(xobject) == "xcmsSet") {
+    return(xobject)
+  }
+  # XCMS 3.x
+  if (class(xobject) == "XCMSnExp") {
+    # Get the legacy xcmsSet object
+    suppressWarnings(xset <- as(xobject, "xcmsSet"))
+    xcms::sampclass(xset) <- xset@phenoData$sample_group
+    return(xset)
+  }
 }
 
 
@@ -96,19 +96,17 @@ print(pa@fileList)
 # Missing list element causes failures (should be updated
 # in msPurity R package for future releases)
 if (!exists("allfrag", where = pa@filter_frag_params)) {
-    pa@filter_frag_params$allfrag <- FALSE
+  pa@filter_frag_params$allfrag <- FALSE
 }
 
 if (opt$xcms_camera_option == "xcms") {
-
   xset <- loadRData(opt$xset, c("xset", "xdata"))
   xset <- getxcmsSetObject(xset)
   fix <- xset_pa_filename_fix(opt, pa, xset)
   pa <- fix[[1]]
   xset <- fix[[2]]
   xa <- NULL
-}else{
-
+} else {
   xa <- loadRData(opt$xset, "xa")
   fix <- xset_pa_filename_fix(opt, pa, xa@xcmsSet)
   pa <- fix[[1]]
@@ -119,16 +117,16 @@ if (opt$xcms_camera_option == "xcms") {
 
 if (is.null(opt$grpPeaklist)) {
   grpPeaklist <- NA
-}else{
+} else {
   grpPeaklist <- opt$grpPeaklist
 }
 
 dbPth <- msPurity::createDatabase(pa,
-                                   xset = xset,
-                                   xsa = xa,
-                                   outDir = opt$outDir,
-                                   grpPeaklist = grpPeaklist,
-                                   dbName = "createDatabase_output.sqlite"
+  xset = xset,
+  xsa = xa,
+  outDir = opt$outDir,
+  grpPeaklist = grpPeaklist,
+  dbName = "createDatabase_output.sqlite"
 )
 
 
@@ -136,9 +134,8 @@ dbPth <- msPurity::createDatabase(pa,
 
 
 if (!is.null(opt$eic)) {
-
   if (is.null(xset)) {
-      xset <- xa@xcmsSet
+    xset <- xa@xcmsSet
   }
   # previous check should have matched filelists together
   xset@filepaths <- unname(pa@fileList)
@@ -150,19 +147,19 @@ if (!is.null(opt$eic)) {
     x$rtmin_raw <- xset@rt$raw[[sid]][match(x$rtmin, xset@rt$corrected[[sid]])]
     x$rtmax_raw <- xset@rt$raw[[sid]][match(x$rtmax, xset@rt$corrected[[sid]])]
     return(x)
-
   }
 
   xset@peaks <- as.matrix(
-    plyr::ddply(data.frame(xset@peaks), ~ sample, convert2Raw, xset = xset))
+    plyr::ddply(data.frame(xset@peaks), ~sample, convert2Raw, xset = xset)
+  )
 
   # Saves the EICS into the previously created database
   px <- msPurity::purityX(xset,
-                          saveEIC = TRUE,
-                          cores = 1,
-                          sqlitePth = dbPth,
-                          rtrawColumns = TRUE)
-
+    saveEIC = TRUE,
+    cores = 1,
+    sqlitePth = dbPth,
+    rtrawColumns = TRUE
+  )
 }
 
 closeAllConnections()
