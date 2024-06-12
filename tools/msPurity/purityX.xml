@@ -155,7 +155,7 @@
             <param name="iw_norm" value="QE5" />
             <param name="xset" value="xset_group_LCMS_1_LCMS_2_LCMSMS_1_LCMSMS_2.RData"/>
             <output name="purityX_tsv" value="purityX_output.tsv" />
-            <output name="purityX_rdata" value="purityX_output.Rdata" ftype="rdata" compare="sim_size"/>
+            <output name="purityX_rdata" value="purityX_output.RData" ftype="rdata" compare="sim_size"/>
         </test>
     </tests>
     <help><![CDATA[
