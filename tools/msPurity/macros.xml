@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <macros>
-    <token name="@TOOL_VERSION@">1.16.2</token>
-    <token name="@GALAXY_TOOL_VERSION@">2</token>
+    <token name="@TOOL_VERSION@">1.28.0</token>
+    <token name="@GALAXY_TOOL_VERSION@">0</token>
 
     <xml name="requirements">
         <requirements>
            <requirement type="package" version="@TOOL_VERSION@" >bioconductor-mspurity</requirement>
-           <requirement type="package" version="1.46.0" >bioconductor-camera</requirement>
-           <requirement type="package" version="3.12.0" >bioconductor-xcms</requirement>
-           <requirement type="package" version="1.18.0" >bioconductor-mspuritydata</requirement>
-           <requirement type="package" version="1.6.6">r-optparse</requirement>
-           <requirement type="package" version="1.3.1">r-rpostgres</requirement>
-           <requirement type="package" version="0.10.21">r-rmysql</requirement>
+           <requirement type="package" version="1.58.0" >bioconductor-camera</requirement>
+           <requirement type="package" version="4.0.0" >bioconductor-xcms</requirement>
+           <requirement type="package" version="1.30.0" >bioconductor-mspuritydata</requirement>
+           <requirement type="package" version="1.7.5">r-optparse</requirement>
+           <requirement type="package" version="1.4.7">r-rpostgres</requirement>
+           <requirement type="package" version="0.10.27">r-rmysql</requirement>
             <yield />
         </requirements>
     </xml>

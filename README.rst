@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Git| |Bioconda| |License|
 
 
-Version v1.16.2+galaxy2
+Version v1.28.0+galaxy0
 ------------------------
 
   - msPurity
-     - bioconductor-mspurity v1.16.2
+     - bioconductor-mspurity v1.28.0
   - Galaxy tools
-     - v2
+     - v0
 
 About
 ------
@@ -26,10 +26,8 @@ Use the following links for more details of the msPurity R package:
 * Bioconductor: http://bioconductor.org/packages/msPurity/
 * Vignette: https://bioconductor.org/packages/devel/bioc/vignettes/msPurity/inst/doc/msPurity-vignette.html
 * Manual: http://bioconductor.org/packages/devel/bioc/manuals/msPurity/man/msPurity.pdf
-* Bioconductor mirror code: https://github.com/Bioconductor-mirror/msPurity
 * Github code: https://github.com/computational-metabolomics/mspurity
 * Bioconda (stable): https://anaconda.org/bioconda/bioconductor-mspurity
-* Conda (dev and testing): https://anaconda.org/tomnl/bioconductor-mspurity
 
 
 Dependencies
@@ -54,6 +52,12 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.28.0-galaxy0
+  - Version bump to v1.28.0
+  - createMSP now uses the median precursor MZ and precursor RT in the MSP files
+  - flagRemove updated to handle different xcms version objects internally within msPurity R function
+  - Relevant unit tests updated and further tidying up of repo
+
 v1.16.2-galaxy2 
   - Fix for purityX galaxy tool (https://github.com/computational-metabolomics/mspurity-galaxy/issues/53) 
   - Cleanup of xml based on updated lint requirements

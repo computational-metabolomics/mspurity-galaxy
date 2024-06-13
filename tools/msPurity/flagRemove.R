@@ -1,4 +1,5 @@
 library(msPurity)
+library(xcms)
 library(optparse)
 print(sessionInfo())
 option_list <- list(
@@ -117,19 +118,25 @@ if (is.null(opt$remove_spectra)) {
 
 print(opt)
 
-getxcmsSetObject <- function(xobject) {
-    # XCMS 1.x
-    if (class(xobject) == "xcmsSet") {
-        return(xobject)
-    }
-    # XCMS 3.x
-    if (class(xobject) == "XCMSnExp") {
-        # Get the legacy xcmsSet object
-        suppressWarnings(xset <- as(xobject, "xcmsSet"))
-        xcms::sampclass(xset) <- xset@phenoData$sample_group
-        return(xset)
-    }
-}
+# This R function can handle both XCMS object versions (so following code
+# no longer required - kept here for reference)
+# getxcmsSetObject <- function(xobject) {
+#   # XCMS 1.x
+#   if (class(xobject) == "xcmsSet"){
+#     return(xobject)
+#   }
+#   # XCMS 3.x
+#   if (class(xobject) == "XCMSnExp") {
+#     # Get the legacy xcmsSet object
+#     suppressWarnings(xset <- as(xobject, "xcmsSet"))
+#     if (!is.null(xset@phenoData$sample_group)){
+#       xcms::sampclass(xset) <- xset@phenoData$sample_group
+#     }else{
+#       xcms::sampclass(xset) <- "."
+#     }
+#     return(xset)
+#   }
+# }
 
 
 loadRData <- function(rdata_path, name) {
@@ -138,9 +145,9 @@ loadRData <- function(rdata_path, name) {
     return(get(ls()[ls() %in% name]))
 }
 
-xset <- getxcmsSetObject(loadRData(opt$xset_path, c("xset", "xdata")))
+xset <- loadRData(opt$xset_path, c("xset", "xdata"))
 
-print(xset)
+
 if (is.null(opt$samplelist)) {
     blank_class <- opt$blank_class
 } else {
@@ -155,6 +162,8 @@ if (is.null(opt$samplelist)) {
     blank_class <- as.character(chosen_blank)
     print(blank_class)
 }
+
+
 
 
 if (is.null(opt$multilist)) {
@@ -201,15 +210,6 @@ if (is.null(opt$multilist)) {
     )
 } else {
     # nolint start
-    # TODO
-    # xsets <- split(xset, multilist_df$multlist)
-    #
-    # mult_grps <- unique(multilist_df$multlist)
-    #
-    # for (mgrp in mult_grps){
-    #   xset_i <- xsets[mgrp]
-    #   xcms::group(xset_i,
-    #
-    # }
+    # TODO - potential for multilist analysis (e)
     # nolint end
 }
