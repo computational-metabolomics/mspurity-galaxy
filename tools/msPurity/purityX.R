@@ -74,14 +74,18 @@ loadRData <- function(rdata_path, xset_name) {
 
 getxcmsSetObject <- function(xobject) {
   # XCMS 1.x
-  if (class(xobject) == "xcmsSet") {
+  if (class(xobject) == "xcmsSet"){
     return(xobject)
   }
   # XCMS 3.x
   if (class(xobject) == "XCMSnExp") {
     # Get the legacy xcmsSet object
     suppressWarnings(xset <- as(xobject, "xcmsSet"))
-    sampclass(xset) <- xset@phenoData$sample_group
+    if (!is.null(xset@phenoData$sample_group)){
+      xcms::sampclass(xset) <- xset@phenoData$sample_group
+    }else{
+      xcms::sampclass(xset) <- "."
+    }
     return(xset)
   }
 }
