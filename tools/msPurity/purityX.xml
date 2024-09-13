@@ -18,11 +18,7 @@
                 --xgroups='$xgroups.xgroups_value'
             #end if
             --camera_xcms=$camera_xcms
-            #if $camera_xcms == "camera"
-                --rdata_name=xa
-            #else
-                --rdata_name=xset
-            #end if
+
             --iwNorm=$iw_norm
             --ilim=$ilim
             #if $isotopes.isotopes == "exclude_default"
