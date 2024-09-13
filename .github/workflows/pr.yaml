@@ -35,7 +35,7 @@ jobs:
       run: echo "GALAXY_HEAD_SHA=$(git ls-remote ${{ env.GALAXY_REPO }} refs/heads/${{ env.GALAXY_RELEASE }} | cut -f1)" >> $GITHUB_ENV
     - name: Save latest galaxy commit to artifact file
       run: echo $GALAXY_HEAD_SHA > galaxy.sha
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: Workflow artifacts
         path: galaxy.sha
