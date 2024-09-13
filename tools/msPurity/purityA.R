@@ -124,7 +124,7 @@ if (!is.null(opt$galaxy_names)) {
 print(pa)
 save(pa, file = file.path(opt$out_dir, "purityA_output.RData"))
 
-pa@puritydf$filename <- sapply(pa@puritydf$fileid, function(x) names(pa@fileList)[as.integer(x)])
+pa@puritydf$filename <- sapply(as.character(pa@puritydf$fileid), function(x) names(pa@fileList)[as.integer(x)])
 
 print(head(pa@puritydf))
 write.table(pa@puritydf, file.path(opt$out_dir, "purityA_output.tsv"), row.names = FALSE, sep = "\t")
