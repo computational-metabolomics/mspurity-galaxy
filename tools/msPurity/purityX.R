@@ -16,7 +16,6 @@ option_list <- list(
   make_option("--singleFile", default = 0),
   make_option("--cores", default = 4),
   make_option("--xgroups", type = "character"),
-  make_option("--rdata_name", default = "xset"),
   make_option("--camera_xcms", default = "xset"),
   make_option("--files", type = "character"),
   make_option("--galaxy_files", type = "character"),
@@ -63,10 +62,10 @@ if (is.null(opt$rtraw_columns)) {
   rtraw_columns <- TRUE
 }
 
-loadRData <- function(rdata_path, xset_name) {
+loadRData <- function(rdata_path, xnames) {
   # loads an RData file, and returns the named xset object if it is there
   load(rdata_path)
-  return(get(ls()[ls() == xset_name]))
+  return(get(ls()[ls() %in% xnames]))
 }
 
 
@@ -90,7 +89,7 @@ getxcmsSetObject <- function(xobject) {
   }
 }
 
-target_obj <- loadRData(opt$xset_path, opt$rdata_name)
+target_obj <- loadRData(opt$xset_path, c('xset', 'xa', 'xdata'))
 
 if (opt$camera_xcms == "camera") {
   xset <- target_obj@xcmsSet

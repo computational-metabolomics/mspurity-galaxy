@@ -3,13 +3,13 @@ msPurity for Galaxy
 |Git| |Bioconda| |License|
 
 
-Version v1.28.0+galaxy0
+Version v1.28.0+galaxy1
 ------------------------
 
   - msPurity
      - bioconductor-mspurity v1.28.0
   - Galaxy tools
-     - v0
+     - v1
 
 About
 ------
@@ -52,6 +52,10 @@ Authors, contributors & contacts
 
 Changes
 -------------------------
+v1.28.0-galaxy1
+  - Further fix for purityX galaxy tool (https://github.com/computational-metabolomics/mspurity-galaxy/issues/53) 
+  - Fix for purityA file naming (https://github.com/computational-metabolomics/mspurity-galaxy/issues/56)
+
 v1.28.0-galaxy0
   - Version bump to v1.28.0
   - createMSP now uses the median precursor MZ and precursor RT in the MSP files

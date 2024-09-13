@@ -35,18 +35,18 @@ jobs:
       run: echo "GALAXY_HEAD_SHA=$(git ls-remote ${{ env.GALAXY_REPO }} refs/heads/${{ env.GALAXY_RELEASE }} | cut -f1)" >> $GITHUB_ENV
     - name: Save latest galaxy commit to artifact file
       run: echo $GALAXY_HEAD_SHA > galaxy.sha
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
         name: Workflow artifacts
         path: galaxy.sha
     - name: Cache .cache/pip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-pip
       with:
         path: ~/.cache/pip
         key: pip_cache_py_${{ matrix.python-version }}_gxy1_$GALAXY_HEAD_SHA
     - name: Cache .planemo
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-planemo
       with:
         path: ~/.planemo
@@ -63,7 +63,7 @@ jobs:
       run: |
         touch tool.xml
         PIP_QUIET=2 planemo test --galaxy_python_version ${{ matrix.python-version }} --no_conda_auto_init --galaxy_source $GALAXY_REPO --galaxy_branch $GALAXY_RELEASE
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
     # The range of commits to check for changes is:
@@ -88,7 +88,7 @@ jobs:
       run: planemo ci_find_repos --changed_in_commit_range $COMMIT_RANGE --exclude packages --exclude deprecated --exclude_from .tt_skip --output changed_repositories.list
     - name: Show repo list
       run: cat changed_repositories.list
-    - uses: actions/upload-artifact@v2.0.1
+    - uses: actions/upload-artifact@v3
       with:
         name: Workflow artifacts
         path: changed_repositories.list
@@ -105,20 +105,20 @@ jobs:
     steps:
     # checkout the repository
     # and use it as the current working directory
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 1
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: Workflow artifacts
         path: ../workflow_artifacts/
     - name: Determine latest galaxy commit
       run: echo "GALAXY_HEAD_SHA=$(cat ../workflow_artifacts/galaxy.sha)" >> $GITHUB_ENV
     - name: Cache .cache/pip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-pip
       with:
         path: ~/.cache/pip
@@ -144,20 +144,20 @@ jobs:
     steps:
     # checkout the repository to master
     # and use it as the current working directory
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 1
     - uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: Workflow artifacts
         path: ../workflow_artifacts/
     - name: Determine latest galaxy commit
       run: echo "GALAXY_HEAD_SHA=$(cat ../workflow_artifacts/galaxy.sha)" >> $GITHUB_ENV
     - name: Cache .cache/pip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-pip
       with:
         path: ~/.cache/pip
@@ -200,7 +200,7 @@ jobs:
     - uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: Workflow artifacts
         path: ../workflow_artifacts/
@@ -267,7 +267,7 @@ jobs:
       run: |
         mkdir upload
         mv tool_test_output.json tool_test_output.html upload/
-    - uses: actions/upload-artifact@v2.0.1
+    - uses: actions/upload-artifact@v3
       with:
         name: 'Tool test output ${{ matrix.chunk  }}'
         path: upload
@@ -286,7 +286,7 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         path: artifacts
     - uses: actions/setup-python@v1
@@ -295,7 +295,7 @@ jobs:
     - name: Determine latest galaxy commit
       run: echo "GALAXY_HEAD_SHA=$(cat ../workflow_artifacts/galaxy.sha)" >> $GITHUB_ENV
     - name: Cache .cache/pip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-pip
       with:
         path: ~/.cache/pip
@@ -312,7 +312,7 @@ jobs:
       run: |
         mkdir upload
         mv tool_test_output.json tool_test_output.html upload/
-    - uses: actions/upload-artifact@v2.0.1
+    - uses: actions/upload-artifact@v3
       with:
         name: 'All tool test results'
         path: upload
@@ -333,20 +333,20 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.repository_owner == 'computational-metabolomics'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 1
     - uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
       with:
         name: Workflow artifacts
         path: ../workflow_artifacts/
     - name: Determine latest galaxy commit
       run: echo "GALAXY_HEAD_SHA=$(cat ../workflow_artifacts/galaxy.sha)" >> $GITHUB_ENV
     - name: Cache .cache/pip
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       id: cache-pip
       with:
         path: ~/.cache/pip
