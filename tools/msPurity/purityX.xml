@@ -117,10 +117,10 @@
         <expand macro="camera_xcms" />
 
         <param argument="--raw_rt_columns" type="boolean" label="Has the raw retention time been tracked within the peaks?"
-               help="Only applicable when using retention time correction with obiwarp. When obiwarp is used
-                     the retention time correction tracking is slightly different to the other correction methods. To ensure
-                     correct tracking with obiwarp an additional tool (track_rt_raw) should be performed prior to
-                     any retention time correction."/>
+               help="[Deprecated] No longer applicable. Previously when obiwarp was used
+                     the retention time correction tracking was slightly different to the other correction methods. To ensure
+                     correct tracking with obiwarp an additional tool (track_rt_raw) was performed prior to
+                     any retention time correction - and this was then checked when this flag was turned on"/>
 
         <expand macro="fileload" />
 
