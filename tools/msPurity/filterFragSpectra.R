@@ -93,7 +93,7 @@ if (length(pa) > 0) {
     # select and reorder columns
     df_fragments <- df_fragments[, c("grpid", "pid", "precursorScanNum", "acquisitionNum", "fileid", "mz", "i", "snr", "ra", "purity_pass_flag", "intensity_pass_flag", "ra_pass_flag", "snr_pass_flag", "pass_flag")]
 
-    pa@grped_df$filename <- sapply(pa@grped_df$fileid, function(x) names(pa@fileList)[as.integer(x)])
+    pa@grped_df$filename <- sapply(as.character(pa@grped_df$fileid), function(x) names(pa@fileList)[as.integer(x)])
 
     print(head(pa@grped_df))
     write.table(pa@grped_df, opt$out_peaklist_prec, row.names = FALSE, sep = "\t")
